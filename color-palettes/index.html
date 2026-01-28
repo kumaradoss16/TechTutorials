@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../images/icon.webp" sizes="32x46" type="image/webp">
+    <title>TechTutorials | Color Space</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Source+Code+Pro:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="topbar">
+        <div class="topbar-content">
+            <div class="brand-logo">
+                <div class="logo-text">
+                    <img src="../images/icon.webp" alt="Gear Icon" class="logo-icon" width=" 23" height="23">
+                    <span id="brand" class="typewriter" data-text="TechTutorials"></span>
+                </div>
+            </div>
+            <div class="topbar-nav">
+                <a href="../Website/index.html"><button class="nav-button">Home</button></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="hero-section">
+            <h1 class="title">Color Space</h1>
+            <h3 class="hero-title">Discover Perfect Palettes</h3>
+            <p class=" hero-description">Explore curated color combinations designed for modern interfaces. Copy
+                instantly, export easily.
+            </p>
+            <div class="counts">
+                <div class="count">
+                    <p class="title">Total Palettes</p>
+                    <p class="num">1,188</p>
+                </div>
+                <div class="count">
+                    <p class="title">Total Colors</p>
+                    <p class="num">6,025</p>
+                </div>
+                <div class="count">
+                    <p class="title">Unique Colors</p>
+                    <p class="num">2,127</p>
+                </div>
+            </div>
+        </div>
+        <div class="palette-grid" id="paletteGrid"></div>
+    </div>
+
+    <div class="fullscreen-modal" id="modal">
+        <div class="modal-close" onclick="closeModal()">×</div>
+        <div class="modal-container">
+            <h2 class="modal-title" id="modalTitle"></h2>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Copied!</div>
+
+    <footer class="footer">
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="#">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../Wallpaper/index.html" target="_blank">Wallpapers</a>
+            </li>
+            <li class="menu-item"><a class="menu-link" href="../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../Website/contact/index.html">Contact</a>
+            </li>
+            <li class="menu-item"><a class="menu-link" href="../Website/privacy/index.html">Privacy
+                    policy</a></li>
+        </ul>
+        <p>&copy;2025 TechTutorials | All Rights Reserved</p>
+    </footer>
+
+    <script src="palettes.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
