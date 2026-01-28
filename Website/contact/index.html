@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../images/icon.webp" sizes="32x46" type="image/png">
+    <title>Contact</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="TechTutorials"></span>
+                </div>
+                <!-- <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+                            <i class="fas fa-bars"></i>
+                        </button> -->
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li style="margin-right: 30px;"><a href="../index.html">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <main class="left-column">
+            <h2 class="title">Lets talk about everything!</h2>
+            <h3>💬 Share Your Feedback or Questions</h3>
+            <div class="list">
+                <ul>
+                    <li>Did you find our tutorials helpful?</li>
+                    <li>Did you notice any mistakes or outdated information in our guides?</li>
+                    <li>Do you have ideas to make the tutorials clearer, more practical, or beginner-friendly?</li>
+                    <li>Is there a new topic or project tutorial you'd like us to create?</li>
+                    <li>Do you have suggestions to improve the site or content?</li>
+                    <li>Want to collaborate or start a project together?</li>
+                </ul>
+            </div>
+            <p>📩 <strong>Use the contact form</strong> to share your feedback — or email us directly at <a
+                    href="mailto:techtutorialsweb25@gmail.com" class="email-link">techtutorials.website@gmail.com</a>.
+            </p>
+            <p class="last-p">Your suggestions help us improve and keep our content accurate and useful.</p>
+        </main>
+
+        <main class="right-column">
+            <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="30aa9e7b-6634-4aa5-93db-4af190f1fd5d">
+                <input type="hidden" name="from_name" value="TechTutorials Contact Form">
+
+                <!-- Spam Protection -->
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                <div class="form-group">
+                    <label class="form-label" for="name">Name</label>
+                    <input class="form-input" type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input class="form-input" type="email" id="email" name="email" placeholder="Enter your email"
+                        required>
+                    <span id="email-error" class="error-message hidden"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea class="form-textarea" id="message" name="message" placeholder="Enter your message..."
+                        required></textarea>
+                </div>
+                <!-- Google reCAPTCHA widget -->
+                <!-- <div class="form-group">
+                    <div id="recaptcha" class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+                </div> -->
+                <button type="submit" class="submit-button">Send message</button>
+                <span id="form-response" class="error-message"></span>
+            </form>
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../color-palettes/index.html">Color Space</a></li>
+            <li class="menu-item"><a class="menu-link"
+                    href="../../Resources/digital-resources/digital-resources-hub.html">Resources</a></li>
+            <li class="menu-item"><a class="menu-link" href="../about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="#">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../privacy/index.html">Privacy policy</a></li>
+        </ul>
+        <p>&copy;2026 TechTutorials | All Rights Reserved</p>
+    </footer>
+    <script src="script.js"></script>
+    <!-- Load reCAPTCHA script -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</body>
+
+</html>
