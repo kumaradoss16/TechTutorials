@@ -1,32 +1,34 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- Typing Animation for Brand ---
     (function () {
         const el = document.getElementById("brand");
-        if (!el) return;
-        
         const text = el.dataset.text || "TechTutorials";
         let i = 0;
         let isDeleting = false;
-        const typeSpeed = 100;
-        const deleteSpeed = 50;
-        const pauseTime = 2000;
-        const restartPause = 500;
+
+        const typeSpeed = 100;    // typing speed (ms)
+        const deleteSpeed = 50;   // deleting speed (ms)
+        const pauseTime = 2000;   // pause at end before deleting (ms)
+        const restartPause = 500; // pause before restarting (ms)
 
         function typeLoop() {
             const currentText = text.slice(0, i);
             el.textContent = currentText;
 
             if (!isDeleting && i < text.length) {
+                // Typing forward
                 i++;
                 setTimeout(typeLoop, typeSpeed);
             } else if (!isDeleting && i === text.length) {
+                // Finished typing, pause then start deleting
                 isDeleting = true;
                 setTimeout(typeLoop, pauseTime);
             } else if (isDeleting && i > 0) {
+                // Deleting
                 i--;
                 setTimeout(typeLoop, deleteSpeed);
             } else if (isDeleting && i === 0) {
+                // Finished deleting, restart
                 isDeleting = false;
                 setTimeout(typeLoop, restartPause);
             }
@@ -34,88 +36,117 @@ document.addEventListener("DOMContentLoaded", () => {
 
         typeLoop();
     })();
+    // Form submission handler
+    const form = document.getElementById('contact-form');
+    const formResponse = document.getElementById('form-response');
 
-    // --- Scroll to Top with Progress Indicator ---
-    const scrollBtn = document.getElementById("scrollUpBtn");
-    if (scrollBtn) {
-        const circle = scrollBtn.querySelector(".progress-circle .progress");
-        const circumference = 2 * Math.PI * 15.9155;
-
-        if (circle) {
-            circle.style.strokeDasharray = `${circumference}`;
-            circle.style.strokeDashoffset = `${circumference}`;
-        }
-
-        window.addEventListener("scroll", () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
-
-            if (circle) {
-                const offset = circumference * (1 - scrollPercent);
-                circle.style.strokeDashoffset = offset;
-            }
-
-            scrollBtn.style.display = scrollTop > 100 ? "block" : "none";
-        });
-
-        scrollBtn.addEventListener("click", () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        });
-    }
-
-    // --- Contact Form Validation ---
-    const form = document.getElementById("contact-form");
-    const emailInput = document.getElementById("email");
-    const emailError = document.getElementById("email-error");
-
-    if (form && emailInput) {
-        // Email validation function
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email); // Fixed: was .text(), should be .test()
-        }
-
-        // Real-time email validation
-        emailInput.addEventListener("blur", function() {
-            if (this.value && !isValidEmail(this.value)) {
-                emailError.textContent = "Please enter a valid email address.";
-                emailError.classList.remove("hidden");
-                emailInput.classList.add("border-red-500");
-            } else {
-                emailError.classList.add("hidden");
-                emailInput.classList.remove("border-red-500");
-            }
-        });
-
-        // Form submission handler
-        form.addEventListener("submit", function (event) {
-            const emailIsValid = isValidEmail(emailInput.value);
-
-            if (!emailIsValid) {
-                event.preventDefault();
-                emailError.textContent = "Please enter a valid email address.";
-                emailError.classList.remove("hidden");
-                emailInput.classList.add("border-red-500");
-                emailInput.focus();
-            } else {
-                emailError.classList.add("hidden");
-                emailInput.classList.remove("border-red-500");
+    if (form) {
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+        
+            // Disable submit button to prevent double submission
+            const submitButton = form.querySelector('.submit-button');
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        
+            // Clear previous messages
+            formResponse.textContent = '';
+            formResponse.classList.remove('hidden', 'success-message', 'error-message');
+        
+            try {
+                const formData = new FormData(form);
+            
+                // Send the form data
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+            
+                const data = await response.json();
+            
+                if (data.success) {
+                    // Success message
+                    formResponse.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
+                    formResponse.classList.add('success-message');
+                    formResponse.classList.remove('hidden');
                 
-                // Show loading state
-                const submitBtn = form.querySelector('.submit-btn');
-                const btnText = submitBtn.querySelector('.btn-text');
-                const originalText = btnText.textContent;
+                    // Reset form
+                    form.reset();
                 
-                btnText.textContent = 'Sending...';
-                submitBtn.disabled = true;
-                
-                // Note: FormSubmit will handle the actual submission
-                // The form will redirect after submission completes
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formResponse.classList.add('hidden');
+                    }, 5000);
+                } else {
+                    // Error message
+                    formResponse.textContent = '✗ Failed to send message. Please try again or email us directly.';
+                    formResponse.classList.add('error-message');
+                    formResponse.classList.remove('hidden');
+                }
+            } catch (error) {
+                // Network error
+                formResponse.textContent = '✗ Network error. Please check your connection and try again.';
+                formResponse.classList.add('error-message');
+                formResponse.classList.remove('hidden');
+            } finally {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
             }
         });
     }
+
+    // Email validation
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+
+    if (emailInput) {
+        emailInput.addEventListener('blur', function () {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+            if (emailInput.value && !emailPattern.test(emailInput.value)) {
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.classList.remove('hidden');
+                emailInput.classList.add('invalid');
+            } else {
+                emailError.textContent = '';
+                emailError.classList.add('hidden');
+                emailInput.classList.remove('invalid');
+            }
+        });
+    }
+
+    // Add CSS for success message
+    const style = document.createElement('style');
+    style.textContent = `
+    .success-message {
+        color: #10b981;
+        display: block;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+    
+    .error-message {
+        color: #ef4444;
+        display: block;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+    
+    .error-message.hidden,
+    .success-message.hidden {
+        display: none;
+    }
+    
+    .form-input.invalid {
+        border-color: #ef4444;
+    }
+    
+    .submit-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+`;
+    document.head.appendChild(style);
 });
