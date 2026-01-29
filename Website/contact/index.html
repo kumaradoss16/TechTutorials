@@ -20,9 +20,6 @@
                     <img src="../../images/icon.webp" alt="Gear Icon" width="23" height="23">
                     <span id="brand" class="typewriter" data-text="TechTutorials"></span>
                 </div>
-                <!-- <button class="menu-toggle" type="button" aria-label="Toggle navigation">
-                            <i class="fas fa-bars"></i>
-                        </button> -->
             </div>
             <nav class="nav-links">
                 <ul>
@@ -46,38 +43,41 @@
                     <li>Want to collaborate or start a project together?</li>
                 </ul>
             </div>
-            <p>📩 <strong>Use the contact form</strong> to share your feedback — or email us directly at <a
-                    href="mailto:techtutorialsweb25@gmail.com" class="email-link">techtutorials.website@gmail.com</a>.
+            <p>📩 <strong>Use the contact form</strong> to share your feedback – or email us directly at <a
+                    href="mailto:techtutorials.website@gmail.com"
+                    class="email-link">techtutorials.website@gmail.com</a>.
             </p>
             <p class="last-p">Your suggestions help us improve and keep our content accurate and useful.</p>
         </main>
 
         <main class="right-column">
             <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="30aa9e7b-6634-4aa5-93db-4af190f1fd5d">
+                <!-- Web3Forms Configuration -->
+                <input type="hidden" name="access_key" value="878429fc-1af8-45a9-89ea-dc0bc59f5ca2">
                 <input type="hidden" name="from_name" value="TechTutorials Contact Form">
+                <input type="hidden" name="subject" value="New Contact Form Submission from TechTutorials">
 
                 <!-- Spam Protection -->
                 <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                 <div class="form-group">
                     <label class="form-label" for="name">Name</label>
                     <input class="form-input" type="text" id="name" name="name" placeholder="Enter your name" required>
                 </div>
+
                 <div class="form-group">
                     <label class="form-label" for="email">Email</label>
                     <input class="form-input" type="email" id="email" name="email" placeholder="Enter your email"
                         required>
                     <span id="email-error" class="error-message hidden"></span>
                 </div>
+
                 <div class="form-group">
                     <label class="form-label" for="message">Message</label>
                     <textarea class="form-textarea" id="message" name="message" placeholder="Enter your message..."
                         required></textarea>
                 </div>
-                <!-- Google reCAPTCHA widget -->
-                <!-- <div class="form-group">
-                    <div id="recaptcha" class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
-                </div> -->
+
                 <button type="submit" class="submit-button">Send message</button>
                 <span id="form-response" class="error-message"></span>
             </form>
@@ -98,8 +98,8 @@
         </ul>
         <p>&copy;2026 TechTutorials | All Rights Reserved</p>
     </footer>
+
     <script src="script.js"></script>
-    <!-- Load reCAPTCHA script -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </body>
