@@ -50,57 +50,118 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // --- Contact Form Validation ---
-    const form = document.getElementById("contact-form");
-    const emailInput = document.getElementById("email");
-    const emailError = document.getElementById("email-error");
+    const form = document.getElementById('contact-form');
+    const formResponse = document.getElementById('form-response');
 
-    if (form && emailInput) {
-        // Email validation function
-        function isValidEmail(email) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(email); // Fixed: was .text(), should be .test()
-        }
-
-        // Real-time email validation
-        emailInput.addEventListener("blur", function() {
-            if (this.value && !isValidEmail(this.value)) {
-                emailError.textContent = "Please enter a valid email address.";
-                emailError.classList.remove("hidden");
-                emailInput.classList.add("border-red-500");
-            } else {
-                emailError.classList.add("hidden");
-                emailInput.classList.remove("border-red-500");
-            }
-        });
-
-        // Form submission handler
-        form.addEventListener("submit", function (event) {
-            const emailIsValid = isValidEmail(emailInput.value);
-
-            if (!emailIsValid) {
-                event.preventDefault();
-                emailError.textContent = "Please enter a valid email address.";
-                emailError.classList.remove("hidden");
-                emailInput.classList.add("border-red-500");
-                emailInput.focus();
-            } else {
-                emailError.classList.add("hidden");
-                emailInput.classList.remove("border-red-500");
+    if (form) {
+        form.addEventListener('submit', async function (e) {
+            e.preventDefault();
+        
+            // Disable submit button to prevent double submission
+            const submitButton = form.querySelector('.submit-button');
+            const originalButtonText = submitButton.textContent;
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+        
+            // Clear previous messages
+            formResponse.textContent = '';
+            formResponse.classList.remove('hidden', 'success-message', 'error-message');
+        
+            try {
+                const formData = new FormData(form);
+            
+                // Send the form data
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+            
+                const data = await response.json();
+            
+                if (data.success) {
+                    // Success message
+                    formResponse.textContent = '✓ Message sent successfully! We\'ll get back to you soon.';
+                    formResponse.classList.add('success-message');
+                    formResponse.classList.remove('hidden');
                 
-                // Show loading state
-                const submitBtn = form.querySelector('.submit-btn');
-                const btnText = submitBtn.querySelector('.btn-text');
-                const originalText = btnText.textContent;
+                    // Reset form
+                    form.reset();
                 
-                btnText.textContent = 'Sending...';
-                submitBtn.disabled = true;
-                
-                // Note: FormSubmit will handle the actual submission
-                // The form will redirect after submission completes
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        formResponse.classList.add('hidden');
+                    }, 5000);
+                } else {
+                    // Error message
+                    formResponse.textContent = '✗ Failed to send message. Please try again or email us directly.';
+                    formResponse.classList.add('error-message');
+                    formResponse.classList.remove('hidden');
+                }
+            } catch (error) {
+                // Network error
+                formResponse.textContent = '✗ Network error. Please check your connection and try again.';
+                formResponse.classList.add('error-message');
+                formResponse.classList.remove('hidden');
+            } finally {
+                // Re-enable submit button
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
             }
         });
     }
+
+    // Email validation
+    const emailInput = document.getElementById('email');
+    const emailError = document.getElementById('email-error');
+
+    if (emailInput) {
+        emailInput.addEventListener('blur', function () {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+            if (emailInput.value && !emailPattern.test(emailInput.value)) {
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.classList.remove('hidden');
+                emailInput.classList.add('invalid');
+            } else {
+                emailError.textContent = '';
+                emailError.classList.add('hidden');
+                emailInput.classList.remove('invalid');
+            }
+        });
+    }
+
+    // Add CSS for success message
+    const style = document.createElement('style');
+    style.textContent = `
+    .success-message {
+        color: #10b981;
+        display: block;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+    
+    .error-message {
+        color: #ef4444;
+        display: block;
+        margin-top: 10px;
+        font-weight: 500;
+    }
+    
+    .error-message.hidden,
+    .success-message.hidden {
+        display: none;
+    }
+    
+    .form-input.invalid {
+        border-color: #ef4444;
+    }
+    
+    .submit-button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+`;
+    document.head.appendChild(style);
 
     const mainButton = document.querySelector('.main-button');
     const buttonContainer = document.querySelector('.button-container');
