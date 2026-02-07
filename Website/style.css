@@ -1071,7 +1071,7 @@ body {
 #view-all-btn-projects::before,
 #view-all-btn-programming::before,
 #view-all-btn-hacking-series::before,
-#view-all-btn-networking::before
+#view-all-btn-networking::before,
 #view-all-btn-guide-link::before {
     content: '';
     position: absolute;
@@ -1119,6 +1119,102 @@ body {
     opacity: 1;
     visibility: visible;
     transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease, visibility 0.5s ease;
+}
+
+.programming-projects-section .aithon {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin: 3rem 0;
+    border: 2px solid var(--color-purple);
+    padding: 20px;
+    background: #131c2e74;
+    border-radius: 5px;
+}
+
+.programming-projects-section .aithon .image{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid var(--color-purple);
+    padding-bottom: 60px;
+}
+
+.programming-projects-section .aithon .image img {
+    min-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    border: 2px dashed var(--color-purple);
+    padding: 5px;
+    transition: transform 0.3s ease, border 0.3s ease;
+    background: transparent;
+    border-bottom: 5px solid var(--color-purple);
+    object-fit:contain;
+}
+
+.programming-projects-section .aithon .image img:hover {
+    transform: scale(1.02);
+    border: 2px dashed var(--color-purple);
+    background: transparent;
+    border-bottom: 5px solid var(--color-purple);
+}
+
+.programming-projects-section .aithon .image .more-info {
+    padding: 5px 10px;
+    text-decoration: none;
+    margin-top: 10px;
+    color: #ccc;
+    font-weight: 500;
+    background: var(--color-purple);
+    border-radius: 5px;
+    transition: background 0.3s ease;
+    border: 1px solid var(--color-purple);
+}
+
+.programming-projects-section .aithon .image .more-info:hover {
+    background: var(--dark-bg);
+}
+
+.programming-projects-section .content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.programming-projects-section .content .heading-section h2 span {
+    color: var(--form-button-bg);
+}
+
+.programming-projects-section .content .heading-section p {
+    color: #ccc;
+    margin-top: 10px;
+}
+
+.programming-projects-section .content ul {
+    border: 1px solid var(--color-purple);
+    border-radius: 5px;
+    padding: 20px;
+    list-style: none;
+    text-align: left;
+    margin-bottom: 10px;
+    background: var(--dark-bg);
+    border-bottom: 5px solid var(--color-purple);
+}
+
+.programming-projects-section .content ul li {
+    margin-bottom: 10px;
+    color: #ccc;
+    font-weight: 300;
+    position: relative;
+}
+
+.programming-projects-section .content ul li i {
+    margin-right: 10px;
+    color: var(--form-button-bg);
+    border: 1px solid var(--form-bg);
+    border-radius: 50%;
+    padding: 4px;
 }
 
 /* Programming Section  */
@@ -1230,8 +1326,6 @@ body {
     background: linear-gradient(135deg, #CC2927, #F29111);
 }
 
-
-
 .card-top .icon {
     position: absolute;
     top: 40%;
@@ -1295,15 +1389,6 @@ body {
     color: #f0f0f0;
     margin-bottom: 5px;
 }
-
-/* .card-content p {
-    font-size: var(--p);
-    color: var(--text);
-    color: #ccc;
-    font-weight: 200;
-    margin-bottom: 20px;
-    line-height: 1.5;
-} */
 
 .card-footer {
     display: flex;
@@ -3186,6 +3271,23 @@ svg {
         padding: 5px;
         border-radius: 15px;
     }
+
+    .programming-projects-section .aithon {
+        display: flex;
+        flex-direction: row;
+        gap: 60px;
+    }
+
+    .programming-projects-section .aithon .image{
+        border-bottom: none;
+        padding-bottom: 0;
+        border-right: 2px solid var(--color-purple);
+        padding-right: 60px;
+    }
+
+    /* .programming-projects-section .content ul {
+        max-width: 70%;
+    } */
 
     .guide-section-header, 
     .cheat-section-header {
