@@ -89,6 +89,9 @@
 
     --stripe-width: 50px;
     --angle: -80deg;
+
+    --font-h1: clamp(1.5rem, 2.5vw + 1rem, 1.875rem);
+    --font-h2: clamp(1.2rem, 2vw + 0.8rem, 1.55rem);
 }
 
 * {
@@ -385,6 +388,7 @@ body {
         linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 2px);
     background-size: 40px 40px;
     z-index: 1;
+    pointer-events: none;
 }
 
 .hero-section h1 {
@@ -416,10 +420,10 @@ body {
     color: var(--accent-hacking);
 }
 
-.hero-section p {
+.hero-section p.description {
     font-size: var(--p);
     max-width: 800px;
-    margin: 0 auto 40px auto;
+    margin: 0 auto 80px auto;
     color: #ccc;
 }
 
@@ -621,11 +625,12 @@ body {
     align-items: center;
 }
 
-.wallpaper-card h3 {
-    font-size: var(--mobile-size-h3);
+.wallpaper-card h2 {
+    font-size: var(--font-h2);
     color: var(--light-text);
     margin-bottom: 15px;
-    font-weight: 400;
+    color: #cb0404e7
+    /* font-weight: 400; */
 }
 
 .wallpaper-card p {
@@ -707,7 +712,7 @@ body {
 
 .wallpaper-header p {
     margin-top: 10px;
-    margin-bottom: -20px;
+    margin-bottom: 20px;
     font-size: var(--p);
 }
 
@@ -1006,7 +1011,7 @@ body {
 
 .tech-tag.networking {
     color: var(--accent-blue);
-    background-color: #2c343c;
+    background-color: #2c343c9f;
 }
 
 .tech-tag.programming {
@@ -1121,25 +1126,25 @@ body {
     transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease, visibility 0.5s ease;
 }
 
-.programming-projects-section .aithon {
+.hero-section .aithon {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    margin: 3rem 0;
+    margin: 3rem 2rem;
     border: 2px solid var(--color-purple);
     padding: 20px;
     background: #131c2e74;
     border-radius: 5px;
 }
 
-.programming-projects-section .aithon .image{
+.hero-section .aithon .image{
     display: flex;
     flex-direction: column;
     border-bottom: 2px solid var(--color-purple);
     padding-bottom: 60px;
 }
 
-.programming-projects-section .aithon .image img {
+.hero-section .aithon .image img {
     min-width: 100%;
     height: auto;
     border-radius: 5px;
@@ -1151,30 +1156,31 @@ body {
     object-fit:contain;
 }
 
-.programming-projects-section .aithon .image img:hover {
+.hero-section .aithon .image img:hover {
     transform: scale(1.02);
     border: 2px dashed var(--color-purple);
     background: transparent;
     border-bottom: 5px solid var(--color-purple);
 }
 
-.programming-projects-section .aithon .image .more-info {
+.hero-section .aithon .image .more-info {
     padding: 5px 10px;
     text-decoration: none;
-    margin-top: 10px;
+    margin-top: 30px;
     color: #ccc;
     font-weight: 500;
     background: var(--color-purple);
     border-radius: 5px;
     transition: background 0.3s ease;
     border: 1px solid var(--color-purple);
+    cursor: pointer;
 }
 
-.programming-projects-section .aithon .image .more-info:hover {
+ .hero-section .aithon .image .more-info:hover {
     background: var(--dark-bg);
 }
 
-.programming-projects-section .content {
+.hero-section .aithon .content {
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -1182,16 +1188,17 @@ body {
     text-align: center;
 }
 
-.programming-projects-section .content .heading-section h2 span {
+.hero-section .aithon .content .heading-section h2 span {
     color: var(--form-button-bg);
 }
 
-.programming-projects-section .content .heading-section p {
+.hero-section .aithon .content .heading-section p {
     color: #ccc;
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 
-.programming-projects-section .content ul {
+.hero-section .aithon .content ul {
     border: 1px solid var(--color-purple);
     border-radius: 5px;
     padding: 20px;
@@ -1202,14 +1209,14 @@ body {
     border-bottom: 5px solid var(--color-purple);
 }
 
-.programming-projects-section .content ul li {
+.hero-section .aithon .content ul li {
     margin-bottom: 10px;
     color: #ccc;
     font-weight: 300;
     position: relative;
 }
 
-.programming-projects-section .content ul li i {
+.hero-section .aithon .content ul li i {
     margin-right: 10px;
     color: var(--form-button-bg);
     border: 1px solid var(--form-bg);
@@ -2406,8 +2413,10 @@ body {
     text-align: left;
     box-shadow: 0 4px 10px rgba(194, 20, 101, 0.6);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* max-width: 400px; */
-    align-items: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
 }
 
 .automation-card-icons {
@@ -2420,7 +2429,7 @@ body {
 .automation-card-icons .icon-btn {
     width: 28px;
     height: 28px;
-    background-color: #333;
+    background-color: #33333390;
     color: var(--highlight-color);
     border-radius: 6px;
     display: flex;
@@ -2474,7 +2483,7 @@ body {
     /* Dark background for the tooltip */
     color: white;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 10px;
     white-space: nowrap;
     /* Keep text on a single line */
     z-index: 10;
@@ -2535,7 +2544,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 15px;
+    margin-top: auto;
 }
 
 .automation-card-footer .level-tag {
@@ -2970,6 +2979,37 @@ svg {
     text-align: center;
 }
 
+.footer .contacts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.footer .contact {
+    text-decoration: none;
+    color: var(--border-dark);
+    display: inline; /* important for transform reliability */
+    transition: transform 0.3s ease;
+}
+
+.footer .contact:hover {
+    transform: translateY(-2px);
+    color: var(--text-secondary);
+}
+
+.footer .contact.gmail {
+    color: #f44336;
+}
+
+.footer .contact.gmail:hover {
+    color: #f44336d8;
+}
+
+.footer i {
+    margin-top: 20px;
+    font-size: var(--font-h1);
+}
+
 @media (min-width: 768px) {
     .container {
         max-width: 768px;
@@ -3076,9 +3116,9 @@ svg {
         align-items: start;
     }
 
-    .automation-project-card {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    /* .automation-project-card {
+        min-width: 100%;
+    } */
 
     .card-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -3203,6 +3243,10 @@ svg {
         margin-bottom: 0;
     }
 
+    .wallpaper-header p {
+        margin-bottom: -20px;
+    }
+
     .welcome-cards {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -3272,13 +3316,13 @@ svg {
         border-radius: 15px;
     }
 
-    .programming-projects-section .aithon {
+    .hero-section .aithon {
         display: flex;
         flex-direction: row;
         gap: 60px;
     }
 
-    .programming-projects-section .aithon .image{
+    .hero-section .aithon .image{
         border-bottom: none;
         padding-bottom: 0;
         border-right: 2px solid var(--color-purple);
@@ -3367,6 +3411,11 @@ svg {
 
     .menu {
         flex-direction: row;
+    }
+
+    .footer .contacts {
+        flex-direction: row;
+        gap: 20px;
     }
 }
 
