@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     (function () {
         const el = document.getElementById("brand");
-        const text = el.dataset.text || "TechForge";
+        const text = el.dataset.text || "DevSpire";
         let i = 0;
         let isDeleting = false;
 
