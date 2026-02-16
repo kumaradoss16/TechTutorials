@@ -187,16 +187,16 @@ body {
             hotpink 66.67%, hotpink 83.33%,
             red 83.33%, red 100%);
     background-size: 120px 2px;
-    animation: slidingBorder 2s linear infinite;
+    animation: navbarSlidingBorder 2s linear infinite;
 }
 
-@keyframes slidingBorder {
+@keyframes navbarSlidingBorder {
     0% {
         background-position: 0 0;
     }
 
     100% {
-        background-position: 140px 0;
+        background-position: 120px 0;
     }
 }
 
@@ -2926,10 +2926,10 @@ svg {
     height: 2px;
     background: linear-gradient(90deg, var(--accent-blue) 50%, transparent 50%);
     background-size: 20px 2px;
-    animation: slidingBorder 1s linear infinite;
+    animation: footerSlidingBorder 1s linear infinite;
 }
 
-@keyframes slidingBorder {
+@keyframes footerSlidingBorder {
     0% {
         background-position: 0 0;
     }
@@ -3544,3 +3544,4 @@ svg {
 .hover-text-change:hover::after {
     transform: translateY(0);
 }
+
