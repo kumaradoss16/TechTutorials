@@ -84,3 +84,4 @@ function downloadProject(filename = "Attendance Tracker.rar", filePath = "downlo
     link.click();
     document.body.removeChild(link);
 }
+

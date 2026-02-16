@@ -84,3 +84,4 @@ function downloadProject(filename = "Payroll Automation.rar", filePath = "downlo
     link.click();
     document.body.removeChild(link);
 }
+
