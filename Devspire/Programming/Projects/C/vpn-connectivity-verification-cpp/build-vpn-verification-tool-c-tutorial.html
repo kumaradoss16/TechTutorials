@@ -1,0 +1,3960 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../../../images/icon.webp" sizes="32x46" type="image/png">
+    <!-- Primary SEO Tags -->
+    <title>VPN Verification Tool in C: Build Network Security Checker</title>
+    <meta name="description"
+        content="Build a cross-platform VPN verification tool in C that detects IP changes, DNS leaks, and VPN adapter status. Complete tutorial with source code for Windows, Linux, and macOS security auditing.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/Programming/Projects/C/vpn-connectivity-verification-cpp">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devspirehub.com/Programming/Projects/C/vpn-connectivity-verification-cpp">
+    <meta property="og:title" content="VPN Verification Tool in C: Complete Network Security Tutorial">
+    <meta property="og:description"
+        content="Learn to build a comprehensive VPN connectivity checker with DNS leak detection, IP monitoring, and cross-platform support. Includes full C source code and security best practices.">
+    <meta property="og:image"
+        content="https://devspirehub.com/Programming/Projects/C/images/vpn-tool-before-connection-terminal-output.webp">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url"
+        content="https://devspirehub.com/Programming/Projects/C/vpn-connectivity-verification-cpp">
+    <meta property="twitter:title" content="Build VPN Verification Tool in C - Network Security Guide">
+    <meta property="twitter:description"
+        content="Complete tutorial for creating a VPN connectivity checker in C with DNS leak detection, IP verification, and real-time monitoring across Windows, Linux, and macOS.">
+    <meta property="twitter:image"
+        content="https://devspirehub.com/Programming/Projects/C/images/vpn-tool-before-connection-terminal-output.webp">
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Security Programming Tutorials">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="article:published_time" content="2026-01-20T00:00:00+00:00">
+    <meta name="article:modified_time" content="2026-01-20T00:00:00+00:00">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#0d47a1">
+
+    <!-- Existing Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Structured Data (JSON-LD) for HowTo -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": "How to Build a VPN Connectivity Verification Tool in C",
+          "description": "Comprehensive guide for creating a cross-platform VPN verification tool that detects DNS leaks, validates IP changes, and monitors connection security in real-time.",
+          "image": "https://devspirehub.com/Programming/Projects/C/images/vpn-tool-before-connection-terminal-output.webp",
+          "totalTime": "PT3H",
+          "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": "0"
+          },
+          "tool": [
+            {
+              "@type": "HowToTool",
+              "name": "C Compiler (GCC, MinGW, MSVC, or Clang)"
+            },
+            {
+              "@type": "HowToTool",
+              "name": "curl Command-Line Tool"
+            },
+            {
+              "@type": "HowToTool",
+              "name": "Text Editor or IDE (VS Code, CLion, Code::Blocks)"
+            }
+          ],
+          "supply": [
+            {
+              "@type": "HowToSupply",
+              "name": "C Standard Library (stdio.h, stdlib.h, string.h)"
+            },
+            {
+              "@type": "HowToSupply",
+              "name": "Active Internet Connection"
+            },
+            {
+              "@type": "HowToSupply",
+              "name": "VPN Client Software"
+            }
+          ],
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "Set Up Platform Detection",
+              "text": "Use preprocessor directives to detect Windows, Linux, or macOS and define platform-specific commands for DNS and network interface queries.",
+              "position": 1
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Implement Public IP Fetching",
+              "text": "Create fetch_public_ip() function using curl and ifconfig.me API to retrieve current public IPv4 address with timeout protection.",
+              "position": 2
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Build DNS Server Detection",
+              "text": "Implement fetch_dns_servers() to extract DNS configuration using platform-specific commands: ipconfig on Windows, resolv.conf on Unix systems.",
+              "position": 3
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Create VPN Adapter Scanner",
+              "text": "Develop detect_vpn_adapter() function with keyword matching for 27+ VPN providers including OpenVPN, WireGuard, and commercial VPN services.",
+              "position": 4
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Implement Before/After Comparison Logic",
+              "text": "Capture network state before VPN connection, prompt user to connect, then capture post-VPN state for comprehensive comparison.",
+              "position": 5
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Add DNS Leak Detection",
+              "text": "Create check_dns_leak() function to compare DNS servers before and after VPN connection, identifying if ISP DNS is still being used.",
+              "position": 6
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Implement IPv6 Leak Detection",
+              "text": "Add fetch_public_ipv6() function using curl -6 flag to detect IPv6 leaks when VPN only tunnels IPv4 traffic.",
+              "position": 7
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Add Real-Time Monitoring Mode",
+              "text": "Implement monitor_vpn_connection() for continuous IP stability checking to detect VPN disconnections and kill switch failures.",
+              "position": 8
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Compile and Test Cross-Platform",
+              "text": "Compile with gcc using appropriate flags for Windows (MinGW), Linux, and macOS. Test all verification scenarios including DNS leaks and adapter detection.",
+              "position": 9
+            }
+          ],
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Intermediate to Advanced Programmers, Network Security Enthusiasts"
+          },
+          "keywords": "VPN verification C, DNS leak detection, network security programming, cross-platform C tool, IP address checker, VPN adapter detection, kill switch testing"
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "url": "https://devspirehub.com/",
+            "logo": "https://devspirehub.com/images/icon.webp",
+            "description": "DevSpireHub - Programming, Projects, Ethical Hacking, Networking, Cloud & AI",
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Kumaradoss",
+                "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+            ],
+            "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16"
+            ]
+        }
+    </script>
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "VPN Connectivity Verification Tool in C: Complete Security Guide",
+          "description": "Advanced tutorial for building a cross-platform VPN verification tool with DNS leak detection, IPv6 leak checking, IP monitoring, and real-time connection analysis.",
+          "image": "https://devspirehub.com/Programming/Projects/C/images/vpn-tool-before-connection-terminal-output.webp",
+          "author": {
+            "@type": "Organization",
+            "name": "Security Programming Tutorials"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Security Programming Tutorials",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://devspirehub.com/"
+            }
+          },
+          "datePublished": "2026-01-20",
+          "dateModified": "2026-01-20",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://devspirehub.com/Programming/Projects/C/vpn-connectivity-verification-cpp"
+          },
+          "programmingLanguage": "C",
+          "dependencies": "C Standard Library (stdio.h, stdlib.h, string.h), curl",
+          "proficiencyLevel": "Intermediate to Advanced",
+          "operatingSystem": "Windows, Linux, macOS"
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "url": "https://devspirehub.com/",
+            "logo": "https://devspirehub.com/images/icon.webp",
+            "description": "DevSpireHub - Programming, Projects, Ethical Hacking, Networking, Cloud & AI",
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Kumaradoss",
+                "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+            ],
+            "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16"
+            ]
+        }
+    </script>
+
+    <!-- SoftwareSourceCode Schema -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "SoftwareSourceCode",
+          "name": "VPN Connectivity Verification Tool",
+          "description": "Cross-platform C program for comprehensive VPN connection validation including DNS leak detection, IP verification, adapter scanning, and real-time monitoring",
+          "programmingLanguage": "C",
+          "codeRepository": "https://github.com/kumaradoss16/Projects-Programming/tree/main/C_Cpp/Projects/VPN%20connectivity%20verification",
+          "runtime": "C Standard Library, curl",
+          "operatingSystem": "Windows, Linux, macOS",
+          "targetProduct": {
+            "@type": "SoftwareApplication",
+            "name": "VPN Connectivity Verification Tool",
+            "applicationCategory": "SecurityApplication",
+            "operatingSystem": "Windows, Linux, macOS",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          }
+        }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Prism.js CSS theme -->
+    <link rel="stylesheet" href="../../Prism/prism.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../../index.html" target="_self">Home</a></li>
+                    <li><a href="#implementation-details">Implementations</a></li>
+                    <li><a href="#other-work-section">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <!-- Left Side  -->
+        <main class="left-column">
+            <section class="project-details-section">
+                <h1>VPN Connectivity Verification Tool in C: Complete Tutorial</h1>
+                <p>Learn How to Create a VPN Connectivity Verification Tool in C:
+                    Step-by-Step
+                    Guide for
+                    Beginners</p>
+                <div class="image-placeholder">
+                    <img src="images/vpn-tool-before-connection-terminal-output.webp"
+                        alt="vpn-tool-before-connection-terminal-output" title="VPN Verification Tool" loading="lazy"
+                        decoding="async" />
+                </div>
+                <p>
+                    This comprehensive <strong>VPN connectivity verification tool in C tutorial</strong> teaches
+                    you how to build a professional network security application that validates VPN connections
+                    through multi-layered analysis. Perfect for intermediate C programmers interested in network
+                    security, this project demonstrates cross-platform development by creating a VPN verification
+                    program that detects IP address changes, DNS leaks, IPv6 leaks, and VPN adapter status across
+                    Windows, Linux, and macOS. Learn essential C programming concepts including preprocessor
+                    directives, system command execution with popen, string parsing, buffer overflow prevention,
+                    and modular function design while building a real-world security tool.
+                </p>
+                <br>
+                <p><strong>Platform Support</strong>: Windows, Linux, macOS.</p>
+                <p><strong>Purpose</strong>: Security auditing, VPN configuration validation, network diagnostics.</p>
+            </section>
+
+            <section class="table-of-contents-section">
+                <h2><i class="fas fa-list"></i>Table of Contents</h2>
+                <ol>
+                    <li><a href="#program_architecture">Program Architecture</a></li>
+                    <li><a href="#platform_detection">Platform Detection</a></li>
+                    <li><a href="#constants_and_macro">Constants and Macros</a></li>
+                    <li><a href="#function_prototype">Function Prototypes</a></li>
+                    <li><a href="#main_function_flow">Main Function Flow</a></li>
+                    <li><a href="#function_implementations">Function Implementations</a></li>
+                    <li><a href="#compilation_and_usage">Compilation and Usage</a></li>
+                    <li><a href="#security_considerations">Security Considerations</a></li>
+                    <li><a href="#troubleshooting">Troubleshooting</a></li>
+                    <li><a href="#enhancement_ideas">Enhancement Ideas</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ol>
+            </section>
+
+            <section id="implementation-details" class="implementation-section">
+                <h2>Implementation Details</h2>
+                <h3>What is a VPN Connectivity Verification Tool?</h3>
+                <p>VPN Connectivity Verification Tool is a lightweight, cross-platform command-line utility that
+                    validates whether your VPN
+                    connection is active and properly routing traffic. It performs comprehensive checks before and after
+                    VPN activation to
+                    ensure your privacy and security.
+                </p>
+                <h4>Why Build a VPN Verification Program in C?</h4>
+                <p>Building a VPN verification program in C offers unique advantages for network security professionals,
+                    systems
+                    programmers, and security enthusiasts who need low-level control over network diagnostics and
+                    cross-platform
+                    compatibility. C provides direct system access, minimal runtime overhead, and portable code
+                    execution across Windows,
+                    Linux, and macOS environments without requiring interpreters or virtual machines.
+                </p>
+
+                <div class="list">
+                    <h4>Why This Tool?</h4>
+                    <ul>
+                        <li><strong>🔒 Security Verification</strong>: Confirms that your traffic is actually routed
+                            through the VPN.</li>
+                        <li><strong>🌐 DNS Leak Detection</strong>: Support manual input.</li>
+                        <li><strong>🖥️ Adapter Detection</strong>: Handle an unlimited list of passwords.</li>
+                        <li><strong>📊 Before/After Comparisonn</strong>: Provide detailed rule-by-rule analysis.</li>
+                        <li><strong>🔒 Security Verification</strong>: Display color-coded strength levels.</li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <h4>Key Features of This VPN Security Tool</h4>
+                    <p class="sub"><strong class="subtitle">Core Functionality</strong></p>
+                    <p><strong>✅ Public IP Address Detection</strong></p>
+                    <ul>
+                        <li>Fetches your current public IP before and after VPN connection.</li>
+                        <li>Uses <code class="code">ifconfig.me</code> API via curl.</li>
+                    </ul>
+                    <p><strong>✅ DNS Server Analysis</strong></p>
+                    <ul>
+                        <li>Extracts active DNS servers from system configuration.</li>
+                        <li>Compares DNS settings pre/post VPN connectionl.</li>
+                    </ul>
+                    <p><strong>✅ VPN Adapter Detection</strong></p>
+                    <ul>
+                        <li>Scans network interfaces for VPN-related adapters.</li>
+                        <li>Supports 25+ VPN providers and protocols including:</li>
+                        <ul class="nested-list">
+                            <li>OpenVPN, WireGuard, Cisco AnyConnect</li>
+                            <li>NordVPN, ExpressVPN, ProtonVPN, Surfshark</li>
+                            <li>L2TP, PPTP, IPSec, SoftEther</li>
+                        </ul>
+                    </ul>
+                    <p><strong>✅ Comprehensive Verification Summary</strong></p>
+                    <ul>
+                        <li>Clear status indicators (ACTIVE / LIKELY ACTIVE / PARTIAL / NOT ACTIVE).</li>
+                        <li>Side-by-side comparison of network settings.</li>
+                        <li>Security recommendations and leak test links.</li>
+                    </ul>
+                    <p><strong>✅ Cross-Platform Supporty</strong></p>
+                    <ul>
+                        <li><b>Windows</b>: ipconfig, netsh</li>
+                        <li><b>Linux</b>: resolv.conf, ip addr</li>
+                        <li><b>macOS</b>: resolv.conf, ifconfig</li>
+                    </ul>
+                </div>
+                <div class="content" id="program_architecture">
+                    <h3>Program Architecture</h3>
+                    <h4>Design Pattern</h4>
+                    <p>The program follows a procedural design with clear separation of concerns:</p>
+                    <div class="code-block bg-color" style="text-align: center">
+                        <pre>
+<code>┌─────────────────────────────────────────────┐
+│         Main Program (main.c)               │
+│                                             │
+│  ┌─────────────────────────────────────┐    │
+│  │  Platform Detection (Preprocessor)  │    │
+│  └─────────────────────────────────────┘    │
+│                    ↓                        │
+│  ┌─────────────────────────────────────┐    │
+│  │  Helper Functions                   │    │
+│  │  - fetch_public_ip()                │    │
+│  │  - fetch_dns_servers()              │    │
+│  │  - detect_vpn_adapter()             │    │
+│  │  - check_vpn_keywords_*()           │    │
+│  └─────────────────────────────────────┘    │
+│                    ↓                        │
+│  ┌─────────────────────────────────────┐    │
+│  │  Verification Logic                 │    │
+│  │  - Before VPN state capture         │    │
+│  │  - User VPN connection prompt       │    │
+│  │  - After VPN state capture          │    │
+│  │  - Comparison and analysis          │    │
+│  └─────────────────────────────────────┘    │
+└─────────────────────────────────────────────┘</code>
+</pre>
+                    </div>
+                    <hr style="margin: 20px 0;">
+                    <h4>Source Code</h4>
+                    <div class="implementation-code-section" id="source-code">
+                        <div id="language-c" class="code-block">
+                            <p>vpn_contectivity_verification_tool.c</p>
+                            <pre class="line-numbers">
+<code class="language-c" id="codeSnippetC">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+// Platform detection macros
+#ifdef _WIN32
+    #define OS_WINDOWS
+    #define DNS_COMMAND "ipconfig /all"
+    #define INTERFACE_COMMAND "netsh interface show interface"
+#elif __linux__
+    #define OS_LINUX
+    #define DNS_COMMAND "cat /etc/resolv.conf"
+    #define INTERFACE_COMMAND "ip addr show"
+#elif __APPLE
+    #define OS_LINUX
+    #define DNS_COMMAND "cat /etc/resolv.conf"
+    #define INTERFACE_COMMAND "ifconfig"
+#else
+    #define OS_UNKNOWN
+#endif
+
+#define MAX_BUFFER 2048
+#define IP_SIZE 100
+#define DNS_SIZE 1024
+
+// Function prototypes
+int fetch_public_ip(char *ip_buffer);
+int fetch_dns_servers(char *dns_buffer);
+int detect_vpn_adapter(char *adapter_buffer);
+void print_separator(char c, int length);
+void safe_copy(char *dest, const char *src, size_t size);
+int check_vpn_keywords_windows(const char *line);
+int check_vpn_keywords_unix(const char *line);
+
+int main()
+{
+    char ip_before[IP_SIZE] = {0};
+    char ip_after[IP_SIZE] = {0};
+    char dns_before[DNS_SIZE] = {0};
+    char dns_after[DNS_SIZE] = {0};
+    char vpn_adapter_before[MAX_BUFFER] = {0};
+    char vpn_adapter_after[MAX_BUFFER] = {0};
+
+    int ip_changed = 0;
+    int dns_changes = 0;
+    int vpn_adapter_detected = 0;
+
+    print_separator('=', 65);
+    printf("      Advanced VPN Connectivity Verfication Tool\n");
+    print_separator('=', 65);
+
+#ifdef OS_WINDOWS
+    printf("Operating System: Windows\n");
+#elif defined(OS_LINUX)
+    printf("Operating System: Linux\n");
+#elif defined(OS_MAC)
+    printf("Operating System: macOS\n");
+#else
+    printf("Operting System: unknown\n");
+#endif
+    print_separator('=', 65);
+
+    // Step 1: Check IP Before VPN Connection
+    printf("\n[Step 1] Checking current public IP address...\n");
+    if (fetch_public_ip(ip_before) != 0)
+    {
+        printf("ERROR: Unable to fetch public IP address.\n");
+        printf("Please check your internet connection.\n");
+        return 1;
+    }
+    printf("Public IP before VPN: %s\n", ip_before);
+
+    // Step 2: Check DNS Servers Before VPN Connection
+    printf("\n[Step 2] Checking cuurent DNS Servers...\n");
+    if (fetch_dns_servers(dns_before) != 0)
+    {
+        printf("WARNING: Unable to fetch DNS information.\n");
+    }
+    else
+    {
+        printf("DNS Servers (Before VPN): \n%s\n", dns_before);
+    }
+
+    // Step 3: Check VPN Network Adapter Before VPN Connection
+    printf("\n[Step 3] Scanning for VPN network adapters...\n");
+    detect_vpn_adapter(vpn_adapter_before);
+    if (strlen(vpn_adapter_before) > 0)
+    {
+        printf("VPN Adapters Found (Before VPN): \n%s\n", vpn_adapter_before);
+    }
+    else
+    {
+        printf("No VPN adapters detected (before VPN).\n");
+    }
+
+    print_separator('=', 65);
+    printf("\n>>> NOW CONNECT TO YOUR VPN <<<\n");
+    printf(">>> Press ENTER when connected <<<\n");
+    getchar();
+
+    print_separator('=', 65);
+
+    // Step 4: Check IP Before VPN Connection
+    printf("\n[Step 1] Checking current public IP address...\n");
+    if (fetch_public_ip(ip_after) != 0)
+    {
+        printf("ERROR: Unable to fetch public IP address.\n");
+        return 1;
+    }
+    printf("Public IP before VPN: %s\n", ip_after);
+
+    // Step 5: Check DNS Servers Before VPN Connection
+    printf("\n[Step 2] Checking cuurent DNS Servers...\n");
+    if (fetch_dns_servers(dns_after) != 0)
+    {
+        printf("WARNING: Unable to fetch DNS information.\n");
+    }
+    else
+    {
+        printf("DNS Servers (After VPN): \n%s\n", dns_after);
+    }
+
+    // Step 6: Check VPN Network Adapter Before VPN Connection
+    printf("\n[Step 3] Scanning for VPN network adapters...\n");
+    detect_vpn_adapter(vpn_adapter_after);
+    if (strlen(vpn_adapter_after) > 0)
+    {
+        printf("VPN Adapters Found (After VPN): \n%s\n", vpn_adapter_after);
+        vpn_adapter_detected = 1;
+    }
+    else
+    {
+        printf("No VPN adapters detected (After VPN).\n");
+    }
+
+    print_separator('=', 65);
+    printf("                    Verification Summary\n");
+    print_separator('=', 65);
+
+    printf("\n%-30s %s\n", "IP Address (Before): ", ip_before);
+    printf("%-30s %s\n", "IP Address (After): ", ip_after);
+
+    // Compare IPs
+    ip_changed = (strcmp(ip_before, ip_after) != 0);
+    printf("%-30s %s\n", "IP Changed:", ip_changed ? "YES" : "NO");
+
+    // Compare DNS Servers
+    dns_changes = (strcmp(dns_before, dns_after) != 0);
+    printf("%-30s %s\n", "DNS Changed:", dns_changes ? "YES" : "NO");
+
+    // VPN Adapter Status
+    printf("%-30s %s\n", "VPN Adapter Detected:", vpn_adapter_detected ? "YES" : "NO");
+
+    print_separator('=', 65);
+
+    printf("\n");
+    print_separator('*', 65);
+
+    if (ip_changed && vpn_adapter_detected)
+    {
+        printf("              VPN STATUS: ACTIVE\n");
+        printf("    Your connection is successfully routed through VPN!\n");
+    }
+    else if (ip_changed && !vpn_adapter_detected)
+    {
+        printf("              VPN STATUS: LIKELY ACTIVE\n");
+        printf("  IP changed but no VPN adapter detected. Verify manually.\n");
+    }
+    else if (!ip_changed && !vpn_adapter_detected)
+    {
+        printf("              VPN STATUS: PARTIAL\n");
+        printf("  VPN adapter found but IP did not change. Check routing.\n");
+    }
+    else
+    {
+        printf("              VPN STATUS: NOT ACTIVE\n");
+        printf("     Your connection is NOT protected by VPN!\n");
+    }
+
+    print_separator('*', 65);
+    printf("\n[SECURITY NOTE] For complete security verification:\n");
+    printf("  1. Check DNS leaks: https://dnsleaktest.com\n");
+    printf("  2. Check WebRTC leaks: https://browserleaks.com/webrtc\n");
+    printf("  3. Verify IPv6 is disabled or routed through VPN\n");
+    print_separator('=', 65);
+    return 0;
+}
+
+// Fetch public IP address using curl
+int fetch_public_ip(char *ip_buffer)
+{
+    FILE *fp;
+    char command[] = "curl -s --max-time 10 ifconfig.me";
+
+    fp = popen(command, "r");
+    if (fp == NULL)
+    {
+        return 1;
+    }
+
+    if (fgets(ip_buffer, IP_SIZE, fp) == NULL)
+    {
+        pclose(fp);
+        return 1;
+    }
+
+    pclose(fp);
+    return 0;
+}
+
+// Fetch DNS Server based pn platform
+int fetch_dns_servers(char *dns_buffer)
+{
+    FILE *fp;
+    char line[256];
+    int found = 0;
+
+#ifdef OS_WINDOWS
+    fp = popen(DNS_COMMAND, "r");
+    if (fp == NULL)
+    {
+        return 1;
+    }
+
+    dns_buffer[0] = '\0';
+    while (fgets(line, sizeof(line), fp) != NULL)
+    {
+        // strstr() is a standard library function that searches for a substring within a string.
+        if (strstr(line, "DNS Servers") != NULL || strstr(line, "DNS Server") != NULL)
+        {
+            strncat(dns_buffer, line, DNS_SIZE - strlen(dns_buffer) - 1);
+            found = 1;
+
+            // Read continuation lines (indented IPs)
+            while (fgets(line, sizeof(line), fp) != NULL)
+            {
+                if (line[0] == ' ' && (strstr(line, ".") != NULL || strstr(line, ":") != NULL))
+                {
+                    strncat(dns_buffer, line, DNS_SIZE - strlen(dns_buffer) - 1);
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+    }
+#else
+    fp = popen(DNS_COMMAND, "r");
+    if (fp == NULL)
+    {
+        return 1;
+    }
+
+    dns_buffer[0] = '\0';
+    while (fgets(line, sizeof(line), fp) != NULL)
+    {
+        if (strstr(line, "nameserver") != NULL)
+        {
+            strncat(dns_buffer, "  ", DNS_SIZE - strlen(dns_buffer) - 1);
+            strncat(dns_buffer, line, DNS_SIZE - strlen(dns_buffer) - 1);
+            found = 1;
+        }
+    }
+#endif
+    pclose(fp);
+    if (!found)
+    {
+        strcpy(dns_buffer, "   No DNS Servers found.\n");
+    }
+
+    return 0;
+}
+
+// Detect VPN adapter based on platform
+int detect_vpn_adapter(char *adapter_buffer)
+{
+    FILE *fp;
+    char line[512];
+    int found = 0;
+
+    adapter_buffer[0] = '\0';
+#ifdef OS_WINDOWS
+    fp = popen(INTERFACE_COMMAND, "r");
+    if (fp == NULL)
+    {
+        return 1;
+    }
+
+    while (fgets(line, sizeof(line), fp) != NULL)
+    {
+        if (check_vpn_keywords_windows(line))
+        {
+            strncat(adapter_buffer, "  ", MAX_BUFFER - strlen(adapter_buffer) - 1);
+            strncat(adapter_buffer, line, MAX_BUFFER - strlen(adapter_buffer) - 1);
+            found = 1;
+        }
+    }
+#else
+    fp = popen(INTERFACE_COMMAND, "r");
+    if (fp == NULL)
+    {
+        return 1;
+    }
+
+    while (fgets(line, sizeof(line), fp) != NULL)
+    {
+        if (check_vpn_keywords_unix(line))
+        {
+            strncat(adapter_buffer, "  ", MAX_BUFFER - strlen(adapter_buffer) - 1);
+            strncat(adapter_buffer, line, MAX_BUFFER - strlen(adapter_buffer) - 1);
+            found = 1;
+        }
+    }
+#endif
+    pclose(fp);
+    return found ? 0 : 1;
+}
+
+// Check for VPN keywords in Windows output
+int check_vpn_keywords_windows(const char *line)
+{
+    if (strstr(line, "adapter") != NULL || strstr(line, "Adapter") != NULL)
+    {
+        if (
+            strstr(line, "TAP") != NULL ||
+            strstr(line, "TUN") != NULL ||
+            strstr(line, "VPN") != NULL ||
+            strstr(line, "Tunnel") != NULL ||
+            strstr(line, "WireGuard") != NULL ||
+            strstr(line, "OpenVPN") != NULL ||
+            strstr(line, "NordVPN") != NULL ||
+            strstr(line, "ExpressVPN") != NULL ||
+            strstr(line, "ProtonVPN") != NULL ||
+            strstr(line, "Virtual") != NULL ||
+            strstr(line, "AnyConnect") != NULL ||
+            strstr(line, "Pulse") != NULL ||
+            strstr(line, "Fortinet") != NULL ||
+            strstr(line, "SonicWall") != NULL ||
+            strstr(line, "Ivacy") != NULL ||
+            strstr(line, "VyprVPN") != NULL ||
+            strstr(line, "Surfshark") != NULL ||
+            strstr(line, "CyberGhost") != NULL ||
+            strstr(line, "HotspotShield") != NULL ||
+            strstr(line, "Hide.me") != NULL ||
+            strstr(line, "PrivateVPN") != NULL ||
+            strstr(line, "PureVPN") != NULL ||
+            strstr(line, "VPN Gate") != NULL ||
+            strstr(line, "SoftEther") != NULL ||
+            strstr(line, "L2TP") != NULL ||
+            strstr(line, "PPTP") != NULL ||
+            strstr(line, "IPSec") != NULL)
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+// Check for VPN keywords in Unix output
+int check_vpn_keywords_unix(const char *line)
+{
+    if (
+        strstr(line, "tun") != NULL ||
+        strstr(line, "tap") != NULL ||
+        strstr(line, "wg") != NULL ||
+        strstr(line, "ppp") != NULL ||
+        strstr(line, "utun") != NULL ||
+        strstr(line, "vpn") != NULL ||
+        strstr(line, "wireguard") != NULL ||
+        strstr(line, "openvpn") != NULL ||
+        strstr(line, "tinc") != NULL ||
+        strstr(line, "softether") != NULL ||
+        strstr(line, "ipsec") != NULL ||
+        strstr(line, "l2tp") != NULL ||
+        strstr(line, "pptp") != NULL ||
+        strstr(line, "sstp") != NULL ||
+        strstr(line, "gre") != NULL ||
+        strstr(line, "ovpn") != NULL ||
+        strstr(line, "zt") != NULL ||
+        strstr(line, "nordlynx") != NULL ||
+        strstr(line, "cxn") != NULL ||
+        strstr(line, "ipip") != NULL ||
+        strstr(line, "sec") != NULL ||
+        strstr(line, "peer") != NULL ||
+        strstr(line, "masq") != NULL ||
+        strstr(line, "netextender") != NULL ||
+        strstr(line, "sslvpnd") != NULL)
+    {
+        // Filter out false positives
+        if (strstr(line, "opportun") == NULL) // To ignore 'opportunistic encryption'
+        {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+// Print a separator line
+void print_separator(char c, int length)
+{
+    for (int i = 0; i < length; i++)
+    {
+        printf("%c", c);
+    }
+    printf("\n");
+}
+
+// Safe string copy
+void safe_copy(char *dest, const char *src, size_t size)
+{
+    strncpy(dest, src, size - 1);
+    dest[size - 1] = '\0';
+}</code></pre>
+                        </div>
+                        <div class="copy-feedback" id="copyFeedbackC"></div>
+                        <h4>Example Output</h4>
+                        <p>Here's what you'll see when running the program:</p>
+                        <div class="code-block">
+                            <pre>
+<code>=================================================================
+      Advanced VPN Connectivity Verfication Tool
+=================================================================
+Operating System: Windows
+=================================================================
+
+[Step 1] Checking current public IP address...
+Public IP before VPN: 162.*********
+
+[Step 2] Checking cuurent DNS Servers...
+DNS Servers (Before VPN):
+   DNS Servers . . . . . . . . . . . : 192.168.1.1
+   Primary WINS Server . . . . . . . : 192.168.1.1
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+   DNS Servers . . . . . . . . . . . : fec0:0:0:ffff::1%1
+                                       fec0:0:0:ffff::2%1
+                                       fec0:0:0:ffff::3%1
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+   DNS Servers . . . . . . . . . . . : fec0:0:0:ffff::1%1
+                                       fec0:0:0:ffff::2%1
+                                       fec0:0:0:ffff::3%1
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+
+[Step 3] Scanning for VPN network adapters...
+No VPN adapters detected (before VPN).
+=================================================================
+
+>>> NOW CONNECT TO YOUR VPN <<<
+>>> Press ENTER when connected <<<
+
+=================================================================
+
+[Step 1] Checking current public IP address...
+Public IP before VPN: 185.*********
+
+[Step 2] Checking cuurent DNS Servers...
+DNS Servers (After VPN):
+   DNS Servers . . . . . . . . . . . : 10.2.0.1
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+   DNS Servers . . . . . . . . . . . : 192.168.1.1
+   Primary WINS Server . . . . . . . : 192.168.1.1
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+
+[Step 3] Scanning for VPN network adapters...
+No VPN adapters detected (After VPN).
+=================================================================
+                    Verification Summary
+=================================================================
+
+IP Address (Before):           162.*********
+IP Address (After):            185.*********
+IP Changed:                    YES
+DNS Changed:                   YES
+VPN Adapter Detected:          NO
+=================================================================
+
+*****************************************************************
+              VPN STATUS: LIKELY ACTIVE
+  IP changed but no VPN adapter detected. Verify manually.
+*****************************************************************
+
+[SECURITY NOTE] For complete security verification:
+  1. Check DNS leaks: https://dnsleaktest.com
+  2. Check WebRTC leaks: https://browserleaks.com/webrtc
+  3. Verify IPv6 is disabled or routed through VPN
+=================================================================</code>
+</pre>
+                        </div>
+                        <hr>
+                        <div class="content" id="platform_detection">
+                            <h3>Platform Detection</h3>
+                            <h4>Preprocessor Macros</h4>
+                            <p>A preprocessor macro is a named piece of code or value that the preprocessor replaces
+                                before
+                                compilation.</p>
+                            <i>It acts like a find-and-replace system that executes before the compiler sees the
+                                code.</i>
+                            <p>The program uses conditional compilation to adapt commands for different operating
+                                systems:
+                            </p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">#ifdef _WIN32
+    #define OS_WINDOWS
+    #define DNS_COMMAND "ipconfig /all"
+    #define INTERFACE_COMMAND "netsh interface show interface"
+#elif __linux__
+    #define OS_LINUX
+    #define DNS_COMMAND "cat /etc/resolv.conf"
+    #define INTERFACE_COMMAND "ip addr show"
+#elif __APPLE__
+    #define OS_LINUX  // Note: Should be OS_MAC
+    #define DNS_COMMAND "cat /etc/resolv.conf"
+    #define INTERFACE_COMMAND "ifconfig"
+#else
+    #define OS_UNKNOWN
+#endif</code></pre>
+                            </div>
+                            <h4>Platform-Specific Commands:</h4>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Platform</th>
+                                            <th>DNS Command</th>
+                                            <th>Interface Command</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Windows</td>
+                                            <td><code class="code">ipconfig /all</code></td>
+                                            <td><code class="code">netsh interface show interface</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Linux</td>
+                                            <td><code class="code">cat /etc/resolv.conf</code></td>
+                                            <td><code class="code">ip addr show</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td>macOS</td>
+                                            <td><code class="code">cat /etc/resolv.conf</code></td>
+                                            <td><code class="code">ifconfig</code></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <p><strong>Note</strong>: There's a bug in the macOS definition - it defines <code
+                                        class="code">OS_LINUX</code> instead of <code class="code">OS_MAC</code>.</p>
+                            </div>
+                            <hr>
+
+                            <div class="content" id="constants_and_macro">
+                                <h3>Constants and Macros</h3>
+                                <p><strong>Constants</strong> are fixed values in C that do not change during the
+                                    execution
+                                    of a program.
+                                    They are used to represent data that should remain the same throughout the code.</p>
+                                <p><strong>Macros</strong> are preprocessor directives that perform text substitution
+                                    before
+                                    compilation.</p>
+                                <p>They are created using the <code class="code">#define</code> directive.</p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">#define PI 3.14
+#define SQUARE(x) ((x) * (x))
+</code></pre>
+                                </div>
+                                <h4>Buffer Size Definitions</h4>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">#define MAX_BUFFER 2048   // Maximum buffer for network adapter info
+#define IP_SIZE 100       // Buffer size for IP addresses
+#define DNS_SIZE 1024     // Buffer size for DNS server information
+</code></pre>
+                                </div>
+                                <div class="list">
+                                    <p class="sub"><strong class="subtitle">Purpose:</strong></p>
+                                    <ul>
+                                        <li><b>MAX_BUFFER (2048)</b>: Large enough to hold multiple network
+                                            adapter entries.</li>
+                                        <li><b>IP_SIZE (100)</b>: Accommodates IPv4 (15 chars) and IPv6 (45 chars)
+                                            addresses
+                                            with safety margin.
+                                        </li>
+                                        <li><b>DNS_SIZE (1024)</b>: Holds multiple DNS server entries and
+                                            formatting.</li>
+                                    </ul>
+                                </div>
+                                <h4>Memory Layout Example:</h4>
+                                <div class="code-block bg-color">
+                                    <pre>ip_before[100]:     "203.0.113.45\0"
+dns_before[1024]:   "   DNS Servers . . . : 8.8.8.8\n
+                        192.168.1.1\n\0"
+vpn_adapter[2048]:  "   Ethernet adapter TAP-Windows...\n
+                        OpenVPN TAP-Windows Adapter...\n\0"</pre>
+                                </div>
+
+                            </div>
+                            <hr>
+
+                            <div class="content" id="function_prototype">
+                                <h3>Function Prototypes</h3>
+                                <h4>Core Function Declarations</h4>
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">int fetch_public_ip(char *ip_buffer);</code></pre>
+                                </div>
+                                <p><strong>Purpose</strong>: Retrieves the public IP address using external service.</p>
+                                <p><strong>Returns</strong>: 0 on success, 1 on failure.</p>
+
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">int fetch_dns_servers(char *dns_buffer);</code></pre>
+                                </div>
+                                <p><strong>Purpose</strong>: Retrieves DNS server configuration based on OS.</p>
+                                <p><strong>Returns</strong>: 0 on success, 1 on failure.</p>
+
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">int detect_vpn_adapter(char *adapter_buffer);</code></pre>
+                                </div>
+                                <p><strong>Purpose</strong>: Scans network interfaces for VPN-related adapters.</p>
+                                <p><strong>Returns</strong>: 0 if VPN adapters found, 1 if none found.</p>
+
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">void print_separator(char c, int length);</code></pre>
+                                </div>
+                                <p><strong>Purpose</strong>: Prints visual separator lines for formatted output.</p>
+
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">void safe_copy(char *dest, const char *src, size_t size);</code></pre>
+                                </div>
+                                <p><strong>Purpose</strong>: Safely copies strings to prevent buffer overflows.</p>
+
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">int check_vpn_keywords_windows(const char *line);</code></pre>
+                                </div>
+                                <p><strong>Purpose</strong>: Checks if a line contains Windows VPN adapter keywords.</p>
+                                <p><strong>Returns</strong>: 1 if VPN keyword found, 0 otherwise.</p>
+
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">int check_vpn_keywords_unix(const char *line);</code></pre>
+                                </div>
+                                <p><strong>Purpose</strong>: Checks if a line contains Unix/Linux VPN interface
+                                    keywords.
+                                </p>
+                                <p><strong>Returns</strong>: 1 if VPN keyword found, 0 otherwise.</p>
+                            </div>
+                            <hr>
+
+                            <div class="content" id="main_function_flow">
+                                <h3>Main Function Flow</h3>
+                                <h4>Variable Declarations</h4>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">int main() {
+    // State storage variables
+    char ip_before[IP_SIZE] = {0};           // Public IP before VPN
+    char ip_after[IP_SIZE] = {0};            // Public IP after VPN
+    char dns_before[DNS_SIZE] = {0};         // DNS servers before VPN
+    char dns_after[DNS_SIZE] = {0};          // DNS servers after VPN
+    char vpn_adapter_before[MAX_BUFFER] = {0};  // VPN adapters before
+    char vpn_adapter_after[MAX_BUFFER] = {0};   // VPN adapters after
+    
+    // Analysis flags
+    int ip_changed = 0;          // Flag: Did IP address change?
+    int dns_changes = 0;         // Flag: Did DNS servers change?
+    int vpn_adapter_detected = 0; // Flag: VPN adapter present?
+</code></pre>
+                                </div>
+
+                                <div class="list">
+                                    <p class="sub"><strong class="subtitle">Initialization Pattern:</strong></p>
+                                    <ul>
+                                        <li><code class="code">{0}</code> initializes all array elements to zero (null
+                                            characters).</li>
+                                        <li>Ensures strings are properly null-terminated from the start.</li>
+                                        <li>Prevents undefined behavior from uninitialized memory.</li>
+                                    </ul>
+                                </div>
+
+                                <h4>Program Header Display</h4>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">print_separator('=', 65);
+printf("        Advanced VPN Connectivity Verification Tool\n");
+print_separator('=', 65);
+
+#ifdef OS_WINDOWS
+    printf("Operating System: Windows\n");
+#elif defined(OS_LINUX)
+    printf("Operating System: Linux\n");
+#elif defined(OS_MAC)
+    printf("Operating System: macOS\n");
+#else
+    printf("Operating System: Unknown\n");
+#endif
+
+print_separator('=', 65);
+</code></pre>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Example Output:</strong></p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>=================================================================
+        Advanced VPN Connectivity Verification Tool
+=================================================================
+Operating System: Windows
+==================================================================</code>
+</pre>
+                                </div>
+
+                                <h4>Phase 1: Pre-VPN State Capture</h4>
+                                <p class="sub">
+                                    <strong class="subtitle">Step 1: Fetch Public IP (Before)</strong>
+                                </p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">printf("\n[Step 1] Checking current public IP address...\n");
+if (fetch_public_ip(ip_before) != 0) {
+    printf("ERROR: Unable to fetch public IP address.\n");
+    printf("Please check your internet connection.\n");
+    return 1;  // Critical error - exit program
+}
+printf("Public IP before VPN: %s\n", ip_before);
+</code></pre>
+                                </div>
+                                <div class="list">
+                                    <p><strong>Error Handling:</strong></p>
+                                    <ul>
+                                        <li>If IP fetch fails, program exits immediately (critical error).</li>
+                                        <li>Indicates no internet connectivity.</li>
+                                        <li>Prevents false negative results.</li>
+                                    </ul>
+                                </div>
+
+                                <p class="sub">
+                                    <strong class="subtitle">Step 2: Fetch DNS Servers (Before)</strong>
+                                </p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">printf("\n[Step 2] Checking current DNS Servers...\n");
+if (fetch_dns_servers(dns_before) != 0) {
+    printf("WARNING: Unable to fetch DNS information.\n");
+} else {
+    printf("DNS Servers (Before VPN): \n%s\n", dns_before);
+}
+</code></pre>
+                                </div>
+                                <div class="list">
+                                    <p><strong>Error Handling:</strong></p>
+                                    <ul>
+                                        <li>DNS fetch failure is non-critical (warning only).</li>
+                                        <li>Program continues even if DNS info unavailable.</li>
+                                        <li>Still useful for IP and adapter verification.</li>
+                                    </ul>
+                                </div>
+
+                                <p class="sub">
+                                    <strong class="subtitle">Step 3: Detect VPN Adapters (Before)</strong>
+                                </p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">printf("\n[Step 3] Scanning for VPN network adapters...\n");
+detect_vpn_adapter(vpn_adapter_before);
+
+if (strlen(vpn_adapter_before) > 0) {
+    printf("VPN Adapters Found (Before VPN): \n%s\n", vpn_adapter_before);
+} else {
+    printf("No VPN adapters detected (before VPN).\n");
+}
+</code></pre>
+                                </div>
+                                <div class="list">
+                                    <p><strong>Purpose:</strong></p>
+                                    <ul>
+                                        <li>Baseline adapter state.</li>
+                                        <li>Some VPN clients install adapters even when disconnected.</li>
+                                        <li>Helps distinguish between client installed vs. client active.</li>
+                                    </ul>
+                                </div>
+
+                                <h4>Phase 2: User VPN Connection</h4>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">print_separator('=', 65);
+printf("\n>>> NOW CONNECT TO YOUR VPN <<<\n");
+printf(">>> Press ENTER when connected <<<\n");
+getchar();  // Wait for user input
+print_separator('=', 65);
+</code></pre>
+                                </div>
+                                <div class="list">
+                                    <p><strong>User Interaction:</strong></p>
+                                    <ul>
+                                        <li>Program pauses at <code class="code">getchar()</code>.</li>
+                                        <li>Presses ENTER to resume verification.</li>
+                                        <li>Allows time for VPN handshake to complete.</li>
+                                    </ul>
+                                </div>
+
+                                <h4>Phase 3: Post-VPN State Capture</h4>
+                                <p>The program repeats Steps 1-3 but stores results in <code class="code">*_after</code>
+                                    variables:</p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">// Step 4: Check IP After VPN
+if (fetch_public_ip(ip_after) != 0) {
+    printf("ERROR: Unable to fetch public IP address.\n");
+    return 1;
+}
+printf("Public IP after VPN: %s\n", ip_after);
+
+// Step 5: Check DNS After VPN
+if (fetch_dns_servers(dns_after) != 0) {
+    printf("WARNING: Unable to fetch DNS information.\n");
+} else {
+    printf("DNS Servers (After VPN): \n%s\n", dns_after);
+}
+
+// Step 6: Detect VPN Adapters After VPN
+detect_vpn_adapter(vpn_adapter_after);
+if (strlen(vpn_adapter_after) > 0) {
+    printf("VPN Adapters Found (After VPN): \n%s\n", vpn_adapter_after);
+    vpn_adapter_detected = 1;  // Set flag for analysis
+} else {
+    printf("No VPN adapters detected (After VPN).\n");
+}
+</code></pre>
+                                </div>
+
+                                <h4>Phase 4: Verification Summary</h4>
+                                <p class="sub"><strong class="subtitle">Comparison Logic</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">print_separator('=', 65);
+printf("                    Verification Summary\n");
+print_separator('=', 65);
+
+printf("\n%-30s %s\n", "IP Address (Before): ", ip_before);
+printf("%-30s %s\n", "IP Address (After): ", ip_after);
+
+// Compare IPs
+ip_changed = (strcmp(ip_before, ip_after) != 0);
+printf("%-30s %s\n", "IP Changed:", ip_changed ? "YES" : "NO");
+
+// Compare DNS
+dns_changes = (strcmp(dns_before, dns_after) != 0);
+printf("%-30s %s\n", "DNS Changed:", dns_changes ? "YES" : "NO");
+
+// VPN Adapter Status
+printf("%-30s %s\n", "VPN Adapter Detected:", 
+       vpn_adapter_detected ? "YES" : "NO");
+</code></pre>
+                                </div>
+                                <div class="list">
+                                    <p><strong>String Comparison:</strong></p>
+                                    <ul>
+                                        <li><code class="code">strcmp()</code> returns 0 if strings are identical.</li>
+                                        <li><code class="code">!= 0</code> means strings differn.</li>
+                                        <li>Ternary operator for clean YES/NO output.</li>
+                                    </ul>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Example Output:</strong></p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>=================================================================
+                    Verification Summary
+=================================================================
+
+IP Address (Before):           203.0.113.45
+IP Address (After):            198.51.100.23
+IP Changed:                    YES
+DNS Changed:                   YES
+VPN Adapter Detected:          YES</code>
+</pre>
+                                </div>
+
+                                <p class="sub"><strong class="subtitle">Status Verdict Logic</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">print_separator('*', 65);
+
+if (ip_changed && vpn_adapter_detected) {
+    printf("         VPN STATUS: ACTIVE\n");
+    printf("         Your connection is successfully routed through VPN!\n");
+}
+else if (ip_changed && !vpn_adapter_detected) {
+    printf("         VPN STATUS: LIKELY ACTIVE\n");
+    printf("         IP changed but no VPN adapter detected. Verify manually.\n");
+}
+else if (!ip_changed && vpn_adapter_detected) {
+    printf("         VPN STATUS: PARTIAL\n");
+    printf("         VPN adapter found but IP did not change. Check routing.\n");
+}
+else {
+    printf("         VPN STATUS: NOT ACTIVE\n");
+    printf("         Your connection is NOT protected by VPN!\n");
+}
+
+print_separator('*', 65);
+</code></pre>
+                                </div>
+
+                                <p class="sub"><strong class="subtitle">Logic Table:</strong></p>
+                                <div class="table-container">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>IP Changed</th>
+                                                <th>Adapter Detected</th>
+                                                <th>Status</th>
+                                                <th>Explanation</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>YES</td>
+                                                <td>YES</td>
+                                                <td>ACTIVE</td>
+                                                <td>Perfect - IP changed and adapter present</td>
+                                            </tr>
+                                            <tr>
+                                                <td>YES</td>
+                                                <td>NO</td>
+                                                <td>LIKELY ACTIVE</td>
+                                                <td>IP changed (good) but adapter not detected (unusual)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>NO</td>
+                                                <td>YES</td>
+                                                <td>PARTIAL</td>
+                                                <td>Adapter present but traffic not routing through it</td>
+                                            </tr>
+                                            <tr>
+                                                <td>NO</td>
+                                                <td>NO</td>
+                                                <td>NOT ACTIVE</td>
+                                                <td>No change detected - VPN not working</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <p class="sub"><strong class="subtitle">Security Recommendations</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">printf("\n[SECURITY NOTE] For complete security verification:\n");
+printf(" 1. Check DNS leaks: https://dnsleaktest.com\n");
+printf(" 2. Check WebRTC leaks: https://browserleaks.com/webrtc\n");
+printf(" 3. Verify IPv6 is disabled or routed through VPN\n");
+
+print_separator('=', 65);
+return 0;
+</code></pre>
+                                </div>
+
+                                <div class="list">
+                                    <p class="sub"><strong class="subtitle">Additional Manual Checks:</strong></p>
+                                    <ol>
+                                        <li><b>DNS Leak Test</b>: Ensures DNS queries go through VPN tunnel.</li>
+                                        <li><b>WebRTC Leak Test</b>: Checks if browser WebRTC exposes real IP.</li>
+                                        <li><b>IPv6 Routing</b>: Many VPNs only tunnel IPv4, leaking IPv6 traffic.</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <hr>
+
+                            <div class="content" id="function_implementations">
+                                <h3>Function Implementations</h3>
+                                <p><code class="code">fetch_public_ip()</code><strong>- Public IP Retrieval</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">int fetch_public_ip(char *ip_buffer) {
+    FILE *fp;
+    char command[] = "curl -s --max-time 10 ifconfig.me";
+    
+    // Execute curl command
+    fp = popen(command, "r");
+    if (fp == NULL) {
+        return 1;  // popen failed
+    }
+    
+    // Read IP address from command output
+    if (fgets(ip_buffer, IP_SIZE, fp) == NULL) {
+        pclose(fp);
+        return 1;  // fgets failed (no output)
+    }
+    
+    pclose(fp);
+    return 0;  // Success
+}
+</code></pre>
+                                </div>
+
+                                <p class="sub"><strong class="subtitle">How It Works:</strong></p>
+                                <div class="list">
+                                    <ol>
+                                        <li><code class="code">popen()</code>: Executes shell command and returns pipe
+                                            to
+                                            read output.</li>
+                                        <li><code class="code">curl -s --max-time 10 ifconfig.me</code>:</li>
+                                        <ul class="nested-list">
+                                            <li><code class="code">-s</code>: Silent mode (no progress bar).</li>
+                                            <li><code class="code">--max-time 10</code>: Timeout after 10 seconds.</li>
+                                            <li><code class="code">ifconfig.me</code>: Public service that returns
+                                                requester's IP.</li>
+                                        </ul>
+                                        <li><code class="code">fgets()</code>: Reads one line from pipe into buffer.
+                                        </li>
+                                        <li><code class="code">pclose()</code>: Closes pipe and cleans up</li>
+                                    </ol>
+                                </div>
+
+                                <p class="sub"><strong class="subtitle">Example Output:</strong></p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>203.0.113.45</code>
+</pre>
+                                </div>
+
+                                <div class="list">
+                                    <p class="sub"><strong class="subtitle">Alternative Services:</strong></p>
+                                    <ul>
+                                        <li><code class="code">ifconfig.me</code></li>
+                                        <li><code class="code">api.ipify.org</code></li>
+                                        <li><code class="code">icanhazip.com</code></li>
+                                        <li><code class="code">ipinfo.io/ip</code></li>
+                                    </ul>
+                                </div>
+
+                                <p><strong>Security Note: </strong>Using external services exposes the request to third
+                                    parties. Consider hosting your own IP detection service for
+                                    sensitive environments.
+                                </p>
+
+                                <p><strong class="symbol" style="color: #dc143c;">⮞ </strong><code
+                                        class="code">fetch_dns_servers()</code><strong>- DNS Configuration
+                                        Retrieval</strong></p>
+                                <h4>Windows Implementation</h4>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">#ifdef OS_WINDOWS
+    fp = popen(DNS_COMMAND, "r");  // "ipconfig /all"
+    if (fp == NULL) {
+        return 1;
+    }
+    
+    dns_buffer0] = '\0';  // Initialize buffer
+    
+    while (fgets(line, sizeof(line), fp) != NULL) {
+        // Look for DNS server lines
+        if (strstr(line, "DNS Servers") != NULL || 
+            strstr(line, "DNS Server") != NULL) {
+            strncat(dns_buffer, line, DNS_SIZE - strlen(dns_buffer) - 1);
+            found = 1;
+            
+            // Read continuation lines (indented IP addresses)
+            while (fgets(line, sizeof(line), fp) != NULL) {
+                // Check if line is indented and contains IP-like text
+                if (line[0] == ' ' && 
+                    (strstr(line, ".") != NULL || strstr(line, ":") != NULL)) {
+                    strncat(dns_buffer, line, DNS_SIZE - strlen(dns_buffer) - 1);
+                } else {
+                    break;  // End of DNS section
+                }
+            }
+        }
+    }
+#endif
+</code></pre>
+                                </div>
+
+                                <p><strong>Windows <code class="code">ipconfig /all</code> Output Format:</strong></p>
+                                <div class="code-block bg-color">
+                                    <pre> DNS Servers . . . . . . . . . . . : 8.8.8.8
+                                     8.8.4.4
+                                     192.168.1.1</pre>
+                                </div>
+
+                            </div>
+
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Parsing Logic:</strong></p>
+                                <ol>
+                                    <li>Find line containing "DNS Servers" or "DNS Server".</li>
+                                    <li>Capture that line.</li>
+                                    <li>Continue reading indented lines (start with space).</li>
+                                    <li>Stop when non-indented line encountered.</li>
+                                </ol>
+                            </div>
+
+                            <h4>Linux/macOS Implementation</h4>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">#else  // Linux/macOS
+    fp = popen(DNS_COMMAND, "r");  // "cat /etc/resolv.conf"
+    if (fp == NULL) {
+        return 1;
+    }
+    
+    dns_buffer[0] = '\0';
+    
+    while (fgets(line, sizeof(line), fp) != NULL) {
+        if (strstr(line, "nameserver") != NULL) {
+            strncat(dns_buffer, "  ", DNS_SIZE - strlen(dns_buffer) - 1);
+            strncat(dns_buffer, line, DNS_SIZE - strlen(dns_buffer) - 1);
+            found = 1;
+        }
+    }
+#endif
+</code></pre>
+                            </div>
+
+                            <p class="strong">Linux <code class="code">/etc/resolv.conf</code> Format:</p>
+                            <div class="code-block bg-color">
+                                <pre>nameserver 8.8.8.8
+nameserver 8.8.4.4
+nameserver 192.168.1.1</pre>
+                            </div>
+
+
+                            <div class="list">
+                                <p><strong>Parsing Logic:</strong></p>
+                                <ol>
+                                    <li>Find all lines containing "nameserver".</li>
+                                    <li>Prepend spacing for formatting.</li>
+                                    <li>Accumulate all nameserver lines.</li>
+                                </ol>
+                            </div>
+
+                            <p><strong class="symbol" style="color: #dc143c;">⮞ </strong><code
+                                    class="code">detect_vpn_adapter()</code><strong> - VPN Adapter Detection</strong>
+                            </p>
+                            <h4>Windows Implementation</h4>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">#ifdef OS_WINDOWS
+    fp = popen(INTERFACE_COMMAND, "r");  // "netsh interface show interface"
+    if (fp == NULL) {
+        return 1;
+    }
+    
+    while (fgets(line, sizeof(line), fp) != NULL) {
+        if (check_vpn_keywords_windows(line)) {
+            strncat(adapter_buffer, "  ", MAX_BUFFER - strlen(adapter_buffer) - 1);
+            strncat(adapter_buffer, line, MAX_BUFFER - strlen(adapter_buffer) - 1);
+            found = 1;
+        }
+    }
+#endif
+</code></pre>
+                            </div>
+
+                            <p>Windows <code class="code">netsh</code> Output:</p>
+                            <div class="code-block">
+                                <pre>
+<code>Admin State    State          Type             Interface Name
+-------------------------------------------------------------------------
+Enabled        Connected      Dedicated        Ethernet
+Enabled        Connected      Dedicated        TAP-Windows Adapter V9
+Enabled        Connected      Dedicated        OpenVPN TAP-Windows</code>
+</pre>
+                            </div>
+
+                            <h4>Linux/macOS Implementation</h4>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">#else  // Linux/macOS
+    fp = popen(INTERFACE_COMMAND, "r");  // "ip addr show" or "ifconfig"
+    if (fp == NULL) {
+        return 1;
+    }
+    
+    while (fgets(line, sizeof(line), fp) != NULL) {
+        if (check_vpn_keywords_unix(line)) {
+            strncat(adapter_buffer, "  ", MAX_BUFFER - strlen(adapter_buffer) - 1);
+            strncat(adapter_buffer, line, MAX_BUFFER - strlen(adapter_buffer) - 1);
+            found = 1;
+        }
+    }
+#endif
+</code></pre>
+                            </div>
+
+                            <p>Linux <code class="code">ip addr</code> Output:</p>
+                            <div class="code-block">
+                                <pre>
+<code>2: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500
+3: tun0: &lt;POINTOPOINT,MULTICAST,NOARP,UP,LOWER_UP&gt; mtu 1500
+4: wg0: &lt;POINTOPOINT,NOARP,UP,LOWER_UP&gt; mtu 1420</code>
+</pre>
+                            </div>
+
+                            <p><strong class="symbol" style="color: #dc143c;">⮞ </strong><code
+                                    class="code">check_vpn_keywords_windows()</code><strong> - Windows VPN
+                                    Detection</strong></p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">int check_vpn_keywords_windows(const char *line) {
+    if (strstr(line, "adapter") != NULL || strstr(line, "Adapter") != NULL) {
+        if (
+            strstr(line, "TAP") != NULL ||
+            strstr(line, "TUN") != NULL ||
+            strstr(line, "VPN") != NULL ||
+            strstr(line, "Tunnel") != NULL ||
+            strstr(line, "WireGuard") != NULL ||
+            strstr(line, "OpenVPN") != NULL ||
+            strstr(line, "NordVPN") != NULL ||
+            strstr(line, "ExpressVPN") != NULL ||
+            strstr(line, "ProtonVPN") != NULL ||
+            strstr(line, "Virtual") != NULL ||
+            strstr(line, "AnyConnect") != NULL ||
+            strstr(line, "Pulse") != NULL ||
+            strstr(line, "Fortinet") != NULL ||
+            strstr(line, "SonicWall") != NULL ||
+            // ... (many more VPN keywords)
+            strstr(line, "L2TP") != NULL ||
+            strstr(line, "PPTP") != NULL ||
+            strstr(line, "IPSec") != NULL
+        ) {
+            return 1;  // VPN keyword found
+        }
+    }
+    return 0;  // No VPN keyword
+}
+</code></pre>
+                            </div>
+
+                            <p class="sub"><strong class="subtitle">Detection Strategy:</strong></p>
+                            <div class="list">
+                                <p><strong>Generic Keywords:</strong></p>
+                                <ul>
+                                    <li><code class="code">TAP</code>, <code class="code">TUN</code> - Virtual network
+                                        drivers used by OpenVPN.</li>
+                                    <li><code class="code">VPN</code>, <code class="code">Tunnel</code> - Generic VPN
+                                        terms.
+                                    </li>
+                                    <li><code class="code">Virtual</code> - Virtual adapters.</li>
+                                </ul>
+                                <p><strong>VPN Brands:</strong></p>
+                                <ul>
+                                    <li><b>Commercial</b>: NordVPN, ExpressVPN, ProtonVPN, Surfshark, CyberGhost</li>
+                                    <li><b>Enterprise</b>: AnyConnect (Cisco), Pulse (Juniper), Fortinet, SonicWall</li>
+                                    <li><b>Open Source</b>: OpenVPN, WireGuard, SoftEther</li>
+                                </ul>
+                                <p><strong>VPN Protocols:</strong></p>
+                                <ul>
+                                    <li>L2TP, PPTP, IPSec - VPN tunneling protocols</li>
+                                </ul>
+                                <p><strong>Filter Logic:</strong></p>
+                                <ol>
+                                    <li>First check if line contains "adapter" or "Adapter".</li>
+                                    <li>Then check for VPN-specific keywords.</li>
+                                    <li>Reduces false positives from non-adapter lines</li>
+                                </ol>
+                            </div>
+
+                            <p><strong class="symbol" style="color: #dc143c;">⮞ </strong><code
+                                    class="code">check_vpn_keywords_unix()</code><strong>
+                                    - Unix/Linux
+                                    VPN
+                                    Detection</strong></p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">int check_vpn_keywords_unix(const char *line) {
+    if (
+        strstr(line, "tun") != NULL ||
+        strstr(line, "tap") != NULL ||
+        strstr(line, "wg") != NULL ||      // WireGuard
+        strstr(line, "ppp") != NULL ||
+        strstr(line, "utun") != NULL ||    // macOS tunnel
+        strstr(line, "vpn") != NULL ||
+        strstr(line, "wireguard") != NULL ||
+        strstr(line, "openvpn") != NULL ||
+        strstr(line, "tinc") != NULL ||
+        strstr(line, "softether") != NULL ||
+        strstr(line, "ipsec") != NULL ||
+        strstr(line, "l2tp") != NULL ||
+        strstr(line, "pptp") != NULL ||
+        strstr(line, "sstp") != NULL ||
+        strstr(line, "gre") != NULL ||     // Generic Routing Encapsulation
+        strstr(line, "ovpn") != NULL ||
+        strstr(line, "zt") != NULL ||      // ZeroTier
+        strstr(line, "nordlynx") != NULL ||
+        strstr(line, "cxn") != NULL ||
+        strstr(line, "ipip") != NULL ||
+        // ... more keywords
+    ) {
+        // Filter out false positives
+        if (strstr(line, "opportun") == NULL) {  // "opportunistic encryption"
+            return 1;
+        }
+    }
+    return 0;
+}
+</code></pre>
+                            </div>
+
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Unix Interface Naming:</strong></p>
+                                <ul>
+                                    <li><code class="code">tun0</code>, <code class="code">tun1</code> - TUN interfaces
+                                        (Layer 3 tunnels).</li>
+                                    <li><code class="code">tap0</code>, <code class="code">tap1</code> - TAP interfaces
+                                        (Layer 2 tunnels).</li>
+                                    <li><code class="code">wg0</code> - WireGuard interfaces.</li>
+                                    <li><code class="code">ppp0</code> - Point-to-Point Protocol (PPTP, L2TP).</li>
+                                    <li><code class="code">utun0</code> - macOS VPN tunnels.</li>
+                                </ul>
+                                <p class="sub"><strong class="subtitle">False Positive Prevention:</strong></p>
+                                <ul>
+                                    <li>Exclude lines with "opportun" to avoid "opportunistic encryption" matches.</li>
+                                    <li>Filters IPsec negotiation messages that aren't actual interfaces.</li>
+                                </ul>
+                            </div>
+
+                            <p><strong class="symbol" style="color: #dc143c;">⮞ </strong><code
+                                    class="code">print_separator()</code><strong> - Visual Formatting</strong></p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">void print_separator(char c, int length) {
+    for (int i = 0; i < length; i++) {
+        printf("%c", c);
+    }
+    printf("\n");
+}
+</code></pre>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Example Output:</strong></p>
+                            <div class="code-block bg-color">
+                                <pre>
+<code>print_separator('=', 65);  // =================================================================
+print_separator('-', 50);  // --------------------------------------------------
+print_separator('*', 40);  // ****************************************</code>
+</pre>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Purpose:</strong></p>
+                                <ul>
+                                    <li>Creates visual sections in output.</li>
+                                    <li>Improves readability.</li>
+                                    <li>Consistent formatting across messages</li>
+                                </ul>
+                            </div>
+
+                            <p><strong class="symbol" style="color: #dc143c;">⮞ </strong><code
+                                    class="code">safe_copy()</code><strong> - Buffer Overflow Prevention</strong></p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">void safe_copy(char *dest, const char *src, size_t size) {
+    strncpy(dest, src, size - 1);  // Copy up to size-1 characters
+    dest[size - 1] = '\0';          // Ensure null termination
+}
+</code></pre>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Security Explanation:</strong></p>
+                            <p><strong>Unsafe </strong><code class="code">strcpy()</code>:</p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">char buffer[10];
+strcpy(buffer, "This is a very long string");
+// Buffer overflow! Data written past array bounds
+</code></pre>
+                            </div>
+
+                            <p><strong>Safe </strong><code class="code">strncpy()</code> (with pitfall):</p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">char buffer[10];
+strncpy(buffer, "This is a very long string", 10);
+// Safer, but NOT null-terminated if source is ≥ 10 chars!
+</code></pre>
+                            </div>
+
+                            <p><strong>Correct Safe Copy:</strong></p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">char buffer[10];
+strncpy(buffer, "This is a very long string", 9);  // Leave room for \0
+buffer9] = '\0';  // Guarantee null termination
+</code></pre>
+                            </div>
+
+                            <div class="list">
+                                <p><code class="code">safe_copy()</code> ensures:</p>
+                                <ol>
+                                    <li>Never writes past buffer bounds.</li>
+                                    <li>Always null-terminates destination.</li>
+                                    <li>Prevents buffer overflow vulnerabilities.</li>
+                                </ol>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="content" id="compilation_and_usage">
+                            <h3>Compilation and Usage</h3>
+                            <h4>Compilation</h4>
+                            <p class="sub"><strong class="subtitle">Windows (MinGW/MSVC):</strong></p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">gcc main.c -o vpn_check.exe
+# or
+cl main.c /Fe:vpn_check.exe
+</code></pre>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Linux:</strong></p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">gcc main.c -o vpn_check
+chmod +x vpn_check
+</code></pre>
+                            </div>
+                            <p class="sub"><strong class="subtitle">macOS:</strong></p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">gcc main.c -o vpn_check
+chmod +x vpn_check
+</code></pre>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Compiler Flags (Optional):</strong></p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c"># Debug build
+gcc -g -Wall -Wextra main.c -o vpn_check
+
+# Optimized release build
+gcc -O2 -Wall main.c -o vpn_check
+</code></pre>
+                            </div>
+
+                            <h4>Usage Instructions</h4>
+                            <p><strong>Step 1: Disconnect from VPN</strong></p>
+                            <p>Ensure VPN is disconnected before running</p>
+                            <p><strong>Step 2: Run the program</strong></p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c"># Windows
+vpn_check.exe
+
+# Linux/macOS
+./vpn_check
+</code></pre>
+                            </div>
+                            <div class="list">
+                                <p><strong>Step 3: Follow on-screen prompts</strong></p>
+                                <ol>
+                                    <li>Program captures initial state.</li>
+                                    <li>Wait for prompt: ">>> NOW CONNECT TO YOUR VPN <<<". </li>
+                                    <li>Connect to your VPN software.</li>
+                                    <li>Press ENTER to continue.</li>
+                                    <li>Program captures post-VPN state.</li>
+                                    <li>Review verification summary</li>
+                                </ol>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Example Output:</strong></p>
+                            <div class="code-block bg-color">
+                                <pre>
+<code>=================================================================
+        Advanced VPN Connectivity Verification Tool
+=================================================================
+Operating System: Windows
+=================================================================
+
+[Step 1] Checking current public IP address...
+Public IP before VPN: 203.0.113.45
+
+[Step 2] Checking current DNS Servers...
+DNS Servers (Before VPN): 
+   DNS Servers . . . . . . . . . . . : 8.8.8.8
+                                       8.8.4.4
+
+[Step 3] Scanning for VPN network adapters...
+No VPN adapters detected (before VPN).
+
+=================================================================
+
+>>> NOW CONNECT TO YOUR VPN <<<
+>>> Press ENTER when connected <<<
+
+=================================================================
+
+[Step 1] Checking current public IP address...
+Public IP after VPN: 198.51.100.23
+
+[Step 2] Checking current DNS Servers...
+DNS Servers (After VPN): 
+   DNS Servers . . . . . . . . . . . : 10.8.0.1
+
+[Step 3] Scanning for VPN network adapters...
+VPN Adapters Found (After VPN): 
+   TAP-Windows Adapter V9
+
+=================================================================
+                    Verification Summary
+=================================================================
+
+IP Address (Before):           203.0.113.45
+IP Address (After):            198.51.100.23
+IP Changed:                    YES
+DNS Changed:                   YES
+VPN Adapter Detected:          YES
+=================================================================
+
+*****************************************************************
+         VPN STATUS: ACTIVE
+         Your connection is successfully routed through VPN!
+*****************************************************************
+
+[SECURITY NOTE] For complete security verification:
+ 1. Check DNS leaks: https://dnsleaktest.com
+ 2. Check WebRTC leaks: https://browserleaks.com/webrtc
+ 3. Verify IPv6 is disabled or routed through VPN
+=================================================================</code>
+</pre>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="content" id="security_considerations">
+                            <h3>Security Considerations</h3>
+                            <h4>Limitations of IP-Based Verification</h4>
+                            <p>This tool does NOT detect:</p>
+                            <div class="list">
+                                <ol>
+                                    <li>DNS Leaks</li>
+                                    <ul class="nested-list">
+                                        <li>VPN may route traffic but DNS queries leak to ISP.</li>
+                                        <li><b>Solution: </b>Test at <a href="https://dnsleaktest.com"
+                                                class="link">https://dnsleaktest.com</a></li>
+                                    </ul>
+                                    <li>WebRTC Leaks</li>
+                                    <ul class="nested-list">
+                                        <li>Browser WebRTC can expose real IP through STUN requests.</li>
+                                        <li><b>Solution: </b>Test at <a href="https://browserleaks.com/webrtc"
+                                                class="link">https://browserleaks.com/webrtc</a></li>
+                                    </ul>
+                                    <li>IPv6 Leaks</li>
+                                    <ul class="nested-list">
+                                        <li>Many VPNs only tunnel IPv4, exposing IPv6 traffic.</li>
+                                        <li><b>Solution: </b>Disable IPv6 or verify VPN supports it.</li>
+                                    </ul>
+                                    <li>Split Tunneling</li>
+                                    <ul class="nested-list">
+                                        <li>Some VPN configs only route specific traffic.</li>
+                                        <li><b>Solution: </b>Check VPN client settings.</li>
+                                    </ul>
+                                    <li>Kill Switch Failures</li>
+                                    <ul class="nested-list">
+                                        <li>VPN may disconnect without blocking internetc.</li>
+                                        <li><b>Solution: </b>Enable kill switch in VPN client.</li>
+                                    </ul>
+                                </ol>
+                            </div>
+
+                            <h4>External Dependency Risks</h4>
+                            <div class="list">
+                                <p><code class="code">curl</code><strong> Command:</strong></p>
+                                <ul>
+                                    <li><b>Risk</b>: Requires <code class="cdod">curl</code> to be installed and in
+                                        PATH.
+                                    </li>
+                                    <li><b>Mitigation</b>: Check for curl availability before running.</li>
+                                    <li><b>Alternative</b>: Use <code class="code">wget</code>, native HTTP libraries,
+                                        or
+                                        embedded HTTP client</li>
+                                </ul>
+                                <p><strong>External IP Service:</strong></p>
+                                <ul>
+                                    <li><b>Risk</b>: Relies on third-party service (ifconfig.me).</li>
+                                    <li><b>Privacy</b>: Third party logs request.</li>
+                                    <li><b>Mitigation</b>: Host your own IP detection service.</li>
+                                    <li><b>Alternatives</b>: <code class="code">api.ipify.org</code>, <code
+                                            class="code">icanhazip.com</code>, <code class="code">ipinfo.io/ip</code>.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <h4>Buffer Overflow Prevention</h4>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Current Protections:</strong></p>
+                                <ul>
+                                    <li><code class="code">strncpy()</code> with size limits.</li>
+                                    <li><code class="code">strncat()</code> with length calculations.</li>
+                                    <li>Explicit null termination.</li>
+                                </ul>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Potential Vulnerabilities:</strong></p>
+                            <div id="language-c" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-c">// Safe pattern used:
+strncat(buffer, line, DNS_SIZE - strlen(buffer) - 1);
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// Calculates remaining space before concatenating
+
+// Unsafe pattern (NOT used):
+strcat(buffer, line);  // No bounds checking!
+</code></pre>
+                            </div>
+
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Best Practices:</strong></p>
+                                <ul>
+                                    <li>Always use <code class="code">strncpy()</code>, <code
+                                            class="code">strncat()</code>
+                                        with size limits.</li>
+                                    <li>Explicitly null-terminate after <code class="code">strncpy()</code>.</li>
+                                    <li>Validate buffer sizes before operations.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="content" id="troubleshooting">
+                            <h3>Troubleshooting</h3>
+                            <h4>Common Issues</h4>
+                            <div class="list">
+                                <ol>
+                                    <li><strong>ERROR: Unable to fetch public IP address</strong></li>
+                                    <p><strong>Causes:</strong></p>
+                                    <ul class="nested-list">
+                                        <li>No internet connection.</li>
+                                        <li><code class="code">curl</code> not installed.</li>
+                                        <li>Firewall blocking curl.</li>
+                                        <li>External service (ifconfig.me) down.</li>
+                                    </ul>
+                                    <p><strong>Solutions:</strong></p>
+                                    <div id="language-c" class="code-block">
+                                        <pre>
+<code class="language-c"># Test curl manually
+curl -s ifconfig.me
+
+# Install curl (if missing)
+# Windows: Download from https://curl.se/windows/
+# Linux: sudo apt-get install curl
+# macOS: brew install curl
+
+# Check firewall rules
+# Windows: Windows Defender Firewall
+# Linux: sudo iptables -L
+</code></pre>
+                                    </div>
+                                    <li><strong>No VPN adapters detected (False Negative)</strong></li>
+                                    <p><strong>Causes:</strong></p>
+                                    <ul class="nested-list">
+                                        <li>VPN uses non-standard interface naming.</li>
+                                        <li>Keywords not in detection list.</li>
+                                        <li>VPN uses system-level routing without virtual adapter.</li>
+                                    </ul>
+                                    <p><strong>Solutions:</strong></p>
+                                    <p>Add Custom Keywords:</p>
+                                    <div id="language-c" class="code-block">
+                                        <pre class="line-numbers">
+<code class="language-c">// In check_vpn_keywords_*() function
+strstr(line, "YourVPNName") != NULL ||
+</code></pre>
+                                    </div>
+                                    <p>Add Custom Keywords:</p>
+                                    <div id="language-c" class="code-block">
+                                        <pre>
+<code class="language-c"># Windows
+netsh interface show interface
+
+# Linux
+ip addr show
+
+# macOS
+ifconfig
+</code></pre>
+                                    </div>
+                                    <li><strong>VPN STATUS: PARTIAL (Adapter but No IP Change)</strong></li>
+                                    <p><strong>Causes:</strong></p>
+                                    <ul class="nested-list">
+                                        <li>VPN connected but routing misconfigured.</li>
+                                        <li>Split tunneling enabled.</li>
+                                        <li>VPN not set as default gateway.</li>
+                                        <li>Firewall rules bypassing VPN.</li>
+                                    </ul>
+                                    <p><strong>Solutions:</strong></p>
+                                    <p>Add Custom Keywords:</p>
+                                    <div id="language-c" class="code-block">
+                                        <pre>
+<code class="language-c"># Check routing table
+# Windows
+route print
+
+# Linux
+ip route show
+
+# Look for default route through VPN interface
+</code></pre>
+                                    </div>
+                                    <li><strong>DNS Information Not Showing</strong></li>
+                                    <p><strong>Causes:</strong></p>
+                                    <ul class="nested-list">
+                                        <li>Command failed (permission denied).</li>
+                                        <li>Output format doesn't match parsing logic.</li>
+                                        <li>Different OS version/language.</li>
+                                    </ul>
+                                    <p><strong>Solutions:</strong></p>
+                                    <p>Test Commands Manually:</p>
+                                    <div id="language-c" class="code-block">
+                                        <pre>
+<code class="language-c"># Windows
+ipconfig /all | findstr "DNS"
+
+# Linux
+cat /etc/resolv.conf
+</code></pre>
+                                    </div>
+                                    <p>Add Debug Output:</p>
+                                    <div id="language-c" class="code-block">
+                                        <pre class="line-numbers">
+<code class="language-c">printf("DEBUG: DNS command: %s\n", DNS_COMMAND);
+printf("DEBUG: Raw output: %s\n", line);
+</code></pre>
+                                    </div>
+                                </ol>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="content" id="enhancement_ideas">
+                            <h3>Enhancement Ideas</h3>
+                            <h4>Advanced VPN Testing</h4>
+                            <p class="tips"><strong>📦 GitHub Repository</strong>: The complete source code for this VPN
+                                Connectivity
+                                Verification Tool
+                                (including all Features
+                                documented below) is available on my <a
+                                    href="https://github.com/kumaradoss16/Networking/tree/main/C/VPN%20Connection%20Verification"
+                                    class="link">GitHub</a>.
+                            </p>
+                            <p>This tutorial covers five critical functions that enhance VPN security verification:</p>
+                            <div class="list">
+                                <ol>
+                                    <li>IPv6 Detection - <code class="code">fetch_public_ipv6()</code></li>
+                                    <li>Geolocation Verification - <code class="code">fetch_geolocation()</code></li>
+                                    <li>Network Latency Testing - <code class="code">measure_latency()</code></li>
+                                    <li>DNS Leak Detection - <code class="code">check_dns_leak()</code></li>
+                                    <li>Real-Time VPN Monitoring - <code class="code">monitor_vpn_connection()</code>
+                                    </li>
+                                    <li>GitHub Repository Access</li>
+                                </ol>
+                            </div>
+                            <h4>Design Pattern</h4>
+                            <p>The program follows a procedural design with clear separation of concerns:</p>
+                            <div class="code-block bg-color" style="text-align: center">
+                                <pre>
+<code>┌─────────────────────────────────────────────┐
+│         Main Program (main.c)               │
+│                                             │
+│  ┌─────────────────────────────────────┐    │
+│  │  Platform Detection (Preprocessor)  │    │
+│  └─────────────────────────────────────┘    │
+│                    ↓                        │
+│  ┌─────────────────────────────────────┐    │
+│  │  Data Collection Functions          │    │
+│  │  - fetch_public_ip()                │    │
+│  │  - fetch_public_ipv6() [NEW]        │    │
+│  │  - fetch_dns_servers()              │    │
+│  │  - detect_vpn_adapter()             │    │
+│  │  - fetch_geolocation() [NEW]        │    │
+│  │  - measure_latency() [NEW]          │    │
+│  └─────────────────────────────────────┘    │
+│                    ↓                        │
+│  ┌─────────────────────────────────────┐    │
+│  │  Analysis Functions                 │    │
+│  │  - check_dns_leak() [NEW]           │    │
+│  │  - extract_first_dns_ip() [NEW]     │    │
+│  │  - check_vpn_keywords_*()           │    │
+│  └─────────────────────────────────────┘    │
+│                    ↓                        │
+│  ┌─────────────────────────────────────┐    │
+│  │  Verification Logic                 │    │
+│  │  - Before VPN state capture         │    │
+│  │  - User VPN connection prompt       │    │
+│  │  - After VPN state capture          │    │
+│  │  - Comprehensive comparison         │    │
+│  │  - Status determination             │    │
+│  └─────────────────────────────────────┘    │
+└─────────────────────────────────────────────┘</code>
+</pre>
+                            </div>
+                            <div class="content">
+                                <h4>1. IPv6 Detection</h4>
+                                <p>Many VPN services only tunnel IPv4 traffic while leaving IPv6 completely exposed—a
+                                    critical privacy vulnerability known
+                                    as an IPv6 leak. The <code class="code">fetch_public_ipv6()</code> function detects
+                                    your
+                                    public IPv6 address to verify VPN protection.
+                                </p>
+                                <p><strong>Function Signature</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">int fetch_public_ipv6(char *ip_buffer);</code></pre>
+                                </div>
+                                <p><strong>Parameters:</strong></p>
+                                <div class="list">
+                                    <ul>
+                                        <li><code class="code">ip_buffer</code>: Character array to store the IPv6
+                                            address
+                                            (size: <code class="code">IP_SIZE</code>)</li>
+                                    </ul>
+                                </div>
+                                <p><strong>Returns:</strong></p>
+                                <div class="list">
+                                    <ul>
+                                        <li><code class="code">0</code> on Success</li>
+                                        <li><code class="code">1</code> on failure (IPv6 not available or fetch failed)
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Implementation</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">int fetch_public_ipv6(char *ip_buffer)
+{
+    FILE *fp;
+    char command[] = "curl -6 -s --max-time 10 ifconfig.me";
+
+    fp = popen(command, "r");
+    if (fp == NULL)
+        return 1;
+    if (fgets(ip_buffer, IP_SIZE, fp) == NULL)
+    {
+        pclose(fp);
+        return 1;
+    }
+
+    pclose(fp);
+    return 0;
+}
+</code></pre>
+                                </div>
+                                <p class="sub"><strong class="subtitle">How It Works</strong></p>
+                                <div class="list">
+                                    <p><strong>Step-by-Step Breakdown:</strong></p>
+                                    <ol>
+                                        <li>Force IPv6 Connection: Uses <code class="code">curl -6</code> flag to force
+                                            IPv6-only connection.</li>
+                                        <li>Silent Mode: <code class="code">-s</code> flag suppresses progress output.
+                                        </li>
+                                        <li>Timeout Protection: <code class="code">--max-time 10</code> prevents
+                                            hanging.
+                                        </li>
+                                        <li>External Service: Queries <code class="code">ifconfig.me</code> which
+                                            returns
+                                            your public IPv6 address</li>
+                                        <li>Pipe Execution: <code class="code">popen()</code> executes command and
+                                            captures
+                                            output</li>
+                                    </ol>
+                                </div>
+                                <p><strong>Command Breakdown:</strong></p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>curl -6 -s --max-time 10 ifconfig.me
+│     │  │  │            └─ Service that returns your IP
+│     │  │  └─ Timeout after 10 seconds
+│     │  └─ Silent mode (no progress bar)
+│     └─ Force IPv6 only
+└─ Command-line HTTP client</code>
+</pre>
+                                </div>
+                                <p class="sub"><strong class="subtitle">The IPv6 Leak Vulnerability:</strong></p>
+                                <div class="card-image">
+                                    <img src="images/vpn-ipv6-leak-privacy-vulnerability-diagram.webp"
+                                        alt="IPv6 leak diagram showing VPN connected with IPv4 traffic protected through VPN tunnel while IPv6 traffic exposes real IP 2001 db8 xxxx xxxx xxxx xx7334 directly to ISP despite VPN IPv4 198.51.100.23 connection active"
+                                        title="VPN IPv6 Leak: Privacy Vulnerability When IPv6 Bypasses VPN Tunnel"
+                                        loading="lazy" decoding="async" fetchpriority="auto">
+                                </div>
+                                <div class="table-container">
+                                    <p><strong>Expected Behavior:</strong></p>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Scenario</th>
+                                                <th>IPv6 Before</th>
+                                                <th>IPv6 After</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>VPN with IPv6 Support</td>
+                                                <td><code class="code">2001:db8::7334</code></td>
+                                                <td><code class="code">2a03:2880::25de</code></td>
+                                                <td>✅ Protected</td>
+                                            </tr>
+                                            <tr>
+                                                <td>VPN without IPv6 (Leak)</td>
+                                                <td><code class="code">2001:db8::7334</code></td>
+                                                <td><code class="code">2001:db8::7334</code></td>
+                                                <td>⚠️ IPv6 LEAK</td>
+                                            </tr>
+                                            <tr>
+                                                <td>IPv6 Disabled</td>
+                                                <td><code class="code">N/A</code></td>
+                                                <td><code class="code">N/A</code></td>
+                                                <td>✅ Safe (no IPv6)</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="list">
+                                    <p class="sub"><strong class="subtitle">Security Recommendations</strong></p>
+                                    <ol>
+                                        <li>If IPv6 Changes: ✅ VPN is routing IPv6 traffic</li>
+                                        <li>If IPv6 Unchanged: ⚠️ IPv6 LEAK - Disable IPv6 or use VPN with IPv6 support
+                                        </li>
+                                        <li>If IPv6 = N/A: Safe (IPv6 not enabled on your network)</li>
+                                    </ol>
+                                </div>
+                                <p><strong>How to Disable IPv6 (if VPN doesn't support it):</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c"># Windows (PowerShell as Admin)
+Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6
+
+# Linux
+sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1
+
+# macOS
+networksetup -setv6off Wi-Fi
+</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <h4>2. Geolocation Verification</h4>
+                                <p>The <code class="code">fetch_geolocation()</code> function fetches your geographic
+                                    location (country, region, city) based on your public IP
+                                    address. This verifies whether your VPN is successfully masking your real location.
+                                </p>
+                                <p><strong>Function Signature</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">int fetch_geolocation(char *country_buffer, char *region_buffer, char *city_buffer);</code></pre>
+                                </div>
+                                <p><strong>Parameters:</strong></p>
+                                <div class="list">
+                                    <ul>
+                                        <li><code class="code">country_buffer</code>: Buffer to store country code/name
+                                            (size: <code class="code">COUNTRY_SIZE</code>).</li>
+                                        <li><code class="code">region_buffer</code>: Buffer to store region/state
+                                            (size: <code class="code">REGION_SIZE</code>).</li>
+                                        <li><code class="code">city_buffer</code>: Buffer to store city name
+                                            (size: <code class="code">CITY_SIZE</code>).</li>
+                                    </ul>
+                                </div>
+                                <p><strong>Returns:</strong></p>
+                                <div class="list">
+                                    <ul>
+                                        <li><code class="code">0</code> on Success</li>
+                                        <li><code class="code">1</code> on failure</li>
+                                    </ul>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Implementation</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">int fetch_geolocation(char *country_buffer, char *region_buffer, char *city_buffer)
+{
+    FILE *fp;
+
+    // Fetch country
+    char country_command[] = "curl -s ipinfo.io/country";
+    fp = popen(country_command, "r");
+    if (fp == NULL)
+    {
+        return 1;
+    }
+    if (fgets(country_buffer, COUNTRY_SIZE, fp) == NULL)
+    {
+        pclose(fp);
+        return 1;
+    }
+    pclose(fp);
+
+    // Remove newline character from country code
+    size_t len = strlen(country_buffer);
+    if (len > 0 && country_buffer[len - 1] == '\n')
+    {
+        country_buffer[len - 1] = '\0';
+    }
+
+    // Fetch region
+    char region_command[] = "curl -s ipinfo.io/region";
+    fp = popen(region_command, "r");
+    if (fp == NULL)
+    {
+        return 1;
+    }
+    if (fgets(region_buffer, REGION_SIZE, fp) == NULL)
+    {
+        pclose(fp);
+        return 1;
+    }
+    pclose(fp);
+
+    // Remove newline character from region
+    len = strlen(region_buffer);
+    if (len > 0 && region_buffer[len - 1] == '\n')
+    {
+        region_buffer[len - 1] = '\0';
+    }
+
+    // Fetch city
+    char city_command[] = "curl -s ipinfo.io/city";
+    fp = popen(city_command, "r");
+    if (fp == NULL)
+    {
+        return 1;
+    }
+    if (fgets(city_buffer, CITY_SIZE, fp) == NULL)
+    {
+        pclose(fp);
+        return 1;
+    }
+    pclose(fp);
+
+    // Remove newline character from city
+    len = strlen(city_buffer);
+    if (len > 0 && city_buffer[len - 1] == '\n')
+    {
+        city_buffer[len - 1] = '\0';
+    }
+
+    return 0;
+}
+</code></pre>
+                                </div>
+                                <p class="sub"><strong class="subtitle">How It Works</strong></p>
+                                <p><strong>API Endpoints Used:</strong></p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>https://ipinfo.io/country  → Returns: US
+https://ipinfo.io/region   → Returns: California
+https://ipinfo.io/city     → Returns: San Francisco</code>
+</pre>
+                                </div>
+                                <p><strong>Processing Flow:</strong></p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>┌─────────────────────────────────────────────┐
+│  1. Execute curl to ipinfo.io/country       │
+│  2. Read response into country_buffer       │
+│  3. Remove trailing newline (\n)            │
+│  4. Repeat for region and city              │
+└─────────────────────────────────────────────┘</code>
+</pre>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <h4>3. Network Latency Testing</h4>
+                                <p>The <code class="code">measure_latency()</code> function measures network round-trip
+                                    time
+                                    (RTT) to a specified host
+                                    using the system's ping
+                                    command. This helps identify VPN performance impact.</p>
+                                <p><strong>Function Signature</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">int measure_latency(const char *host);</code></pre>
+                                </div>
+                                <p><strong>Parameters:</strong></p>
+                                <div class="list">
+                                    <ul>
+                                        <li><code class="code">host</code>: Target hostname or IP address to ping.</li>
+                                    </ul>
+                                </div>
+                                <p><strong>Returns:</strong></p>
+                                <div class="list">
+                                    <ul>
+                                        <li><code class="code">0</code> on Success</li>
+                                        <li><code class="code">1</code> on failure</li>
+                                    </ul>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Implementation</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">int measure_latency(const char *host)
+{
+    char cmd[256];
+    snprintf(cmd, sizeof(cmd), PING_COMMAND, host);
+    
+    FILE *fp = popen(cmd, "r");
+    if (fp == NULL)
+    {
+        printf("ERROR: Unable to execute ping command.\n");
+        return 1;
+    }
+    
+    char line[256];
+    int found = 0;
+    
+    printf("Pinging %s...\n", host);
+    
+    while (fgets(line, sizeof(line), fp) != NULL)
+    {
+#ifdef OS_WINDOWS
+        if (strstr(line, "Average") != NULL || strstr(line, "Minimum") != NULL)
+        {
+            printf("   %s", line);
+            found = 1;
+        }
+#else
+        if (strstr(line, "avg") != NULL || strstr(line, "min") != NULL || 
+            strstr(line, "rtt") != NULL)
+        {
+            printf("   %s", line);
+            found = 1;
+        }
+#endif
+    }
+    
+    if (!found)
+    {
+        printf("   Unable to extract latency statistics.\n");
+    }
+    
+    pclose(fp);
+    return 0;
+}</code></pre>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Platform-Specific Ping Commands</strong></p>
+                                <p><strong>Recall from preprocessor definitions:</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">#ifdef _WIN32
+    #define PING_COMMAND "ping -n 4 %s"
+#else
+    #define PING_COMMAND "ping -c 4 %s"
+#endif</code></pre>
+                                </div>
+                                <div class="table-container">
+                                    <p><strong>Command Breakdown:</strong></p>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Platform</th>
+                                                <th>Command</th>
+                                                <th>Flags</th>
+                                                <th>Meaning</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Windows</td>
+                                                <td><code class="code">ping -n 4 google.com</code></td>
+                                                <td><code class="code">-n 4</code></td>
+                                                <td>Send 4 packets</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Linux/macOS</td>
+                                                <td><code class="code">ping -c 4 google.com</code></td>
+                                                <td><code class="code">-c 4</code></td>
+                                                <td>Count = 4 packets</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <p class="sub"><strong class="subtitle">How It Works</strong></p>
+                                <p><strong>Execution Flow:</strong></p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>1. Build command: "ping -c 4 8.8.8.8"
+2. Execute via popen()
+3. Read output line by line
+4. Search for latency statistics keywords
+5. Extract and display relevant lines
+6. Close pipe</code>
+</pre>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Output Parsing:</strong></p>
+                                <p><strong>Windows Output:</strong></p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>Pinging 8.8.8.8 with 32 bytes of data:
+Reply from 8.8.8.8: bytes=32 time=12ms TTL=117
+Reply from 8.8.8.8: bytes=32 time=11ms TTL=117
+Reply from 8.8.8.8: bytes=32 time=13ms TTL=117
+Reply from 8.8.8.8: bytes=32 time=12ms TTL=117
+
+Ping statistics for 8.8.8.8:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 11ms, Maximum = 13ms, Average = 12ms
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ← Captured</code>
+</pre>
+                                </div>
+                                <p><strong>Linux/macOS Output:</strong></p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=117 time=12.3 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=117 time=11.8 ms
+64 bytes from 8.8.8.8: icmp_seq=3 ttl=117 time=13.1 ms
+64 bytes from 8.8.8.8: icmp_seq=4 ttl=117 time=12.5 ms
+
+--- 8.8.8.8 ping statistics ---
+4 packets transmitted, 4 received, 0% packet loss, time 3005ms
+rtt min/avg/max/mdev = 11.8/12.4/13.1/0.5 ms
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ ← Captured</code>
+</pre>
+                                </div>
+
+                                <div class="table-container">
+                                    <p class="sub"><strong class="subtitle">Latency Interpretation</strong></p>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Scenario</th>
+                                                <th>Before VPN</th>
+                                                <th>After VPN</th>
+                                                <th>Analysis</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Local ISP DNS</td>
+                                                <td>2ms</td>
+                                                <td>52ms</td>
+                                                <td>VPN adds ~50ms overhead (normal)</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Google DNS (8.8.8.8)</td>
+                                                <td>15ms</td>
+                                                <td>150ms</td>
+                                                <td>VPN server far from you or Google</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Same latency</td>
+                                                <td>20ms</td>
+                                                <td>20ms</td>
+                                                <td>⚠️ VPN may not be active</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="list">
+                                    <p><strong>Expected VPN Latency Increase:</strong></p>
+                                    <ul>
+                                        <li><b>Good VPN</b>: +10-30ms (nearby server)</li>
+                                        <li><b>Acceptable</b>: +30-100ms (distant server)</li>
+                                        <li><b>Poor</b>: +100ms+ (very distant or congested server)</li>
+                                    </ul>
+                                </div>
+
+                                <div class="content">
+                                    <h4>4. DNS Leak Detection</h4>
+                                    <p>DNS leak occurs when your DNS queries bypass the VPN tunnel and go directly to
+                                        your
+                                        ISP's DNS servers, exposing your
+                                        browsing activity. The <code class="code">check_dns_leak()</code> function
+                                        detects
+                                        this vulnerability by comparing your DNS servers before and
+                                        after VPN connection.</p>
+                                </div>
+                                <p><strong>Function Signature</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">int check_dns_leak(const char *dns_servers, const char *isp_dns);</code></pre>
+                                </div>
+                                <p><strong>Parameters:</strong></p>
+                                <div class="list">
+                                    <ul>
+                                        <li><code class="code">dns_servers</code>: DNS server configuration after VPN
+                                            connection.</li>
+                                        <li><code class="code">isp+dns</code>: Original ISP DNS server recorded before
+                                            VPN.
+                                        </li>
+                                    </ul>
+                                </div>
+                                <p><strong>Returns:</strong></p>
+                                <div class="list">
+                                    <ul>
+                                        <li><code class="code">0</code> if no leak detected (VPN DNS active)</li>
+                                        <li><code class="code">1</code> if leak detected (still using ISP DNS)</li>
+                                    </ul>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Implementation</strong></p>
+                                <p><strong>Supporting Function: <code
+                                            class="code">extract_first_dns_ip()</code></strong>
+                                </p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">int extract_first_dns_ip(const char *dns_buffer, char *ip_output)
+{
+    if (dns_buffer == NULL || ip_output == NULL)
+        return 1;
+
+    ip_output[0] = '\0';
+
+#ifdef OS_WINDOWS
+    const char *line = dns_buffer;
+
+    while (*line != '\0')
+    {
+        if (strstr(line, "DNS Server") != NULL)
+        {
+            const char *ip_start = strchr(line, ':');
+            if (ip_start != NULL)
+            {
+                ip_start++;
+
+                // Skip whitespace and dots
+                while (*ip_start == ' ' || *ip_start == '.')
+                    ip_start++;
+
+                // Extract IP address
+                int i = 0;
+                while (*ip_start != '\0' && *ip_start != '\n' && i < IP_SIZE - 1)
+                {
+                    if ((*ip_start >= '0' && *ip_start <= '9') || *ip_start == '.')
+                    {
+                        ip_output[i++] = *ip_start;
+                    }
+                    else if (ip_output[0] != '\0')
+                    {
+                        break;
+                    }
+                    ip_start++;
+                }
+                ip_output[i] = '\0';
+
+                // Validate IP (must have at least 7 chars like "1.1.1.1")
+                if (strlen(ip_output) > 6)
+                    return 0; // Success
+            }
+        }
+
+        // Move to next line
+        line = strchr(line, '\n');
+        if (line == NULL)
+            break;
+        line++;
+    }
+#else
+    // Linux/macOS: Extract from nameserver line
+    const char *nameserver = strstr(dns_buffer, "nameserver");
+    if (nameserver != NULL)
+    {
+        if (sscanf(nameserver, "nameserver %s", ip_output) == 1)
+        {
+            return 0; // Success
+        }
+    }
+#endif
+
+    return 1; // Failed to extract
+}</code></pre>
+                                </div>
+                                <p><strong>Main Implementation: <code class="code">check_dns_leak()</code></strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">int check_dns_leak(const char *dns_servers, const char *isp_dns)
+{
+    if (dns_servers == NULL || isp_dns == NULL)
+    {
+        return 0;
+    }
+
+    // Extract the First DNS IP from the dns_servers buffer
+    char first_dns_after_vpn[IP_SIZE] = {0};
+
+    if (extract_first_dns_ip(dns_servers, first_dns_after_vpn) != 0)
+    {
+        return 0; // Could not extract DNS assume no leak
+    }
+
+    // Remove newline if present
+    size_t len = strlen(first_dns_after_vpn);
+    if (len > 0 && first_dns_after_vpn[len - 1] == '\n')
+    {
+        first_dns_after_vpn[len - 1] = '\0';
+    }
+
+    // Check if PRIMARY DNS changes from ISP DNS
+    if (strlen(first_dns_after_vpn) > 0)
+    {
+        // If first DNS is still the ISP DNS = LEAK
+        if (strcmp(first_dns_after_vpn, isp_dns) == 0)
+        {
+            printf("     WARNING: DNS Leak Detected!\n");
+            printf("   Primary DNS is still ISP DNS: %s\n", isp_dns);
+            return 1; // Leak detected
+        }
+        else
+        {
+            // First DNS is different (VPN DNS) = No Leak
+            printf("      DNS Protection Active\n");
+            printf("   Primary DNS changed to: %s\n", first_dns_after_vpn);
+            return 0; // No leak
+        }
+    }
+    return 0; // No leak
+}
+</code></pre>
+                                </div>
+                                <p class="sub"><strong class="subtitle">How It Works</strong></p>
+                                <p><strong>Detection Logic:</strong></p>
+                                <div class="code-block bg-color" style="text-align: center;">
+                                    <pre>
+<code>┌─────────────────────────────────────────────┐
+│  1. Execute curl to ipinfo.io/country       │
+│  2. Read response into country_buffer       │
+│  3. Remove trailing newline (\n)            │
+│  4. Repeat for region and city              │
+└─────────────────────────────────────────────┘</code>
+</pre>
+                                </div>
+                                <div class="code-block bg-color" style="text-align: center;">
+                                    <pre>
+<code>┌─────────────────────────────────────────────┐
+│         DNS Leak Detection Process          │
+├─────────────────────────────────────────────┤
+│                                             │
+│  1. Before VPN:                             │
+│     - Fetch DNS servers                     │
+│     - Extract primary DNS (ISP DNS)         │
+│     - Store: isp_dns = "192.168.1.1"        │
+│                                             │
+│  2. User connects to VPN                    │
+│                                             │
+│  3. After VPN:                              │
+│     - Fetch DNS servers again               │
+│     - Extract primary DNS                   │
+│     - Compare with stored ISP DNS           │
+│                                             │
+│  4. Verdict:                                │
+│     ├─ If DNS changed → No Leak             │
+│     └─ If DNS same   → ⚠️ DNS LEAK!         │
+│                                             │
+└─────────────────────────────────────────────┘</code>
+</pre>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Understanding DNS Leaks</strong></p>
+                                <p><strong>What is a DNS Leak?</strong></p>
+                                <p>A DNS leak is a security flaw that occurs when your DNS (Domain Name System) requests
+                                    are
+                                    sent to your ISP’s DNS servers
+                                    (or another unintended third party) instead of being routed through the encrypted
+                                    tunnel
+                                    provided by your VPN (Virtual
+                                    Private Network) or privacy tool.
+                                </p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>WITHOUT DNS LEAK (Protected):
+┌─────────┐      ┌─────────┐      ┌──────────┐
+│  You    │ ───► │   VPN   │ ───► │ VPN DNS  │
+│         │      │ Tunnel  │      │ 10.8.0.1 │
+└─────────┘      └─────────┘      └──────────┘
+                      │
+                      ↓ Encrypted
+             ┌─────────────────┐
+             │  example.com?   │
+             └─────────────────┘
+
+WITH DNS LEAK (Exposed):
+┌─────────┐      ┌─────────┐      ┌──────────┐
+│  You    │ ─┬─► │   VPN   │ ───► │ Website  │
+│         │  │   │ Tunnel  │      │          │
+└─────────┘  │   └─────────┘      └──────────┘
+             │
+             └──────────► ┌───────────┐
+                          │ ISP DNS   │ ← LEAK!
+                          │192.168.1.1│
+                          └───────────┘
+                         Your ISP sees:
+                         - example.com
+                         - banking.com
+                         - social-media.com</code>
+</pre>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Fixing DNS Leaks</strong></p>
+                                <p><strong>Manual DNS Configuration</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <p>Windows</p>
+                                    <pre>
+<code class="language-c"># Set VPN DNS to Cloudflare
+netsh interface ipv4 set dns "VPN Connection Name" static 1.1.1.1
+netsh interface ipv4 add dns "VPN Connection Name" 1.0.0.1 index=2</code></pre>
+                                </div>
+                                <div id="language-c" class="code-block">
+                                    <p>Linux</p>
+                                    <pre>
+<code class="language-c"># Edit /etc/resolv.conf
+sudo nano /etc/resolv.conf
+
+# Add VPN DNS
+nameserver 1.1.1.1
+nameserver 1.0.0.1
+
+# Make immutable (prevent overwrites)
+sudo chattr +i /etc/resolv.conf</code></pre>
+                                </div>
+                                <div class="list">
+                                    <p><strong>VPN Client Settings:</strong></p>
+                                    <ul>
+                                        <li>Enable "Use VPN DNS servers"</li>
+                                        <li>Enable "Prevent DNS leaks"</li>
+                                        <li>Use VPN's built-in DNS leak protection</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <h4>5. Real-Time VPN Monitoring</h4>
+                                <p>The <code class="code">monitor_vpn_connection()</code> function continuously monitors
+                                    your public IP address at
+                                    regular intervals to detect VPN
+                                    disconnections or IP changes in real-time. This is critical for identifying kill
+                                    switch
+                                    failures.
+                                </p>
+                                <p><strong>Function Signature</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c">int monitor_vpn_connection(int interval_seconds, int duration_seconds);</code></pre>
+                                </div>
+                                <p><strong>Parameters:</strong></p>
+                                <div class="list">
+                                    <ul>
+                                        <li><code class="code">interval_seconds</code>: How often to check IP (e.g.,
+                                            every 5
+                                            seconds).</li>
+                                        <li><code class="code">duration_seconds</code>: Total monitoring duration (e.g.,
+                                            60
+                                            seconds).</li>
+                                    </ul>
+                                </div>
+                                <p><strong>Returns:</strong></p>
+                                <div class="list">
+                                    <ul>
+                                        <li><code class="code">1</code> on completion</li>
+                                    </ul>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Implementation</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">int monitor_vpn_connection(int interval_seconds, int duration_seconds)
+{
+    int elapsed = 0;
+    char ip_current[IP_SIZE];
+    char ip_first[IP_SIZE] = {0};
+    
+    printf("\n");
+    print_separator('=', 65);
+    printf("        Real-Time VPN Connection Monitor\n");
+    printf("        Monitoring for %d seconds...\n", duration_seconds);
+    print_separator('=', 65);
+    printf("\n");
+    
+    while (elapsed < duration_seconds)
+    {
+        // Check current IP
+        if (fetch_public_ip(ip_current) == 0)
+        {
+            // Store first IP as baseline
+            if (ip_first[0] == '\0')
+            {
+                strcpy(ip_first, ip_current);
+            }
+            
+            // Remove newline from current IP
+            size_t len = strlen(ip_current);
+            if (len > 0 && ip_current[len - 1] == '\n')
+                ip_current[len - 1] = '\0';
+            
+            // Remove newline from first IP for comparison
+            len = strlen(ip_first);
+            if (len > 0 && ip_first[len - 1] == '\n')
+                ip_first[len - 1] = '\0';
+            
+            // Check for IP change
+            int ip_changed = (strcmp(ip_first, ip_current) != 0);
+            
+            printf("[%4ds] IP: %-15s ", elapsed, ip_current);
+            
+            if (ip_changed)
+            {
+                printf("⚠️  WARNING [IP CHANGED!]\n");
+            }
+            else
+            {
+                printf("✓ OK [Stable]\n");
+            }
+        }
+        else
+        {
+            printf("[%4ds] ❌ ERROR: Unable to fetch IP\n", elapsed);
+        }
+        
+        sleep(interval_seconds);
+        elapsed += interval_seconds;
+    }
+    
+    print_separator('=', 65);
+    printf("Monitoring complete.\n");
+    print_separator('=', 65);
+    
+    return 0;
+} </code></pre>
+                                </div>
+                                <p><strong>Mode Selection Integration</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">int main()
+{
+    int monitor_mode = 0;
+    
+    print_separator('=', 65);
+    printf("        Advanced VPN Connectivity Verification Tool\n");
+    print_separator('=', 65);
+    
+    printf("\nSelect Mode:\n");
+    printf(" 1. Standard VPN Verification (Before/After)\n");
+    printf(" 2. Real-Time Monitor Mode\n");
+    printf("\nEnter choice (1 or 2): ");
+    
+    int choice;
+    scanf("%d", &choice);
+    getchar();  // Consume newline
+    
+    if (choice == 2)
+    {
+        monitor_mode = 1;
+        
+        printf("\nReal-Time Monitor Configuration:\n");
+        printf("Enter check interval (seconds, default 5): ");
+        int interval = 5;
+        scanf("%d", &interval);
+        getchar();
+        
+        printf("Enter monitoring duration (seconds, default 60): ");
+        int duration = 60;
+        scanf("%d", &duration);
+        getchar();
+        
+        printf("\n>>> Connect to your VPN NOW <<<\n");
+        printf(">>> Press ENTER to start monitoring <<<\n");
+        getchar();
+        
+        monitor_vpn_connection(interval, duration);
+        return 0;
+    }
+    
+    // Continue with standard mode...
+}</code></pre>
+                                </div>
+                                <div class="code-block bg-color">
+                                    <p><strong>Sample Session</strong></p>
+                                    <pre>
+<code>=================================================================
+        Advanced VPN Connectivity Verification Tool
+=================================================================
+
+Select Mode:
+ 1. Standard VPN Verification (Before/After)
+ 2. Real-Time Monitor Mode
+
+Enter choice (1 or 2): 2
+
+Real-Time Monitor Configuration:
+Enter check interval (seconds, default 5): 5
+Enter monitoring duration (seconds, default 60): 30
+
+>>> Connect to your VPN NOW <<<
+>>> Press ENTER to start monitoring <<<
+
+=================================================================
+        Real-Time VPN Connection Monitor
+        Monitoring for 30 seconds...
+=================================================================
+
+[   0s] IP: 185.220.101.45  ✓ OK [Stable]
+[   5s] IP: 185.220.101.45  ✓ OK [Stable]
+[  10s] IP: 185.220.101.45  ✓ OK [Stable]
+[  15s] IP: 203.0.113.45    ⚠️  WARNING [IP CHANGED!]
+[  20s] IP: 203.0.113.45    ✓ OK [Stable]
+[  25s] IP: 203.0.113.45    ✓ OK [Stable]
+
+=================================================================
+Monitoring complete.
+=================================================================</code>
+</pre>
+                                </div>
+                                <div class="list">
+                                    <p class="sub"><strong class="subtitle">Use Cases</strong></p>
+                                    <ol>
+                                        <li><b>Kill Switch Testing</b></li>
+                                        <div class="code-block bg-color">
+                                            <pre>
+<code><span class="blue">Purpose:</span> Verify VPN kill switch prevents IP leaks
+<span class="yellow">Steps:</span>
+  1. Start monitoring
+  2. Disconnect VPN manually
+  3. Check if IP changes or internet blocks</code>
+</pre>
+                                        </div>
+                                        <li><b>VPN Stability Testing</b></li>
+                                        <div class="code-block bg-color">
+                                            <pre>
+<code><span class="blue">Purpose:</span> Check for connection drops
+Duration: 5-10 minutes
+Interval: 10 seconds
+Expected: No IP changes</code>
+</pre>
+                                        </div>
+                                        <li><b>VPN Reconnection Testing</b></li>
+                                        <div class="code-block bg-color">
+                                            <pre>
+<code><span class="blue">Purpose:</span> Test automatic reconnection
+<span class="yellow">Steps:</span>
+  1. Start monitoring
+  2. Force disconnect (e.g., kill VPN process)
+  3. Watch for IP change → reconnection → IP stabilizes</code>
+</pre>
+                                        </div>
+                                    </ol>
+                                </div>
+                                <p class="sub"><strong class="subtitle">Cross-Platform Sleep Implementation</strong></p>
+                                <p>The program uses a cross-platform sleep wrapper:</p>
+                                <div id="language-c" class="code-block">
+                                    <pre class="line-numbers">
+<code class="language-c">#ifdef _WIN32
+    #include <windows.h>
+    #define sleep(x) Sleep((x) * 1000)  // Convert seconds to milliseconds
+#else
+    #include <unistd.h>  // Native sleep() on Unix/Linux/macOS
+#endif</code></pre>
+                                </div>
+                                <p><strong>Why This Matters:</strong></p>
+                                <div class="list">
+                                    <ul>
+                                        <li>Windows: <code class="code">Sleep()</code> takes milliseconds</li>
+                                        <li>Unix/Linux/macOS: <code class="code">sleep()</code> takes seconds</li>
+                                        <li>Wrapper provides unified interface</li>
+                                    </ul>
+                                </div>
+                                <p><strong>Monitoring Patterns</strong></p>
+                                <p><u>Pattern 1</u>: Stable VPN</p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>[   0s] IP: 198.51.100.23  ✓ OK [Stable]
+[   5s] IP: 198.51.100.23  ✓ OK [Stable]
+[  10s] IP: 198.51.100.23  ✓ OK [Stable]</code>
+</pre>
+                                </div>
+                                <em>Analysis: VPN holding steady.</em>
+                                <p><u>Pattern 2</u>: VPN Disconnected</p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>[   0s] IP: 198.51.100.23  ✓ OK [Stable]
+[   5s] IP: 198.51.100.23  ✓ OK [Stable]
+[  10s] IP: 203.0.113.45   ⚠️  WARNING [IP CHANGED!]
+[  15s] IP: 203.0.113.45   ✓ OK [Stable]</code>
+</pre>
+                                </div>
+                                <em>Analysis: VPN disconnected at 10s, kill switch failed (IP exposed).</em>
+                                <p><u>Pattern 3</u>: Automatic Reconnection</p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>[   0s] IP: 198.51.100.23  ✓ OK [Stable]
+[   5s] IP: 203.0.113.45   ⚠️  WARNING [IP CHANGED!]
+[  10s] IP: 203.0.113.45   ✓ OK [Stable]
+[  15s] IP: 198.51.100.67  ⚠️  WARNING [IP CHANGED!]
+[  20s] IP: 198.51.100.67  ✓ OK [Stable]</code>
+</pre>
+                                </div>
+                                <em>Analysis: VPN disconnected → exposed real IP → auto-reconnected to new VPN
+                                    server.</em>
+                                <p><u>Pattern 4</u>: Kill Switch Working</p>
+                                <div class="code-block bg-color">
+                                    <pre>
+<code>[   0s] IP: 198.51.100.23  ✓ OK [Stable]
+[   5s] ❌ ERROR: Unable to fetch IP
+[  10s] ❌ ERROR: Unable to fetch IP
+[  15s] IP: 198.51.100.67  ✓ OK [Stable]</code>
+</pre>
+                                </div>
+                                <em>Analysis: VPN disconnected → kill switch blocked internet → VPN reconnected</em>
+                                <div class="code-block bg-color">
+                                    <p><strong>Final Output</strong></p>
+                                    <pre>
+<code>=================================================================
+      Advanced VPN Connectivity Verification Tool
+=================================================================
+Operating System: Windows
+=================================================================
+
+[Step 1] Checking current public IP address...
+Public IP before VPN: 203.0.113.45
+
+[Step 1.1] Checking current public IPv6 address...
+Public IPv6 before VPN: 2409:4072:2c97:5c6b::1
+
+[Step 2] Checking current DNS Servers...
+DNS Servers (Before VPN): 
+   DNS Servers . . . . . . . . . . . : 192.168.1.1
+ISP DNS recorded: 192.168.1.1
+
+[Step 3] Scanning for VPN network adapters...
+No VPN adapters detected (before VPN).
+
+[Step 4] Measuring network latency (Before VPN)...
+Pinging DNS server: 192.168.1.1...
+   Minimum = 1ms, Maximum = 10ms, Average = 5ms
+
+=================================================================
+
+>>> NOW CONNECT TO YOUR VPN <<<
+>>> Press ENTER when connected <<<
+
+=================================================================
+
+[Step 1] Checking current public IP address...
+Public IP after VPN: 198.51.100.23
+
+[Step 1.1] Checking current public IPv6 address...
+Public IPv6 after VPN: 2409:4072:2c97:5c6b::2
+
+[Step 2] Checking current DNS Servers...
+DNS Servers (After VPN): 
+   DNS Servers . . . . . . . . . . . : 10.8.0.1
+
+[DNS Leak Test]
+    DNS Protection Active
+   Primary DNS changed to: 10.8.0.1
+No DNS leak detected - using VPN DNS servers
+
+[Step 3] Scanning for VPN network adapters...
+VPN Adapters Found (After VPN): 
+   TAP-Windows Adapter V9
+
+[Step 4] Measuring network latency (After VPN)...
+Pinging DNS server: 10.8.0.1...
+   Minimum = 45ms, Maximum = 120ms, Average = 78ms
+
+=================================================================
+                    Verification Summary
+=================================================================
+
+IP Address (Before):           203.0.113.45
+IP Address (After):            198.51.100.23
+IPv6 Address (Before):         2409:4072:2c97:5c6b::1
+IPv6 Address (After):          2409:4072:2c97:5c6b::2
+
+IP Changed:                    YES
+IPv6 Changed:                  YES
+DNS Changed:                   YES
+VPN Adapter Detected:          YES
+DNS Leak Detected:             NO
+
+Country changed: IN to JP
+Region changed: Tamil Nadu to Tokyo
+City changed: Chennai to Tokyo
+=================================================================
+
+*****************************************************************
+         VPN STATUS: ACTIVE
+    Your connection is successfully routed through VPN!
+*****************************************************************
+
+[SECURITY NOTE] For complete security verification:
+  1. Check DNS leaks: https://dnsleaktest.com
+  2. Check WebRTC leaks: https://browserleaks.com/webrtc
+  3. Verify IPv6 is disabled or routed through VPN
+=================================================================</code>
+</pre>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <h4>6. GitHub Repository Access</h4>
+                                <p class="sub"><strong class="subtitle">Accessing the Source Code</strong></p>
+                                <p>The complete, updated source code for this VPN Connectivity Verification Tool is
+                                    available on GitHub:</p> <a
+                                    href="https://github.com/kumaradoss16/Networking/blob/main/C/VPN%20Connection%20Verification/main.c"
+                                    class="link">Github Source Code
+                                </a>
+                                <p><strong>Cloning the Repository</strong></p>
+                                <div id="language-c" class="code-block">
+                                    <pre>
+<code class="language-c"># Clone the repository
+git clone https://github.com/YourUsername/vpn-connectivity-tool.git
+
+# Navigate to directory
+cd vpn-connectivity-tool
+
+# Compile
+gcc main.c -o vpn_check
+
+# Run
+./vpn_check</code></pre>
+                                </div>
+
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="content" id="conclusion">
+                            <h3>Conclusion</h3>
+                            <p>This C project demonstrates an effective and practical implementation of an Advanced VPN
+                                Connectivity Verification Tool,
+                                capable of analyzing VPN connection integrity through comprehensive multi-layered
+                                security
+                                checks in a single execution.
+                                By applying key programming concepts such as cross-platform compatibility using
+                                preprocessor
+                                directives, system command
+                                execution via <code class="code">popen()</code>, string parsing and manipulation, buffer
+                                overflow prevention with safe
+                                string functions, and
+                                modular function design, the program efficiently evaluates VPN connections against eight
+                                critical security criteria:
+                                public IPv4 address changes, public IPv6 leak detection, DNS server configuration
+                                changes,
+                                DNS leak vulnerability
+                                assessment, VPN adapter presence verification, network latency measurement, geolocation
+                                tracking, and real-time
+                                connection monitoring.
+                            </p>
+                            <p>The program provides dual-mode operation—Standard Before/After Verification for
+                                comprehensive
+                                VPN status analysis and
+                                Real-Time Monitor Mode for continuous IP stability tracking—making it suitable for both
+                                one-time security audits and
+                                ongoing kill switch testing. Through intelligent comparison logic, the tool categorizes
+                                VPN
+                                status into five distinct
+                                states (ACTIVE, ACTIVE WITH DNS LEAK, LIKELY ACTIVE, PARTIAL, NOT ACTIVE), providing
+                                users
+                                with clear, actionable
+                                security insights. The cross-platform design ensures seamless operation across Windows,
+                                Linux, and macOS systems using
+                                platform-specific commands while maintaining a unified codebase, demonstrating
+                                professional-grade software architecture
+                                and security awareness in network diagnostics programming.</p>
+                            <div class=" action-buttons">
+                                <!-- Download Project Button -->
+                                <button class="action-button download-btn" onclick="downloadProject()">
+                                    <i class="fas fa-download"></i>Download
+                                </button>
+
+                                <!-- View GitHub Button -->
+                                <a href="https://github.com/kumaradoss16/Networking/tree/main/C/VPN%20Connection%20Verification"
+                                    target="_blank" class="action-button github-btn">
+                                    <i class="fab fa-github"></i>View GitHub
+                                </a>
+                            </div>
+                            <h4>Function Reference Table</h4>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Function Name</th>
+                                            <th>Return Type</th>
+                                            <th>Parameters</th>
+                                            <th>Purpose</th>
+                                            <th>Platform</th>
+                                            <th>Key Features</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><code class="code">main()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code class="code">void</code></td>
+                                            <td>Program entry point and control flow</td>
+                                            <td>All</td>
+                                            <td>Dual-mode selection, before/after state capture, verification summary
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">fetch_public_ip()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code class="code">char *ip_buffer</code></td>
+                                            <td>Retrieve public IPv4 address</td>
+                                            <td>All</td>
+                                            <td>Uses <code class="code">curl</code> + <code
+                                                    class="code">ipconfig.me</code>,
+                                                10-second timeout</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">fetch_public_ipv6()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code class="code">char *ip_buffer</code></td>
+                                            <td>Retrieve public IPv6 address</td>
+                                            <td>All</td>
+                                            <td>Force IPv6 with <code class="code">curl -6</code>, detects IPv6 leaks
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">fetch_dns_servers()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code class="code">char *dns_buffer</code></td>
+                                            <td>Get DNS server configuration</td>
+                                            <td>Platform-specific</td>
+                                            <td>Windows: <code class="code">ipconfig /all</code>, Linux/macOS: <code
+                                                    class="code">/etc/resolv.conf</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">detect_vpn_adapter()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code class="code">char *adapter_buffer</code></td>
+                                            <td>Scan for VPN network adapters</td>
+                                            <td>Platform-specific</td>
+                                            <td>27+ VPN brand detection, TAP/TUN interface scanning</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">check_vpn_keywords_windows()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code class="code">const char *line</code></td>
+                                            <td>Detect Windows VPN adapters</td>
+                                            <td>Windows</td>
+                                            <td>Keyword matching for TAP, TUN, OpenVPN, WireGuard, etc.</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">check_vpn_keywords_unix()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code class="code">const char *line</code></td>
+                                            <td>Detect Unix/Linux VPN interfaces</td>
+                                            <td>Linux/macOS</td>
+                                            <td>Matches <code class="code">tun0</code>, <code class="code">tap0</code>,
+                                                <code class="code">wg0</code>, <code class="code">ppp0</code>, <code
+                                                    class="code">utun0</code>, etc.
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">extract_first_dns_ip()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code class="code">const char *dns_buffer, char *ip_output</code></td>
+                                            <td>Extract primary DNS IP address</td>
+                                            <td>Platform-specific</td>
+                                            <td>Windows: parses <code class="code">ipconfig</code>, Unix: parses
+                                                nameserver
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">check_dns_leak()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code class="code">const char *dns_servers, const char *isp_dns</code>
+                                            </td>
+                                            <td>Detect DNS leak vulnerability</td>
+                                            <td>All</td>
+                                            <td>Compares post-VPN DNS with ISP DNS baseline</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">measure_latency()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code class="code">const char *host</code></td>
+                                            <td>Measure network round-trip time</td>
+                                            <td>Platform-specific</td>
+                                            <td>Windows: <code class="code">ping -n 4</code>, Linux/macOS: <code
+                                                    class="code">ping -c 4</code></td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">fetch_geolocation()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code
+                                                    class="code">char *country_buffer, char *region_buffer, char *city_buffer</code>
+                                            </td>
+                                            <td>Retrieve geographic location</td>
+                                            <td>All</td>
+                                            <td>Uses <code class="code">ipinfo.io</code> API for country/region/city
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">monitor_vpn_connection()</code></td>
+                                            <td><code class="code">int</code></td>
+                                            <td><code class="code">int interval_seconds, int duration_seconds</code>
+                                            </td>
+                                            <td>Real-time IP stability monitoring</td>
+                                            <td>All</td>
+                                            <td>Continuous polling, kill switch testing, IP change alerts</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">print_separator()</code></td>
+                                            <td><code class="code">void</code></td>
+                                            <td><code class="code">char c, int length</code></td>
+                                            <td>Print visual separator lines</td>
+                                            <td>All</td>
+                                            <td>Formatted output for readability</td>
+                                        </tr>
+                                        <tr>
+                                            <td><code class="code">safe_copy()</code></td>
+                                            <td><code class="code">void</code></td>
+                                            <td><code class="code">char *dest, const char *src, size_t size</code></td>
+                                            <td>Buffer-safe string copy</td>
+                                            <td>All</td>
+                                            <td>Prevents buffer overflow with null termination</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Use Cases</strong></p>
+                                <ol>
+                                    <li>VPN Configuration Validation: Verify new VPN setup is routing traffic correctly.
+                                    </li>
+                                    <li>Security Auditing: Detect DNS leaks, IPv6 leaks, and adapter misconfigurations.
+                                    </li>
+                                    <li>Kill Switch Testing: Real-time monitoring to verify kill switch prevents IP
+                                        exposure.</li>
+                                    <li>VPN Performance Testing: Measure latency impact of VPN routing.</li>
+                                    <li>Geographic Spoofing Verification: Confirm VPN changes apparent location.</li>
+                                    <li>Educational Tool: Learn network programming, system command execution, and
+                                        security
+                                        concepts.</li>
+                                </ol>
+                            </div>
+                            <div class="code-block bg-color">
+                                <p><strong>Sample Output Workflow</strong></p>
+                                <pre>
+<code>1. Mode Selection (Standard/Monitor)
+2. OS Detection (Windows/Linux/macOS)
+3. Before VPN State Capture
+   ├─ IPv4: 203.0.113.45
+   ├─ IPv6: 2001:db8::7334
+   ├─ DNS: 192.168.1.1 (ISP)
+   ├─ Adapters: None
+   ├─ Latency: 2ms (to ISP DNS)
+   └─ Location: Mumbai, Maharashtra, IN
+4. User Connects VPN (Manual Step)
+5. After VPN State Capture
+   ├─ IPv4: 198.51.100.23 (Changed ✅)
+   ├─ IPv6: 2a03:2880::25de (Changed ✅)
+   ├─ DNS: 10.8.0.1 (VPN DNS ✅)
+   ├─ DNS Leak Test: No leak detected ✅
+   ├─ Adapters: TAP-Windows V9 (Detected ✅)
+   ├─ Latency: 52ms (to VPN DNS)
+   └─ Location: Los Angeles, California, US (Changed ✅)
+6. Verification Summary
+   ├─ IP Changed: YES
+   ├─ IPv6 Changed: YES
+   ├─ DNS Changed: YES
+   ├─ VPN Adapter Detected: YES
+   └─ DNS Leak Detected: NO
+7. Verdict: VPN STATUS: ACTIVE ✅</code>
+</pre>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Technical Achievements</strong></p>
+                                <ul>
+                                    <li><b>Modularity</b>: 14 reusable functions with single responsibility principle.
+                                    </li>
+                                    <li><b>Portability</b>: Unified codebase for 3 major operating systems.</li>
+                                    <li><b>Robustness</b>: Comprehensive error handling and buffer safety.</li>
+                                    <li><b>Extensibility</b>: Easy to add new VPN brands to keyword lists.</li>
+                                    <li><b>User Experience</b>: Clear step-by-step output with visual separators.</li>
+                                </ul>
+                            </div>
+
+                            <div class="list">
+                                <h4>Educational Value</h4>
+                                <p>This project demonstrates practical applications of:</p>
+                                <ul>
+                                    <li>System programming in C.</li>
+                                    <li>Cross-platform development techniques.</li>
+                                    <li>Network diagnostics and security concepts.</li>
+                                    <li>String parsing and manipulation.</li>
+                                    <li>Process execution and inter-process communication (<code
+                                            class="code">popen</code>).
+                                    </li>
+                                    <li>External API integration.</li>
+                                    <li>Buffer overflow prevention strategies.</li>
+                                    <li>Modular software design patterns.</li>
+                                </ul>
+                            </div>
+
+                            <p>This summary provides a complete technical reference for understanding, using, and
+                                extending
+                                the VPN Connectivity
+                                Verification Tool.</p>
+                            <p class="rainbow-text"><strong>Happy Coding!</strong></p>
+                        </div>
+                    </div>
+            </section>
+
+            <!-- Ad Banner  -->
+            <div class="ad-banner-in-content">
+                <p>Ad</p>
+                <!-- <img src="https://placehold.co/768x150/555/white?text=Advertisement%0A768x10%0A(Large+Rectangle)"
+                    alt="Advertisement 336x280 (Large Rectangle)"> -->
+            </div>
+
+            <!-- My Other Projects  -->
+            <section id="other-work-section" class="other-work-section">
+                <h2 style="margin-top: 20px;">Other Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="../../Python/shooter-game/images/space-shooter-game-python-pygame-tutorial.webp"
+                            alt="Shooter Game Python Pygame Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Shooter Game</h4>
+                            <p>This is a beginner-friendly guide for building a Space Shooter game with Python and
+                                Pygame, covering coding concepts and
+                                project structure.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Pygame</span>
+                            </div>
+                            <a href="../../Python/shooter-game/space-shooter-game-python-pygame-tutorial.html"
+                                title="Shooter Game Python Pygame Project Tutorial" class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Python/atm-management-system/images/atm-management-system-python-cli-interface.webp"
+                            alt="ATM Management System Python Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>ATM Management System</h4>
+                            <p>This Python application implements a multi-user ATM system with SQLite-backed
+                                persistence,
+                                featuring account management, financial transactions, and administrative controls.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">SQLite</span>
+                            </div>
+                            <a href="../../Python/atm-management-system/atm-management-system-python-sqlite-tutorial.html"
+                                title="ATM Management System Python Project Tutorial" class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Web/weather-app/images/weather-app-html-css-javascript-tutorial.webp"
+                            alt="Weather App HTML CSS JavaScript Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Weather App</h4>
+                            <p>Responsive weather app with real-time API data, feature comparison, and intuitive design
+                                for global city forecasts.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag">CSS</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                            <a href="../../Web/weather-app/weather-app-html-css-javascript-tutorial.html"
+                                title="Weather App HTML CSS JavaScript Project Tutorial"
+                                class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Web/team-card-app/images/cricket-team-card-app.webp"
+                            alt="Team Card App HTML CSS JavaScript Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Team Card App</h3>
+                                <p>Interactive team card application for cricket, featuring dynamic team selection,
+                                    player
+                                    filters, and customizable
+                                    light/dark themes.</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">HTML</span>
+                                    <span class="project-tag">CSS</span>
+                                    <span class="project-tag">JavaScript</span>
+                                </div>
+                                <a href="../../Web/team-card-app/cricket-team-card-app-html-css-javascript-tutorial.html"
+                                    title="Team Card App HTML CSS JavaScript Project Tutorial"
+                                    class="view-project-button">View Project
+                                    <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../C++/password-strength-checker/images/password-strength-checker.webp"
+                            alt="Password Strength Checker in C++ Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Password Strength Checker</h4>
+                            <p>Multi-Password Batch Strength Checker (C++), designed to check multiple passwords at
+                                once, show
+                                individual strength, and
+                                provide a summary report.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C++</span>
+                            </div>
+                            <a href="../../C++/password-strength-checker/password-strength-checker-cpp-tutorial-guide.html"
+                                class="view-project-button"
+                                title="Password Strength Checker in C++ Project Tutorial">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../C/simple-calculator-c/images/simple-calculator-c-tutorial-cli-guide.webp"
+                            alt="VPN Connectivity verification in C Project Tutorial" loading=" lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Simple Calculator in C</h4>
+                            <p>This comprehensive simple calculator in C tutorial teaches you how to build a fully
+                                functional menu-driven calculator
+                                with a command-line interface from scratch..</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C</span>
+                            </div>
+                            <a href="../../C/simple-calculator-c/simple-calculator-c-tutorial-cli-guide.html"
+                                title="VPN Connectivity verification in C Project Tutorial"
+                                class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Side  -->
+        <aside class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+
+            <!-- Color Palettes Section -->
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                        alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home
+                        Page</a>
+                </div>
+            </div>
+
+            <!-- Open-source Tools Directory -->
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a></li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block medium">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                    <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                        alt="Advertisement 300x250 (Medium Rectangle)" /> -->
+            </div>
+            <div class="ad-block small">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                    <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                        alt="Advertisement 320x100 (Large Mobile Banner)" /> -->
+            </div>
+            <div class="related-tags">
+                <h3>Related Tags</h3>
+                <div class="tag-container">
+                    <ol>
+                        <li><a href=""><span class="tag python">#python</span></a></li>
+                        <li><a href=""><span class="tag js">#javascript</span></a></li>
+                        <li><a href=""><span class="tag hacking">#ethical hacking</span></a></li>
+                        <li><a href=""><span class="tag hacking">#networking</span></a></li>
+                        <li><a href=""><span class="tag hacking">#cybersecurity</span></a></li>
+                        <li><a href=""><span class="tag hacking">#linux</span></a></li>
+                        <li><a href=""><span class="tag hacking">#webdev</span></a></li>
+                    </ol>
+                </div>
+            </div>
+        </aside>
+
+        <button id="scrollUpBtn" aria-label="Scroll to top">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+    <!-- Footer  -->
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../color-palettes/index.html">Color Space</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpireHub | All Rights Reserved</p>
+    </footer>
+
+    <script src="../Prism/prism.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <!-- Prism.js core and language -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <!-- Prism.js line-numbers plugin -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

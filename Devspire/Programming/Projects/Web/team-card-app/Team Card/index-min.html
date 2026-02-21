@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../../images/icon.webp" sizes="32x46" type="image/png">
+    <title>TechTutorials | Team Card APP [DEMO]</title>
+    <link rel="stylesheet" href="style-min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body>
+    <div class="head"><img src="image.webp" alt="">
+        <h1 class="title">
+            <span>T</span><span>E</span><span>A</span><span>M</span><span>S</span><span>T</span><span>A</span><span>T</span><span>S</span>
+        </h1><button class="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+    </div>
+    <hr>
+    <main>
+        <div class="team-stats">
+            <div class="teams"><label for="team-select" class="option-label">SELECT TEAM:</label><select
+                    name="team-select" id="team-select">
+                    <option value="India">India</option>
+                    <option value="Sri Lanka">Sri Lanka</option>
+                    <option value="Australia">Australia</option>
+                    <option value="England">England</option>
+                    <option value="South Africa">South Africa</option>
+                    <option value="New Zealand">New Zealand</option>
+                    <option value="Afghanistan">Afghanistan</option>
+                    <option value="Bangladesh">Bangladesh</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Pakistan">Pakistan</option>
+                </select></div>
+            <p>SPORT: <span id="sport"></span></p>
+            <p>YEAR: <span id="year"></span></p>
+            <p>HEAD COACH: <span id="coach"></span></p>
+        </div><label for="players" class="options-label">Filter Teammates: </label><select name="players" id="players"
+            style="height: 30px;">
+            <option value="all">All</option>
+            <option value="nickname">Nicknames</option>
+            <option value="batsman">Batsman</option>
+            <option value="bowler">Bowlers</option>
+            <option value="wicketkeeper">Wicketkeepers</option>
+            <option value="all-rounder">All Rounders</option>
+        </select>
+        <div class="cards" id="player-cards">
+            <div class="player-card">
+                <h2>Rohit Sharma (Captain)</h2>
+                <p>Position: <span class="position-batsman">batsman</span></p>
+                <p>Number: 45</p>
+                <p>Nickname: Hitman</p>
+            </div>
+            <div class="player-card">
+                <h2>Hardik Pandya</h2>
+                <p>Position: <span class="position-all-rounder">all-rounder</span></p>
+                <p>Number: 33</p>
+                <p>Nickname: N/A</p>
+            </div>
+            <div class="player-card">
+                <h2>Virat Kohli</h2>
+                <p>Position: <span class="position-batsman">batsman</span></p>
+                <p>Number: 18</p>
+                <p>Nickname: Cheeku</p>
+            </div>
+            <div class="player-card">
+                <h2>Suryakumar Yadav</h2>
+                <p>Position: <span class="position-batsman">batsman</span></p>
+                <p>Number: 63</p>
+                <p>Nickname: SKY</p>
+            </div>
+            <div class="player-card">
+                <h2>Yashasvi Jaiswal</h2>
+                <p>Position: <span class="position-batsman">batsman</span></p>
+                <p>Number: N/A</p>
+                <p>Nickname: N/A</p>
+            </div>
+            <div class="player-card">
+                <h2>Rishabh Pant</h2>
+                <p>Position: <span class="position-wicketkeeper">wicketkeeper</span></p>
+                <p>Number: 17</p>
+                <p>Nickname: N/A</p>
+            </div>
+            <div class="player-card">
+                <h2>Sanju Samson</h2>
+                <p>Position: <span class="position-wicketkeeper">wicketkeeper</span></p>
+                <p>Number: N/A</p>
+                <p>Nickname: N/A</p>
+            </div>
+            <div class="player-card">
+                <h2>Shivam Dube</h2>
+                <p>Position: <span class="position-all-rounder">all-rounder</span></p>
+                <p>Number: 25</p>
+                <p>Nickname: N/A</p>
+            </div>
+            <div class="player-card">
+                <h2>Axar Patel</h2>
+                <p>Position: <span class="position-all-rounder">all-rounder</span></p>
+                <p>Number: 20</p>
+                <p>Nickname: N/A</p>
+            </div>
+            <div class="player-card">
+                <h2>Ravindra Jadeja</h2>
+                <p>Position: <span class="position-all-rounder">all-rounder</span></p>
+                <p>Number: 8</p>
+                <p>Nickname: Jaddu</p>
+            </div>
+            <div class="player-card">
+                <h2>Kuldeep Yadav</h2>
+                <p>Position: <span class="position-bowler">bowler</span></p>
+                <p>Number: 23</p>
+                <p>Nickname: Chinaman</p>
+            </div>
+            <div class="player-card">
+                <h2>Yuzvendra Chahal</h2>
+                <p>Position: <span class="position-bowler">bowler</span></p>
+                <p>Number: 3</p>
+                <p>Nickname: N/A</p>
+            </div>
+            <div class="player-card">
+                <h2>Arshdeep Singh</h2>
+                <p>Position: <span class="position-bowler">bowler</span></p>
+                <p>Number: 2</p>
+                <p>Nickname: N/A</p>
+            </div>
+            <div class="player-card">
+                <h2>Mohammed Siraj</h2>
+                <p>Position: <span class="position-bowler">bowler</span></p>
+                <p>Number: 13</p>
+                <p>Nickname: Miyaan</p>
+            </div>
+            <div class="player-card">
+                <h2>Jasprit Bumrah</h2>
+                <p>Position: <span class="position-bowler">bowler</span></p>
+                <p>Number: 93</p>
+                <p>Nickname: Jassi</p>
+            </div>
+        </div>
+        </div>
+    </main>
+    <script src="script-min.js"></script>
+</body>
+
+</html>

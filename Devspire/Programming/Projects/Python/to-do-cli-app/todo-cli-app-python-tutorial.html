@@ -1,0 +1,1852 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../../../images/icon.webp" sizes="32x46" type="image/png">
+    <!-- Primary SEO Tags -->
+    <title>Python To-Do CLI App: Lists & Loops Tutorial</title>
+    <meta name="description"
+        content="Learn to build a Python To-Do CLI app from scratch. Master Python lists, loops, and functions through this beginner-friendly step-by-step tutorial with complete code examples.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/Programming/Python/to-do-cli-app">
+
+    <!-- Robots Meta -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- Open Graph Tags (Social Media) -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Python To-Do CLI App: Lists & Loops Tutorial">
+    <meta property="og:description"
+        content="Learn to build a Python To-Do CLI app from scratch. Master Python lists, loops, and functions through hands-on coding.">
+    <meta property="og:url" content="https://devspirehub.com/Programming/Python/to-do-cli-app">
+    <meta property="og:site_name" content="DevSpireHub">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Python To-Do CLI App: Lists & Loops Tutorial">
+    <meta name="twitter:description"
+        content="Step-by-step guide to building a Python CLI to-do application for beginners">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Prism.js CSS theme -->
+    <link rel="stylesheet" href="../../Prism/prism.css" />
+
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DevSpireHub",
+        "url": "https://devspirehub.com/",
+        "logo": "https://devspirehub.com/image/icon.webp",
+        "description": "DevSpire - Programming, Projects, Ethical hacking, Networking & AI",
+        "founder": [
+            {
+            "@type": "Person",
+            "name": "Kumaradoss",
+            "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+        ],
+        "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16",
+        ]
+        }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../../index.html">Home</a></li>
+                    <li><a href="#implementation-details">Implementations</a></li>
+                    <li><a href="#other-work-section">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <!-- Left Side  -->
+        <main class="left-column">
+            <section class="project-details-section">
+                <h1>Python To-Do CLI App Tutorial: Master Lists and Loops</h1>
+                <p>Learn How to Create a Simple To-Do CLI App with Feature Comparison Using Python:
+                    Step-by-Step
+                    Guide for
+                    Beginners:</p>
+
+                <div class="image-placeholder">
+                    <img src="images/todo-cli-app-python.webp" alt="TODO CLI App Python Tutorial" loading="lazy"
+                        decoding="async" fetchpriority="auto" />
+                </div>
+                <p>Building a <strong>Python To-Do CLI app</strong> is the perfect project for
+                    mastering Python lists and loops as a beginner. This comprehensive step-by-step
+                    tutorial teaches you how to create a fully functional command-line to-do application
+                    from scratch. You'll learn essential Python programming concepts including list
+                    manipulation, loop iteration, user input handling, and function design through
+                    practical, hands-on coding. By the end of this tutorial, you'll have built a
+                    working Python CLI application with features like adding tasks, marking items
+                    complete, and deleting entries—all while understanding the core concepts that
+                    power real-world Python applications.</p>
+            </section>
+
+            <section class="table-of-contents-section">
+                <h2><i class="fas fa-list"></i>Table of Contents</h2>
+                <ol>
+                    <li><a href="#prerequisites">Introduction</a></li>
+                    <li><a href="">Python Lists Fundamentals</a></li>
+                    <li><a href="">Python Loops Fundamentals</a></li>
+                    <li><a href="#language-python">Python Code</a></li>
+                    <li><a href="">Conclusion</a></li>
+                    <li><a href="">Preview</a></li>
+                </ol>
+            </section>
+
+            <section id="prerequisites" class="prerequisites-section">
+                <h2><i class="fas fa-clipboard-check"></i>Prerequisites</h2>
+                <ul>
+                    <li>Basic Python installation (Python 3.7 or higher)</li>
+                    <li>Text editor or IDE (VS Code, PyCharm, or similar)</li>
+                    <li>Basic understanding of Python variables and functions</li>
+                </ul>
+            </section>
+
+            <section id="implementation-details" class="implementation-section">
+                <h2>Implementation Details</h2>
+                <p>Building a solid foundation in Python programming requires mastering two fundamental concepts: lists
+                    and loops. These powerful tools work together to help you store, organize, and process data
+                    efficiently. In this comprehensive step-by-step tutorial, you'll learn both concepts from scratch
+                    and apply them by building a complete command-line to-do application.</p>
+                <div class="content">
+                    <h3>Why Lists and Loops Matter for Beginners</h3>
+                    <p>Python lists and loops form the backbone of data manipulation in programming. Whether you're
+                        processing user input, managing collections of data, or automating repetitive tasks, these
+                        concepts appear in virtually every Python project. By the end of this tutorial, you'll
+                        understand how to combine lists and loops to create practical, real-world applications.</p>
+                    <h3>Part 1: Python Lists Fundamentals</h3>
+                    <h4>What Are Python Lists?</h4>
+                    <p>A Python list is an ordered, mutable (changeable) collection that can store multiple items in a
+                        single variable. Think of a list as a container that holds related items in a specific order.
+                    </p>
+                    <div id="language-python" class="code-block">
+                        <p>Basic List Creation</p>
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">
+# Creating your first list
+fruits = ["apple", "banana", "cherry"]
+print(fruits)
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+                <div class="copy-feedback" id="copyFeedbackPython"></div>
+                <div class="list">
+                    <ul>
+                        <li><code class="language-python inline">fruits =</code> creates a variable named "fruits".</li>
+                        <li><code class="language-python inline">["apple", "banana", "cherry"]</code> creates a list
+                            containing three string elements.</li>
+                        <li>Square brackets <code class="language-python inline">[]</code> define the list boundaries.
+                        </li>
+                        <li><code class="language-python inline">print(fruits)</code> displays the entire list to the
+                            console.</li>
+                    </ul>
+                    <p>The output <code class="language-python inline">['apple', 'banana', 'cherry']</code> shows
+                        Python's standard list representation, where single quotes are used regardless of how you
+                        originally defined the strings.</p>
+                </div>
+                <div id="language-python" class="code-block">
+                    <p>Mixed Data Types</p>
+                    <pre class="line-numbers">
+                        <code id="codeSnippetPython" class="language-python">
+# Creating your first list
+fruits = ["apple", "banana", "cherry"]
+print(fruits)
+                        </code>
+                    </pre>
+                </div>
+                <div class="copy-feedback" id="copyFeedbackPython"></div>
+                <div class="list">
+                    <ul>
+                        <li><code class="language-python inline">"Python"</code> is a string (text data).</li>
+                        <li><code class="language-python inline">2025</code> is an integer (whole number).</li>
+                        <li><code class="language-python inline">True</code> is a boolean (True/False value).</li>
+                        <li><code class="language-python inline">3.14</code> is a float (decimal number).</li>
+                    </ul>
+                    <p>All these different data types coexist within a single list, which is a powerful feature of
+                        Python.</p>
+                </div>
+                <div class="list">
+                    <h4>Key List Properties</h4>
+                    <p>Lists have three essential characteristics that make them powerful:</p>
+                    <ol>
+                        <li><strong>Ordered:</strong> Items maintain their position</li>
+                        <li><strong>Mutable:</strong> You can change, add, or remove items</li>
+                        <li><strong>Allow Duplicates:</strong> Same values can appear multiple times</li>
+                    </ol>
+                    <div id="language-python" class="code-block">
+                        <p>Demonstrating list properties</p>
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">
+shopping_list = ["eggs", "milk", "bread", "eggs"]  # Duplicates allowed
+print(f"First item: {shopping_list[0]}")  # Output: First item: eggs
+shopping_list[1] = "almond milk"  # Mutable - can change items
+print(shopping_list)  # Output: ['eggs', 'almond milk', 'bread', 'eggs']
+                            </code>
+                        </pre>
+                    </div>
+                </div>
+                <div id="language-python" class="code-block">
+                    <p>Creating Lists in Multiple Ways</p>
+                    <pre class="line-numbers">
+                        <code id="codeSnippetPython" class="language-python">
+# Method 1: Square brackets (most common)
+colors = ["red", "green", "blue"]
+
+# Method 2: list() constructor
+numbers = list([1, 2, 3, 4, 5])
+
+# Method 3: Empty list
+empty_list = []
+# or
+empty_list = list()
+
+# Method 4: List comprehension (advanced)
+squares = [x**2 for x in range(5)]  # [0, 1, 4, 9, 16]
+                        </code>
+                    </pre>
+                </div>
+                <div class="content" id="part-2">
+                    <h3>Part 2: Working with Lists - Essential Operations</h3>
+                    <h4>Accessing List Elements</h4>
+                    <p>Python uses zero-based indexing, which means counting starts from 0 instead of 1. This is a
+                        fundamental concept borrowed from computer memory addressing where the first memory location is
+                        at offset 0.</p>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">
+programming_languages = ["Python", "JavaScript", "Java", "C++"]
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <li>Position 0: <code class="language-python inline">"Python"</code></li>
+                            <li>Position 1: <code class="language-python inline">"JavaScript"</code></li>
+                            <li>Position 2: <code class="language-python inline">"Java"</code></li>
+                            <li>Position 3: <code class="language-python inline">"C++"</code></li>
+                        </ul>
+                    </div>
+                    <h4 style="margin-top: 10px;">Index Mapping:</h4>
+                    <h4>Positive Indexing (Left to Right)</h4>
+                    <div id="language-python" class="code-block">
+                        <p>Forward Access</p>
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">
+    print(programming_languages[0])  # Python
+    print(programming_languages[1])  # JavaScript
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <li><code class="language-python inline">[0]</code> retrieves the first element from the
+                                left.</li>
+                            <li><code class="language-python inline">[1]</code> retrieves the second element from the
+                                left.</li>
+                            <li>Indexing flows naturally from left to right: 0, 1, 2, 3...</li>
+                        </ul>
+                    </div>
+                    <h4>Negative Indexing (Right to Left)</h4>
+                    <div id="language-python" class="code-block">
+                        <p>Reverse Access</p>
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">
+    print(programming_languages[-1])  # C++
+    print(programming_languages[-2])  # Java
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <li><code class="language-python inline">[-1]</code> always gives you the last element.</li>
+                            <li><code class="language-python inline">[-2]</code> gives you the second-to-last element.
+                            </li>
+                            <li>Index mapping: -4="Python", -3="JavaScript", -2="Java", -1="C++".</li>
+                        </ul>
+                    </div>
+                    <h4>List Length Function</h4>
+                    <div id="language-python" class="code-block">
+                        <p>Size Determination</p>
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">
+    print(len(programming_languages))  # 4
+                            </code>
+                        </pre>
+                    </div>
+                    <!-- List Slicing -->
+                    <div class="content">
+                        <h4>List Slicing - Extracting Portions</h4>
+                        <p><strong>List slicing</strong> is a powerful Python feature that allows you to extract a
+                            portion (subset) of a list by specifying a range of indices. Instead of accessing individual
+                            elements, slicing creates a new list containing selected elements from the original list.
+                        </p>
+                        <div id="language-python" class="code-block">
+                            <p>Basic Syntax</p>
+                            <pre class="line-numbers">
+                                <code id="codeSnippetPython" class="language-python">
+    list_name[start:stop:step]
+                                </code>
+                            </pre>
+                        </div>
+                        <div class="list">
+                            <ul>
+                                <li><strong>start:</strong> Starting index (inclusive) - where to begin the slice.</li>
+                                <li><strong>stop:</strong> Ending index (exclusive) - where to end the slice.</li>
+                                <li><strong>step:</strong> Step size (optional) - how many elements to skip.</li>
+                            </ul>
+                        </div>
+                        <div id="language-python" class="code-block">
+                            <pre class="line-numbers">
+                                <code id="codeSnippetPython" class="language-python">
+    pythonnumbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    # Basic slicing: [start:end:step]
+    print(numbers[2:5])    # [2, 3, 4] - items 2 to 4
+    print(numbers[:3])     # [0, 1, 2] - first 3 items
+    print(numbers[7:])     # [7, 8, 9] - from index 7 to end
+    print(numbers[::2])    # [0, 2, 4, 6, 8] - every 2nd item
+    print(numbers[::-1])   # [9, 8, 7, 6, 5, 4, 3, 2, 1, 0] - reversed
+                                </code>
+                            </pre>
+                        </div>
+                        <h4>Essential List Methods</h4>
+                        <div id="language-python" class="code-block">
+                            <pre class="line-numbers">
+                                <code id="codeSnippetPython" class="language-python">
+    # Starting with a simple list
+    tasks = ["code review", "write tests"]
+
+    # Adding items
+    tasks.append("deploy app")          # Add to end
+    tasks.insert(1, "fix bugs")         # Add at specific position
+    tasks.extend(["document code", "update readme"])  # Add multiple items
+
+    print(tasks)  
+    # Output: ['code review', 'fix bugs', 'write tests', 'deploy app', 'document code', 'update readme']
+                                </code>
+                            </pre>
+                        </div>
+                        <div id="language-python" class="code-block">
+                            <pre class="line-numbers">
+                                <code id="codeSnippetPython" class="language-python">
+    # Removing items
+    tasks.remove("fix bugs")            # Remove first occurrence
+    last_task = tasks.pop()             # Remove and return last item
+    second_task = tasks.pop(1)          # Remove and return item at index 1
+
+    print(f"Removed: {last_task}")      # Removed: update readme
+    print(f"Current tasks: {tasks}")    
+    print(tasks)        
+                                </code>
+                            </pre>
+                        </div>
+                        <div id="language-python" class="code-block">
+                            <pre class="line-numbers">
+                                <code id="codeSnippetPython" class="language-python">
+                                    
+    # Finding items
+    if "deploy app" in tasks:
+        print("Deployment is on the list!")
+
+    # Get index of item
+    index = tasks.index("deploy app")
+    print(f"Deploy app is at position: {index}")      
+                                </code>
+                            </pre>
+                        </div>
+                        <div class="list">
+                            <h4>List Method</h4>
+                            <ul>
+                                <li><code class="language-python inline">append()</code> - Adds a single item to the end
+                                    of the list.</li>
+                                <li><code class="language-python inline">insert()</code> - Adds an item at a specific
+                                    position.</li>
+                                <li><code class="language-python inline">extend()</code> - Adds multiple items from an
+                                    iterable to the end.</li>
+                                <li><code class="language-python inline">extend()</code> - Removes the first occurrence
+                                    of a specific value.</li>
+                                <li><code class="language-python inline">pop()</code> - Removes and returns item at
+                                    specified index.</li>
+                                <li><code class="language-python inline">index()</code> - Returns the index of the first
+                                    occurrence of an item.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 3  -->
+                <div class="content" id="part-3">
+                    <h3>Part 3: Python Loops Fundamentals</h3>
+                    <p>Loops in Python are used to repeat actions efficiently. The main types are For loops (counting
+                        through items) and While loops (based on conditions).</p>
+                    <h4>Understanding For Loops</h4>
+                    <p><strong>For loops</strong> iterate over sequences, executing code for each item. They're perfect
+                        for processing lists:</p>
+                    <div id="language-python" class="code-block">
+                        <p>Basic Syntax</p>
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+for variable in iterable:
+# Code to execute repeatedly
+pass    
+                            </code>
+                        </pre>
+                    </div>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+# Basic for loop with a list
+fruits = ["apple", "banana", "cherry"]
+
+for fruit in fruits:
+    print(f"I like {fruit}")
+
+# Output:
+# I like apple
+# I like banana  
+# I like cherry    
+                            </code>
+                        </pre>
+                    </div>
+                    <h4>For Loops with Range</h4>
+                    <p>The <code class="language-python inline">range()</code> function generates sequences of numbers:
+                    </p>
+                    <div id="language-python" class="code-block">
+                        <p>Basic Syntax</p>
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+# range(stop) - starts at 0
+for i in range(5):      # range(start, stop)
+    print(i)       # Output: 0, 1, 2, 3, 4 
+for i in range(2, 7):   # range(start, stop, step)
+    print(i)       # Output: 2, 3, 4, 5, 6 
+for i in range(0, 10, 2):
+    print(i)       # Output: 0, 2, 4, 6, 8 
+                            </code>
+                        </pre>
+                    </div>
+                    <h4>While Loops for Conditional Iteration</h4>
+                    <p>A <code class="language-python inline">while loop</code> is a programming construct that
+                        repeatedly executes a block of code as long as a specified condition remains true.</p>
+                    <div id="language-python" class="code-block">
+                        <p>Basic Syntax</p>
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+while condition:
+    # Code to execute repeatedly# Update condition to eventually make it False
+    pass
+                            </code>
+                        </pre>
+                    </div>
+                    <p><code class="language-python inline">while loop</code> continue executing as long as a condition
+                        is True:</p>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+# Basic while loop
+count = 0
+while count < 3:
+    print(f"Count is: {count}")
+    # Important: increment to avoid infinite loop
+    count += 1   # Output:# Count is: 0# Count is: 1# Count is: 2# While loop with user input
+user_input = ""
+while user_input.lower() != "quit":
+    user_input = input("Enter 'quit' to exit: ")
+    if user_input.lower() != "quit":
+        print(f"You entered: {user_input}")
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="output">
+                        <p class="output-heading"><strong>Output</strong></p>
+                        <div class="output-text">
+                            <p>Count is: 0</p>
+                            <p>Count is: 1</p>
+                            <p>Count is: 2</p>
+                            <p>Enter 'quit' to exit: q</p>
+                            <p>You entered: q</p>
+                            <p>Enter 'quit' to exit: quit </p>
+                        </div>
+                    </div>
+
+                    <h4>Loop Control: Break and Continue</h4>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Using break to exit early
+for num in numbers:
+    if num == 5:
+        break  # Stop the loop completely
+    print(num)  # Prints: 1, 2, 3, 4
+
+print("---")
+
+# Using continue to skip iteration
+for num in numbers:
+    if num % 2 == 0:  # Skip even numbers
+        continue
+    print(num)  # Prints: 1, 3, 5, 7, 9
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="output">
+                        <p class="output-heading"><strong>Output</strong></p>
+                        <div class="output-text">
+                            <p>2</p>
+                            <p>3</p>
+                            <p>4</p>
+                            <p>---</p>
+                            <p>1</p>
+                            <p>3</p>
+                            <p>5</p>
+                            <p>7</p>
+                            <p>9</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Part 4  -->
+                <div class="content" id="part-4">
+                    <h3>Part 4: Combining Lists and Loops</h3>
+                    <h4>Iterating Through Lists with Index</h4>
+                    <h4>Understanding For Loops</h4>
+                    <p><strong>For loops</strong> iterate over sequences, executing code for each item. They're perfect
+                        for processing lists:</p>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+programming_languages = ["Python", "JavaScript", "Java", "C++"]
+# Method 1: for index and value
+for index, language in enumerate(programming_languages):
+    print(f"{index + 1}. {language}")   
+                            </code>
+                        </pre>
+                    </div>
+                    <p>The <code class="language-python inline">enumerate()</code> function is a built-in Python method
+                        that adds a counter to an iterable (like lists, strings, tuples) and returns an enumerate
+                        object. It provides both the index and the value of each element simultaneously during
+                        iteration.</p>
+                    <div class="output">
+                        <p class="output-heading"><strong>Output</strong></p>
+                        <div class="output-text">
+                            <p>1. python</p>
+                            <p>2. javascript</p>
+                            <p>3. java</p>
+                            <p>4. c++</p>
+                        </div>
+                    </div>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+programming_languages = ["Python", "JavaScript", "Java", "C++"]
+for i in range(len(programming_languages)):
+    print(f"Language {i}: {programming_languages[i]}")  
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="output">
+                        <p class="output-heading"><strong>Output</strong></p>
+                        <div class="output-text">
+                            <p>Language 0: python</p>
+                            <p>Language 1: javascript</p>
+                            <p>Language 2: java</p>
+                            <p>Language 3: c++</p>
+                        </div>
+                    </div>
+                    <h4>Processing Lists with Loops</h4>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+# Example: Grade calculator
+grades = [85, 92, 78, 96, 88]
+
+# Calculate average
+total = 0
+for grade in grades:
+    total += grade
+average = total / len(grades)
+print(f"Average grade: {average:.1f}") 
+ 
+highest = grades[0]
+lowest = grades[0]
+
+for grade in grades:
+    # Conditions is to find the highest grade
+    if grade > highest:
+        highest = grade
+    # Conditions is to find the lowest grade
+    if grade < lowest:
+        lowest = grade
+
+print(f"Highest: {highest}, Lowest: {lowest}")  
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="output">
+                        <p class="output-heading"><strong>Output</strong></p>
+                        <div class="output-text">
+                            <p>Average grade: 87.8</p>
+                            <p>Highest: 96, Lowest: 78</p>
+                        </div>
+                    </div>
+                    <h4>List Comprehensions - Advanced Pattern</h4>
+                    <p><strong>List comprehension</strong> is a concise, elegant way to create lists in Python by
+                        combining a loop and optional conditional logic into a single, readable line of code.</p>
+                    <div id="language-python" class="code-block">
+                        <p><strong>Basic Syntax</strong></p>
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+[expression for item in iterable] 
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="list">
+                        <h4>Components:</h4>
+                        <ul>
+                            <li><strong>Expression: </strong>What to do with each item (the output).</li>
+                            <li><strong>Item: </strong>Variable representing each element.</li>
+                            <li><strong>Iterable: </strong>The source sequence (list, string, range, etc.).</li>
+                        </ul>
+                    </div>
+                    <p>It provides a more compact alternative to traditional for loops when building new lists based on
+                        existing.</p>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+# Traditional approach
+squares = []
+for x in range(10):
+    squares.append(x**2)
+
+# List comprehension (more Pythonic)
+squares = [x**2 for x in range(10)]
+print(squares)  # [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]# With conditions
+even_squares = [x**2 for x in range(10) if x % 2 == 0]
+print(even_squares)  # [0, 4, 16, 36, 64] 
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="output">
+                        <p class="output-heading"><strong>Output</strong></p>
+                        <div class="output-text">
+                            <p># Traditional approach</p>
+                            <p>[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</p>
+                            <p># List comprehension</p>
+                            <p>[0, 4, 16, 36, 64]</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Part 5 -->
+                <div class="content" id="part-4">
+                    <h3 style="color: #f97316;;">Part 5: Building a To-Do CLI App - Complete Project</h3>
+                    <p>Now let's apply everything you've learned by building a fully functional command-line to-do
+                        application. This project demonstrates practical use of lists, loops, and user interaction.</p>
+                    <div class="list">
+                        <h4>Project Overview</h4>
+                        <p><strong>Our to-do app will feature:</strong></p>
+                        <ul>
+                            <li>Add new tasks.</li>
+                            <li>View all tasks with numbers.</li>
+                            <li>Mark tasks as complete.</li>
+                            <li>Delete tasks.</li>
+                            <li>Simple, user-friendly interface.</li>
+                        </ul>
+                    </div>
+
+                    <h3>Step 1: Python Project Setup and Structure</h3>
+                    <h4>Understanding the Application Architecture</h4>
+                    <p>Let's start by creating the main structure of our Python CLI application:</p>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+"""
+Simple To-Do List Application
+A beginner-friendly CLI app demonstrating lists and loops
+"""
+
+def main():
+    """Main function to run the to-do application"""
+    print("=== Welcome to Your Personal To-Do List ===")
+    
+    # This will store our tasks as a list of dictionaries
+    # Each task will have: {'task': 'description', 'completed': False}
+    tasks = []
+    
+    # Main application loop
+    while True:
+        show_menu()
+        choice = get_user_choice()
+        
+        if choice == '1':
+            add_task(tasks)
+        elif choice == '2':
+            view_tasks(tasks)
+        elif choice == '3':
+            complete_task(tasks)
+        elif choice == '4':
+            delete_task(tasks)
+        elif choice == '5':
+            print("Thank you for using the To-Do List app!")
+            break
+        else:
+            print("❌ Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
+                            </code>
+                        </pre>
+                    </div>
+                    <div class="explanation">
+                        <h4>🔍 Code Breakdown: Main Application Structure</h4>
+                        <p><strong>Key Programming Concepts Explained:</strong></p>
+                        <ol>
+                            <li><strong>Data Structure Choice</strong>: We use <code
+                                    class="language-python inline">tasks = []</code> to create an empty list that will
+                                store dictionaries
+                                <ul>
+                                    <li>Each task is a dictionary: <code
+                                            class="language-python inline">{'task': 'Buy groceries', 'completed': False}</code>
+                                    </li>
+                                    <li>This allows us to store both the task description and completion status</li>
+                                </ul>
+                            </li>
+                            <li><strong>Infinite Loop Pattern</strong>: <code
+                                    class="language-python inline">while True:</code> creates a continuous loop.
+                                <ul>
+                                    <li>The application keeps running until the user chooses to exit.</li>
+                                    <li>This is a common pattern in <strong>command-line applications.</strong></li>
+                                </ul>
+                            </li>
+                            <li><strong>Function Organization</strong>: Each feature gets its own function
+                                <ul>
+                                    <li><code>show_menu()</code class="language-python inline"> - displays options to the user.</li>
+                                    <li><code>add_task()</code class="language-python inline"> - adds new tasks to the list.</li>
+                                    <li><code>view_tasks()</code class="language-python inline"> - shows all current tasks.</li>
+                                    <li><code>complete_task()</code class="language-python inline"> - marks tasks as done.</li>
+                                    <li><code>delete_task()</code class="language-python inline"> - removes tasks from the list.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Control Flow</strong>: The <code class="language-python inline">if-elif-else</code>
+                                        chain handles user choices.
+                                        <ul>
+                                            <li>Each number (1-5) triggers a different function.</li>
+                                            <li>Invalid choices show an error message.</li>
+                                        </ul>
+                                    </li>
+                        </ol>
+                    </div>
+
+                    <h3>Step 2: Creating the Menu System for Your Python CLI App</h3>
+                    <h4>Building an Interactive Command-Line Interface</h4>
+                    <p>The menu system is crucial for user experience in CLI Python applications:</p>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+def show_menu():
+    """Display the main menu options"""
+    print("\n" + "="*40)
+    print("📝 TO-DO LIST MENU")
+    print("="*40)
+    print("1. ➕ Add a new task")
+    print("2. 📋 View all tasks") 
+    print("3. ✅ Mark task as complete")
+    print("4. 🗑️ Delete a task")
+    print("5. 🚪 Exit")
+    print("="*40)
+
+def get_user_choice():
+    """Get and validate user menu choice"""
+    while True:
+        choice = input("Choose an option (1-5): ").strip()
+        if choice in ['1', '2', '3', '4', '5']:
+            return choice
+        print("❌ Please enter a number between 1 and 5.")
+
+                            </code>
+                        </pre>
+                    </div>
+
+                    <div class="explanation">
+                        <h4>🔍 Code Breakdown: Menu System Functions</h4>
+                        <p><strong>Essential Concepts for CLI Applications:</strong></p>
+                        <ol>
+                            <li><strong>String Formatting</strong>: <code class="language-python inline">"="*40</code>
+                                creates a decorative line.
+                                <ul>
+                                    <li>This makes the interface more visually appealing</li>
+                                    <li>Common technique in <strong>command-line applications</strong></li>
+                                </ul>
+                            </li>
+                            <li><strong>Input Validation Loop</strong>: <code
+                                    class="language-python inline">get_user_choice()</code> ensures valid input.
+                                <ul>
+                                    <li>Uses <code class="language-python inline">while True:</code> to keep asking
+                                        until valid input is received.</li>
+                                    <li><code class="language-python inline">.strip()</code> removes extra spaces from
+                                        user input.</li>
+                                    <li><code
+                                            class="language-python inline">if choice in ['1', '2', '3', '4', '5']:</code>
+                                        checks for valid options.</li>
+                                </ul>
+                            </li>
+                            <li><strong>User Experience Enhancement</strong>:
+                                <ul>
+                                    <li>Emojis make the interface friendly and modern.</li>
+                                    <li>Clear separation with lines and spacing.</li>
+                                    <li>Descriptive option names help users understand functionality.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <h3>Step 3: Adding Tasks - Core Functionality for Python Lists</h3>
+                    <h4>Implementing Task Creation with Validation</h4>
+                    <p>The add_task function demonstrates Python list manipulation and input validation:</p>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+def add_task(tasks):
+    """Add a new task to the task list"""
+    print("\n➕ ADD NEW TASK")
+    print("-" * 20)
+    
+    while True:
+        task_description = input("Enter task description: ").strip()
+        
+        # Validate input
+        if not task_description:
+            print("❌ Task cannot be empty. Please try again.")
+            continue
+        
+        if len(task_description) > 100:
+            print("❌ Task too long (max 100 characters). Please shorten it.")
+            continue
+            
+        # Create new task
+        new_task = {
+            'task': task_description,
+            'completed': False
+        }
+        
+        tasks.append(new_task)
+        print(f"✅ Task '{task_description}' added successfully!")
+        print(f"📊 You now have {len(tasks)} task(s) in your list.")
+        break
+
+                            </code>
+                        </pre>
+                    </div>
+
+                    <div class="explanation">
+                        <h4>🔍 Code Breakdown: Adding Tasks Function</h4>
+                        <p><strong>Key Learning Points for Python Lists:</strong></p>
+                        <ol>
+                            <li><strong>Input Validation Strategies:</strong>
+                                <ul>
+                                    <li><code class="language-python inline">if not task_description:</code> checks for
+                                        empty strings.</li>
+                                    <li><code class="language-python inline">len(task_description) > 100</code> prevents
+                                        overly long tasks.</li>
+                                    <li>Multiple validation checks ensure data quality.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Dictionary Creation for Task Storage:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+new_task = {
+    'task': task_description,    # The actual task text
+    'completed': False          # Boolean status flag
+}
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                            <li><strong>User Experience Enhancement</strong>:
+                                <ul>
+                                    <li><code class="language-python inline">tasks.append(new_task)</code> adds the
+                                        dictionary to our list.</li>
+                                    <li><code class="language-python inline">len(tasks)</code> gives us the current
+                                        count of tasks.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Loop Control:</strong>:
+                                <ul>
+                                    <li><code class="language-python inline">continue</code> restarts the loop when
+                                        validation fails.</li>
+                                    <li><code class="language-python inline">break</code> exits the loop when a valid
+                                        task is added.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <h3>Step 4: Viewing Tasks - Python Loops and Data Display</h3>
+                    <h4>Creating a Comprehensive Task Display System</h4>
+                    <p>The <code class="language-python inline">view_tasks</code> function showcases Python loops and
+                        data formatting:</p>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+def view_tasks(tasks):
+    """Display all tasks with their status"""
+    print("\n📋 YOUR TASKS")
+    print("-" * 30)
+    
+    if not tasks:  # Check if list is empty
+        print("📭 No tasks yet! Add some tasks to get started.")
+        return
+    
+    # Display tasks with numbers
+    for index, task in enumerate(tasks, 1):
+        status = "✅" if task['completed'] else "⏳"
+        task_text = task['task']
+        
+        # Add strikethrough effect for completed tasks (visual enhancement)
+        if task['completed']:
+            task_text = f"~~{task_text}~~"
+            
+        print(f"{index:2d}. {status} {task_text}")
+    
+    # Summary statistics
+    total_tasks = len(tasks)
+    completed_tasks = sum(1 for task in tasks if task['completed'])
+    pending_tasks = total_tasks - completed_tasks
+    print("-" * 30)
+    print(f"📊 Total: {total_tasks} | ✅ Completed: {completed_tasks} | ⏳ Pending: {pending_tasks}")
+                            </code>
+                        </pre>
+                    </div>
+
+                    <div class="explanation">
+                        <h4>🔍 Code Breakdown: Task Viewing Function</h4>
+                        <p><strong>Advanced Python Concepts Demonstrated:</strong></p>
+                        <ol>
+                            <li><strong>Empty List Handling:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+if not tasks:  # This checks if the list is empty
+    print("📭 No tasks yet! Add some tasks to get started.")
+    return  # Exit function early
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                            <li><strong>Enumerate Function for Indexing:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+for index, task in enumerate(tasks, 1):
+# enumerate gives us both the position and the item
+# Starting from 1 instead of 0 for user-friendly numbering
+
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                            <li><strong>Conditional Expressions (Ternary Operator):</strong>:
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+status = "✅" if task['completed'] else "⏳"
+# Short way to write if-else for simple assignments
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                            <li><strong>String Formatting:</strong>:
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+print(f"{index:2d}. {status} {task_text}")
+# {index:2d} formats the number with 2 digits, right-aligned
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                            <li><strong>Generator Expression for Counting:</strong>:
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+completed_tasks = sum(1 for task in tasks if task['completed'])
+# Counts how many tasks have completed=True
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                        </ol>
+                        <h4>Sample Output: What Users Will See</h4>
+                        <div class="output">
+                            <p class="output-heading"><strong>Output</strong></p>
+                            <div class="output-text">
+                                <p>📋 YOUR TASKS</p>
+                                <p>------------------------------</p>
+                                <p>1. ⏳ Buy groceries</p>
+                                <p>2. ✅ ~~Learn Python basics~~</p>
+                                <p>3. ⏳ Write blog post</p>
+                                <p>4. ✅ ~~Exercise for 30 minutes~~</p>
+                                <p>------------------------------</p>
+                                <p>📊 Total: 4 | ✅ Completed: 2 | ⏳ Pending: 2</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Step 5: Completing Tasks - Python Error Handling</h3>
+                    <h4>Implementing Task Completion with Robust Error Handling</h4>
+                    <p>The complete_task function demonstrates error handling and list indexing:</p>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+def complete_task(tasks):
+    """Mark a task as completed"""
+    print("\n✅ MARK TASK AS COMPLETE")
+    print("-" * 25)
+    
+    if not tasks:
+        print("📭 No tasks to complete!")
+        return
+    
+    # Show current tasks
+    view_tasks(tasks)
+    
+    while True:
+        try:
+            task_num = input("\nEnter task number to complete (or 'c' to cancel): ").strip()
+            
+            if task_num.lower() == 'c':
+                print("❌ Operation cancelled.")
+                return
+            
+            task_index = int(task_num) - 1  # Convert to 0-based index
+            
+            # Validate task number
+            if task_index < 0 or task_index >= len(tasks):
+                print(f"❌ Invalid task number. Please enter 1-{len(tasks)}.")
+                continue
+            
+            # Check if already completed
+            if tasks[task_index]['completed']:
+                print("ℹ️  This task is already completed!")
+                return
+            
+            # Mark as completed
+            tasks[task_index]['completed'] = True
+            task_name = tasks[task_index]['task']
+            print(f"🎉 Task '{task_name}' marked as completed!")
+            break
+            
+        except ValueError:
+            print("❌ Please enter a valid number.")
+                            </code>
+                        </pre>
+                    </div>
+
+                    <div class="explanation">
+                        <h4>🔍 Code Breakdown: Task Completion Function</h4>
+                        <p><strong>Error Handling and Validation Techniques:</strong></p>
+                        <ol>
+                            <li><strong>Try-Except Block for Input Conversion:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+try:
+    task_index = int(task_num) - 1  # This might raise ValueError
+except ValueError:
+    print("❌ Please enter a valid number.")
+                                        </code>
+                                    </pre>
+                                </div>
+                                <ul>
+                                    <li>Catches errors when user enters non-numeric input.</li>
+                                    <li>Prevents the program from crashing.</li>
+                                </ul>
+                            </li>
+                            <li><strong>Index Conversion for Lists:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+task_index = int(task_num) - 1  # Convert 1-based to 0-based
+# User sees: 1, 2, 3, 4
+# List uses: 0, 1, 2, 3
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                            <li><strong>Bounds Checking:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+if task_index < 0 or task_index >= len(tasks):
+# Prevents IndexError by checking valid range
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                            <li><strong>State Validation:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+if tasks[task_index]['completed']:
+    print("ℹ️  This task is already completed!")
+# Prevents unnecessary operations
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                            <li><strong>Direct Dictionary Modification:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+tasks[task_index]['completed'] = True
+# Changes the boolean value in the dictionary
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                        </ol>
+                        <h4>User Experience Flow: Task Completion</h4>
+                        <div class="output">
+                            <p class="output-heading"><strong>Output</strong></p>
+                            <div class="output-text">
+                                <p>✅ MARK TASK AS COMPLETE</p>
+                                <p>-------------------------</p><br>
+                                <p>📋 YOUR TASKS</p>
+                                <p>------------------------------</p>
+                                <p>1. ⏳ Buy groceries</p>
+                                <p>2. ⏳ Learn Python basics</p>
+                                <p>3. ⏳ Write blog post</p>
+                                <p>------------------------------</p><br>
+                                <p>Enter task number to complete (or 'c' to cancel): 2</p>
+                                <p>🎉 Task 'Learn Python basics' marked as completed!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Step 6: Deleting Tasks - Advanced List Operations</h3>
+                    <h4>Implementing Safe Task Deletion</h4>
+                    <p>The delete_task function shows list manipulation and confirmation prompts:</p>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+def delete_task(tasks):
+    """Delete a task from the list"""
+    print("\n🗑️ DELETE TASK")
+    print("-" * 15)
+    
+    if not tasks:
+        print("📭 No tasks to delete!")
+        return
+    
+    # Show current tasks
+    view_tasks(tasks)
+    
+    while True:
+        try:
+            task_num = input("\nEnter task number to delete (or 'c' to cancel): ").strip()
+            
+            if task_num.lower() == 'c':
+                print("❌ Operation cancelled.")
+                return
+            
+            task_index = int(task_num) - 1  # Convert to 0-based index
+            
+            # Validate task number
+            if task_index < 0 or task_index >= len(tasks):
+                print(f"❌ Invalid task number. Please enter 1-{len(tasks)}.")
+                continue
+            
+            # Confirm deletion
+            task_name = tasks[task_index]['task']
+            confirm = input(f"⚠️  Are you sure you want to delete '{task_name}'? (y/n): ").strip().lower()
+            
+            if confirm == 'y':
+                deleted_task = tasks.pop(task_index)  # Remove and return the task
+                print(f"🗑️  Task '{deleted_task['task']}' deleted successfully!")
+                print(f"📊 You now have {len(tasks)} task(s) remaining.")
+            else:
+                print("❌ Deletion cancelled.")
+            break
+            
+        except ValueError:
+            print("❌ Please enter a valid number.")
+                            </code>
+                        </pre>
+                    </div>
+
+                    <div class="explanation">
+                        <h4>🔍 Code Breakdown: Task Deletion Function</h4>
+                        <p><strong>Advanced List Operations and Safety Features:</strong></p>
+                        <ol>
+                            <li><strong>Pop Method for Removal:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+deleted_task = tasks.pop(task_index)
+# pop() removes the item AND returns it
+# This allows us to show what was deleted
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                            <li><strong>Two-Step Confirmation Process:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+# Step 1: User selects task number
+task_num = input("Enter task number to delete: ")
+
+# Step 2: User confirms deletion
+confirm = input(f"Are you sure? (y/n): ")
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                            <li><strong>Case-Insensitive Input:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+confirm = input("...").strip().lower()
+# Handles: 'Y', 'yes', 'YES', ' y ', etc.
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                            <li><strong>Informative Feedback:</strong>
+                                <div id="language-python" class="code-block">
+                                    <pre class="line-numbers">
+                                        <code id="codeSnippetPython" class="language-python">                                  
+print(f"🗑️  Task '{deleted_task['task']}' deleted successfully!")
+print(f"📊 You now have {len(tasks)} task(s) remaining.")
+                                        </code>
+                                    </pre>
+                                </div>
+                            </li>
+                        </ol>
+                        <h4>Safety Features in Action</h4>
+                        <div class="output">
+                            <p class="output-heading"><strong>Output</strong></p>
+                            <div class="output-text">
+                                <p>🗑️ DELETE TASK</p>
+                                <p>-------------------------</p><br>
+                                <p>📋 YOUR TASKS</p>
+                                <p>------------------------------</p>
+                                <p>1. ⏳ Buy groceries</p>
+                                <p>2. ✅ ~~Learn Python basics~~</p>
+                                <p>3. ⏳ Write blog post</p>
+                                <p>------------------------------</p><br>
+                                <p>Enter task number to delete (or 'c' to cancel): 1</p>
+                                <p>⚠️ Are you sure you want to delete 'Buy groceries'? (y/n): y</p>
+                                <p>🗑️ Task 'Buy groceries' deleted successfully!</p>
+                                <p>📊 You now have 2 task(s) remaining.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3>Step 7: Complete Python To-Do CLI App Code</h3>
+                    <p>Here's the complete, production-ready Python to-do application:</p>
+                    <div id="language-python" class="code-block">
+                        <pre class="line-numbers">
+                            <code id="codeSnippetPython" class="language-python">                                  
+"""
+Complete To-Do List Application
+Demonstrates Python lists, loops, and basic CLI interaction
+"""
+
+def show_menu():
+    """Display the main menu options"""
+    print("\n" + "="*40)
+    print("📝 TO-DO LIST MENU")
+    print("="*40)
+    print("1. ➕ Add a new task")
+    print("2. 📋 View all tasks")
+    print("3. ✅ Mark task as complete")
+    print("4. 🗑️ Delete a task")
+    print("5. 🚪 Exit")
+    print("="*40)
+
+def get_user_choice():
+    """Get and validate user menu choice"""
+    while True:
+        choice = input("Choose an option (1-5): ").strip()
+        if choice in ['1', '2', '3', '4', '5']:
+            return choice
+        print("❌ Please enter a number between 1 and 5.")
+
+def add_task(tasks):
+    """Add a new task to the task list"""
+    print("\n➕ ADD NEW TASK")
+    print("-" * 20)
+    
+    while True:
+        task_description = input("Enter task description: ").strip()
+        
+        if not task_description:
+            print("❌ Task cannot be empty. Please try again.")
+            continue
+        
+        if len(task_description) > 100:
+            print("❌ Task too long (max 100 characters). Please shorten it.")
+            continue
+            
+        new_task = {
+            'task': task_description,
+            'completed': False
+        }
+        
+        tasks.append(new_task)
+        print(f"✅ Task '{task_description}' added successfully!")
+        print(f"📊 You now have {len(tasks)} task(s) in your list.")
+        break
+
+def view_tasks(tasks):
+    """Display all tasks with their status"""
+    print("\n📋 YOUR TASKS")
+    print("-" * 30)
+    
+    if not tasks:
+        print("📭 No tasks yet! Add some tasks to get started.")
+        return
+    
+    for index, task in enumerate(tasks, 1):
+        status = "✅" if task['completed'] else "⏳"
+        task_text = task['task']
+        
+        if task['completed']:
+            task_text = f"~~{task_text}~~"
+            
+        print(f"{index:2d}. {status} {task_text}")
+    
+    total_tasks = len(tasks)
+    completed_tasks = sum(1 for task in tasks if task['completed'])
+    pending_tasks = total_tasks - completed_tasks
+    print("-" * 30)
+    print(f"📊 Total: {total_tasks} | ✅ Completed: {completed_tasks} | ⏳ Pending: {pending_tasks}")
+
+def complete_task(tasks):
+    """Mark a task as completed"""
+    print("\n✅ MARK TASK AS COMPLETE")
+    print("-" * 25)
+    
+    if not tasks:
+        print("📭 No tasks to complete!")
+        return
+    
+    view_tasks(tasks)
+    
+    while True:
+        try:
+            task_num = input("\nEnter task number to complete (or 'c' to cancel): ").strip()
+            
+            if task_num.lower() == 'c':
+                print("❌ Operation cancelled.")
+                return
+            
+            task_index = int(task_num) - 1
+            
+            if task_index < 0 or task_index >= len(tasks):
+                print(f"❌ Invalid task number. Please enter 1-{len(tasks)}.")
+                continue
+            
+            if tasks[task_index]['completed']:
+                print("ℹ️  This task is already completed!")
+                return
+            
+            tasks[task_index]['completed'] = True
+            task_name = tasks[task_index]['task']
+            print(f"🎉 Task '{task_name}' marked as completed!")
+            break
+            
+        except ValueError:
+            print("❌ Please enter a valid number.")
+
+def delete_task(tasks):
+    """Delete a task from the list"""
+    print("\n🗑️ DELETE TASK")
+    print("-" * 15)
+    
+    if not tasks:
+        print("📭 No tasks to delete!")
+        return
+    
+    view_tasks(tasks)
+    
+    while True:
+        try:
+            task_num = input("\nEnter task number to delete (or 'c' to cancel): ").strip()
+            
+            if task_num.lower() == 'c':
+                print("❌ Operation cancelled.")
+                return
+            
+            task_index = int(task_num) - 1
+            
+            if task_index < 0 or task_index >= len(tasks):
+                print(f"❌ Invalid task number. Please enter 1-{len(tasks)}.")
+                continue
+            
+            task_name = tasks[task_index]['task']
+            confirm = input(f"⚠️  Are you sure you want to delete '{task_name}'? (y/n): ").strip().lower()
+            
+            if confirm == 'y':
+                deleted_task = tasks.pop(task_index)
+                print(f"🗑️  Task '{deleted_task['task']}' deleted successfully!")
+                print(f"📊 You now have {len(tasks)} task(s) remaining.")
+            else:
+                print("❌ Deletion cancelled.")
+            break
+            
+        except ValueError:
+            print("❌ Please enter a valid number.")
+
+def main():
+    """Main function to run the to-do application"""
+    print("=== Welcome to Your Personal To-Do List ===")
+    print("This app demonstrates Python lists and loops in action!")
+    
+    tasks = []
+    
+    while True:
+        show_menu()
+        choice = get_user_choice()
+        
+        if choice == '1':
+            add_task(tasks)
+        elif choice == '2':
+            view_tasks(tasks)
+        elif choice == '3':
+            complete_task(tasks)
+        elif choice == '4':
+            delete_task(tasks)
+        elif choice == '5':
+            print("\n🎉 Thank you for using the To-Do List app!")
+            print("Keep coding and stay organized! 💻")
+            break
+
+if __name__ == "__main__":
+    main()
+                            </code>
+                        </pre>
+                    </div>
+
+
+                    <h3>Step 8: Running Your To-Do App</h3>
+                    <p><strong>Follow these simple steps to run your application:</strong></p>
+                    <div class="list">
+                        <ol>
+                            <li>Save the code as <code class="language-python inline">todo_app.py</code></li>
+                            <li>Open terminal/command prompt</li>
+                            <li>Navigate to the file location using <code class="language-python inline">cd</code></li>
+                            <li>Run the application:</li>
+
+                            <div class="output">
+                                <p class="output-heading"><strong>Run in Terminal</strong></p>
+                                <div class="output-text">
+                                    <p>python todo_app.py</p>
+                                </div>
+                            </div>
+                        </ol>
+                    </div>
+
+                    <!-- Project Conclusion  -->
+                    <h2>Project Conclusion</h2>
+                    <p>This comprehensive tutorial has equipped you with essential Python skills that form the
+                        foundation for more advanced programming concepts. The to-do CLI application demonstrates
+                        how seemingly simple concepts like lists and loops can combine to create practical, useful
+                        software. Keep practicing, experimenting, and building projects to reinforce your learning!
+                    </p>
+                    <h4>📱 Sample Application Flow</h4>
+                    <p><strong>Here's what users will see when running the app:</strong></p>
+                    <div class="output">
+                        <p class="output-heading"><strong>Output</strong></p>
+                        <div class="output-text">
+                            <p>=== Welcome to Your Personal To-Do List ===</p>
+                            <p>This app demonstrates Python lists and loops in action!</p><br>
+                            <p>========================================</p>
+                            <p>📝 TO-DO LIST MENU</p>
+                            <p>========================================</p>
+                            <p>1. ➕ Add a new task</p>
+                            <p>2. 📋 View all tasks</p>
+                            <p>3. ✅ Mark task as complete</p>
+                            <p>4. 🗑️ Delete a task</p>
+                            <p>5. 🚪 Exit</p>
+                            <p>========================================</p>
+                            <p>Choose an option (1-5): 1</p><br>
+                            <p>➕ ADD NEW TASK</p>
+                            <p>--------------------</p>
+                            <p>Enter task description: Learn Python fundamentals</p>
+                            <p>✅ Task 'Learn Python fundamentals' added successfully!</p>
+                            <p>📊 You now have 1 task(s) in your list.</p>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <!-- <a href="space_shooter_demo.html" target="_blank" class="action-button live-preview"><i
+                                class="fas fa-gamepad"></i>Play Demo</a> -->
+                        <a href="https://github.com/kumaradoss16/Projects-Programming/tree/main/Python/To-Do%20App"
+                            download="space_shooter_game.py" class="action-button source-code">
+                            <i class="fab fa-github"></i>Source Code</a>
+                    </div>
+                    <p class="last">
+                        <strong>Remember</strong>: Programming is best learned by doing. Take the code examples,
+                        modify them, break them, fix them, and make them your own. Each error you encounter and
+                        solve makes you a stronger programmer.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Ad Banner  -->
+            <div class="ad-banner-in-content">
+                <p>Ad</p>
+                <!-- <img src="https://placehold.co/768x150/555/white?text=Advertisement%0A768x10%0A(Large+Rectangle)"
+                                        alt="Advertisement 336x280 (Large Rectangle)"> -->
+            </div>
+
+            <!-- My Other Projects  -->
+            <section id="other-work-section" class="other-work-section">
+                <h2 style="margin-top: 20px;">Other Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="../shooter-game/images/space-shooter-game-python-pygame-tutorial.webp"
+                            alt="Space Shooter Game Python Pygame Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Shooter Game</h4>
+                            <p>This is a beginner-friendly guide for building a Space Shooter game with Python and
+                                Pygame, covering coding concepts and
+                                project structure.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Pygame</span>
+                            </div>
+                            <a href="../shooter-game/space-shooter-game-python-pygame-tutorial.html"
+                                title="Space Shooter Game Python Pygame Tutorial" class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../atm-management-system/images/atm-management-system-python-cli-interface.webp"
+                            alt="ATM Management System Python Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>ATM Management System</h4>
+                            <p>This Python application implements a multi-user ATM system with SQLite-backed
+                                persistence,
+                                featuring account management, financial transactions, and administrative controls.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">SQLite</span>
+                            </div>
+                            <a href="../atm-management-system/atm-management-system-python-sqlite-tutorial.html"
+                                title="ATM Management System Python Tutorial" class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Web/weather-app/images/weather-app-html-css-javascript-tutorial.webp"
+                            alt="Weather App HTML CSS JavaScript Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Weather App</h4>
+                            <p>Responsive weather app with real-time API data, feature comparison, and intuitive design
+                                for global city forecasts.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag">CSS</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                            <a href="../../Web/weather-app/weather-app-html-css-javascript-tutorial.html"
+                                title="Weather App HTML CSS JavaScript Tutorial" class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Web/team-card-app/images/cricket-team-card-app.webp"
+                            alt="Team Card App HTML CSS JavaScript Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Team Card App</h3>
+                                <p>Interactive team card application for cricket, featuring dynamic team selection,
+                                    player
+                                    filters, and customizable
+                                    light/dark themes.</p>
+                                <div class="project-tags">
+                                    <span class="project-tag">HTML</span>
+                                    <span class="project-tag">CSS</span>
+                                    <span class="project-tag">JavaScript</span>
+                                </div>
+                                <a href="../../Web/team-card-app/cricket-team-card-app-html-css-javascript-tutorial.html"
+                                    title="Team Card App HTML CSS JavaScript Tutorial" class="view-project-button">View
+                                    Project
+                                    <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../C++/password-strength-checker/images/password-strength-checker.webp"
+                            alt="Password Strength Checker C++ Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Password Strength Checker</h4>
+                            <p>Multi-Password Batch Strength Checker (C++), designed to check multiple passwords at
+                                once, show
+                                individual strength, and
+                                provide a summary report.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C++</span>
+                            </div>
+                            <a href="../../C++//password-strength-checker/password-strength-checker-cpp-tutorial-guide.html"
+                                title="Password Strength Checker C++ Tutorial" class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../C/vpn-connectivity-verification-cpp/images/vpn-tool-before-connection-terminal-output.webp"
+                            alt="VPN Connectivity verification in C Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>VPN Connectivity verification in C</h4>
+                            <p>Efficient C program to verify VPN status, routing, and DNS configurations through
+                                comprehensive public IP and network
+                                adapter analysis.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C</span>
+                            </div>
+                            <a href="../../C/vpn-connectivity-verification-cpp/build-vpn-verification-tool-c-tutorial.html"
+                                title="VPN Connectivity verification in C Tutorial" class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Side  -->
+        <aside class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpirHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+            <div class=" ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                    alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                                alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home
+                        Page</a>
+                </div>
+            </div>
+
+            <!-- Open Source Tools Directory -->
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a></li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block medium">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                    alt="Advertisement 300x250 (Medium Rectangle)" /> -->
+            </div>
+            <div class="ad-block small">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                    alt="Advertisement 320x100 (Large Mobile Banner)" /> -->
+            </div>
+        </aside>
+        <button id="scrollUpBtn" aria-label="Scroll to top">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+    <!-- Footer  -->
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../color-palettes/index.html">Color Space</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpireHub | All Rights Reserved</p>
+    </footer>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+    <script src="../../Prism/prism.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

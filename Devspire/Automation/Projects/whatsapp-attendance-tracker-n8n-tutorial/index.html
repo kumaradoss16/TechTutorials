@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../images/icon.webp" sizes="32x46" type="image/png">
+    <!-- Primary SEO Tags -->
+    <title>WhatsApp Attendance Tracker n8n: Automate Employee Check-In</title>
+    <meta name="description"
+        content="Learn to build a WhatsApp attendance tracker with n8n workflow automation. Connect WhatsApp API, Google Sheets, and Telegram for real-time employee check-ins. Step-by-step tutorial for beginners.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/Automation/Projects/whatsapp-attendance-tracker-n8n-tutorial">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://devspirehub.com/Automation/Projects/whatsapp-attendance-tracker-n8n-tutorial">
+    <meta property="og:title" content="WhatsApp Attendance Tracker n8n: Automate Employee Check-In">
+    <meta property="og:description"
+        content="Build an automated attendance system using WhatsApp, n8n, Google Sheets, and Telegram. Complete beginner-friendly tutorial with code examples.">
+    <meta property="og:image"
+        content="https://devspirehub.com/Automation/Projects/whatsapp-attendance-tracker-n8n-tutorial/images/whatsapp-n8n-workflow-canvas-overview.webp">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url"
+        content="https://devspirehub.com/Automation/Projects/whatsapp-attendance-tracker-n8n-tutorial">
+    <meta property="twitter:title" content="WhatsApp Attendance Tracker n8n: Automate Employee Check-In">
+    <meta property="twitter:description"
+        content="Build an automated attendance system using WhatsApp, n8n, Google Sheets, and Telegram. Complete beginner-friendly tutorial.">
+    <meta property="twitter:image"
+        content="https://devspirehub.com/Automation/Projects/whatsapp-attendance-tracker-n8n-tutorial/images/whatsapp-n8n-workflow-canvas-overview.webp">
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="DevSpireHub">
+    <meta name="publisher" content="DevSpireHub">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Existing Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <script type=application/ld+json>
+            {
+                "@context": "https://schema.org",
+                "@type": "SiteNavigationElement",
+                "name": [
+                    "Home"
+                ],
+                "url": [
+                    "https://devspirehub.com/home/",
+                ]
+            }
+    </script>
+
+    <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "DevSpireHub",
+                "url": "https://devspirehub.com/",
+                "logo": "https://devspirehub.com/../../../images/icon.web",
+                "description": "DevSpireHub - Programming, Projects, Ethical hacking, Networking, Cloud & AI",
+                "founder": [
+                {
+                    "@type": "Person",
+                    "name": "Kumaradoss",
+                    "url": "https://www.linkedin.com/in/kumaradoss-s/"
+                }
+                ],
+                "sameAs": [
+                "https://www.linkedin.com/in/kumaradoss-s/",
+                "https://github.com/kumaradoss16",
+                ]
+            }
+    </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "WhatsApp Attendance Tracker n8n: Automate Employee Check-In",
+          "description": "Learn to build a WhatsApp attendance tracker with n8n workflow automation. Connect WhatsApp API, Google Sheets, and Telegram for real-time employee check-ins.",
+          "author": {
+            "@type": "Organization",
+            "name": "DevSpireHub"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "DevSpireHub"
+          },
+          "datePublished": "2025-09-26",
+          "dateModified": "2026-01-19",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://devspirehub.com/Automation/Projects/whatsapp-attendance-tracker-n8n-tutorial"
+          }
+        }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../../../Programming/Projects/Prism/prism.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <!-- <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button> -->
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../index.html">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <main class="left-column">
+            <!-- Course Header Card  -->
+            <div class="card">
+                <div class="content">
+                    <h1>WhatsApp Attendance Tracker n8n Workflow: Complete Automation Tutorial</h1>
+                    <p>A Beginner's Complete Guide to Automating Employee Attendance via WhatsApp Messages</p>
+                    <div class="card-main-info">
+                        <p class="intro">The Attendance Tracker workflow is a fully automated solution built in n8n to
+                            streamline the process of employee
+                            attendance tracking using WhatsApp as the entry point. Instead of manual record-keeping or
+                            specialized HR software, this
+                            workflow leverages familiar, everyday tools (WhatsApp, Google Sheets, Google Drive, and
+                            Telegram) to ensure attendance
+                            data is quickly captured, centrally logged, faithfully archived, and promptly
+                            communicated—all with minimal effort from
+                            employees and HR/Admin.</p>
+                        <div class="card-image">
+                            <img src="images/whatsapp-n8n-workflow-canvas-overview.webp"
+                                alt="n8n workflow canvas showing WhatsApp trigger Google Sheets and Telegram nodes for attendance automation"
+                                title="Complete n8n Attendance Tracker Workflow Structure" loading="lazy"
+                                decoding="async">
+                        </div>
+                        <h3>Key Uses of This Project:</h3>
+                        <div class="objective-item" style="margin-top: 10px;">
+                            <div class="list">
+                                <ul>
+                                    <li><strong>Captures attendance easily</strong>: Employees just send a WhatsApp
+                                        message (like "IN" or "OUT")—no complex app or hardware required.</li>
+                                    <li><strong>Saves attendance automatically</strong>: Each message is recorded in a
+                                        Google Sheet for accurate, real-time logs.</li>
+                                    <li><strong>Sends instant notifications</strong>: Users get Telegram alerts every
+                                        time attendance is marked, so nothing is missed.</li>
+                                    <li><strong>Keeps records safely</strong>: Updates and saves the attendance file to
+                                        Google Drive for backup and sharing.</li>
+                                    <li><strong>Reduces human error</strong>: Removes manual entry, helps avoid
+                                        mistakes, and saves time for everyone.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="action-buttons">
+                            <!-- Download Project Button -->
+                            <button class="action-button download-btn" onclick="downloadProject()">
+                                <i class="fas fa-download"></i>Download Project
+                            </button>
+
+                            <!-- View GitHub Button -->
+                            <a href="https://github.com/kumaradoss16/N8N/tree/main/Automate%20Employee%20Attendance%20Tracking%20with%20WhatsApp%2C%20Google%20Sheets%2C%20Drive%2C%20and%20Telegram%20using%20n8n"
+                                target="_blank" class="action-button github-btn">
+                                <i class="fab fa-github"></i>View GitHub
+                            </a>
+                        </div>
+                        <p>
+                        <p>
+                            The <strong>WhatsApp Attendance Tracker n8n workflow</strong> is a fully automated
+                            employee attendance system that eliminates manual record-keeping. This beginner-friendly
+                            n8n workflow automation tutorial shows you how to build a real-time attendance tracking
+                            solution using WhatsApp Business API, Google Sheets, Google Drive, and Telegram
+                            notifications. With no coding experience required, you'll learn to capture employee
+                            check-ins directly from WhatsApp messages, automatically log attendance data, and
+                            send instant confirmation alerts—all through a seamless automated workflow.
+                        </p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- Chapter 1  -->
+            <div class="card networking-card" id="chapter-2">
+                <div class="card-header">
+                    <h2>Introduction</h2>
+                </div>
+                <p>This <strong>n8n workflow</strong> is designed to automate and digitize employee IN/OUT attendance
+                    recording:</p>
+                <h3>What You'll Learn</h3>
+                <div class="list">
+                    <ul>
+                        <li><strong>WhatsApp Integration</strong>: Capture and automate incoming attendance messages.
+                        </li>
+                        <li><strong>Google Sheets Automation</strong>: Log each IN/OUT with accurate timestamps in a
+                            spreadsheet.</li>
+                        <li><strong>Google Drive Sync</strong>: Automatically update/export your attendance file for
+                            backup or distribution.</li>
+                        <li><strong>Telegram Notifications</strong>: Instantly confirm entries to HR/admins via chat.
+                        </li>
+                        <li><strong>JavaScript Parsing</strong>: Use a Code node to extract and format message details
+                            inside n8n.</li>
+                        <li><strong>End-to-End Automation</strong>: Combine all tools into one seamless, no-code
+                            workflow.</li>
+                    </ul>
+                </div>
+                <p class="sub"><strong class="subtitle">How it works:</strong></p>
+                <p>Employees simply send a message (like “Kumar OUT 7:30pm”) to a designated WhatsApp number.
+                    The workflow automatically
+                    parses out the employees name, IN/OUT status, and time, and records this data in a Google
+                    Sheet for real-time logging.</p>
+                <p class="sub"><strong class="subtitle">What happens next:</strong></p>
+                <p>The system updates or exports the attendance file to Google Drive for backup or sharing.
+                    Then, to provide instant
+                    feedback, it sends a confirmation message directly to an HR or admin group on Telegram.</p>
+                <p class="sub"><strong class="subtitle">Ideal for:</strong></p>
+                <p>Small-to-medium businesses, educational institutions, remote teams, or any workplace looking
+                    for a cost-effective,
+                    automation-first approach to attendance tracking—without investing in expensive software.
+                </p>
+                <div class="content">
+                    <div class="list">
+                        <h4 class="section-title">Prerequisites:</h4>
+                        <ul>
+                            <li>n8n account (<a href="https://youtu.be/RvAD2__YYjg?si=AlpIQ-QYl1IRKFcj"
+                                    class="link">self-hosted</a> or
+                                cloud).</li>
+                            <li>WhatsApp Cloud API.</li>
+                            <li>Google account (Sheets & Drive).</li>
+                            <li>Telegram account (app and bot).</li>
+                        </ul>
+                    </div>
+                    <h3>1. How to Import the Workflow in n8n</h3>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Step-by-step:</strong></p>
+                        <ol>
+                            <li>Log in to n8n.</li>
+                            <li>Click <strong>Import</strong> (top or sidebar).</li>
+                            <li>Upload your project file: <code class="code">Attendance Tracker.json</code>.</li>
+                            <li>The workflow appears on the n8n canvas, auto-populating all node names and settings.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>2. API Credential Setup & Service Provisioning</h3>
+                    <h4>2.1 WhatsApp Cloud API (Example Approach)</h4>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">A. Get WhatsApp API Credentials from Meta (Facebook)
+                                Developer Portal</strong></p>
+                        <ol>
+                            <li>Go to <a href="https://developers.facebook.com/apps" class="link">Facebook
+                                    Developers</a> and log in.</li>
+                            <li>Create a new App (for your business integration).</li>
+                            <li>Under <strong>Add Products</strong>, select <strong>“WhatsApp”</strong>.</li>
+                            <li>Set up and confirm your phone number in WhatsApp Cloud API.</li>
+                            <li>Navigate to Settings &#x27F6; Basic for your app:</li>
+                            <ul>
+                                <li><strong>Client ID</strong>: Copy this value.</li>
+                                <li><strong>Client Secret</strong>: Reveal and copy this value.</li>
+                            </ul>
+                        </ol>
+                        <div class="card-image">
+                            <img src="images/meta-whatsapp-attendance-tracker-app-settings-dashboard.webp"
+                                alt="Meta Facebook App Dashboard showing Attendance Tracker WhatsApp Business API settings with App ID App secret contact email and privacy policy URL configuration"
+                                title="Meta App Settings Dashboard for WhatsApp Attendance Tracker Integration"
+                                loading="lazy" decoding="async" />
+
+                        </div>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">B. Set Up OAuth Flow in Developer Console</strong></p>
+                        <ol>
+                            <li>Go to Settings &#x27F6; Advanced &#x27F6; OAuth Settings.</li>
+                            <li>Add your n8n instance's OAuth callback URL:</li>
+                            <div class="code-block">
+                                <pre>
+<code>https://YOUR-N8N-DOMAIN/rest/oauth2-credential/callback</code>
+</pre>
+                            </div>
+                            <li>Select code as OAuth flow type (default for n8n).</li>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">C. Set Up Webhook in Meta Developer Console</strong></p>
+                        <ol>
+                            <li>In your WhatsApp app’s settings, go to the <strong>Webhook</strong> section.</li>
+                            <li>Add your n8n Webhook URL (from your <strong>WhatsApp Trigger node</strong>: looks
+                                like <code
+                                    class="code">https://n8n.yourdomain.io/webhook/ba0dccbc-7c1b-468a-b5d4-2942d7df8dc7</code>).
+                            </li>
+                            <li>Subscribe to:</li>
+                            <ul>
+                                <li><code class="code">messages</code></li>
+                                <li><code class="code">message_status</code> (for delivery info and status updates).
+                                </li>
+                            </ul>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">D. Create WhatsApp OAuth Credentials in n8n</strong></p>
+                        <ol>
+                            <li>In n8n, go to <strong>Credentials</strong>.</li>
+                            <li>Click <strong>New Credential</strong> → Search for “OAuth2 API”.</li>
+                            <li>Fill the following fields:</li>
+                            <ul>
+                                <li><strong>Client ID</strong>: Paste from Facebook Developer portal.</li>
+                                <li><strong>Client Secret</strong>: Paste from Facebook Developer portal.</li>
+                            </ul>
+                            <div class="card-image">
+                                <img src="images/n8n-whatsapp-oauth-account-connection.webp"
+                                    alt="WhatsApp OAuth account in n8n showing connection tested successfully with client ID client secret and enterprise plan credential vault option"
+                                    title="WhatsApp Cloud API OAuth Connection Successfully Tested in n8n"
+                                    loading="lazy" decoding="async">
+
+                            </div>
+                            <li>Save Credential.</li>
+                        </ol>
+                    </div>
+                    <h4>2.2 Google Sheets & Google Drive (OAuth2)</h4>
+                    <p class="sub"><strong class="subtitle">A. Overview</strong>: Used for appending payroll data and
+                        saving drive files. Requires Google Sheets/Drive API and OAuth2 with
+                        Calendar/Drive/Sheets scopes.
+                    </p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">B. Steps to Provision:</strong></p>
+                        <ol>
+                            <li>Create Google account and login to <a href="https://console.cloud.google.com/"
+                                    class="link">Google Cloud Console</a>.</li>
+                            <li>Create a new project.</li>
+                            <li>Enable “Google Sheets API” and “Google Drive API”.</li>
+                            <li>Go to “APIs & Services → Credentials → Create credentials → OAuth client ID”</li>
+                            <li>Set “Application type”: Web App.</li>
+                            <li>Redirect URI (n8n):</li>
+                            <ul>
+                                <li>For n8n cloud: <code
+                                        class="code">https://app.n8n.cloud/rest/oauth2-credential/callback</code></li>
+                                <li>For self-hosted: <code
+                                        class="code">http://localhost:5678/rest/oauth2-credential/callback</code> or
+                                    your
+                                    deployed domain.</li>
+                            </ul>
+                            <li>Give consent screen info and click “Create”.</li>
+                            <li>Copy <code class="code">CLIENT_ID</code> and <code class="code">CLIENT_SECRET</code>.
+                            </li>
+                            <div class="card-image">
+                                <img src="images/google-cloud-oauth-client-id-configuration.webp"
+                                    alt="Google Cloud Console OAuth 2.0 Client ID configuration for web application showing authorized JavaScript origins redirect URIs and client secrets management interface for API authentication setup"
+                                    title="Google OAuth Client ID Setup for n8n Integration" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+                            </div>
+                            <li>Save these for n8n set-up.</li>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">C. n8n Credential Setup:</strong></p>
+                        <ul>
+                            <li>Go to Credentials > New > Google Sheets/Google Drive OAuth2.</li>
+                            <li>Paste Client ID, Client Secret.</li>
+                            <li>Redirect URI: copy from n8n credential setup screen.</li>
+                            <li>Test and save.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">D. Test & Verify:</strong></p>
+                        <ul>
+                            <li>Open Google Sheets/Drive node in n8n, click "Test Credential".</li>
+                            <li>Should return OK with 200, file and sheet access confirmed.</li>
+                            <li><strong>For errors</strong>: check scope, redirect URI, and client type.</li>
+                        </ul>
+                    </div>
+                    <h4>2.3 Telegram (Bot Token)</h4>
+                    <p class="sub"><strong class="subtitle">A. Overview</strong>: Telegram node sends payroll
+                        notifications. Needs Telegram bot token and chat/user ID.
+                    </p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">B. Steps to Provision:</strong></p>
+                        <ol>
+                            <li>Open Telegram app.</li>
+                            <li>Search <strong>@BotFather</strong>, start chat.</li>
+                            <li>Send <code class="code">/newbot</code>, follow prompts (name and username).</li>
+                            <div class="card-image">
+                                <img src="images/telegram-botfather-bot-creation-tutorial.webp"
+                                    alt="Telegram BotFather conversation showing complete bot creation process including username selection bot token generation and HTTP API setup instructions"
+                                    title="How to Create a Telegram Bot Using BotFather - Step by Step Guide"
+                                    loading="lazy" decoding="async" />
+                            </div>
+                            <li>Copy returned Bot Token.</li>
+                            <li>(Optional) Set description, photo: /setdescription, /setuserpic.</li>
+                            <li>Send /setprivacy to toggle privacy if using in group.</li>
+                            <li>Paste token in n8n credential.</li>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle"></strong></p>
+                        </h4>
+                        <p class="sub"><strong class="subtitle">C. Get Telegram Chat/User ID:</strong></p>
+                        <ul>
+                            <li>Search @hytrel16_bot, send <code class="code">/start</code>.</li>
+                            <li>Receives reply: “Your Telegram ID: 123456789”</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">D. Test & Verify:</strong></p>
+                        <ul>
+                            <li>Open Google Sheets/Drive node in n8n, click "Test Credential".</li>
+                            <li>Should return OK with 200, file and sheet access confirmed.</li>
+                            <li><strong>For errors</strong>: check scope, redirect URI, and client type.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>3. Add WhatsApp Trigger Node</h3>
+                    <div class="list">
+                        <ul>
+                            <li>Add a <strong>WhatsApp Trigger</strong> node.</li>
+                            <li>Connect it to your WhatsApp Business API or preferred provider (Twilio, WATI, etc.).
+                            </li>
+                            <li>Configure OAuth/API credentials in <code class="code">WhatsApp OAuth account</code>.
+                            </li>
+                            <li>Set up webhook in your provider to point to the node’s webhook URL.</li>
+                        </ul>
+                        <div class="card-image">
+                            <img src="images/n8n-whatsapp-trigger-node-configuration.webp"
+                                alt="n8n WhatsApp Trigger node configuration screen showing OAuth account credentials Messages trigger option and output data with messaging product contacts and messages fields"
+                                title="WhatsApp Trigger Node Setup in n8n Workflow" loading="lazy" decoding="async">
+
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <h4>Quick Reference Table</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Field</th>
+                                    <th>Example Value / Source</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Client ID</td>
+                                    <td>Facebook App Settings</td>
+                                </tr>
+                                <tr>
+                                    <td>Client Secret</td>
+                                    <td>Facebook App Settings (revealed)</td>
+                                </tr>
+                                <tr>
+                                    <td>Authorization URL</td>
+                                    <td><a href="https://www.facebook.com/v17.0/dialog/oauth"
+                                            class="link">https://www.facebook.com/v17.0/dialog/oauth</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Access Token URL</td>
+                                    <td><a href="https://graph.facebook.com/v17.0/oauth/access_token"
+                                            class="link">https://graph.facebook.com/v17.0/oauth/access_token</a></td>
+                                </tr>
+                                <tr>
+                                    <td>API Base URL</td>
+                                    <td><a href="https://graph.facebook.com/v17.0/"
+                                            class="link">https://graph.facebook.com/v17.0/</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Scope</td>
+                                    <td>whatsapp_business_messaging</td>
+                                </tr>
+                                <tr>
+                                    <td>Callback URL</td>
+                                    <td>From n8n credentials config</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>4. Add a Code (JavaScript) Node</h3>
+                    <div class="list">
+                        <ul>
+                            <li>Drag in a Code node; name it “Parse WhatsApp Message”.</li>
+                            <li>Connect it after WhatsApp Trigger.</li>
+                            <li>Use this code to extract name, IN/OUT status, time, and date:</li>
+                            <div id="language-js" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-js">// Timing check: Only allow processing between 8:00 - 20:00 IST (adjust as needed)
+const now = new Date();
+const hoursIST = now.toLocaleString('en-US', { hour: '2-digit', hour12: false, timeZone: 'Asia/Kolkata' });
+const hour = parseInt(hoursIST, 10);
+
+// Block/stop workflow if current time is not in allowed window
+if (hour < 9 || hour > 20) {
+  return []; // Return empty = skip/stop node chain
+}
+
+// --- Parse WhatsApp payload ---
+const data = items[0].json;
+
+// Get the exact user message as sent (original case)
+const userMessage = data.messages?.[0]?.text?.body || "";
+
+// Extract employee info
+const name = data.contacts?.[0]?.profile?.name || 
+              userMessage.split(' ')[0] || 
+              "Unknown Employee";
+
+// Determine status from message (IN/OUT), case insensitive
+const messageText = userMessage.toLowerCase();
+const status = messageText.includes("out") ? "OUT" : "IN";
+
+// Convert timestamp to IST
+const timestamp = new Date(parseInt(data.messages?.[0]?.timestamp) * 1000);
+
+// Format time as 12-hour with AM/PM (IST)
+const timeOptions = { 
+  hour: '2-digit', 
+  minute: '2-digit', 
+  hour12: true,
+  timeZone: 'Asia/Kolkata'
+};
+let time = timestamp.toLocaleTimeString('en-IN', timeOptions);
+
+// Ensure AM/PM is uppercase
+time = time.replace(/\s?(am|pm)/i, match => match.toUpperCase());
+
+// Format date as dd/mm/yyyy (IST)
+const dateOptions = { 
+  day: '2-digit', 
+  month: '2-digit', 
+  year: 'numeric',
+  timeZone: 'Asia/Kolkata'
+};
+const date = timestamp.toLocaleDateString('en-GB', dateOptions);
+
+return [{
+  json: {
+    Name: name,
+    Status: status,
+    Time: time,             // 12-hour IST with AM/PM
+    Date: date,
+    UserMessage: userMessage, // Separate column for user's original message
+    rawTimestamp: data.messages?.[0]?.timestamp
+  }
+}];</code>
+</pre>
+                            </div>
+                        </ul>
+                        <div class="card-image">
+                            <img src="images/code-javascript-node.webp"
+                                alt="n8n Code in JavaScript node showing employee data table formatting with name designation salary date columns"
+                                title="JavaScript Code Node for Employee Data Processing in n8n" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>5. Add Google Sheets Node</h3>
+                    <div class="list">
+                        <ul>
+                            <li>Add <strong>Google Sheets</strong> node after the Code node.</li>
+                            <li>Set operation to <strong>Append Row</strong>.</li>
+                            <li>Connect Google Sheets OAuth2 credentials.</li>
+                            <li>Paste your Sheet ID (from the URL) and Sheet Name (e.g., “Sheet1”).</li>
+                            <li>Auto-map/Manually map columns:</li>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Google Sheet Column</th>
+                                            <th>Data Mapped From Node</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td>Kumaradoss</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Status</td>
+                                            <td>OUT</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Time</td>
+                                            <td>06:14 PM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Date</td>
+                                            <td>02/10/2025</td>
+                                        </tr>
+                                        <tr>
+                                            <td>UserMessage</td>
+                                            <td>Kumaradoss \nOut: 6:14pm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>rawTimestamp</td>
+                                            <td>1759409095</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-image">
+                                <img src="images/google-sheets-append.webp"
+                                    alt="n8n Google Sheets Append node configuration with spreadsheet ID range and RAW value input mode"
+                                    title="Google Sheets Integration for Employee Data Entry" loading="lazy" />
+                            </div>
+                            <li>Format Sheet columns with headers for readability.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>6. Add Google Drive Node</h3>
+                    <div class="list">
+                        <ul>
+                            <li>Add <strong>Google Drive</strong> node after Sheets.</li>
+                            <li>Authorize with <strong>Google Drive OAuth2 credentials</strong>.</li>
+                            <li>Set operation: update/upload/export your attendance sheet</li>
+                            <li>Paste your Drive file ID (from Google Drive link, or select in n8n UI)</li>
+                            <li>Set the filename (e.g., <code class="code">Attendance Tracker.xlsx</code>)</li>
+                        </ul>
+                        <div class="card-image">
+                            <img src="images/update-file-node.webp"
+                                alt="n8n Update File node configuration showing Google Drive file update with dynamic filename and URL parameters"
+                                title="Configure n8n Update File Node for Google Sheets Payroll" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>7. Add Telegram Node</h3>
+                    <div class="list">
+                        <ul>
+                            <li>Add a Telegram node for confirmation</li>
+                            <li>Operation: Send Message.</li>
+                            <li>Authorize with your bot token (create one using @BotFather).</li>
+                            <li>Get your chat/group ID (send a message to your bot, then use /getUpdates API to find the
+                                ID).</li>
+                            <li>Set message field (HTML or Markdown allowed):</li>
+                            <div class="code-block">
+                                <pre>
+<code>Drive: Node updates or exports the attendance file for backup/distribution.</code>
+</pre>
+                            </div>
+                            <li>Test by sending a sample message and check group for notification.</li>
+                        </ul>
+                        <div class="card-image">
+                            <img src="images/send-telegram-message.webp"
+                                alt="n8n Send a text message node with Telegram integration showing payroll confirmation message and chat ID"
+                                title="Telegram Notification Setup in n8n Workflow" loading="lazy" />
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>Google Sheet Formatting</h3>
+                    <div class="list">
+                        <ul>
+                            <li>Add columns in Row 1:</li>
+                            <div class="card-image">
+                                <img src="images/n8n-google-sheets-attendance-output-example.webp"
+                                    alt="Real-time attendance data in Google Sheets with columns for Name Status Time Date UserMessage and rawTimestamp populated by WhatsApp n8n automation"
+                                    title="Google Sheets Attendance Tracker Output - Live Data Example" loading="lazy"
+                                    decoding="async">
+
+                            </div>
+                            <li>Freeze the first row for clarity.</li>
+                            <li>Format <code class="code">Date</code> as <code class="code">DD/MM/YYYY</code>, and <code
+                                    class="code">Time</code> as <code class="code">hh:mm AM/PM</code> for dashboards.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>Execution Flow: Example</h3>
+                    <h4>Sample WhatsApp Message:</h4>
+                    <p><code class="code">Kumaradoss OUT 7:30pm</code></p>
+                    <div class="list">
+                        <ul>
+                            <li><strong>Trigger</strong>: WhatsApp Trigger node fires on receiving the message.</li>
+                            <li><strong>Parse</strong>: Code node extracts</li>
+                            <ul class="nested-list">
+                                <li>Name: “Kumaradoss”</li>
+                                <li>Status: “Out”</li>
+                                <li>Time: “06:14 PM”</li>
+                                <li>Date: Today’s date (auto-formatted IST)</li>
+                                <li>UserMessage: original text</li>
+                                <li>rawTimestamp: exact WhatsApp timestamp</li>
+                            </ul>
+                            <li><strong>Sheets</strong>: Node appends a new row with all data above.</li>
+                            <li><strong>Drive</strong>: Node updates or exports the attendance file for
+                                backup/distribution.
+                            </li>
+                            <li><strong>Telegram</strong>: Bot sends <strong>Kumaradoss (OUT at 07:30 PM on
+                                    26/09/2025)</strong>
+                                to your group/channel.</li>
+                        </ul>
+                    </div>
+                    <h4>How to Test</h4>
+                    <div class="list">
+                        <ol>
+                            <li><strong>Send Test WhatsApp Message:</strong></li>
+                            <ul>
+                                <li>Message your WhatsApp business number with “Testuser IN 8:55am”.</li>
+                            </ul>
+                            <li><strong>Check Google Sheet:</strong></li>
+                            <ul>
+                                <li>Confirm a new row is added in real-time.</li>
+                            </ul>
+                            <li><strong>Check Google Drive:</strong></li>
+                            <ul>
+                                <li>Updated/exported file will appear in your drive or shared folder.</li>
+                            </ul>
+                            <li><strong>Check Telegram:</strong></li>
+                            <ul>
+                                <li>You (or your HR group) should receive instant confirmation.</li>
+                            </ul>
+                            <li><strong>Debugging:</strong></li>
+                            <ul>
+                                <li>If any node fails, check execution logs in n8n (shows error, payload, and
+                                    suggestions).
+                                </li>
+                            </ul>
+                        </ol>
+                    </div>
+                    <h4>Error Handling Tips</h4>
+                    <div class="list">
+                        <ul>
+                            <li><strong>Validate message format:</strong></li>
+                            <p>In the Code node, return an error or skip processing if the message is malformed.</p>
+                            <li><strong>Enable <code class="code">errorWorkflow</code>:</strong></li>
+                            <p>In workflow settings, point <code class="code">errorWorkflow</code> to another workflow
+                                that logs or alerts on errors.</p>
+                            <li><strong>Google API Errors:</strong></li>
+                            <p>Ensure your OAuth credentials have correct permissions and files are shared
+                                appropriately.</p>
+                        </ul>
+                    </div>
+                    <h4>Mini-Challenge: Level Up!</h4>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Enhance this workflow:</strong></p>
+                        <ul>
+                            <li>Add another Code and Sheets node to generate a daily summary (“3 employees present, 2
+                                absent on 26/09/2025”).</li>
+                            <li>Send the summary at 8pm every day to Telegram or your HR’s email using the Email node.
+                            </li>
+                            <li>Try adding <strong>Slack</strong> or <strong>Discord</strong> notifications!</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h2>Conclusion</h2>
+                    <p>You now have a complete, automated system for capturing, logging, and notifying attendance
+                        records in real time using
+                        WhatsApp, Google Sheets, Drive, and Telegram — all built in n8n, no coding experience required!
+                    </p>
+                    <p><strong>You can further extend it:</strong></p>
+                    <div class="list">
+                        <ul>
+                            <li>Connect to Slack, Discord, or email for notifications.</li>
+                            <li>Export monthly reports.</li>
+                            <li>Integrate with payroll/HR dashboards.</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="rainbow-text"><strong>Happy Automating!</strong></p>
+                <p>Try new integrations, and let n8n handle your busy work!</p>
+            </div>
+            <section id="other-work-section" class="other-work-section">
+                <h2>Other Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="card-image">
+                            <img src="../n8n-payroll-automation-workflow-tutorial/images/n8n-payroll-automation.webp"
+                                alt="Payroll Automation">
+                        </div>
+                        <div class="project-card-content">
+                            <h3>Payroll Automation</h3>
+                            <p>Automated Payroll Management with Google Sheets, Telegram, Drive, and Linear (n8n
+                                Workflow).</p>
+                            <div class="automation-tag">
+                                <div class="icon-btn" data-tooltip="JavaScript Code"><i class="fas fa-code"></i></div>
+                                <div class="icon-btn" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i>
+                                </div>
+                                <div class="icon-btn" data-tooltip="Google Drive"><i class="fab fa-google-drive"></i>
+                                </div>
+                                <div class="icon-btn" data-tooltip="Google Sheet"><i class="fas fa-table"></i></div>
+                                <span class="plus-count" data-tooltip="Linear App">+1</span>
+                            </div>
+                            <a href="../n8n-payroll-automation-workflow-tutorial/index.html"
+                                class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+        <!-- Right Side -->
+        <main class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+
+            <div class="color-palette" style="margin-top: 30px">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                    alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home
+                        Page</a>
+                </div>
+            </div>
+
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a></li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block medium">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                    alt="Advertisement 300x250 (Medium Rectangle)" /> -->
+            </div>
+            <div class="ad-block small">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                    alt="Advertisement 320x100 (Large Mobile Banner)" /> -->
+            </div>
+            <div class="related-tags">
+                <h3>Related Tags</h3>
+                <div class="tag-container">
+                    <ol>
+                        <li><a href=""><span class="tag python">#python</span></a></li>
+                        <li><a href=""><span class="tag js">#javascript</span></a></li>
+                        <li><a href=""><span class="tag hacking">#ethical hacking</span></a></li>
+                        <li><a href=""><span class="tag hacking">#networking</span></a></li>
+                        <li><a href=""><span class="tag hacking">#cybersecurity</span></a></li>
+                        <li><a href=""><span class="tag hacking">#linux</span></a></li>
+                        <li><a href=""><span class="tag hacking">#webdev</span></a></li>
+                    </ol>
+                </div>
+            </div>
+        </main>
+        <button id="scrollUpBtn" aria-label="Scroll to top" style="display:none;">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg1" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+
+
+
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../index.html">Home</a></li>
+            <li class="menu-item"><a href="../../../Wallpaper/index.html" class="menu-link">Wallpapers</a></li>
+            <li class="menu-item"><a href="../../../color-palettes/index.html" class="menu-link">Color Space</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2025 DevSpireHub | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="../../../Programming/Projects/Prism/prism.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+
+</body>
+
+</html>

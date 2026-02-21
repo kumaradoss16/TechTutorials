@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Network Protocols – Complete Guide for Beginners</title>
+    <meta name="description" content="Learn all common network protocols including
+    HTTP, HTTPS, SSH, DNS, FTP, and SMTP. Covers function, ports, and security for
+    beginners, developers, and ethical hackers.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Common Network Protocols – Complete Guide for Beginners">
+    <meta property="og:description"
+        content="Learn all common network protocols including HTTP, HTTPS, SSH, DNS, FTP, and SMTP. Covers function, ports, and security for developers and ethical hackers.">
+    <meta property="og:url" content="https://devspirehub.com/Networking/Tutorials/common-network-protocols">
+    <meta property="og:image"
+        content="https://devspirehub.com/Networking/Tutorials/common-network-protocols/images/common-network-protocols-guide.webp">
+    <meta property="og:image:alt"
+        content="Common network protocols reference chart showing HTTP, HTTPS, SSH, FTP, DNS ports">
+    <meta property="og:site_name" content="DevSpireHub">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Common Network Protocols – Complete Beginner's Guide">
+    <meta name="twitter:description"
+        content="HTTP, HTTPS, SSH, DNS, FTP, SMTP and 20+ more protocols explained with ports, functions, and security notes. Perfect for developers and ethical hackers.">
+    <meta name="twitter:image"
+        content="https://devspirehub.com/Networking/Tutorials/common-network-protocols/images/common-network-protocols-guide.webp">
+    <meta name="twitter:image:alt" content="Network protocols reference chart by DevSpireHub">
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#000000">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons (if needed, though not explicitly in the screenshot, useful for consistency) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DevSpireHub",
+        "url": "https://devspirehub.com/",
+        "logo": "https://devspirehub.com/images/icon.webp",
+        "description": "DevSpireHub - Programming, Ethical Hacking, Networking, Cloud & AI tutorials",
+        "founder": [{
+            "@type": "Person",
+            "name": "Kumaradoss",
+            "url": "https://www.linkedin.com/in/kumaradoss-s/"
+        }],
+        "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16"
+        ]
+    }
+    </script>
+
+    <!-- TechArticle Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Common Network Protocols – Complete Guide for Beginners",
+        "description": "Learn all common network protocols including HTTP, HTTPS, SSH, DNS, FTP, and SMTP. Covers function, ports, and security for beginners, developers, and ethical hackers.",
+        "image": "https://devspirehub.com/images/common-network-protocols-guide.webp",
+        "author": {
+            "@type": "Person",
+            "name": "Kumaradoss",
+            "url": "https://www.linkedin.com/in/kumaradoss-s/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://devspirehub.com/images/icon.webp"
+            }
+        },
+        "url": "https://devspirehub.com/Networking/Tutorials/common-network-protocols",
+        "mainEntityOfPage": "https://devspirehub.com/Networking/Tutorials/common-network-protocols",
+        "articleSection": "Networking",
+        "keywords": "network protocols, HTTP, HTTPS, SSH, DNS, FTP, SMTP, TCP UDP, common network protocols",
+        "educationalLevel": "Beginner to Intermediate"
+    }
+    </script>
+
+    <!-- BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://devspirehub.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Networking Tutorials", "item": "https://devspirehub.com/Networking/Tutorials"},
+            {"@type": "ListItem", "position": 3, "name": "Common Network Protocols", "item": "https://devspirehub.com/Networking/Tutorials/common-network-protocols"}
+        ]
+    }
+    </script>
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+</head>
+
+<body>
+    <div class="top-bar">
+        <i class="fas fa-arrow-left back-arrow" onclick="history.back()"></i>
+        <span class="title">Home</span>
+        <div class="legend-items">
+            <div class="legend-item">
+                <div class="legend-color-box encrypted"></div>
+                <span>Encrypted</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color-box unencrypted"></div>
+                <span>Unencrypted</span>
+            </div>
+        </div>
+    </div>
+    <div class="main-content-wrapper container">
+        <main class="left-column">
+            <div class="protocols-page-content">
+                <h1>COMMOM NETWORK PROTOCOLS</h1>
+                <div class="content">
+                    <h2>Essentail Network Protocols:</h2>
+                    <p>The following protocols are considered essential knowledge for developers, network engineers, and
+                        ethical hackers. Mastery of these protocols is fundamental for building, securing and
+                        Troubleshooting modern networks. <span class="click">(Click a card to
+                            learn more about each
+                            protocol)</span></p>
+                </div>
+
+                <h3><span class="heading">Core Application Layer Protocols </span></h3>
+                <div class="protocols-grid">
+
+                    <!-- FTP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">ftp</span>
+                            <span class="protocol-port un">20/21</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description"><span>File Transfer Protocol:</span> Used for transferring files
+                            between client and server.</p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>An old protocol for transferring files.
+                                    Uses separate channels for commands and data.</li>
+                                <li><span>Security: </span>Insecure; sends credentials and data in plaintext. Avoid in
+                                    favor
+                                    for SFTP.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- SFTP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">sftp</span>
+                            <span class="protocol-port en">22</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description"><span>Secure File Transfer Protocol:</span> FTP over SSH for
+                            secure
+                            file transfer.</p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>A secure protocol for file transfer that runs over an SSH
+                                    session.</li>
+                                <li><span>Security: </span>Inherits the strong encryption and authentiation of SSH,
+                                    making
+                                    it the industry standard.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- TFTP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">tftp</span>
+                            <span class="protocol-port un">69</span>
+                            <span class="protocol-type-tag udp">udp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Trivial File Transfer Protocol:</span> Simple, unsecured file transfer protocol.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>A simplified, lightweight file transfer protocol with no
+                                    authentiation.</li>
+                                <li><span>Security: </span>None. Use only on trusted, isolated networks for tasks like
+                                    device booting.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- SSH  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">ssh</span>
+                            <span class="protocol-port en">22</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Secure Shell:</span> Secure remote login and command execution.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>The standard for secure remote command-line access and
+                                    administration.</li>
+                                <li><span>Security: </span>Provides a fully encrypted channel, protecting against
+                                    eavesdropping and hijacking.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Telnet  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">telnet</span>
+                            <span class="protocol-port un">23</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Teletype Network:</span> Unsecure remote login and command execution.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>An early protocol for remote command-line access.</li>
+                                <li><span>Security: </span>Completely insecure; sends all data, including passwords, in
+                                    plaintext. Deprecated.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- SMTP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">smtp</span>
+                            <span class="protocol-port un">25/587</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Simple Mail Transfer Protocol:</span> Used for sending emails.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>The standard for sending email between servers and from a
+                                    client
+                                    to a server.</li>
+                                <li><span>Security: </span>Use Port 587 with <a
+                                        href="https://www.twilio.com/en-us/blog/insights/what-is-starttls">STARTTLS</a>
+                                    encryption for secure client
+                                    submission.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- POP3  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">pop3</span>
+                            <span class="protocol-port un">110/995</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Post Office Protocol v3:</span> Receiving emails by downloading them from the server.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>An older protocol used to retrieve email from a server,
+                                    typically
+                                    by downloading messages to a single device and then deleting them from the server.
+                                </li>
+                                <li><span>Security: </span>Inherently insecure as it transmits data in plaintext.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- POP3S  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">pop3s</span>
+                            <span class="protocol-port en">995</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>POP3 over SSL:</span> Secure POP3 for email retrieval.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>Used to retrieve email by downloading it from the server,
+                                    often deleting the server copy.</li>
+                                <li><span>Security: </span>Use Port 995 (POP3S) for an encrypted connection.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- IMAP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">imap</span>
+                            <span class="protocol-port un">143</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Internet Message Access Protocol:</span> Accessing emails directly on the server.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>A modern protocol used to access and manage email directly on
+                                    the
+                                    server. This allow for state to be synchronized across multiple devices.</li>
+                                <li><span>Security: </span>Unencrypted in its base form.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- IMAPS  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">imaps</span>
+                            <span class="protocol-port en">993</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>IMAP over SSL:</span> Secure IMAP for email access.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>The secure version of IMAP. It wrap the entire communication
+                                    in a
+                                    TLS/SSL encrypted layer.</li>
+                                <li><span>Security: </span>The standard for secure, multi-device email access, ensuring
+                                    confidentaility.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- HTTP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">http</span>
+                            <span class="protocol-port un">80</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Hypertext Transfer Protocol:</span> Unsecure web browsing.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>The original protocol for web browsing. It follows a simple
+                                    request-response model.</li>
+                                <li><span>Security: </span>Unencrypted; all data is sent in plaintext and is insecure.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- HTTPS  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">https</span>
+                            <span class="protocol-port en">443</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Hypertext Transfer Protocol Secure:</span> Secure web browsing with Secure Sockets
+                            Layer
+                            (SSL) or TLS.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>The secure standard for the web. It is HTTP layered over a
+                                    TLS/SSL encrypted connection.</li>
+                                <li><span>Security: </span>Provides confidentaility, integrity and authentiation.
+                                    Essentail
+                                    for all modern sites.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- DNS  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">dns</span>
+                            <span class="protocol-port un">53</span>
+                            <span class="protocol-type-tag tcp-udp">tcp/udp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Domain Name System:</span> Used for resolving domain names to IP addresses.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>Translates human-friendly domain names (e.g., example.com)
+                                    into I
+                                    addresses.</li>
+                                <li><span>Security: </span>Traditional DNS is unencrypted. <a
+                                        href="https://en.wikipedia.org/wiki/DNS_over_HTTPS">DNS-over-HTTPS</a>
+                                    (DoH) adds a layer
+                                    of privacy.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- DHCP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">dhcp</span>
+                            <span class="protocol-port un">67/68</span>
+                            <span class="protocol-type-tag udp">udp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Dynamic Host Configuration Protocol:</span> Used to assign IP addresses automatically.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>Automatically assigns IP addresses and network settings to
+                                    devices on a network.</li>
+                                <li><span>Security: </span>Has no native authentication; can be vulnerable to rogue
+                                    servers
+                                    on a local network.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- NTP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">ntp</span>
+                            <span class="protocol-port un">123</span>
+                            <span class="protocol-type-tag udp">udp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Network Time Protocol:</span> Synchronizing clocks over a network.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>Synchronized computer clocks across a network, which is
+                                    critical
+                                    for logging and security.</li>
+                                <li><span>Security: </span>Can be vulnerable to spoofing; use trusted time sources.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- LDAP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">ldap</span>
+                            <span class="protocol-port un">389</span>
+                            <span class="protocol-type-tag tcp-udp">tcp/udp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Lighweight Directory Access Protocol:</span> Accessing and managing directory
+                            information.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>A protocol for querying and modifying information in a
+                                    directory
+                                    service (e.g., Active Directory)</li>
+                                <li><span>Security: </span>Use Port 636 (LDAPS) for an encrypted connection.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- LDAPS  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">ldaps</span>
+                            <span class="protocol-port en">636</span>
+                            <span class="protocol-type-tag tcp-udp">tcp/udp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>LDAL over SSL:</span> Used for secure LDAP access.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>The secure version of LDAP, used for accessing and
+                                    maintaining
+                                    directory services.</li>
+                                <li><span>Security: </span>It encrypts all LDAP communication with TLS/SSL, protecting
+                                    user
+                                    credentials and directory data.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- SNMP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">snmp</span>
+                            <span class="protocol-port un">161/162</span>
+                            <span class="protocol-type-tag udp">udp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Simple Network Management Protocol:</span> Used for network management and monitoring.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>Used to monitor and manage network devices like routers and
+                                    switches.</li>
+                                <li><span>Security: </span>Use SNMPv3, as older versions are insecure.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Syslog  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">syslog</span>
+                            <span class="protocol-port un">514</span>
+                            <span class="protocol-type-tag udp">udp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>System Logging:</span> Network event logging system and protocol.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>A standard for sending event log messages from devices to a
+                                    central logging server.</li>
+                                <li><span>Security: </span>Basic Syslog in unencrypted; secure variants exist that use
+                                    TLS.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- SMB  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">smb</span>
+                            <span class="protocol-port un">445</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Server Message Block:</span> File sharing and network communication.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>Used for sharing files, printers, and other resources,
+                                    primarily
+                                    on Windows networks.</li>
+                                <li><span>Security: </span>Historically vulnerable; requires strict access controls and
+                                    timely patching.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- SQL  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">sql</span>
+                            <span class="protocol-port un">1433</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Structured Query Language(SQL) Server:</span> Database management system by Microsoft.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>The protocol for communicating with Microsoft's SQL Server
+                                    database.</li>
+                                <li><span>Security: </span>Tthe connection should be encrypted to protect data in
+                                    transit.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- SQLNET  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">sqlnet</span>
+                            <span class="protocol-port un">1521</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>SQLNet (Oracle Network Service):</span> Enable Oracle SQL clients to communicate with
+                            Oracle database server.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>The protocol used by Oracle databases to facilitate
+                                    communication
+                                    between clients and the server.</li>
+                                <li><span>Security: </span>Supports network encryption to protect database queries and
+                                    results.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- MySQL  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">mysql</span>
+                            <span class="protocol-port un">3306</span>
+                            <span class="protocol-type-tag tcp">tcp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>MySQL:</span> MySQL database service.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>The protocol for communicating with MySQL and MariaDB
+                                    database
+                                    systems.</li>
+                                <li><span>Security: </span>Supports SSL/TLS to encrypt the connection between the
+                                    application and database.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- RDP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">rdp</span>
+                            <span class="protocol-port un">3389</span>
+                            <span class="protocol-type-tag tcp-udp">tcp/udp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Remote Desktop Protocol:</span> Remote desktop access.
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>Provides a graphical user interface for remotely accessing
+                                    another computer.</li>
+                                <li><span>Security: </span>A frequent target for attacks. Must be secured with strong
+                                    passwords and <a
+                                        href="https://www.strongdm.com/blog/network-level-authentication-nla">network-level
+                                        authentication</a> (NLA), preferably behind a
+                                    VPN.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- SIP  -->
+                    <div class="protocol-card">
+                        <div class="protocol-header">
+                            <span class="protocol-name">sip</span>
+                            <span class="protocol-port">5060/5061</span>
+                            <span class="protocol-type-tag tcp-udp">tcp/udp</span>
+                        </div>
+                        <p class="protocol-description">
+                            <span>Session Initiation Protocol:</span> Used for managing multimedia communication
+                            sessions
+                        </p>
+                        <div class="protocol-extra-info">
+                            <ul>
+                                <li><span>Function: </span>Used to initiate, maintain, and terminate real-time
+                                    communication
+                                    sessions like <a
+                                        href="https://www.geeksforgeeks.org/computer-networks/voice-over-internet-protocol-voip/">VoIP</a>
+                                    calls.
+                                </li>
+                                <li><span>Security: </span>Use Port 5061 with TLS for encrypted signaling.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Transport Layer protocol  -->
+                <div class="transport-protocol-content">
+                    <div class="">
+                        <h3><span class="heading">Core Transport Layer Protocols</span></h3>
+                        <div class="table">
+                            <table class="protocol-table">
+                                <thead>
+                                    <tr>
+                                        <th>Protocol</th>
+                                        <th>Port(s)</th>
+                                        <th>Type</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#" class="tcp">TCP</a></td>
+                                        <td>Various</td>
+                                        <td>TCP</td>
+                                        <td>Reliable, connection-oriented delivery.</td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td><a href="#" class="udp">UDP</a></td>
+                                        <td>Various</td>
+                                        <td>UDP</td>
+                                        <td>Fast, connetionless delivery (no guarantess).</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Network Layer Protocols  -->
+                <div class="network-protocol-content">
+                    <div class="">
+                        <h3><span class="heading">Core Network Layer Protocols</span></h3>
+                        <ul>
+                            <li><span>IP </span><span class="fullform">(Internet Protocol):</span> Delivers packets
+                                across
+                                networks; foundation for all
+                                internet communications.</li>
+                            <li><span>ICMP </span><span class="fullform">(Internet Control Message Protocol):</span>
+                                Used
+                                for sending error
+                                and
+                                status
+                                messages (e.g., ping, traceroute).</li>
+                            <li><span>DHCP </span><span class="fullform">(Dynamic Host Configuration Protocol):</span>
+                                Dynamically assigns IP addresses on
+                                a network.</li>
+                            <li><span>ARP </span><span class="fullform">(Address Resolution Protocol):</span> Resolves
+                                IP
+                                addresses to
+                                MAC addresses in
+                                local networks.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Security & Modern Enhancements  -->
+                <div class="security-content">
+                    <div class="">
+                        <h3><span class="heading">Security & Modern Enhancements</span></h3>
+                        <div class="table">
+                            <table class="protocol-table">
+                                <thead>
+                                    <tr>
+                                        <th>Protocol</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>TLS/SSL</td>
+                                        <td>Cryptography for secure sessions (HTTPS, email, VPNs).</td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>QUIC/HTTP3</td>
+                                        <td>Next-gen web protocol for high speed, secure communication.</td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>Zero Trust <a
+                                                href="https://www.cloudflare.com/learning/access-management/what-is-ztna/">(ZTNA)</a>
+                                        </td>
+                                        <td>Framework, not a protocol, but increasingly vital for secure access control
+                                            and
+                                            segmentation in distributed networks.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- Protocols are Essential  -->
+                <div class="protocol-essential-content">
+                    <div class="">
+                        <h3><span class="heading">Why These Protocols Are Essential</span></h3>
+                        <ul>
+                            <li><span>Web Development: </span> HTTP/HTTPS, DNS, TCP/UDP fundamentals.</li>
+                            <li><span>Networking: </span> Mastery of IP, DHCP, SNMP, RDP critical for network
+                                operations.
+                            </li>
+                            <li><span>Security/Ethical Hacking: </span>SSH/SFTP (secure remote access), HTTPS/TLS
+                                (encryption),
+                                SNMP/LDAP (device management), and understanding protocol-specific vulnerabilities.</li>
+                            <li><span>Cloud/IoT: </span>Protocols like <a
+                                    href="https://www.chromium.org/quic/">QUIC</a>,
+                                <a
+                                    href="https://www.geeksforgeeks.org/computer-networks/introduction-of-message-queue-telemetry-transport-protocol-mqtt/">MQTT</a>,
+                                and Matter (for IoT) are rising in
+                                importance, but the ones above form the baseline.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Quick references  -->
+                <div class="reference-content">
+                    <div class="">
+                        <h3><span class="heading">Quick Reference: Essentails for Every Role</span></h3>
+                        <ul>
+                            <li><span>Developers: </span>HTTP, HTTPS, TCP, UDP, SMTP, DNS, EMAP</li>
+                            <li><span>Network Engineers: </span>TCP, UDP, IP, SNMP, DHCP, ARP, OSPF, BGP
+                            </li>
+                            <li><span>Ethical Hacker: </span>FTP, SMB, SNMP, Telnet, SSH, ICMP, RDP</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="last">Solid foundational knowledge of these protocols is vital for effective troubleshooting,
+                    building secure
+                    systems, and
+                    progressing in networking or cybersecurity careers</p>
+            </div>
+        </main>
+
+        <aside class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub – Your go-to platform for beginner-friendly tutorials on programming, ethical hacking,
+                    networking,
+                    automation, and Windows setup. Learn step-by-step with hands-on projects, clear explanations, and
+                    real-world examples –
+                    no signups or tracking, just actionable content to boost your skills.
+                </p>
+            </div>
+            <div class="ad-block large">
+                <p>Advertisement</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                    alt="Advertisement 300x600 (Half Page)"> -->
+            </div>
+            <div class="related-topics">
+                <h3>Related Topics</h3>
+                <ul>
+                    <li><a href="">Network Security Basics</a></li>
+                    <li><a href="">VPN Explained</a></li>
+                    <li><a href="">OSI Model Deep Dive</a></li>
+                    <li><a href="">Introduction to Cryptography</a></li>
+                    <li><a href="">Kali-linux Setup</a></li>
+                </ul>
+            </div>
+            <div class="ad-block medium">
+                <p>Advertisement</p>
+                <!-- <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                    alt="Advertisement 300x250 (Medium Rectangle)"> -->
+            </div>
+            <div class="ad-block small">
+                <p>Advertisement</p>
+                <!-- <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                    alt="Advertisement 320x100 (Large Mobile Banner)"> -->
+            </div>
+            <div class="related-tags">
+                <h3>Related Tags</h3>
+                <div class="tag-container">
+                    <a href=""><span class="tag python">python</span></a>
+                    <a href=""><span class="tag js">javascript</span></a>
+                    <a href=""><span class="tag hacking">ethical hacking</span></a>
+                    <a href=""><span class="tag hacking">networking</span></a>
+                    <a href=""><span class="tag hacking">cybersecurity</span></a>
+                    <a href=""><span class="tag hacking">linux</span></a>
+                    <a href=""><span class="tag hacking">webdev</span></a>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <button id="scrollUpBtn" aria-label="Scroll to top">
+        <svg class="progress-circle" viewBox="0 0 36 36">
+            <path class="bg1" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <path class="progress" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+            <span class="arrow-overlay">↑</span>
+        </svg>
+    </button>
+    <!-- Footer  -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 DevSpireHub. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>

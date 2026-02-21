@@ -1,0 +1,3626 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../images/icon.webp" sizes="32x46" type="image/png">
+    <!-- ✅ OPTIMIZED TITLE (59 characters, keyword-rich) -->
+    <title>Windows CMD Commands Guide: 100+ Commands for IT & Security
+    </title>
+
+    <!-- ✅ OPTIMIZED META DESCRIPTION (158 characters, CTR-focused) -->
+    <meta name="description" content="Master 100+ Windows CMD commands for networking, diagnostics, 
+            security, and system administration. Step-by-step examples for 
+            IT pros and beginners.">
+
+    <!-- ✅ CANONICAL URL (prevents duplicate content) -->
+    <link rel="canonical" href="https://devspire.dev/network-services-&-troubleshooting">
+
+    <!-- ✅ OPEN GRAPH META TAGS (social sharing optimization) -->
+    <meta property="og:title" content="Networking Fundamentals Tutorial: Learn VPN, Topologies">
+    <meta property="og:description"
+        content="Master networking fundamentals with hands-on tutorials covering VPN setup, network topology, wireless config, and Cisco labs.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devspire.dev/Networking/Tutorials/network-services-&-troubleshooting">
+    <meta property="og:image" content="https://devspire.dev//Networking/Tutorials/images/networking-tutorial-cover.jpg">
+
+    <!-- ✅ TWITTER CARD (Twitter/X optimization) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Networking Fundamentals Tutorial">
+    <meta name="twitter:description"
+        content="Master networking fundamentals with hands-on tutorials covering VPN setup, network topology, wireless config.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../prism/prism.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ✅ SCHEMA.ORG STRUCTURED DATA (rich snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Networking Fundamentals Tutorial: Complete Step-by-Step Guide",
+      "description": "Comprehensive networking fundamentals tutorial covering VPN configuration, network topology, wireless networking, and hands-on Cisco labs.",
+      "author": {
+        "@type": "Organization",
+        "name": "TechTutorials"
+      },
+      "datePublished": "2026-01-13",
+      "dateModified": "2026-01-13",
+      "publisher": {
+        "@type": "Organization",
+        "name": "TechTutorials",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://devspire.dev/logo.png"
+        }
+      },
+      "keywords": "networking fundamentals, VPN tutorial, network topology, wireless networking, Cisco labs, LAN vs WAN, ethernet cabling",
+      "proficiencyLevel": "Beginner to Intermediate"
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+    <!-- Existing stylesheets -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../images/icon.webp" alt="TechTutorials Logo" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <!-- <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button> -->
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Chapter <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#chapter-1">Networking Commands</a></li>
+                            <li><a href="#chapter-2">System Information & Diagnostics</a></li>
+                            <li><a href="#chapter-3">Disk Management</a></li>
+                            <li><a href="#chapter-4">Performance & Processes</a></li>
+                            <li><a href="#chapter-5">Security & Permissions</a></li>
+                            <li><a href="#chapter-6">Boot & Recovery</a></li>
+                            <li><a href="#chapter-7">Wi-Fi & Wireless</a></li>
+                            <li><a href="#chapter-8">Windows Update</a></li>
+                            <li><a href="#chapter-9">Services Management</a></li>
+                            <li><a href="#chapter-10">Hardware & Drivers</a></li>
+                            <li><a href="#chapter-11">File & Directory Operations</a></li>
+                            <li><a href="#chapter-12">User & Account Management</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <main class="left-column">
+            <!-- Course Header Card  -->
+            <div class="card">
+                <div class="content">
+                    <h1>Windows CMD Commands: The Complete Guide for System Administrators, IT Professionals &
+                        Cybersecurity Analysts</h1>
+                    <div class="card-main-info">
+                        <p>Whether you're a seasoned system administrator, an aspiring cybersecurity analyst, or an IT
+                            support engineer, Windows
+                            Command Prompt (CMD) remains one of the most powerful and indispensable tools in your daily
+                            workflow.
+                        </p>
+                        <p>
+                            Despite the rise of PowerShell and GUI-based management tools, CMD commands continue to be
+                            the fastest and most reliable
+                            way to diagnose network issues, manage users, control services, repair system files, and
+                            harden endpoints — directly
+                            from any Windows machine, without installing a single third-party tool.
+                        </p>
+
+                        <div class="card-image">
+                            <img src="images/network-services-troubleshooting.png"
+                                alt="Networking Fundamentals II Course Banner - Master VPN and Topology">
+                        </div>
+                        <div class="list">
+                            <p>This comprehensive, hands-on guide covers 100+ essential Windows CMD commands organized
+                                into 12 practical categories,
+                                complete with:</p>
+                            <ul>
+                                <li>✅ Real-world examples for every command.</li>
+                                <li>✅ Power user tips for advanced usage.</li>
+                                <li>✅ Safety ratings so you know which commands are safe and which are dangerous.</li>
+                                <li>✅ Cybersecurity use cases for blue teamers and SOC analysts.</li>
+                                <li>✅ Batch scripting examples including subnet scanning, process monitoring, and log
+                                    capture.</li>
+                            </ul>
+                        </div>
+                        <h3>Why Windows CMD Still Matters</h3>
+                        <div class="list">
+                            <p>In enterprise environments, CMD commands are used every single day across helpdesks,
+                                NOCs, SOC floors, and server rooms
+                                — and for good reason:
+                            </p>
+                            <ul>
+                                <li><strong>Speed</strong>: A single <code class="code">netstat -ano</code> command
+                                    reveals every active
+                                    connection on a machine in
+                                    seconds — no GUI needed.</li>
+                                <li><strong>Universal availability:</strong> CMD is built into every version of Windows,
+                                    including recovery environments where GUI tools are
+                                    unavailable.</li>
+                                <li><strong>Scripting power:</strong> Batch scripts automate repetitive tasks like
+                                    subnet scanning, log collection, and user audits.</li>
+                                <li><strong>Security investigations:</strong> Commands like <code
+                                        class="code">tasklist /svc</code>, <code class="code">arp -a</code>, and
+                                    <code class="code">whoami /priv</code> are the first things a responder runs
+                                    when investigating a compromised endpoint.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tips">
+                        ⚠️ <strong>Important:</strong> Some commands in this guide (such as <code
+                            class="code">diskpart</code>, <code class="code">format</code>, <code
+                            class="code">bcdedit</code>,
+                        and <code class="code">netsh advfirewall</code>) can cause
+                        irreversible system changes or data loss if misused. Always verify the command and target before
+                        executing. Run in a
+                        test environment when learning.
+                    </div>
+                </div>
+            </div>
+            <!-- Learning Objectives Card  -->
+            <div class="card learning-objectives-card">
+                <div class="card-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>Learning Objectives</h2>
+                </div>
+                <div class="learning-objectives-grid">
+                    <div class="objective-item">
+                        <div class="list" style="margin-left: 10px;">
+                            <ol>
+                                <li><a href="#chapter-1">Networking Commands</a></li>
+                                <li><a href="#chapter-2">System Information & Diagnostics</a></li>
+                                <li><a href="#chapter-3">Disk Management</a></li>
+                                <li><a href="#chapter-4">Performance & Processes</a></li>
+                                <li><a href="#chapter-5">Security & Permissions</a></li>
+                                <li><a href="#chapter-6">Boot & Recovery</a></li>
+                                <li><a href="#chapter-7">Wi-Fi & Wireless</a></li>
+                                <li><a href="#chapter-8">Windows Update</a></li>
+                                <li><a href="#chapter-9">Services Management</a></li>
+                                <li><a href="#chapter-10">Hardware & Drivers</a></li>
+                                <li><a href="#chapter-11">File & Directory Operations</a></li>
+                                <li><a href="#chapter-12">User & Account Management</a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 1  -->
+            <div class="card networking-card" id="chapter-1">
+                <div class="card-header">
+                    <h2>1. NETWORK COMMANDS</h2>
+                </div>
+                <div class="content">
+                    <h3>ipconfig - IP Configuration</h3>
+                    <h4>Definition:</h4>
+                    <p><code class="code">ipconfig</code> (Internet Protocol Configuration) is a command-line utility
+                        that displays the current
+                        TCP/IP network
+                        configuration of all network adapters on the computer.
+                    </p>
+                    <h4>What it does:</h4>
+                    <p>Shows your computer's network addresses (IP, subnet mask, default gateway), manages DHCP leases,
+                        and controls DNS
+                        caching.
+                    </p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">When to Use:</strong></p>
+                        <ul>
+                            <li>Troubleshoot internet connectivity issues.</li>
+                            <li>Verify DHCP is working properly.</li>
+                            <li>Check for IP address conflicts.</li>
+                            <li>After changing DNS servers.</li>
+                            <li>When websites won't load despite internet working.</li>
+                        </ul>
+                    </div>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Basic - Show all adapter IPs
+ipconfig
+
+# Advanced - Detailed configuration (DNS, DHCP, MAC)
+ipconfig /all
+
+# Release current IP address
+ipconfig /release
+
+# Renew IP from DHCP server
+ipconfig /renew
+
+# Flush DNS resolver cache
+ipconfig /flushdns
+
+# Display DNS resolver cache
+ipconfig /displaydns
+
+# Register DNS records
+ipconfig /registerdns</code>
+</pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Real-world scenarios:</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Scenario 1: "Internet not working" - basic troubleshooting
+ipconfig /all
+# Look for: valid IP (not 169.254.x.x), gateway present, DNS servers listed
+
+# Scenario 2: Website won't load but others work
+ipconfig /flushdns
+# Clears old/corrupt DNS entries
+
+# Scenario 3: Can't get IP from router
+ipconfig /release
+ipconfig /renew
+# Forces DHCP to assign new IP address</code>
+</pre>
+                    </div>
+                    <div class="tips">
+                        <div class="list">
+                            <p><strong>Power User Tips:</strong></p>
+                            <ul>
+                                <li>Use <code class="code">/all</code> to find MAC addresses for asset tracking.</li>
+                                <li>Flush DNS after changing DNS servers or troubleshooting website access.</li>
+                                <li>Release/renew to fix DHCP issues.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+                <div class="content">
+                    <h3>ping - Network Connectivity Test</h3>
+                    <h4>Definition:</h4>
+                    <p><code class="code">ping</code> sends ICMP (Internet Control Message Protocol) Echo Request
+                        packets to a target host and
+                        measures if/when they
+                        return, testing basic network reachability.
+                    </p>
+                    <h4>What it does:</h4>
+                    <p>Tests if a remote computer/server is reachable, measures round-trip time (latency), and detects
+                        packet loss.
+                    </p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">When to Use:</strong></p>
+                        <ul>
+                            <li>Verify a host is online.</li>
+                            <li>Measure network latency (delay).</li>
+                            <li>Check packet loss on unstable connections.</li>
+                            <li>Test DNS resolution (using hostname vs IP).</li>
+                            <li>Monitor connection stability over time.</li>
+                        </ul>
+                    </div>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Basic ping (4 packets)
+ping google.com
+
+# Continuous ping (Ctrl+C to stop)
+ping -t google.com
+
+# Ping with specific packet count
+ping -n 10 google.com
+
+# Ping with timeout (milliseconds)
+ping -w 500 google.com
+
+# Ping with packet size
+ping -l 1500 google.com
+
+# IPv6 ping
+ping -6 google.com
+
+# Don't resolve hostnames (faster)
+ping -a 8.8.8.8</code>
+</pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Flag</th>
+                                    <th>Full Name</th>
+                                    <th>What It Does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">(none)</code></td>
+                                    <td>Basic ping</td>
+                                    <td>Sends 4 packets with default timeout</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-t</code></td>
+                                    <td>Continuous</td>
+                                    <td>Pings until you press Ctrl+C</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-n</code></td>
+                                    <td>Number of packets</td>
+                                    <td>Specifies how many pings to send</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-w</code></td>
+                                    <td>Timeout</td>
+                                    <td>Milliseconds to wait for reply</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-l</code></td>
+                                    <td>Packet size</td>
+                                    <td>Size of ping packet in bytes</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-6</code></td>
+                                    <td>IPv6</td>
+                                    <td>Use IPv6 instead of IPv4</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-a</code></td>
+                                    <td>Resolve hostname</td>
+                                    <td>Shows hostname of IP address</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Advanced Usage:</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Subnet scan (ping sweep)
+for /L %i in (1,1,254) do @ping -n 1 -w 100 192.168.1.%i | find "Reply"
+
+# Monitor connection stability
+ping -t google.com > ping_log.txt</code>
+</pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Practical Usage Tips</strong></p>
+                    <p>If you save this in a .bat file, use double <code class="code">%%</code>:</p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash">@echo off
+echo Scanning subnet 192.168.1.0/24...
+for /L %%i in (1,1,254) do @ping -n 1 -w 100 192.168.1.%%i | find "Reply"
+echo Scan complete!
+pause</code>
+</pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Save Results to File</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash">for /L %i in (1,1,254) do @ping -n 1 -w 100 192.168.1.%i | find "Reply" >> scan_results.txt</code>
+</pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Real-world scenarios:</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Scenario 1: Basic connectivity test
+ping google.com
+# If successful: network works, DNS works, internet works
+
+# Scenario 2: Monitor unstable connection
+ping -t google.com > ping_log.txt
+# Let run overnight, check log for packet loss patterns
+
+# Scenario 3: Test large packet handling (MTU issues)
+ping -l 1472 google.com
+# If fails but small packets work = MTU/fragmentation problem
+
+# Scenario 4: Quick subnet scan (find active IPs)
+for /L %i in (1,1,254) do @ping -n 1 -w 100 192.168.1.%i | find "Reply"
+# Scans entire 192.168.1.0/24 network</code>
+</pre>
+                    </div>
+
+                    <div class="list">
+                        <h4>Limitations</h4>
+                        <ol>
+                            <li><strong>ICMP Blocking:</strong> Many hosts/firewalls block ping (ICMP), so they won't
+                                show up even if
+                                they're online.</li>
+                            <li><strong>Timing Issues:</strong> Very slow networks might need higher <code
+                                    class="code">-w</code> values.</li>
+                            <li><strong>Sequential Execution:</strong> Scans one IP at a time (not parallel), making it
+                                slower than
+                                professional tools.</li>
+                            <li><strong>Limited Information:</strong> Only shows if host is up, not what services are
+                                running.</li>
+                        </ol>
+                    </div>
+
+                    <div class="list">
+                        <h4>Security & Ethical Notes</h4>
+                        <ol>
+                            <li>Only scan networks you own or have permission to scan.</li>
+                            <li>Unauthorized network scanning can be illegal.</li>
+                            <li>This is a noisy scan that will appear in network logs.</li>
+                            <li>Professional tools (like nmap) are more efficient and provide more information.</li>
+                        </ol>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>tracert - Trace Route</h3>
+                    <h4>Definition:</h4>
+                    <p><code class="code">tracert</code> (Trace Route) maps the path packets take from your computer to
+                        a destination, showing every router/hop along the
+                        way.
+                    </p>
+                    <h4>What it does:</h4>
+                    <p>Sends packets with increasing TTL values to discover each router in the path, showing where
+                        delays or failures occur.
+                    </p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">When to use:</strong></p>
+                        <ul>
+                            <li>Diagnose where network slowness occurs.</li>
+                            <li>dentify routing problems.</li>
+                            <li>See if traffic goes through expected paths.</li>
+                            <li>Troubleshoot "can't reach server" issues.</li>
+                            <li>Verify geographic routing (e.g., traffic staying in-country).</li>
+                        </ul>
+                    </div>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Basic traceroute
+tracert google.com
+
+# Fast traceroute (no DNS resolution)
+tracert -d 8.8.8.8
+
+# Custom max hops
+tracert -h 20 google.com
+
+# Custom timeout per hop (ms)
+tracert -w 1000 google.com</code>
+</pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Flag</th>
+                                    <th>What It Does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">-d</code></td>
+                                    <td>Don't resolve DNS (faster)</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-h</code></td>
+                                    <td>Maximum hops to trace</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-w</code></td>
+                                    <td>Timeout per hop (ms)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pro-tips">
+                        <p><strong>⚠️ Note:</strong> May be blocked by firewalls</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>pathping - Advanced Network Diagnostics</h3>
+                    <h4>Defintion:</h4>
+                    <p><code class="code">pathping</code> is a Windows command‑line tool that combines ping and tracert
+                        to test a connection and
+                        show where along the
+                        route packets are being delayed or lost.
+                    </p>
+                    <div class="list">
+                        <h4>Wha it does:</h4>
+                        <ul>
+                            <li>Finds all the routers (hops) between your computer and a target (like google.com),
+                                similar to tracert.</li>
+                            <li>Then sends multiple pings to each hop and calculates latency and packet loss for every
+                                step in the path.</li>
+                            <li>At the end, it shows which router or link is causing problems, helping you pinpoint
+                                where the network issue actually is
+                                (your LAN, your ISP, or the remote side).</li>
+                        </ul>
+                    </div>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Full pathping analysis
+pathping google.com
+
+# Limit number of queries per hop
+pathping -q 10 google.com
+
+# Limit max hops
+pathping -h 20 google.com</code>
+</pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Flag</th>
+                                    <th>What It Does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">(none)</code></td>
+                                    <td>Full pathping analysis; traces route and then computes loss for each hop over
+                                        several minutes.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-q</code></td>
+                                    <td>Number of queries; specifies how many packets to send to each node in the path
+                                        (e.g., -q 10).</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-h</code></td>
+                                    <td>Maximum hops; sets the limit for the number of router jumps to trace before
+                                        stopping.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pro-tips">
+                        <p><strong>🔥 Best Use:</strong> Finding where packet loss occurs in network path</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>nslookup - DNS Lookup</h3>
+                    <h4>Defintion:</h4>
+                    <p><code class="code">nslookup</code> is a command-line tool that queries DNS servers to translate
+                        between domain names and IP
+                        addresses.
+                    </p>
+                    <h4>What it does:</h4>
+                    <p>It lets you look up the IP address of a domain, find the hostname for an IP (reverse lookup), and
+                        view DNS records like
+                        A, MX, NS, and PTR to troubleshoot DNS problems.
+                    </p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Basic DNS lookup
+nslookup google.com
+
+# Use specific DNS server
+nslookup google.com 8.8.8.8
+
+# Reverse DNS lookup
+nslookup 8.8.8.8
+
+# Interactive mode
+nslookup
+> set type=MX
+> google.com
+> exit</code>
+</pre>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Record Types:</strong></p>
+                        <ul>
+                            <li><code class="code">A</code> - IPv4 address</li>
+                            <li><code class="code">AAAA</code> - IPv6 address</li>
+                            <li><code class="code">MX</code> - Mail exchange</li>
+                            <li><code class="code">NS</code> - Name servers</li>
+                            <li><code class="code">TXT</code> - Text records</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>netstat - Network Statistics</h3>
+                    <h4>Definitions:</h4>
+                    <p><code class="code">netstat</code> (Network Statistics) displays active network connections,
+                        listening ports, routing
+                        tables, and network interface
+                        statistics.
+                    </p>
+                    <h4>What it does:</h4>
+                    <p>Shows what programs are communicating over the network, what ports are open, and network usage
+                        statistics.
+                    </p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Show all connections and listening ports
+netstat -ano
+
+# Show only listening ports
+netstat -an | find "LISTENING"
+
+# Show with process names (requires admin)
+netstat -anob
+
+# Show routing table
+netstat -r
+
+# Show Ethernet statistics
+netstat -e
+
+# Find process using specific port
+netstat -ano | findstr :80
+
+# Continuous refresh every 5 seconds
+netstat -ano 5</code>
+</pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Flag</th>
+                                    <th>What It Does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">-a</code></td>
+                                    <td>Show all connections and listening ports</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-n</code></td>
+                                    <td>Show numerical addresses (no DNS lookup)</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-o</code></td>
+                                    <td>Show process ID (PID) associated with each connection</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-b</code></td>
+                                    <td>Show the executable (program name) involved in creating each connection
+                                        (requires admin)</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-r</code></td>
+                                    <td>Show the IP routing table</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-e</code></td>
+                                    <td>Show Ethernet statistics (sent/received bytes and errors)</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">5</code></td>
+                                    <td>Refresh the display every 5 seconds (replace 5 with any integer)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Real-world scenarios:</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Scenario 1: Find what's using port 80
+netstat -ano | findstr :80
+# Shows PID, then use: tasklist | findstr "PID"
+
+# Scenario 2: Security audit - find all connections
+netstat -anob > connections.txt
+# Lists every program and connection
+
+# Scenario 3: Monitor connections in real-time
+netstat -ano 5
+# Updates every 5 seconds
+
+# Scenario 4: Find listening ports only
+netstat -an | find "LISTENING"
+# Shows what ports your computer is accepting connections on</code>
+</pre>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Connection states explained:</strong></p>
+                        <ul>
+                            <li><strong>LISTENING</strong> = Port open, waiting for connections.</li>
+                            <li><strong>ESTABLISHED</strong> = Active connection.</li>
+                            <li><strong>TIME_WAIT</strong> = Connection closing.</li>
+                            <li><strong>CLOSE_WAIT</strong> = Remote end closed connection.</li>
+                            <li><strong>SYN_SENT</strong> = Attempting to connect.</li>
+                        </ul>
+                    </div>
+                    <div class="pro-tips">
+                        <p><strong>🔥 Security Use: </strong>Detect unauthorized connections or malware</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>arp - ARP Cache</h3>
+                    <h4>Definitions:</h4>
+                    <p>arp is a command that shows and manages the ARP cache, which is the table that maps IP addresses
+                        to MAC addresses on a
+                        local network.
+                    </p>
+                    <h4>What it does:</h4>
+                    <p>Displays the ARP cache: a table that maps IP → MAC for devices on your LAN.</p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Show ARP table
+arp -a
+
+# Show specific interface ARP table
+arp -a -N 192.168.1.1
+
+# Add static ARP entry
+arp -s 192.168.1.100 00-11-22-33-44-55
+
+# Delete ARP entry
+arp -d 192.168.1.100</code>
+</pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Flag</th>
+                                    <th>What It Does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">-a</code></td>
+                                    <td>Displays the current ARP entries (ARP table) for all interfaces.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-N [IP]</code></td>
+                                    <td>Displays the ARP entries for a specific network interface identified by its IP
+                                        address.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-s</code></td>
+                                    <td>Adds a static ARP entry that binds an IP address to a physical MAC address.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-d</code></td>
+                                    <td>Deletes a specific entry from the ARP table.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-v</code></td>
+                                    <td>Verbose mode; displays the current ARP entries in more detail, including invalid
+                                        entries.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>route - Routing Table</h3>
+                    <h4>Defintions:</h4>
+                    <p>route is a Windows command-line tool that lets you view and edit the IP routing table on your
+                        computer.</p>
+                    <h4>What is does:</h4>
+                    <p>Shows all current routes your PC uses to decide which gateway/interface to use for each network.
+                    </p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Display routing table
+route print
+
+# Add route
+route add 10.0.0.0 mask 255.0.0.0 192.168.1.1
+
+# Delete route
+route delete 10.0.0.0
+
+# Change default gateway
+route change 0.0.0.0 mask 0.0.0.0 192.168.1.1
+
+# Add persistent route (survives reboot)
+route -p add 10.0.0.0 mask 255.0.0.0 192.168.1.1</code>
+</pre>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>getmac - MAC Address</h3>
+                    <h4>Definition:</h4>
+                    <p>getmac is a Windows command-line tool that shows the MAC (Media Access Control) address of each
+                        network adapter on a
+                        computer.
+                    </p>
+                    <h4>What it does:</h4>
+                    <p>Lists the physical (MAC) addresses of all network interfaces on your system.</p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Show MAC addresses
+getmac
+
+# Verbose with adapter info
+getmac /v
+
+# Format as table
+getmac /fo table
+
+# Remote computer (requires permissions)
+getmac /s ComputerName /u username /p password</code>
+</pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Flag</th>
+                                    <th>What It Does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">(none)</code></td>
+                                    <td>Shows the MAC (Physical) addresses and transport name for all network adapters.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">/v</code></td>
+                                    <td>Verbose mode; displays detailed information including the adapter name and
+                                        network connection status.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">/fo</code></td>
+                                    <td>Format output; specifies the format for the list (e.g., TABLE, LIST, or CSV).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">/s</code></td>
+                                    <td>Remote system; specifies the name or IP address of a remote computer to query.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">/u</code></td>
+                                    <td>User context; specifies the user account under which the command should execute
+                                        on a remote system.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">/p</code></td>
+                                    <td>Password; specifies the password for the provided user account for remote
+                                        access.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">/nh</code></td>
+                                    <td>No Header; specifies that the "Column Header" should not be displayed in the
+                                        output.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>netsh - Network Shell</h3>
+                    <h4>Definition:</h4>
+                    <p>netsh (Network Shell) is a Windows command-line tool that lets you view and configure network
+                        settings on your system.
+                    </p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash"># Show all network interfaces
+netsh interface show interface
+
+# Show IP configuration
+netsh interface ip show config
+
+# Set static IP
+netsh interface ip set address "Ethernet" static 192.168.1.100 255.255.255.0 192.168.1.1
+
+# Set DNS servers
+netsh interface ip set dns "Ethernet" static 8.8.8.8
+netsh interface ip add dns "Ethernet" 8.8.4.4 index=2
+
+# Reset TCP/IP stack
+netsh int ip reset
+
+# Reset Winsock catalog
+netsh winsock reset
+
+# Export firewall config
+netsh advfirewall export "C:\firewall_backup.wfw"
+
+# Show firewall status
+netsh advfirewall show allprofiles
+
+# Enable/disable firewall
+netsh advfirewall set allprofiles state on
+netsh advfirewall set allprofiles state off
+
+# Add firewall rule
+netsh advfirewall firewall add rule name="Allow Port 80" dir=in action=allow protocol=TCP localport=80</code>
+</pre>
+                    </div>
+                </div>
+                <div class="pro-tips">
+                    <p><strong>⚠️ DANGEROUS:</strong> Firewall changes can expose system to attacks.</p>
+                </div>
+            </div>
+
+            <!-- Chapter 2  -->
+            <div class="card networking-card" id="chapter-2">
+                <div class="card-header">
+                    <h2>2. SYSTEM INFORMATION & DIAGNOSTICS</h2>
+                </div>
+                <div class="content">
+                    <p>Network topology determines how devices connect and communicate, affecting performance, cost, and
+                        reliability. [<a
+                            href="https://www.geeksforgeeks.org/computer-networks/types-of-network-topology/"
+                            class="link">2</a>]
+                    </p>
+                    <h3>Physical Network Topologies</h3>
+                    <h4>Bus Topology</h4>
+                    <p><strong>Bus topology</strong> is a type of network design, or layout, in which all devices
+                        (computers, printers, etc.) are connected to a
+                        single central cable called the "bus." This main cable acts as a shared communication medium,
+                        and signals are sent along
+                        the bus, allowing devices to communicate with each other.
+                    </p>
+                    <div class="card-image">
+                        <img src="images/bus-topology-network-architecture.webp"
+                            alt="Bus topology network diagram showing multiple computers connected to a single backbone cable with terminators at both ends"
+                            title="Bus Network Topology - Linear Backbone Architecture" loading="lazy"
+                            fetchpriority="low" decoding="async">
+                    </div>
+
+
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Key Features of Bus Topology</strong></p>
+                        <ul>
+                            <li><strong>Single Backbone Cable</strong>: All network devices are joined to one central
+                                cable.</li>
+                            <li><strong>Data Transmission</strong>: When a device sends data, the signal travels in both
+                                directions along the bus to all other devices.</li>
+                            <li><strong>Terminators</strong>: Both ends of the bus cable have terminators to prevent
+                                signal bounce (interference from reflections).</li>
+                            <li><strong>Simple Design</strong>: Easy and inexpensive to set up for small networks.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Advantages:</strong></p>
+                        <ul>
+                            <li>Low cost implementation.</li>
+                            <li>Simple installation.</li>
+                            <li>Requires minimal cabling.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Disadvantages:</strong></p>
+                        <ul>
+                            <li>Single point of failure (cable break affects entire network).</li>
+                            <li>Difficult to troubleshoot problems.</li>
+                            <li>Performance degrades with more devices.</li>
+                            <li>Limited cable length (185-500 meters).</li>
+                        </ul>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Real-World Usage</strong>: Legacy systems, temporary networks,
+                        small office setups
+                        (mostly obsolete).
+                    </p>
+                </div>
+                <div class="content">
+                    <h4>Star Topology</h4>
+                    <p><strong>Star Topology</strong> is a network layout in which all devices (computers, printers,
+                        etc.) are individually connected to a central device such
+                        as a switch or hub. This central device acts as the main point for all network communication.
+                    </p>
+                    <div class="card-image">
+                        <img src="images/star-topology-network-architecture.webp"
+                            alt="Star topology network diagram showing central hub or switch connecting multiple computers and devices in radial configuration"
+                            title="Star Network Topology - Central Hub Architecture" loading="lazy" fetchpriority="low"
+                            decoding="async">
+                    </div>
+
+                    <p>[Switch/Hub] is the central device.</p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Key Features of Star Topology</strong></p>
+                        <ul>
+                            <li><strong>Central Connection Poin</strong>: Every device has a dedicated cable connecting
+                                it directly to the central switch or hub.</li>
+                            <li><strong>Data Transmission</strong>: Data sent from any device has to pass through the
+                                central device before reaching its destination.</li>
+                            <li><strong>Isolation</strong>: Both ends of the bus cable have terminators to prevent
+                                signal bounce (interference from reflections).</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Advantages:</strong></p>
+                        <ul>
+                            <li>Easy to install and manage.</li>
+                            <li>Failure of one device doesn't affect others.</li>
+                            <li>Simple troubleshooting (isolate individual connections).</li>
+                            <li>Easy to add/remove devices.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Disadvantages:</strong></p>
+                        <ul>
+                            <li>Central device failure brings down entire network.</li>
+                            <li>Requires more cable than bus topology.</li>
+                            <li>Limited by central device capabilities.</li>
+                        </ul>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Real-World Usage</strong>: Office networks, home routers,
+                        enterprise LANs
+                    </p>
+                </div>
+                <div class="content">
+                    <h4>Ring Topology</h4>
+                    <p><strong>Ring Topology</strong> is a type of network layout in which each device (node) is
+                        connected to exactly two other devices, forming a closed loop
+                        or ring. Data travels around the ring in one or both directions, passing through each device
+                        until it reaches its
+                        destination.
+                    </p>
+                    <div class="card-image">
+                        <img src="images/ring-topology-network-architecture.webp"
+                            alt="Ring topology network diagram showing computers connected in closed circular loop with token passing protocol"
+                            title="Ring Network Topology - Circular Token Ring Architecture" loading="lazy"
+                            fetchpriority="low" decoding="async">
+
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Key Features of Ring Topology</strong></p>
+                        <ul>
+                            <li><strong>Central Connection Point</strong>: Every device has a dedicated cable connecting
+                                it directly to the central switch or hub.</li>
+                            <li><strong>Data Transmission</strong>: Data sent from any device has to pass through the
+                                central device before reaching its destination.</li>
+                            <li><strong>Isolation</strong>: If one cable fails, only the attached device is affected;
+                                the rest of the network continues to function.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Advantages:</strong></p>
+                        <ul>
+                            <li>Equal access for all devices.</li>
+                            <li>Predictable performance.</li>
+                            <li>No central point of failure.</li>
+                            <li>Efficient for high-traffic networks.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Disadvantages:</strong></p>
+                        <ul>
+                            <li>Entire network fails if one connection breaks.</li>
+                            <li>Difficult to add/remove devices.</li>
+                            <li>Troubleshooting is complex.</li>
+                            <li>Slower than switched networks.</li>
+                        </ul>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Real-World Usage</strong>: IBM Token Ring networks (legacy),
+                        metropolitan area networks, some industrial control systems. [<a
+                            href="https://www.ibm.com/think/topics/network-topology" class="link">3</a>]
+                    </p>
+                </div>
+                <div class="content">
+                    <h4>Mesh Topology</h4>
+                    <p><strong>Mesh Topology</strong> is a network layout in which every device (node) is directly
+                        connected to every other device in the network, creating a
+                        web-like structure with multiple pathways for data to travel.
+                    </p>
+                    <div class="code-block">
+                        <pre>
+<code>Full Mesh:           Partial Mesh:
+PC1 --- PC2          PC1 --- PC2
+ |   X   |            |       |
+ |  X X  |           PC4 --- PC3
+PC4 --- PC3</code>
+</pre>
+                    </div>
+
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Key Features of Mesh Topology</strong></p>
+                        <ul>
+                            <li><strong>Direct Connections</strong>: Each node connects directly to all others (full
+                                mesh), or at least to several others (partial mesh).</li>
+                            <li><strong>Redundant Paths</strong>: Multiple paths exist between any two devices,
+                                providing alternative routes if one connection fails.</li>
+                            <li><strong>High Reliability</strong>: Network remains operational even if several
+                                connections or devices fail.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Advantages:</strong></p>
+                        <ul>
+                            <li>Maximum redundancy and reliability.</li>
+                            <li>No single point of failure.</li>
+                            <li>Self-healing (automatic rerouting).</li>
+                            <li>High security (difficult to intercept).</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Disadvantages:</strong></p>
+                        <ul>
+                            <li>Expensive (many cables and interfaces required).</li>
+                            <li>Complex installation and management.</li>
+                            <li>High maintenance overhead.</li>
+                        </ul>
+                    </div>
+                    <p style="margin-top: 10px;"><strong>Real-World Usage</strong>: Internet backbone, military
+                        networks, financial trading systems, data centers.
+                    </p>
+                </div>
+                <div class="content">
+                    <h4>Logical Network Topologies</h4>
+                    <p>Logical topology describes how data flows through the network, regardless of physical
+                        connections.</p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Logical Bus</strong></p>
+                        <ul>
+                            <li>All devices share same communication medium.</li>
+                            <li>Ethernet uses logical bus over physical star.</li>
+                            <li>CSMA/CD protocol manages access.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Logical Ring</strong></p>
+                        <ul>
+                            <li>Data passes through each device sequentially.</li>
+                            <li>Token Ring and FDDI use this approach.</li>
+                            <li>Deterministic access control.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>Modern Network Architectures</h3>
+                    <p>The three-tier network architecture is a well-established approach to organizing large campus or
+                        enterprise networks for
+                        scalability, reliability, and manageability. It divides the network into three distinct layers,
+                        each with specialized
+                        functions:</p>
+                    <h4>Three-Tier Architecture</h4>
+                    <div class="code-block">
+                        <pre>
+<code><span>CORE LAYER</span> (Layer 3)
+├── High-speed routers
+├── Redundant links
+└── Campus backbone
+
+<span>DISTRIBUTION LAYER</span> (Layer 2/3)
+├── Departmental aggregation
+├── Policy enforcement
+└── VLAN routing
+
+<span>ACCESS LAYER</span> (Layer 2)
+├── End-user connectivity
+├── Switches and wireless APs
+└── Port security</code>
+</pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">1. Core Layer (Layer 3)</strong></p>
+                    <p><strong>Role</strong>: The backbone of the entire network, responsible for high-speed, reliable
+                        transport of large volumes of data.</p>
+                    <div class="list">
+                        <p><strong>Functions:</strong></p>
+                        <ul>
+                            <li><strong>High-speed routers</strong>: Fast Layer 3 (IP) routing to efficiently move
+                                packets between different parts of the network.</li>
+                            <li><strong>Redundant links</strong>: Multiple paths and links to ensure continuity and
+                                failover; critical for minimizing downtime.</li>
+                            <li><strong>Campus backbone</strong>: Connects multiple buildings, distribution layers, and
+                                major sections of an organization.</li>
+                        </ul>
+                    </div>
+                    <p><strong>Explanation:</strong></p>
+                    <p>The core layer is designed for speed and reliability—not for network access, filtering, or policy
+                        enforcement. Its focus
+                        is transporting traffic as quickly as possible across the enterprise.</p>
+                    <p class="sub"><strong class="subtitle">2. Distribution Layer (Layer 2/3)</strong></p>
+                    <p><strong>Role</strong>: The "middleman" between the core and access layers; aggregates
+                        connectivity and enforces controls.</p>
+                    <div class="list">
+                        <p><strong>Functions:</strong></p>
+                        <ul>
+                            <li><strong>Departmental aggregation</strong>: Connects multiple access layer switches,
+                                typically by department or building.</li>
+                            <li><strong>Policy enforcement</strong>: Implements access control lists (ACLs), security
+                                policies, and Quality of Service (QoS).</li>
+                            <li><strong>VLAN routing</strong>: Performs routing between VLANs (virtual LANs) using Layer
+                                3 switches or routers.</li>
+                        </ul>
+                    </div>
+                    <p><strong>Explanation:</strong></p>
+                    <p>The distribution layer is responsible for organizing traffic from access devices, enforcing
+                        organizational policies, and
+                        managing inter-VLAN routing. It often acts as the boundary for network segmentation and security
+                        controls.</p>
+                    <p class="sub"><strong class="subtitle">3. Access Layer (Layer 2)</strong></p>
+                    <p><strong>Role</strong>: Provides end-user connectivity—where devices such as computers, phones,
+                        and printers join the network.</p>
+                    <div class="list">
+                        <p><strong>Functions:</strong></p>
+                        <ul>
+                            <li><strong>End-user connectivity</strong>: Direct connections for devices via Ethernet or
+                                wireless.</li>
+                            <li><strong>Switches and wireless APs</strong>: Layer 2 switches and wireless Access Points
+                                distribute connections to individual users.</li>
+                            <li><strong>Port security</strong>: Controls which devices are allowed to connect to the
+                                network ports, preventing unauthorized access.</li>
+                        </ul>
+                    </div>
+                    <p><strong>Explanation:</strong></p>
+                    <p>The access layer interfaces with users and devices. It’s optimized for flexibility, density, and
+                        security controls at
+                        the port level, such as MAC filtering and limiting physical connections.</p>
+                    <div class="table-container">
+                        <h4>Summary Table</h4>
+                        <table class="responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>Layer</th>
+                                    <th>Primary Devices</th>
+                                    <th>Main Functions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="core-row">
+                                    <td class="blue">Core (L3)</td>
+                                    <td>Routers, backbone switches</td>
+                                    <td>High-speed routing, redundancy, packet switching</td>
+                                </tr>
+                                <tr class="distribution-row">
+                                    <td class="blue">Distribution (L2/L3)</td>
+                                    <td>Layer 3 switches, routers</td>
+                                    <td>Aggregation, policy, VLAN routing, boundary definition</td>
+                                </tr>
+                                <tr class="access-row">
+                                    <td class="blue">Access (L2)</td>
+                                    <td>Switches, wireless APs</td>
+                                    <td>User/device connectivity, security, PoE, collision domain control</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>Diagram:</h4>
+                    <div class="card-image">
+                        <img src="images/three-tier-network-architecture-diagram.webp"
+                            alt="Three-tier hierarchical network architecture showing core layer with high-speed routers, distribution layer with department switches, and access layer with PC workstations and wireless access points"
+                            title="Three-Tier Network Architecture - Hierarchical Design Model" loading="lazy"
+                            decoding="async" fetchpriority="low">
+                    </div>
+                    <div class="list">
+                        <h4>Why Use Three-Tier Architecture?</h4>
+                        <ul>
+                            <li><strong>Scalability</strong>: Easily grow the network by adding more access and
+                                distribution devices.</li>
+                            <li><strong>Performance</strong>: Dedicated layers prevent congestion and allow optimization
+                                for specific network functions.</li>
+                            <li><strong>Manageability & Security</strong>: Policies and configurations are easier to
+                                organize and enforce at appropriate layers.</li>
+                            <li><strong>Reliability</strong>: Redundant paths in the core ensure network resilience.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <h4>Core Layer Functions:</h4>
+                        <ul>
+                            <li>High-speed packet forwarding.</li>
+                            <li>Redundancy and fault tolerance.</li>
+                            <li>Connection to internet and WAN.</li>
+                            <li>No policy enforcement (speed priority).</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <h4>Distribution Layer Functions:</h4>
+                        <ul>
+                            <li>Aggregates access layer connections.</li>
+                            <li>Implements security policies.</li>
+                            <li>VLAN routing and filtering.</li>
+                            <li>Load balancing and QoS.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <h4>Access Layer Functions:</h4>
+                        <ul>
+                            <li>Connects end-user devices.</li>
+                            <li>Port security and authentication.</li>
+                            <li>Power over Ethernet (PoE).</li>
+                            <li>Basic switching functions.</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="table-container">
+                        <h4>Topology Selection Criteria</h4>
+                        <table class="responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>Criteria</th>
+                                    <th>Bus</th>
+                                    <th>Star</th>
+                                    <th>Ring</th>
+                                    <th>Mesh</th>
+                                    <th>Hybrid</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Row 1: Cost -->
+                                <tr>
+                                    <td class="blue">Cost</td>
+                                    <td class="low">Low</td>
+                                    <td class="medium">Medium</td>
+                                    <td class="medium">Medium</td>
+                                    <td class="high">High</td>
+                                    <td class="low">Variable</td>
+                                </tr>
+                                <!-- Row 2: Scalability -->
+                                <tr>
+                                    <td class="blue">Scalability</td>
+                                    <td class="poor">Poor</td>
+                                    <td class="good">Good</td>
+                                    <td class="fair">Fair</td>
+                                    <td class="excellent">Excellent</td>
+                                    <td class="excellent">Excellent</td>
+                                </tr>
+                                <!-- Row 3: Fault Tolerance -->
+                                <tr>
+                                    <td class="blue">Fault Tolerance</td>
+                                    <td class="poor">Poor</td>
+                                    <td class="fair">Fair</td>
+                                    <td class="poor">Poor</td>
+                                    <td class="excellent">Excellent</td>
+                                    <td class="good">Good</td>
+                                </tr>
+                                <!-- Row 4: Performance -->
+                                <tr>
+                                    <td class="blue">Performance</td>
+                                    <td class="poor">Decreases</td>
+                                    <td class="consistent">Consistent</td>
+                                    <td class="consistent">Consistent</td>
+                                    <td class="high">High</td>
+                                    <td class="optimized">Optimized</td>
+                                </tr>
+                                <!-- Row 5: Management -->
+                                <tr>
+                                    <td class="blue">Management</td>
+                                    <td>Difficult</td>
+                                    <td>Easy</td>
+                                    <td>Complex</td>
+                                    <td>Complex</td>
+                                    <td>Moderate</td>
+                                </tr>
+                                <!-- Row 6: Best Use Case -->
+                                <tr>
+                                    <td class="blue">Best Use Case</td>
+                                    <td>Legacy/Temporary</td>
+                                    <td>Office LANs</td>
+                                    <td>Industrial</td>
+                                    <td>Critical systems</td>
+                                    <td>Enterprise</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>Topology Troubleshooting Scenarios</h4>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Single Points of Failure</strong></p>
+                        <ul>
+                            <li><strong>Star topology</strong>: Central hub/switch failure.</li>
+                            <li><strong>Tree topology</strong>: Root node failure.</li>
+                            <li><strong>Solution</strong>: Implement redundant central devices</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Network Bottlenecks</strong></p>
+                        <ul>
+                            <li><strong>Bus topology</strong>: Shared medium saturation.</li>
+                            <li><strong>Tree topology</strong>: Central device bandwidth limits.</li>
+                            <li><strong>Solution</strong>:Upgrade central device or implement load balancing.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Single Points of Failure</strong></p>
+                        <ul>
+                            <li><strong>Star topology</strong>: Central hub/switch failure.</li>
+                            <li><strong>Tree topology</strong>: Root node failure.</li>
+                            <li><strong>Solution</strong>: Implement redundant central devices</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In-Content Ad #2 -->
+            <div class="ad-container ad-in-content">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-after-section3">
+                    <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class=" card networking-card" id="chapter-3">
+                <div class="card-header">
+                    <h2>4. Networking Devices</h2>
+                </div>
+                <div class="content">
+                    <p>Understanding the differences between networking devices is crucial for proper network design and
+                        troubleshooting. [<a class="link"
+                            href="https://www.geeksforgeeks.org/computer-networks/difference-between-hub-switch-and-router/">4</a>]
+                        [<a class="link" href="https://www.pynetlabs.com/hub-vs-switch-vs-router/">5</a>]
+                    </p>
+                    <div class="table-container">
+                        <h3>Device Comparison Table</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Device</th>
+                                    <th>OSI Layer</th>
+                                    <th>Function</th>
+                                    <th>Intelligence Level</th>
+                                    <th>Data Unit</th>
+                                    <th>Addressing</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">Hub</td>
+                                    <td>Physical (1)</td>
+                                    <td>Repeats signals to all ports</td>
+                                    <td>None</td>
+                                    <td>Bits</td>
+                                    <td>None</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Switch</td>
+                                    <td>Data Link (2)</td>
+                                    <td>Forwards based on MAC address</td>
+                                    <td>Medium</td>
+                                    <td>Frames</td>
+                                    <td>MAC addresses</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Router</td>
+                                    <td>Network (3)</td>
+                                    <td>Routes between networks (LANs/WANs)</td>
+                                    <td>High</td>
+                                    <td>Packets</td>
+                                    <td>IP addresses</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">NIC</td>
+                                    <td>Physical/Data Link (1/2)</td>
+                                    <td>Network interface for devices (media access)</td>
+                                    <td>Basic</td>
+                                    <td>Bits/Frames</td>
+                                    <td>MAC address</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="content">
+                    <h4>Hub (Network Hub)</h4>
+                    <p>A <strong>hub (network hub)</strong> is a basic networking device used to connect multiple
+                        computers or devices together in a local area
+                        network (LAN). Its primary purpose is to serve as a central connection point for devices in a
+                        network segment.
+                    </p>
+                    <p class="sub"><strong class="subtitle">Real-World Analogy</strong>: The Loudspeaker in a Classroom
+                    </p>
+                    <div class="list">
+                        <p>Imagine a classroom where students want to talk to each other, but they all have to use a
+                            single loudspeaker at the
+                            front.</p>
+                        <ul>
+                            <li>Whenever a student (computer) has something to say (sends data), they walk to the
+                                loudspeaker (hub) and speak into it.</li>
+                            <li>Whatever is said into the loudspeaker is heard by everyone in the classroom (all
+                                connected devices), not just the person
+                                it was meant for.</li>
+                            <li>The right person listens and responds, others just ignore what wasn't for them.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Step-By-Step Working of a Hub</strong></p>
+                        <ol>
+                            <li><strong>A computer sends data to the hub:</strong></li>
+                            <p>For example, PC1 wants to send a message to PC3. PC1 sends the data to the hub.</p>
+                            <li><strong>The hub receives the data:</strong></li>
+                            <p>The hub takes in the electrical signal from PC1.</p>
+                            <li><strong>The hub broadcasts the data to all connected devices:</strong></li>
+                            <p>The hub instantly repeats the signal—sending the data out to all of its ports. This means
+                                every connected PC (PC2, PC3,
+                                PC4, etc.) gets the same data.</p>
+                            <li><strong>Only the intended recipient accepts it, others discard:</strong></li>
+                            <p>Each computer checks if the data is meant for it. PC3, seeing it’s for itself, keeps the
+                                data. The others (PC2, PC4)
+                                ignore it.</p>
+                        </ol>
+                        <div class=" card-image">
+                            <img src="images/network-hub-topology-diagram.webp"
+                                alt="Network hub topology diagram showing uplink connection, central hub with half-duplex shared collision domain connecting three PCs broadcasting frames to all ports"
+                                title="Network Hub Topology - Shared Collision Domain Architecture" loading="lazy"
+                                decoding="async" fetchpriority="low">
+
+                        </div>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Characteristics:</strong></p>
+                        <ul>
+                            <li>Physical layer device (Layer 1).</li>
+                            <li>Multiport repeater.</li>
+                            <li>Half-duplex communication.</li>
+                            <li>Single collision domain.</li>
+                            <li>Shared bandwidth among all ports.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Modern Usage:</strong></p>
+                        <ul>
+                            <li>Largely obsolete in modern networks.</li>
+                            <li>Replaced by switches for better performance.</li>
+                            <li>Still used in some legacy industrial systems.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <h4>Switch (Network Switch)</h4>
+                    <p>A <strong>switch (network switch)</strong> is a device that connects multiple computers or
+                        devices in a network and smartly sends data
+                        only to the device it's meant for.
+                    </p>
+                    <p class="sub"><strong class="subtitle">Real-World Analogy</strong>: </p>
+                    <p>Think of a switch like a post office clerk. If you hand over several letters for neighbors in
+                        your town, the clerk puts
+                        each letter directly into the correct mailbox. Only the person with that mailbox gets the
+                        letter; no one else does. This
+                        is how switches deliver data in a network.
+                    </p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">How Does a Switch Work?</strong></p>
+                        <ol>
+                            <li><strong>A device sends data to the switch:</strong></li>
+                            <p>For example, Computer A wants to send a file to Computer C. It sends the file to the
+                                switch.</p>
+                            <li><strong>The switch checks the MAC address table:</strong></li>
+                            <p>Every device has its own unique MAC address (like a house address). The switch keeps a
+                                list (table) of which MAC address
+                                is on which port (plug).</p>
+                            <li><strong>The switch forwards data only to the target device:</strong></li>
+                            <p>Instead of sending the file to ALL computers, the switch looks up the destination MAC
+                                address and sends the data
+                                straight to Computer C's port—no one else gets the file.</p>
+                            <li><strong>Devices can talk at the same time without problems:</strong></li>
+                            <p>Because the switch is smart and sends data only where it’s needed, multiple computers can
+                                communicate at once, with no
+                                interruptions or data “collisions”.</p>
+                        </ol>
+                        <div class="card-image">
+                            <img src="images/switch-operation.webp"
+                                alt="Network Switch Operation Diagram - How a Layer 2 Switch Processes Data Frames using MAC Address Tables"
+                                title="Understanding Data Frame Forwarding in a Network Switch" loading="lazy"
+                                decoding="async">
+                        </div>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Characteristics:</strong></p>
+                        <ul>
+                            <li>Data Link layer device (Layer 2).</li>
+                            <li>Maintains MAC address table.</li>
+                            <li>Full-duplex communication.</li>
+                            <li>Each port is separate collision domain.</li>
+                            <li>Dedicated bandwidth per port.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Key Features:</strong></p>
+                        <ul>
+                            <li><strong>MAC Address Learning</strong>: Builds table of device locations.</li>
+                            <li><strong>Forwarding/Filtering</strong>: Sends frames only where needed.</li>
+                            <li><strong>Loop Prevention</strong>: Spanning Tree Protocol support.</li>
+                            <li><strong>VLANs</strong>: Creates virtual network segments</li>
+                        </ul>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Configuration Example:</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code>Switch(config)# <span class="white">interface fastethernet0/1</span> 
+Switch(config-if)# <span class="white">switchport mode access</span>
+Switch(config-if)# <span class="white">switchport access vlan 10</span></code>
+</pre>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <h4>Router (Network Router)</h4>
+                    <p>A <strong>router (network router)</strong> is a device that connects different networks together
+                        and directs data packets to their
+                        correct destinations.
+                    </p>
+                    <p class="sub"><strong class="subtitle">Real-World Analogy</strong>: </p>
+                    <p>Think of a router like a traffic police officer at a busy intersection. The officer checks where
+                        cars want to go (the
+                        destination address) and directs each car down the right road so everything arrives safely and
+                        smoothly. Or, think of it
+                        as a GPS for your data packets.
+                    </p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">How Does a Router Work?</strong></p>
+                        <ol>
+                            <li><strong>A device sends data to the router:</strong></li>
+                            <p>For example, your laptop sends a web request.</p>
+                            <li><strong>The router receives the data:</strong></li>
+                            <p>The router checks the Internet Protocol (IP) address on the data packet.</p>
+                            <li><strong>Router checks the destination IP address:</strong></li>
+                            <p>The router looks at its routing table to figure out the best path for the data.</p>
+                            <li><strong>Router sends the data on the best path:</strong></li>
+                            <p>If the destination is another local device, the router sends it directly.
+                                If it needs to go to the Internet, the router forwards it to the next router or to your
+                                Internet Service Provider (ISP).</p>
+                        </ol>
+                        <div class="card-image">
+                            <img src="images/router-operation-inter-network-communication.webp"
+                                alt="Router operation diagram showing inter-network communication between LAN A (192.168.1.0/24) and LAN B (192.168.2.0/24) connected through central router with cloud internet connection"
+                                title="Router Operation - Inter-network Communication Between Two LANs" loading="lazy"
+                                decoding="async" fetchpriority="low">
+
+                        </div>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Characteristics:</strong></p>
+                        <ul>
+                            <li>Network layer device (Layer 3).</li>
+                            <li>Routes packets between different networks.</li>
+                            <li>Maintains routing table.</li>
+                            <li>Connects LANs, WANs, and internet.</li>
+                            <li>Provides network segmentation.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Key Features:</strong></p>
+                        <ul>
+                            <li><strong>Routing</strong>: Path determination between networks.</li>
+                            <li><strong>NAT</strong>: Network Address Translation for private networks.</li>
+                            <li><strong>DHCP</strong>: Automatic IP address assignment.</li>
+                            <li><strong>Firewall</strong>: Basic security filtering.</li>
+                            <li><strong>QoS</strong>: Traffic prioritization</li>
+                        </ul>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Configuration Example:</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code>Router(config)# <span class="white">interface gigabitethernet0/0</span>
+Router(config-if)# <span class="white">ip address 192.168.1.1 255.255.255.0</span>
+Router(config-if)# <span class="white">no shutdown</span>
+Router(config)# <span class="white">ip route 0.0.0.0 0.0.0.0 203.0.113.1</span></code>
+</pre>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <h4>Network Interface Card (NIC)</h4>
+                    <p>A <strong>Network Interface Card (NIC)</strong> is a small hardware component inside your
+                        computer that acts as both a translator and a
+                        passport for connecting to networks like the internet.
+                    </p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">How Does a NIC Work?</strong></p>
+                        <ol>
+                            <li><strong>Translator:</strong></li>
+                            <p>Your computer only understands digital data (ones and zeros). But to send this data over
+                                a network—whether through
+                                cables (Ethernet) or wireless signals (Wi-Fi)—the NIC converts digital information:</p>
+                            <ul>
+                                <li>For <strong>Ethernet</strong>, the NIC turns digital data into electrical pulses
+                                    that travel through wires.</li>
+                                <li>For <strong>Wi-Fi</strong>, it turns the data into radio waves sent through the air.
+                                </li>
+                                <li>When data arrives from the network, the NIC translates it from signals (pulses/radio
+                                    waves) back into digital data your
+                                    computer understands.</li>
+                            </ul>
+                            <li><strong>Passport:</strong></li>
+                            <p>Every NIC has a unique address called a <strong>MAC address</strong> (like a passport
+                                number). This lets networks recognize your device,
+                                so your computer gets the information meant for it and not someone else's.</p>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Characteristics:</strong></p>
+                        <ul>
+                            <li>Physical/Data Link layer device (Layer 1/2).</li>
+                            <li>Provides network connectivity for end devices.</li>
+                            <li>Has unique MAC address.</li>
+                            <li>Converts between digital data and network signals.</li>
+                            <li>Available as wired (Ethernet) or wireless (Wi-Fi).</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Functions:</strong></p>
+                        <ul>
+                            <li><strong>Media Access</strong>: Controls when device can transmit.</li>
+                            <li><strong>Error Detection</strong>: Checks frame integrity.</li>
+                            <li><strong>Address Recognition</strong>: Filters frames for device.</li>
+                            <li><strong>Protocol Support</strong>: Implements Ethernet, Wi-Fi standards.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Types:</strong></p>
+                        <ul>
+                            <li><strong>Ethernet NIC</strong>: RJ-45 connector, 1 Gbps typical.</li>
+                            <li><strong>Wireless NIC</strong>: 802.11ac/ax, multiple antennas.</li>
+                            <li><strong>Server NICs</strong>: Multiple ports, high-speed (10/25/40 Gbps).</li>
+                        </ul>
+                    </div>
+                    <div class="table-container">
+                        <p class="sub"><strong class="subtitle">Network Interface Card (NIC)</strong></p>
+                        <table>
+                            <!-- Table Header -->
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        NIC Type
+                                    </th>
+                                    <th scope="col">
+                                        Speed
+                                    </th>
+                                    <th scope="col">
+                                        Connector
+                                    </th>
+                                    <th scope="col">
+                                        Use Case
+                                    </th>
+                                </tr>
+                            </thead>
+                            <!-- Table Body -->
+                            <tbody>
+                                <!-- Ethernet Row -->
+                                <tr>
+                                    <td class="blue">
+                                        Ethernet
+                                    </td>
+                                    <td>
+                                        10 Mbps - 100 Gbps
+                                    </td>
+                                    <td>
+                                        RJ-45, SFP+
+                                    </td>
+                                    <td>
+                                        Wired LAN connections
+                                    </td>
+                                </tr>
+
+                                <!-- Wireless Row -->
+                                <tr>
+                                    <td class="blue">
+                                        Wireless
+                                    </td>
+                                    <td>
+                                        54 Mbps - 9.6 Gbps
+                                    </td>
+                                    <td>
+                                        Internal antenna
+                                    </td>
+                                    <td>
+                                        WiFi connectivity
+                                    </td>
+                                </tr>
+
+                                <!-- Fiber Row -->
+                                <tr>
+                                    <td class="blue">
+                                        Fiber
+                                    </td>
+                                    <td>
+                                        1 Gbps - 400 Gbps
+                                    </td>
+                                    <td>
+                                        SC, LC, MPO
+                                    </td>
+                                    <td>
+                                        High-speed, long-distance
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-container">
+                        <h4>Device Selection Guide</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Scenario</th>
+                                    <th scope="col">Recommended Device</th>
+                                    <th scope="col">Reason</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">Small home network</td>
+                                    <td>Router with built-in switch</td>
+                                    <td>Cost-effective, multiple functions</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Office department</td>
+                                    <td>Managed switch</td>
+                                    <td>VLAN support, port security</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Building backbone</td>
+                                    <td>Layer 3 switch</td>
+                                    <td>High-speed inter-VLAN routing</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Internet connection</td>
+                                    <td>Router with WAN interface</td>
+                                    <td>NAT, firewall, routing protocols</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Data center</td>
+                                    <td>Top-of-rack switches</td>
+                                    <td>High port density, low latency</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="card networking-card" id="chapter-4">
+                <div class="card-header">
+                    <h2>5. LAN vs WAN Networks</h2>
+                </div>
+                <div class="content">
+                    <p>Understanding the distinction between Local Area Networks (LANs) and Wide Area Networks (WANs) is
+                        essential for network
+                        planning and implementation.
+                    </p>
+                    <h3>Local Area Network (LAN)</h3>
+                    <p><strong>Definition</strong>: Network covering small geographical area, typically single building
+                        or campus.</p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Real-World Examples:</strong></p>
+                        <ul>
+                            <li>Home network connecting computers, phones, smart devices.</li>
+                            <li>Office network connecting workstations, printers, servers.</li>
+                            <li>School computer lab with 30 student computers.</li>
+                            <li>Manufacturing floor with industrial control systems.</li>
+                        </ul>
+                    </div>
+                    <p class="sub"><strong class="subtitle">LAN Examples:</strong></p>
+                    <div class="card-image">
+                        <img src="images/home-vs-office-network-topology-diagram.webp"
+                            alt="Network topology comparison between a home network (consumer router, WiFi devices, smart TV, basic switch) and an office network (enterprise firewall, core switch, department switches, server farm)"
+                            title="Home Network vs Office Network Architecture Comparison" loading="lazy"
+                            decoding="async" fetchpriority="low">
+
+                    </div>
+                    <div class="table-container">
+                        <p class="sub"><strong class="subtitle">Common LAN Technologies:</strong></p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Technology</th>
+                                    <th scope="col">Speed</th>
+                                    <th scope="col">Cable Type</th>
+                                    <th scope="col">Distance Limit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">Fast Ethernet</td>
+                                    <td>100 Mbps</td>
+                                    <td>Cat5e</td>
+                                    <td>100 meters</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Gigabit Ethernet</td>
+                                    <td>1 Gbps</td>
+                                    <td>Cat6</td>
+                                    <td>100 meters</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">10 Gigabit Ethernet</td>
+                                    <td>10 Gbps</td>
+                                    <td>Cat6a/Fiber</td>
+                                    <td>100m/10km</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Wi-Fi 6</td>
+                                    <td>1-9 Gbps</td>
+                                    <td>Wireless</td>
+                                    <td>~70 meters</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Wide Area Network (WAN)</h3>
+                    <p><strong>Definition</strong>: Network spanning large geographical areas, connecting multiple LANs
+                        across cities, countries, or continents.</p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Real-World Examples:</strong></p>
+                        <ul>
+                            <li>Corporate headquarters connecting to branch offices.</li>
+                            <li>Internet connecting global networks.</li>
+                            <li>Bank ATM network connecting to central servers.</li>
+                            <li>Cloud services accessed from multiple locations.</li>
+                        </ul>
+                    </div>
+                    <p class="sub"><strong class="subtitle">WAN Examples:</strong></p>
+                    <div class="card-image">
+                        <img src="images/mpls-provider-headquarters-branch-office-topology.webp"
+                            alt="WAN topology diagram showing MPLS provider connecting New York Headquarters to London Branch Office via local LAN infrastructures"
+                            title="MPLS Network Topology - Global Site-to-Site Connectivity" loading="lazy"
+                            decoding="async" fetchpriority="low">
+
+                    </div>
+                    <div class="table-container">
+                        <h4>Common WAN Technologies:</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Technology</th>
+                                    <th scope="col">Speed Range</th>
+                                    <th scope="col">Use Case</th>
+                                    <th scope="col">Typical Cost</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">DSL</td>
+                                    <td>1-100 Mbps</td>
+                                    <td>Small business internet</td>
+                                    <td>$50-200/month</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Cable Internet</td>
+                                    <td>10-1000 Mbps</td>
+                                    <td>Home/small office</td>
+                                    <td>$30-150/month</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Fiber Internet</td>
+                                    <td>100 Mbps-10 Gbps</td>
+                                    <td>Enterprise connectivity</td>
+                                    <td>$200-5000/month</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">MPLS</td>
+                                    <td>1 Mbps-10 Gbps</td>
+                                    <td>Corporate networks</td>
+                                    <td>$500-10000/month</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Satellite</td>
+                                    <td>1-100 Mbps</td>
+                                    <td>Remote locations</td>
+                                    <td>$100-1000/month</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-container">
+                        <h4>LAN vs WAN Comparison</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Aspect</th>
+                                    <th scope="col">LAN (Local Area Network)</th>
+                                    <th scope="col">WAN (Wide Area Network)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">Geographic Coverage</td>
+                                    <td>Building/Campus</td>
+                                    <td>City/Country/Global</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Ownership</td>
+                                    <td>Private</td>
+                                    <td>Leased/Public</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Speed</td>
+                                    <td>Very High (1-100+ Gbps)</td>
+                                    <td>Variable (1 Mbps-10 Gbps)</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Latency</td>
+                                    <td>Very Low (< 1ms)</td>
+                                    <td>Higher (10-300ms)</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Error Rate</td>
+                                    <td>Very Low</td>
+                                    <td>Higher</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Security</td>
+                                    <td>Inherently more secure</td>
+                                    <td>Requires additional security</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Cost</td>
+                                    <td>Low operational cost</td>
+                                    <td>High bandwidth/leasing costs</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Management</td>
+                                    <td>Local IT team</td>
+                                    <td>Service provider + local team</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Reliability</td>
+                                    <td>High (redundant paths)</td>
+                                    <td>Depends on service provider</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Technology</td>
+                                    <td>Ethernet, WiFi</td>
+                                    <td>MPLS, Internet, Satellite, Cellular</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>Network Design Considerations</h4>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">LAN Design Priorities:</strong></p>
+                        <ul>
+                            <li><strong>Performance</strong>: Minimize latency and maximize throughput.</li>
+                            <li><strong>Security</strong>: Control physical and logical access.</li>
+                            <li><strong>Scalability</strong>: Easy addition of new devices and users.</li>
+                            <li><strong>Cost</strong>: Balance performance with budget constraints.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">WAN Design Priorities:</strong></p>
+                        <ul>
+                            <li><strong>Connectivity</strong>: Reliable links between locations.</li>
+                            <li><strong>Bandwidth</strong>: Adequate capacity for applications.</li>
+                            <li><strong>Redundancy</strong>: Backup connections for critical links.</li>
+                            <li><strong>Security</strong>: Encryption and access control over public networks.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In-Content Ad #2 -->
+            <div class="ad-container ad-in-content">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-after-section3">
+                    <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <!-- Chapter 5 -->
+            <div class="card networking-card" id="chapter-5">
+                <div class="card-header">
+                    <h2>6. Cabling Standards & Infrastructure</h2>
+                    <i>Proper cabling is the foundation of reliable network performance.</i>
+                </div>
+                <p><strong>Cabling Standards & Infrastructure</strong> refer to the official rules, guidelines, and
+                    physical systems
+                    used to organize,
+                    install, and manage wires (like Ethernet or fiber cables) that connect network devices. These
+                    standards ensure cables
+                    are safe, reliable, and compatible—helping networks work smoothly and making it easy to expand
+                    or troubleshoot.
+                </p>
+                <div class="content">
+                    <h3>Ethernet Cable Categories</h3>
+                    <p>An <strong>Ethernet cable</strong> is a type of wired cable used to connect computers, routers,
+                        switches, and other devices in a network,
+                        allowing them to communicate and share data quickly. It’s the standard cable for most local area
+                        networks (LANs) and
+                        looks like a thicker phone cable with special connectors (called RJ45 plugs) on each end.</p>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Max Speed</th>
+                                    <th scope="col">Max Distance</th>
+                                    <th scope="col">Frequency</th>
+                                    <th scope="col">Applications</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">Cat5e</td>
+                                    <td>1 Gbps</td>
+                                    <td>100 meters</td>
+                                    <td>100 MHz</td>
+                                    <td>Basic Gigabit Ethernet</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Cat6</td>
+                                    <td>10 Gbps*</td>
+                                    <td>55m (10G), 100m (1G)</td>
+                                    <td>250 MHz</td>
+                                    <td>High-performance networks</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Cat6a</td>
+                                    <td>10 Gbps</td>
+                                    <td>100 meters</td>
+                                    <td>500 MHz</td>
+                                    <td>Data centers, future-proofing</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Cat7</td>
+                                    <td>10 Gbps</td>
+                                    <td>100 meters</td>
+                                    <td>600 MHz</td>
+                                    <td>Shielded applications</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Cat8</td>
+                                    <td>25-40 Gbps</td>
+                                    <td>30 meters</td>
+                                    <td>2000 MHz</td>
+                                    <td>Data center interconnects</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <em>*Note: Cat6 can only sustain 10 Gbps up to 55 meters.</em>
+
+                    </div>
+                </div>
+
+                <div class="content">
+                    <h4>Straight-Through Cable (Standard)</h4>
+                    <p>A <strong>Straight-Through Cable</strong> is a network cable in which the wiring on both ends
+                        follows the same pin order (standard T568A
+                        or T568B). This means each wire connects to the corresponding pin at each connector.</p>
+                    <div class="card-image">
+                        <img src="images/ethernet-straight-through-cable-pinout-diagram.webp"
+                            alt="Ethernet straight-through cable wiring diagram illustrating standard T568B to T568B pinout with identical transmit and receive pairs on both ends for device-to-switch connection"
+                            title="Ethernet Straight-Through Cable Wiring - Standard T568B Pinout" loading="lazy"
+                            decoding="async">
+
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Usage</strong></p>
+                        <ul>
+                            <li>PC to switch.</li>
+                            <li>Router to switch.</li>
+                            <li>Switch to hub.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <h4>Crossover Cable</h4>
+                    <p>A <strong>crossover cable</strong> is a special type of Ethernet cable where the transmit and
+                        receive wires are “crossed over.” This
+                        means the wires that send signals from one device connect directly to the wires that receive
+                        signals on the other
+                        device.</p>
+                    <div class="card-image">
+                        <img src="images/ethernet-crossover-cable-pinout-wiring-diagram.webp"
+                            alt="Ethernet crossover cable wiring diagram showing internal pinouts for Tx and Rx data pairs with green and orange wires crossing for direct device-to-device connection"
+                            title="Ethernet Crossover Cable Pinout - T568A to T568B Wiring" loading="lazy"
+                            decoding="async">
+
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Usage</strong></p>
+                        <ul>
+                            <li>PC to PC (direct connection)</li>
+                            <li>Switch to switch (older equipment).</li>
+                            <li>Router to router.</li>
+                            <li>Hub to hub.</li>
+                        </ul>
+                    </div>
+                    <em>*Note: Modern devices support Auto-MDIX, making crossover cables less necessary.</em>
+                    <div class="table-container">
+                        <!-- The core table structure without any class attributes -->
+                        <h4>Color Code Reference Table</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Wire Pair</th>
+                                    <th scope="col">T568A (Color/Stripe)</th>
+                                    <th scope="col">T568B (Color/Stripe)</th>
+                                    <th scope="col">Function (Standard Use)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">Pair 1 (Pin 1 & 2)</td>
+                                    <td>Green/White, Green</td>
+                                    <td>Orange/White, Orange</td>
+                                    <td>Transmit Data (TX+) / (TX-)</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Pair 2 (Pin 3 & 6)</td>
+                                    <td>Orange/White, Orange</td>
+                                    <td>Green/White, Green</td>
+                                    <td>Receive Data (RX+) / (RX-)</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Pair 3 (Pin 4 & 5)</td>
+                                    <td>Blue/White, Blue</td>
+                                    <td>Blue/White, Blue</td>
+                                    <td>Bidirectional Data (Voice/Power)</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Pair 4 (Pin 7 & 8)</td>
+                                    <td>Brown/White, Brown</td>
+                                    <td>Brown/White, Brown</td>
+                                    <td>Bidirectional Data (Voice/Power)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <em>*Note: Pins 1, 2, 3, and 6 are used for data transmission in 10/100BASE-T Ethernet. All 8
+                            pins
+                            are used in Gigabit
+                            (1000BASE-T) and faster standards.
+                        </em>
+                        <h4>Cable Testing and Certification</h4>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">Essential Tests:</strong></p>
+                            <ul>
+                                <li><strong>Continuity</strong>: All wires connected properly.</li>
+                                <li><strong>Wire Map</strong>: Correct pin-to-pin connections.</li>
+                                <li><strong>Length</strong>: Within category specifications.</li>
+                                <li><strong>NEXT</strong>: Near-End Crosstalk measurements.</li>
+                                <li><strong>Return Loss</strong>: Signal reflection levels.</li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">Certification Tools:</strong></p>
+                            <ul>
+                                <li>Fluke DSX-5000 (professional certification).</li>
+                                <li>Klein Tools VDV Scout Pro (basic testing).</li>
+                                <li>Ideal NaviTek (mid-range certification).</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 6 -->
+            <div class="card networking-card" id="chapter-6">
+                <div class="card-header">
+                    <h2>7. Wireless Networking Basics</h2>
+                </div>
+                <div class="content">
+                    <div class="list">
+                        <p>Wireless networking lets devices communicate without physical cables, using radio waves. The
+                            two most common wireless
+                            technologies are:</p>
+                        <ol>
+                            <li><strong>Wi-Fi</strong>: Used for high-speed data connections in homes, businesses, and
+                                public spaces.</li>
+                            <li><strong>Bluetooth</strong>: Used for short-range connections, mainly for pairing
+                                smartphones with headphones, speakers, keyboards, and IoT devices.</li>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Benefits of Wireless Connectivity:</strong></p>
+                        <ol>
+                            <li><strong>Mobility</strong>: : Move freely within the network’s coverage area.</li>
+                            <li><strong>Easy Setup</strong>: No cabling needed, especially useful in homes, offices, or
+                                places hard to wire.</li>
+                            <li><strong>Device Variety</strong>: Laptops, smartphones, tablets, smart TVs, printers,
+                                wearables, and smart home devices all commonly use wireless
+                                connections.</li>
+                        </ol>
+                        <p><strong>Real-world example</strong>: At a coffee shop, customers use their phones and laptops
+                            over public Wi-Fi without plugging in a cable.</p>
+                    </div>
+                    <div class="table-container">
+                        <h4>Wi-Fi Standards Evolution</h4>
+                        <!-- The core table structure without any class attributes -->
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Standard</th>
+                                    <th scope="col">Year</th>
+                                    <th scope="col">Frequency Bands</th>
+                                    <th scope="col">Max Speed</th>
+                                    <th scope="col">Max Range</th>
+                                    <th scope="col">Key Features</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">802.11n (Wi-Fi 4)</td>
+                                    <td>2009</td>
+                                    <td>2.4 GHz & 5 GHz</td>
+                                    <td>600 Mbps</td>
+                                    <td>~70 m indoors</td>
+                                    <td>MIMO (multiple antennas), channel bonding</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">802.11ac (Wi-Fi 5)</td>
+                                    <td>2014</td>
+                                    <td>5 GHz</td>
+                                    <td>6.9 Gbps</td>
+                                    <td>~35 m indoors</td>
+                                    <td>MU-MIMO, Beamforming</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">802.11ax (Wi-Fi 6)</td>
+                                    <td>2019</td>
+                                    <td>2.4, 5 & 6 GHz</td>
+                                    <td>9.6 Gbps</td>
+                                    <td>Up to 80 m indoors</td>
+                                    <td>OFDMA, Advanced MU-MIMO, Target Wake Time</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">802.11be (Wi-Fi 7)</td>
+                                    <td>2024</td>
+                                    <td>2.4, 5 & 6 GHz</td>
+                                    <td>46 Gbps</td>
+                                    <td>Similar to Wi-Fi 6</td>
+                                    <td>Multi-Link Operation, 320 MHz channels, Advanced OFDMA</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <em>*Note: Max speeds are theoretical and dependent on various factors like channel width and
+                            MIMO
+                            streams.
+                        </em>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">Key Terms:</strong></p>
+                            <ul>
+                                <li><strong>MIMO (Multiple Input Multiple Output)</strong>: Multiple antennas
+                                    send/receive
+                                    more data at once.</li>
+                                <li><strong>MU-MIMO (Multi-User MIMO)</strong>: More than one device can get data
+                                    simultaneously.</li>
+                                <li><strong>Beamforming</strong>: Directs wireless signals toward devices for stronger
+                                    connection.</li>
+                                <li><strong>OFDMA</strong>: Splits spectrum efficiently between devices to reduce wait
+                                    time.
+                                </li>
+                                <li><strong>Channel Bonding</strong>: Combines channels for higher speeds.</li>
+                                <li><strong>Multi-Link Operation</strong>: Uses multiple frequency bands (Wi-Fi 7) for
+                                    faster, more reliable connections.</li>
+                            </ul>
+                            <p><strong>Practical Impact:</strong></p>
+                            <p>Older devices (Wi-Fi 4/n) are slower and cover more area; newer standards (Wi-Fi 6/7) are
+                                much faster, handle more
+                                devices well, and reduce lag in busy environments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Essential Wireless Concepts</h3>
+                    <div class="list">
+                        <h4>SSID (Service Set Identifier):</h4>
+                        <ul>
+                            <li>The <strong>network name</strong> shown when you scan for Wi-Fi.</li>
+                            <li>Naming best practices:</li>
+                            <ul class="nested-list">
+                                <li>Use unique, clear names (e.g., "HomeNet_5G").</li>
+                                <li>Avoid personal info in SSID.</li>
+                                <li>Hiding SSID can stop casual attempts to join, but isn’t foolproof security.</li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Example Home Wi-Fi Configuration:</strong></p>
+                        <ul>
+                            <li><strong>SSID</strong>: HomeNet_5G</li>
+                            <li><strong>Security</strong>: WPA2 or WPA3 (never WEP)</li>
+                            <li><strong>Channel</strong>: 149 (if 5 GHz, to avoid congestion)</li>
+                            <li><strong>Password</strong>: Complex, at least 12+ characters</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content">
+                    <h4>Wireless Security Protocols</h4>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Protocol</th>
+                                    <th>Security Level</th>
+                                    <th>Encryption</th>
+                                    <th>Key Features</th>
+                                    <th>Status/Use Case</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">WEP</td>
+                                    <td>Very Low</td>
+                                    <td>RC4</td>
+                                    <td>Weak, easy to crack</td>
+                                    <td>Obsolete</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">WPA</td>
+                                    <td>Low/Older</td>
+                                    <td>TKIP</td>
+                                    <td>Improved but still weak</td>
+                                    <td>Not recommended</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">WPA2</td>
+                                    <td>High</td>
+                                    <td>AES-CCMP</td>
+                                    <td>Strong, industry standard</td>
+                                    <td>Recommended</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">WPA3</td>
+                                    <td>Very High</td>
+                                    <td>SAE, AES-CCMP</td>
+                                    <td>Strongest, easiest setup, improved resistance to attacks</td>
+                                    <td>Recommended for new devices</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p><strong>Why Obsolete?</strong></p>
+                        <p>WEP can be cracked in minutes; WPA also has vulnerabilities. Always use WPA2 or WPA3 for
+                            secure Wi-Fi.</p>
+                    </div>
+                </div>
+                <div class="content">
+                    <h4>Channel Management</h4>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Frequency Bands:</strong></p>
+                        <ul>
+                            <li><strong>2.4 GHz</strong>: Greater range, but fewer non-overlapping channels (1, 6, 11).
+                                More prone to interference (microwaves, Bluetooth,
+                                neighbors).</li>
+                            <li><strong>5 GHz</strong>: More channels, less crowded, usually faster (but shorter range).
+                            </li>
+                            <li><strong>6 GHz</strong>: New (Wi-Fi 6E), huge capacity, low congestion, very short range.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Channel Widths:</strong></p>
+                        <ul>
+                            <li>20 MHz (least interference, most compatible).</li>
+                            <li>40/80/160 MHz (higher speed, risk for interference).</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Best Practices:</strong></p>
+                        <ul>
+                            <li>Use non-overlapping channels (1, 6, 11 for 2.4 GHz).</li>
+                            <li>Select channels with least interference using Wi-Fi analysis tools.</li>
+                            <li>For many access points, stagger channels and lower power to avoid overlap.</li>
+                        </ul>
+                    </div>
+                    <p><strong>Range vs. Speed</strong>: Increasing channel width increases speed but may reduce range
+                        and add interference.</p>
+                </div>
+                <div class="content">
+                    <h4>Wireless Network Design</h4>
+                    <div class="list">
+                        <p class="sub"><strong class="sub">Site Survey Process:</strong></p>
+                        <ol>
+                            <li><strong>Physical Assessment:</strong></li>
+                            <p>Map walls, furniture, windows—these affect signal.</p>
+                            <li><strong>RF Analysis:</strong></li>
+                            <p>Use tools/apps to find signal dead zones, measure interference.</p>
+                            <li><strong>Capacity Planning:</strong></li>
+                            <p>Estimate device count for each access point.</p>
+                            <li><strong>Security Requirements:</strong></li>
+                            <p>Choose secure protocols (WPA2/WPA3). Plan for guest networks.</p>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="sub">Access Point (AP) Placement Guidelines:</strong></p>
+                        <ul>
+                            <li>Place APs high up on walls or ceilings for best coverage.</li>
+                            <li>Avoid placing next to metal objects, microwaves, or thick walls.</li>
+                            <li>For large spaces, use multiple APs with overlapping coverage (but different channels).
+                            </li>
+                            <li>Use directional antennas or beamforming if available.</li>
+                        </ul>
+                    </div>
+                    <p><strong>Example Scenario:</strong></p>
+                    <p>In a school, APs are placed in hallways at ceiling height, with three APs per floor, each set to
+                        a unique 5 GHz channel.
+                        RF analysis ensures coverage in classrooms.
+                    </p>
+                    <h4>Diagram: Home Wi-Fi Setup</h4>
+                    <div class="card-image">
+                        <img src="images/home-wifi-network-router-security-diagram.webp"
+                            alt="Home network diagram showing a central WiFi router with WPA3 security on channel 44 connecting a laptop, smartphone, and smart TV via 5GHz SSID HomeNet_5G"
+                            title="Home WiFi Network Setup - WPA3 Security & 5GHz Band Topology" loading="lazy"
+                            decoding="async">
+
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Tips for Designing & Securing your Wireless
+                                Network</strong></p>
+                        <ul>
+                            <li>Always use WPA2 or WPA3 security.</li>
+                            <li>Change default passwords for routers/APs.</li>
+                            <li>Use strong, unique SSIDs.</li>
+                            <li>Position APs centrally and at height.</li>
+                            <li>Run regular site surveys for large spaces.</li>
+                            <li>Separate guest network from main devices.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In-Content Ad #2 -->
+            <div class="ad-container ad-in-content">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-after-section3">
+                    <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <!-- Chapter 7 -->
+            <div class="card networking-card" id="chapter-7">
+                <div class="card-header">
+                    <h2>8. VPN (Virtual Private Network)</h2>
+                </div>
+                <div class="content">
+                    <h3>VPN Fundamentals</h3>
+                    <p>A VPN creates an encrypted tunnel between two points over an untrusted network (typically the
+                        internet), allowing secure
+                        transmission of private data</p>
+                    <h4>What is a VPN?</h4>
+                    <p>A VPN creates a secure, encrypted "tunnel" through a public network (like the internet), allowing
+                        private data to travel
+                        safely between locations.</p>
+                    <div class="list">
+                        <ul>
+                            <li><strong>Privacy</strong>: Encrypts data transmission.</li>
+                            <li><strong>Security</strong>: Protects against eavesdropping and tampering.</li>
+                            <li><strong>Remote Access</strong>: Allows secure access to internal resources.</li>
+                            <li><strong>Cost Savings</strong>: Uses internet instead of expensive leased lines.</li>
+                            <li><strong>Compliance</strong>: Meets regulatory requirements for data protection.</li>
+                        </ul>
+                    </div>
+                    <h4>Types of VPNs</h4>
+                    <p class="sub"><strong class="subtitle">Remote Access VPN</strong></p>
+                    <p>A <strong>Remote Access VPN</strong> is a secure connection that allows individual users to
+                        connect to a private network (like a
+                        company's internal network) over the internet from a remote location. It encrypts the data sent
+                        between the user's
+                        device and the network, protecting it from hackers and eavesdroppers. Commonly used by employees
+                        working from home, it
+                        lets them safely access files, apps, and resources as if they were at the office.
+                    </p>
+                    <div class="card-image">
+                        <img src="images/remote-access-vpn-client-topology-diagram.webp"
+                            alt="Remote access VPN diagram showing a VPN client connecting through the internet to a company firewall and VPN gateway to access the corporate LAN infrastructure"
+                            title="Remote Access VPN Architecture - Secure Corporate Network Connectivity"
+                            loading="lazy" decoding="async">
+
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Characteristics:</strong></p>
+                        <ul>
+                            <li>Individual users connect to company network.</li>
+                            <li>Client software required on user devices.</li>
+                            <li>Dynamic IP address assignment.</li>
+                            <li>Common protocols: SSL/TLS, IKEv2, OpenVPN.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Use Cases:</strong></p>
+                        <ul>
+                            <li>Employees working from home.</li>
+                            <li>Traveling staff accessing company resources.</li>
+                            <li>Contractors needing temporary access.</li>
+                        </ul>
+                    </div>
+                    <h4>Site-to-Site VPN</h4>
+                    <p>A <strong>Site-to-Site VPN</strong> is a secure connection that links two or more separate
+                        networks (such as two different office
+                        locations) over the internet. It creates a private, encrypted “tunnel” so that devices at both
+                        sites can communicate
+                        with each other as if they were on the same local network, protecting data as it travels across
+                        public networks. This is
+                        commonly used by businesses to connect branch offices securely.
+                    </p>
+                    <div class="card-image">
+                        <img src="images/site-to-site-vpn-gateway-topology.webp"
+                            alt="Site-to-site VPN topology illustrating a branch office and headquarters connected via VPN gateways through the internet cloud for secure encrypted data transfer"
+                            title="Site-to-Site VPN - Encrypted Office-to-Headquarters Communication" loading="lazy"
+                            width="1000" height="400" decoding="async">
+
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Characteristics:</strong></p>
+                        <ul>
+                            <li>Connects entire networks together.</li>
+                            <li>Always-on connection.</li>
+                            <li>Static routing configuration.</li>
+                            <li>Common protocols: IPsec, GRE.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Use Cases:</strong></p>
+                        <ul>
+                            <li>Connecting branch offices to headquarters.</li>
+                            <li>Linking partner company networks.</li>
+                            <li>Disaster recovery site connectivity.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">SSL/TLS VPN</strong></p>
+                        <ul>
+                            <li>Browser-based access (no client software).</li>
+                            <li>Easier to deploy and manage.</li>
+                            <li>Good for limited access requirements.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">IPsec VPN</strong></p>
+                        <ul>
+                            <li>Network-layer encryption.</li>
+                            <li>More complex but more secure.</li>
+                            <li>Supports multiple authentication methods.</li>
+                            <li>Better for site-to-site connections</li>
+                        </ul>
+                    </div>
+                    <div class="table-container">
+                        <h4>VPN Protocols</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Protocol</th>
+                                    <th>Security</th>
+                                    <th>Performance</th>
+                                    <th>Complexity</th>
+                                    <th>Best Use Case</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">IPSec</td>
+                                    <td>Excellent</td>
+                                    <td>Good</td>
+                                    <td>High</td>
+                                    <td>Site-to-site, enterprise</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">SSL/TLS</td>
+                                    <td>Excellent</td>
+                                    <td>Good</td>
+                                    <td>Medium</td>
+                                    <td>Remote access, web-based</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">OpenVPN</td>
+                                    <td>Excellent</td>
+                                    <td>Good</td>
+                                    <td>Medium</td>
+                                    <td>Cross-platform, flexible</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">WireGuard</td>
+                                    <td>Excellent</td>
+                                    <td>Excellent</td>
+                                    <td>Low</td>
+                                    <td>Modern, high-performance</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">PPTP</td>
+                                    <td>Poor</td>
+                                    <td>Excellent</td>
+                                    <td>Low</td>
+                                    <td>Legacy only (deprecated)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <h3>Basic VPN Configuration Example</h3>
+                    <h4>Windows Built-in VPN Client Setup:</h4>
+                    <div class="code-block">
+                        <pre>
+<code><span>1.</span> Network Settings → VPN → Add VPN Connection
+<span>2.</span> VPN Provider: Windows (built-in)
+<span>3.</span> Connection Name: "Company VPN"
+<span>4.</span> Server Name: vpn.company.com
+<span>5.</span> VPN Type: L2TP/IPsec with pre-shared key
+<span>6.</span> Pre-shared key: [provided by IT]
+<span>7.</span> Sign-in info: Domain username/password</code>
+</pre>
+                    </div>
+                    <h4>Testing VPN connectivity:</h4>
+                    <div class="code-block">
+                        <pre>
+<code><span># Before VPN connection</span>
+ipconfig    <span># Note your current IP address</span>
+
+<span># After VPN connection</span>
+ipconfig   <span># Verify new IP address in corporate range</span>
+
+<span># Test connectivity to internal resources</span>
+ping internal-server.company.com
+nslookup internal-server.company.com</code>
+</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 8 -->
+            <div class="card networking-card" id="chapter-8">
+                <div class="card-header">
+                    <h2>10. Mini-Project: Virtual Machine Network Lab</h2>
+                </div>
+                <div class="content">
+                    <h4>Project Objective</h4>
+                    <p>Create a controlled networking environment with two virtual machines using static IP
+                        addresses.
+                        Test connectivity and document the entire process.</p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Requirements</strong></p>
+                        <ul>
+                            <li>Oracle VirtualBox (free download from <a href="https://www.virtualbox.org"
+                                    class="link">virtualbox.org</a>).</li>
+                            <li>Two Ubuntu Desktop VMs.</li>
+                            <li>Static IP configuration.</li>
+                            <li>Comprehensive connectivity testing.</li>
+                            <li>Professional documentation.</li>
+                        </ul>
+                    </div>
+                    <h4>Step-by-Step Instructions</h4>
+                    <p class="sub"><strong class="subtitle">Phase 1: Create Virtual Network
+                            Infrastructure</strong></p>
+                    <div class="list">
+                        <p><strong>Step 1: Install VirtualBox</strong></p>
+                        <ol>
+                            <li>Download VirtualBox from <a href="https://www.virtualbox.org/"
+                                    class="link">https://www.virtualbox.org/</a>.</li>
+                            <li>Install with default settings.</li>
+                            <li>Download Ubuntu Desktop ISO from <a href="https://ubuntu.com"
+                                    class="link">ubuntu.com</a>.</li>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p><strong>Step 2: Create Host-Only Network</strong></p>
+                        <ol>
+                            <li>Open VirtualBox Manager.</li>
+                            <li>File ⟶ Host Network Manager.</li>
+                            <li>Click "Create" to make a new host-only network.</li>
+                            <li>Configure the adapter:</li>
+                            <ul>
+                                <li>IPv4 Address: 192.168.56.1</li>
+                                <li>IPv4 Network Mask: 255.255.255.0</li>
+                                <li>DHCP Server: Disable (we'll use static IPs)</li>
+                            </ul>
+                        </ol>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Phase 2: Create and Configure Virtual
+                            Machines</strong></p>
+                    <div class="list">
+                        <p><strong>Step 3: Create First Virtual Machine</strong></p>
+                        <ol>
+                            <li>New ⟶ Name: "NetworkLab-VM1"</li>
+                            <li>Type: Linux, Version: Ubuntu (64-bit)</li>
+                            <li>Memory: 2048 MB</li>
+                            <li>Create Virtual Hard Disk: 20 GB</li>
+                            <li>Settings ⟶ Network:</li>
+                            <ul>
+                                <li>Adapter 1: Host-only Adapter</li>
+                                <li>Name: vboxnet0</li>
+                            </ul>
+                        </ol>
+                        <p><strong>Step 4: Create Second Virtual Machine</strong></p>
+                        <ol>
+                            <li>New ⟶ Name: "NetworkLab-VM2"</li>
+                            <li>Same specifications as VM1</li>
+                            <li>Settings ⟶ Network:</li>
+                            <ul>
+                                <li>Adapter 1: Host-only Adapter</li>
+                                <li>Name: vboxnet0</li>
+                            </ul>
+                        </ol>
+                        <p><strong>Step 5: Install Ubuntu on Both VMs</strong></p>
+                        <ol>
+                            <li>Start each VM and install Ubuntu Desktop.</li>
+                            <li>Create user accounts: student1 and student2.</li>
+                            <li>Complete installation and reboot.</li>
+                        </ol>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Phase 3: Network Configuration</strong></p>
+                    <p><strong>Step 6: Configure Static IP on VM1</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code><span># Check interface name</span>
+ip link show
+
+<span># Edit network configuration</span>
+sudo nano /etc/netplan/00-installer-config.yaml</code>
+</pre>
+                    </div>
+                    <p>VM1 Configuration:</p>
+                    <div class="code-block">
+                        <pre>
+<code>network:
+  version: 2
+  ethernets:
+    enp0s3: <span># Replace with your interface name</span>
+      dhcp4: false
+      addresses: [192.168.56.10/24]
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]</code>
+</pre>
+                    </div>
+                    <p><strong>Step 7: Configure Static IP on VM2</strong></p>
+                    <p>VM2 Configuration:</p>
+                    <div class="code-block">
+                        <pre>
+<code>network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      addresses: [192.168.56.11/24]
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]</code>
+</pre>
+                    </div>
+                    <p>Apply configurations on both VMs:</p>
+                    <div class="code-block">
+                        <pre>
+<code>sudo netplan apply
+ip addr show</code>
+</pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Phase 4: Connectivity Testing</strong></p>
+                    <p><strong>Step 8: Basic Connectivity Tests</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code><span># From VM1 (192.168.56.10):</span>
+ping 127.0.0.1             <span># Test localhost</span>
+ping 192.168.56.10         <span># Test own IP</span>
+ping 192.168.56.11         <span># Test VM2</span>
+arp -a                     <span># Check ARP table</span>
+
+<span># From VM2 (192.168.56.11):</span>
+ping 127.0.0.1             <span># Test localhost</span>
+ping 192.168.56.11         <span># Test own IP</span>
+ping 192.168.56.10         <span># Test VM1</span>
+arp -a                     <span># Check ARP table/code></span></code>
+</pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Step 9: Advanced Network Testing</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code><span># Network discovery</span>
+nmap -sn 192.168.56.0/24   <span># Scan for active hosts</span>
+
+<span># Detailed connectivity analysis</span>
+traceroute 192.168.56.10   <span># Should show 1 hop (direct)</span></code>
+</pre>
+                    </div>
+                    <h4>Expected Results Documentation</h4>
+                    <p class="sub"><strong class="subtitle">Create a project report with these
+                            sections:</strong></p>
+                    <p><strong>1. Network Topology Diagram</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code>    ┌─────────────────┐         ┌─────────────────┐
+    │  NetworkLab-VM1 │         │ NetworkLab-VM2  │
+    │  192.168.56.10  │         │  192.168.56.11  │
+    └─────────┬───────┘         └─────────┬───────┘
+              │                           │
+              └────────┬──────────────────┘
+                       │
+            ┌──────────┴───────────┐
+            │   VirtualBox Host    │
+            │    192.168.56.1      │
+            │  (Host-Only Adapter) │
+            └──────────────────────┘</code>
+</pre>
+                    </div>
+                    <p><strong>2. IP Configuration Summary</strong></p>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>VM</th>
+                                    <th>Hostname</th>
+                                    <th>IP Address</th>
+                                    <th>Subnet Mask</th>
+                                    <th>Interface</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>VM1</td>
+                                    <td>networklab-vm1</td>
+                                    <td>192.168.56.10</td>
+                                    <td>255.255.255.0</td>
+                                    <td>enp0s3</td>
+                                    <td>Active</td>
+                                </tr>
+                                <tr>
+                                    <td>VM2</td>
+                                    <td>networklab-vm2</td>
+                                    <td>192.168.56.11</td>
+                                    <td>255.255.255.0</td>
+                                    <td>enp0s3</td>
+                                    <td>Active</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>3. Connectivity Test Results</h4>
+                    <div class="code-block">
+                        <pre>
+<code><span class="grey"># VM1 to VM2 ping results:</span>
+PING 192.168.56.11 (192.168.56.11) 56(84) bytes of data.
+64 bytes from 192.168.56.11: icmp_seq=1 time=0.234 ms
+64 bytes from 192.168.56.11: icmp_seq=2 time=0.187 ms
+--- 192.168.56.11 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss</code>
+</pre>
+                    </div>
+                    <h4>4. ARP Table Analysis</h4>
+                    <div class="code-block">
+                        <pre>
+<code><span class="grey"># VM1 ARP table after communication:</span>
+Address         HWtype  HWaddress           Flags Mask  Iface
+192.168.56.11   ether   08:00:27:XX:XX:XX   C           enp0s3</code>
+</pre>
+                    </div>
+                </div>
+                <div class="content">
+                    <h4>Troubleshooting Common Issues</h4>
+                    <div class="list">
+                        <p><strong>Issue</strong>: VMs can't ping each other.</p>
+                        <ul>
+                            <li><strong>Check</strong>: Both VMs are on same virtual network (vboxnet0).</li>
+                            <li><strong>Check</strong>: IP addresses are in same subnet (192.168.56.0/24).</li>
+                            <li><strong>Check</strong>: Netplan configuration applied successfully.</li>
+                            <li><strong>Test</strong>: <code class="code">sudo netplan --debug apply</code>.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p><strong>Issue</strong>: Network configuration doesn't persist.</p>
+                        <ul>
+                            <li><strong>Solution</strong>: Ensure <a href="https://spacelift.io/blog/yaml"
+                                    class="link">YAML</a>
+                                indentation is correct in netplan file.</li>
+                            <li><strong>Check</strong>: File permissions: <code
+                                    class="code">sudo chmod 644 /etc/netplan/00-installer-config.yaml</code>.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p><strong>Issue</strong>: Can't resolve domain names.</p>
+                        <ul>
+                            <li><strong>Solution</strong>: Add nameservers to netplan configuration.</li>
+                            <li><strong>Check</strong>: <code class="code">nslookup google.com</code>.</li>
+                        </ul>
+                    </div>
+                    <h4>Project Extensions (Optional)</h4>
+                    <div class="list">
+                        <p><strong>Advanced Challenges:</strong></p>
+                        <ol>
+                            <li>Add a third VM with IP 192.168.56.12.</li>
+                            <li>Install SSH server on all VMs and test remote connections.</li>
+                            <li>Set up file sharing using Samba between VMs.</li>
+                            <li>Monitor network traffic using tcpdump or Wireshark.</li>
+                            <li>Create different subnets and test routing.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In-Content Ad #2 -->
+            <div class="ad-container ad-in-content">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-after-section3">
+                    <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <div class="card networking-card" id="conclusion">
+                <div class="table-container">
+                    <h2>Glossary of Networking Fundamentals Tutorial Terms</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="blue">ARP (Address Resolution Protocol)</td>
+                                <td>Protocol used to map IP addresses to MAC addresses on a local network</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">APIPA (Automatic Private IP Addressing)</td>
+                                <td>Feature that automatically assigns IP addresses in the 169.254.0.0/16 range
+                                    when
+                                    DHCP is unavailable</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Broadcast Address</td>
+                                <td>Special address used to send data to all devices on a network segment (e.g.,
+                                    192.168.1.255)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">CIDR (Classless Inter-Domain Routing)</td>
+                                <td>Method of IP addressing that uses prefix notation (e.g., /24) to define
+                                    network
+                                    portions</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Class A Network</td>
+                                <td>IP address range 1-126 in first octet, default subnet mask 255.0.0.0,
+                                    supports
+                                    16,777,214 hosts</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Class B Network</td>
+                                <td>IP address range 128-191 in first octet, default subnet mask 255.255.0.0,
+                                    supports
+                                    65,534 hosts</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Class C Network</td>
+                                <td>IP address range 192-223 in first octet, default subnet mask 255.255.255.0,
+                                    supports
+                                    254 hosts</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Default Gateway</td>
+                                <td>Router's IP address that serves as the exit point from a local network to
+                                    other
+                                    networks</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DHCP (Dynamic Host Configuration Protocol)</td>
+                                <td>Network protocol that automatically assigns IP addresses and network
+                                    configuration
+                                    to devices</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DHCP Lease</td>
+                                <td>Time period for which a DHCP-assigned IP address is valid (typically 24
+                                    hours)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DNS (Domain Name System)</td>
+                                <td>System that translates human-readable domain names (google.com) into IP
+                                    addresses
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DNS Cache</td>
+                                <td>Temporary storage of DNS query results to speed up future requests</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DNS Record Types</td>
+                                <td>Different types of DNS entries: A (IPv4), AAAA (IPv6), MX (mail), NS
+                                    (nameserver),
+                                    TXT (text)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DORA Process</td>
+                                <td>DHCP four-step process: Discover, Offer, Request, Acknowledge</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Ethernet</td>
+                                <td>Common network technology for local area networks using cables and MAC
+                                    addresses
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Host</td>
+                                <td>Any device connected to a network (computer, printer, phone, etc.)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">IP Address (IPv4)</td>
+                                <td>32-bit numerical address used to identify devices on a network (e.g.,
+                                    192.168.1.100)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">IP Address (IPv6)</td>
+                                <td>128-bit alphanumeric address format designed to replace IPv4 (e.g.,
+                                    2001:db8::1)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">ISP (Internet Service Provider)</td>
+                                <td>Company that provides internet access and assigns public IP addresses</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">LAN (Local Area Network)</td>
+                                <td>Network covering a small geographic area like home, office, or building</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Loopback Address</td>
+                                <td>Special IP address (127.0.0.1) that refers to the local machine itself</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">MAC Address</td>
+                                <td>48-bit unique hardware identifier permanently assigned to network interface
+                                    cards
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Multicast</td>
+                                <td>Method of sending data to a specific group of devices simultaneously</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">NAT (Network Address Translation)</td>
+                                <td>Process of translating private IP addresses to public IP addresses</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Network Address</td>
+                                <td>First IP address in a subnet range, identifies the network itself (not
+                                    assignable to
+                                    hosts)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Network Interface Card (NIC)</td>
+                                <td>Hardware component that connects a device to a network</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">OSI Model</td>
+                                <td>7-layer networking model: Physical, Data Link, Network, Transport, Session,
+                                    Presentation, Application</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Ping</td>
+                                <td>Network utility used to test connectivity between devices</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Private IP Address</td>
+                                <td>IP addresses reserved for internal network use (10.x.x.x, 172.16-31.x.x,
+                                    192.168.x.x)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Public IP Address</td>
+                                <td>Globally unique IP address assigned by ISPs for internet communication</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">RFC 1918</td>
+                                <td>Internet standard defining private IP address ranges</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Router</td>
+                                <td>Network device that forwards data between different networks</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Static IP Address</td>
+                                <td>Manually assigned IP address that doesn't change automatically</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Subnet</td>
+                                <td>Logical subdivision of an IP network into smaller network segments</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Subnet Mask</td>
+                                <td>32-bit number that defines which portion of an IP address represents the
+                                    network vs.
+                                    host</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Subnetting</td>
+                                <td>Process of dividing a large network into smaller, manageable sub-networks
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Switch</td>
+                                <td>Network device that connects devices within a local network using MAC
+                                    addresses</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">TCP/IP Model</td>
+                                <td>4-layer networking model: Network Access, Internet, Transport, Application
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Traceroute</td>
+                                <td>Network diagnostic tool that shows the path packets take from source to
+                                    destination
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Unicast</td>
+                                <td>Method of sending data from one device to another specific device</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">VLAN (Virtual Local Area Network)</td>
+                                <td>Logical grouping of devices on different physical network segments</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">WAN (Wide Area Network)</td>
+                                <td>Network covering a large geographic area, connecting multiple LANs</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Wi-Fi</td>
+                                <td>Wireless networking technology based on IEEE 802.11 standards</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-container">
+                    <h3>Additional Networking Terms</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="blue">Broadcast Domain</td>
+                                <td>Network segment where broadcast packets are delivered to all connected
+                                    devices</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Default Subnet Mask</td>
+                                <td>Standard subnet mask for each IP class (Class A: /8, Class B: /16, Class C:
+                                    /24)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">FQDN (Fully Qualified Domain Name)</td>
+                                <td>Complete domain name including hostname and domain (e.g., www.google.com)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Hexadecimal</td>
+                                <td>Base-16 number system used for MAC addresses and IPv6 addresses</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">IP Conflict</td>
+                                <td>Error that occurs when two devices have the same IP address on a network
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Link-Local Address</td>
+                                <td>IP address automatically assigned when DHCP fails (169.254.x.x range)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Octet</td>
+                                <td>8-bit portion of an IPv4 address (each number separated by dots)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Port Number</td>
+                                <td>Numerical identifier for specific services or applications (HTTP: 80, HTTPS:
+                                    443)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Recursive DNS Query</td>
+                                <td>DNS lookup process where servers query other servers to find the answer</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Reserved IP Ranges</td>
+                                <td>Special-purpose IP addresses not used for regular host addressing</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Root DNS Servers</td>
+                                <td>Top-level DNS servers that direct queries to appropriate domain servers</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">TTL (Time To Live)</td>
+                                <td>Value that determines how long DNS records are cached</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Virtual Machine (VM)</td>
+                                <td>Software-based computer system running on physical hardware</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Wireshark</td>
+                                <td>Network protocol analyzer tool used to capture and examine network traffic
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content">
+                    <h3>🏁 Conclusion & Next Steps</h3>
+                    <p>Congratulations! 🎉 By completing this <strong>Networking Fundamentals</strong> I
+                        tutorial, you
+                        have built a strong foundation in networking that will serve you in both academic and
+                        real-world
+                        scenarios. You now understand:</p>
+                    <p>✅ IP Addressing & Classes – How devices identify and communicate on a network.</p>
+                    <p>✅ MAC Addresses – The permanent hardware identifiers used at Layer 2.</p>
+                    <p>✅ DNS & DHCP – The services that translate names to IPs and automate address assignment.
+                    </p>
+                    <p>✅ OSI & TCP/IP Models – The conceptual and practical frameworks of modern networking.</p>
+                    <p>✅ Subnetting – How to divide and manage networks efficiently.</p>
+                    <p>These concepts are the <strong>building blocks of IT and cybersecurity</strong>, enabling
+                        you to
+                        troubleshoot networks, configure devices, and prepare for more advanced topics like
+                        firewalls,
+                        VLANs, VPNs, penetration testing, and ethical hacking.</p>
+                    <p>When you are comfortable with these fundamentals, move on to Networking Fundamentals II,
+                        where
+                        you’ll dive into routing, switching, VLANs, NAT, firewalls, and packet analysis —
+                        preparing you
+                        for real-world IT jobs, ethical hacking, and certification exams (CCNA, CompTIA
+                        Network+, etc.).
+                    </p>
+                    <p>Keep practicing, stay curious, and turn this knowledge into real-world expertise! 🌐💻
+                    </p>
+                </div>
+            </div>
+            <div class="next">
+                <div class="header">
+                    <h3>Windows File System</h3>
+                    <p>Tutorial</p>
+                </div>
+                <div class="content">
+                    <p>This guide covers the fundamentals of the Windows file structure, including system hierarchy,
+                        directories, naming
+                        conventions, permissions, and practical tips for organizing and securing files.
+                    </p>
+                    <a href="../Windows File System/index.html" class="next-button">Go To Tutorial</a>
+                </div>
+            </div>
+            <div class="next">
+                <div class="header">
+                    <h3>Common Network Protocols</h3>
+                    <p>Info</p>
+                </div>
+                <div class="content">
+                    <p>This tutorial introduces essential network protocols, explaining their functions, security
+                        features, and practical roles
+                        in networking, development, and cybersecurity.
+                    </p>
+                    <a href="../Common Network Protocols/index.html" class="next-button">Go To Tutorial</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Side -->
+        <main class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+
+            <!-- Color palette -->
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home Page</a>
+                </div>
+            </div>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a>
+                        </li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a>
+                        </li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+        </main>
+        <button id="scrollUpBtn" aria-label="Scroll to top" style="display:none;">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg1" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer Banner Ad -->
+    <div class="ad-container ad-footer">
+        <div class="ad-label">Advertisement</div>
+        <div id="ad-footer-banner">
+            <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+                data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../color-palettes/index.html">Color Spaces</a></li>
+            <li class="menu-item"><a class="menu-link"
+                    href="../../../Resources/digital-resources/digital-resources-hub.html">Resources</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpire | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="../prism/prism.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+
+</body>
+
+</html>

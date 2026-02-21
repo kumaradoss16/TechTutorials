@@ -1,0 +1,3295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../images/icon.webp" sizes="32x46" type="image/png">
+    <!-- Primary SEO Meta Tags -->
+    <title>Linux Command Line Tutorial: Master File Navigation</title>
+    <meta name="description"
+        content="Master the Linux command line with this comprehensive tutorial. Learn file navigation, system commands, and terminal operations for beginners to intermediate users.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/linux-command-line-tutorial.html">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Linux Command Line Tutorial: Master File Navigation">
+    <meta property="og:description"
+        content="Comprehensive guide to mastering Linux terminal, file system navigation, and essential commands for beginners.">
+    <meta property="og:url" content="https://devspirehub.com/linux-master-file-navigation-tutorial">
+    <meta property="og:image" content="https://devspirehub.com/images/Linux-command-line-tutorial.webp">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Linux Command Line Tutorial: Master File Navigation">
+    <meta name="twitter:description"
+        content="Comprehensive guide to mastering Linux terminal and file system navigation.">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "LearningResource",
+          "name": "Linux Command Line Tutorial",
+          "description": "Comprehensive tutorial covering Linux terminal navigation, file system operations, and essential commands",
+          "educationalLevel": "Beginner to Intermediate",
+          "learningResourceType": "Tutorial",
+          "inLanguage": "en",
+          "author": {
+            "@type": "Organization",
+            "name": "DevSpireHub"
+          },
+          "timeRequired": "PT8H"
+        }
+    </script>
+
+    <script type=application/ld+json>
+        {
+            "@context": "https://schema.org",
+            "@type": "SiteNavigationElement",
+            "name": [
+                "Home",
+                "Chapter"
+            ],
+            "url": [
+                "https://devspirehub.com/home",
+                "https://devspirehub.com/chapter"
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "url": "https://devspirehub.com/",
+            "logo": "https://devspirehub.com/../../../images/icon.web",
+            "description": "DevSpireHub - Programming, Projects, Ethical hacking, Networking, Cloud & AI",
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Kumaradoss",
+                "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+            ],
+            "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16",
+            ]
+        }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+    <!-- Performance & Web Vitals -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <!-- Robots -->
+    <meta name="robots" content="index, follow, max-image-preview:large">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../prism/prism.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <!-- <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button> -->
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Chapter <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#chapter-1">Chapter 1: Linux Fundamentals</a></li>
+                            <li><a href="#chapter-2">Chapter 2: Filesystem Hierarchy Standard</a></li>
+                            <li><a href="#chapter-3">Chapter 3: Navigation Mastery</a></li>
+                            <li><a href="#chapter-4">Chapter 4: File Operations Mastery</a></li>
+                            <li><a href="#chapter-5">Chapter 5: File Viewing and Content Analysis</a></li>
+                            <li><a href="#chapter-6">Chapter 6: Hidden Files and Links</a></li>
+                            <li><a href="#chapter-7">Chapter 7: Search and Inventory Mastery</a></li>
+                            <li><a href="#chapter-8">Chapter 8: Disk Usage and System Monitoring</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <main class="left-column">
+            <!-- Course Header Card  -->
+            <div class="card">
+                <div class="card-header">
+                    <span class="module-label">Module 1</span>
+                </div>
+                <div class="content">
+                    <h1>Advanced Command-Line Navigation & File System Operations</h1>
+                    <p class="description">Master Linux Like a Pro | 8-12 Hour Comprehensive Course</p>
+                    <div class="card-image">
+                        <img src="images/Linux-command-line-tutorial.webp" alt="Linux Command Line Tutorial">
+                    </div>
+                    <div class="card-main-info">
+                        <p>This <strong>Linux command line tutorial</strong> teaches you essential terminal navigation
+                            and file system
+                            operations from the ground up. Whether you're a beginner learning your first commands or an
+                            intermediate user
+                            refining your skills, this comprehensive guide covers everything from basic directory
+                            navigation to advanced search
+                            techniques. Master the Linux terminal through hands-on examples, practical exercises, and
+                            real-world scenarios.
+                            Learn to navigate the file system, manage files efficiently, and execute commands with
+                            confidence using bash shell
+                            commands and Linux utilities.</p>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Learning Objectives Card  -->
+            <div class="card learning-objectives-card">
+                <div class="card-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>Learning Objectives</h2>
+                </div>
+                <div class="learning-objectives-grid">
+                    <div class="objective-item">
+                        <p><strong><i class="fas fa-book"></i> Chapter 1</strong> - <a href="#chapter-1">Linux
+                                Fundamentals</a></p>
+                        <p><strong><i class="fas fa-book"></i> Chapter 2</strong> - <a href="#chapter-2">Filesystem
+                                Hierarchy Standard (FHS)</a></p>
+                        <p><strong><i class="fas fa-book"></i> Chapter 3</strong> - <a href="#chapter-3">Navigation
+                                Mastery</a></p>
+                        <p><strong><i class="fas fa-book"></i> Chapter 4</strong> - <a href="#chapter-4">File Operations
+                                Mastery</a></p>
+                        <p><strong><i class="fas fa-book"></i> Chapter 5</strong> - <a href="#chapter-5">File Viewing
+                                and Content Analysis</a></p>
+                        <p><strong><i class="fas fa-book"></i> Chapter 6</strong> - <a href="#chapter-6">Hidden Files
+                                and Links</a></p>
+                        <p><strong><i class="fas fa-book"></i> Chapter 7</strong> - <a href="#chapter-7">Search and
+                                Inventory Mastery</a></p>
+                        <p><strong><i class="fas fa-book"></i> Chapter 8</strong> - <a href="#chapter-8">Disk Usage and
+                                System Monitoring</a></p>
+                    </div>
+                </div>
+            </div>
+            <!-- Chapter 1  -->
+            <div class="card linux-card" id="chapter-1">
+                <div class="card-header">
+                    <h2>📚 Chapter 1: Linux Fundamentals</h2>
+                </div>
+                <h3>Understanding the Linux Ecosystem</h3>
+                <div class="content">
+                    <h4 class="section-title">What Makes Linux Special?</h4>
+                    <p>Linux isn't just an operating system—it's a philosophy of open-source computing that powers
+                        everything from smartphones to supercomputers. Unlike proprietary systems, Linux gives you
+                        complete control over your computing environment.</p>
+                </div>
+                <div class="content">
+                    <h4 class="section-title">The Linux Kernel: Your System's Heart</h4>
+                    <p>The <strong>Kernel</strong> is the master conductor orchestrating your entire system:</p>
+                    <ul>
+                        <li><strong>Hardware Communication</strong> - Translates software requests to hardware actions
+                        </li>
+                        <li><strong>Process Scheduling</strong> - Manages CPU time allocation</li>
+                        <li><strong>Memory Management </strong> - Handles RAM allocation and virtual memory</li>
+                        <li><strong>File System Operations</strong> - Controls data storage and retrieval</li>
+                    </ul>
+                </div>
+                <div class="content">
+                    <h4 class="section-title">
+                        Understanding the Linux Architecture (architecture)
+                    </h4>
+                    <p>Think of Linux as a <strong>three-story building</strong> where each floor serves a specific
+                        purpose:</p>
+                    <img class="image" src="images/linux-filesystem-architecture-diagram.webp"
+                        alt="Linux file system architecture showing kernel, shell, and user space layers" width="800"
+                        height="600" loading="lazy">
+
+                </div>
+                <div class="pro-tips content">
+                    <p>💡 <strong>Pro Tip:</strong> Understanding this layered approach is crucial for troubleshooting
+                        Linux systems and advancing in DevOps roles.</p>
+                </div>
+                <div class="content">
+                    <h3>The Three Pillars of Linux</h3>
+                    <!-- Table 1: Components and Interactions -->
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Component</th>
+                                    <th class="text-left">Description</th>
+                                    <th class="text-left">Your Interaction</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Kernel</td>
+                                    <td>The core that manages hardware and system resources</td>
+                                    <td>You rarely interact directly</td>
+                                </tr>
+                                <tr>
+                                    <td>Shell</td>
+                                    <td>The command interpreter (your command-line interface)</td>
+                                    <td>This is where you'll work</td>
+                                </tr>
+                                <tr>
+                                    <td>Filesystem</td>
+                                    <td>How files and directories are organized</td>
+                                    <td>What you'll navigate daily</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h3>Pillar 1: The Linux Kernel - The Silent Guardian</h3>
+                    <h4>What is the Kernel?</h4>
+                    <p>The kernel is the heart of Linux - a sophisticated program that acts as a bridge between your
+                        applications and the computer's hardware. Think of it as the building manager who handles all
+                        the behind-the-scenes operations.</p>
+                    <div class="table-container">
+                        <h4>Core Kernel Responsibilities</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Function</th>
+                                    <th>Description</th>
+                                    <th>Real-World Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Process Management</td>
+                                    <td>Controls which programs run and when</td>
+                                    <td>Opening multiple browser tabs</td>
+                                </tr>
+                                <tr>
+                                    <td>Memory Management</td>
+                                    <td>Allocates RAM to different programs</td>
+                                    <td>Switching between applications</td>
+                                </tr>
+                                <tr>
+                                    <td>Device Drivers</td>
+                                    <td>Communicates with hardware components</td>
+                                    <td>Recognizing USB drives</td>
+                                </tr>
+                                <tr>
+                                    <td>File System Interface</td>
+                                    <td>Manages how data is stored and retrieved</td>
+                                    <td>Saving a document</td>
+                                </tr>
+                                <tr>
+                                    <td>Network Stack</td>
+                                    <td>Handles internet and network connections</td>
+                                    <td>Browsing websites</td>
+                                </tr>
+                                <tr>
+                                    <td>Security & Permissions</td>
+                                    <td>Controls access to system resources</td>
+                                    <td>User login authentication</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>Why You "Rarely Interact Directly"</h4>
+                    <p>The kernel operates in kernel space - a protected area where only the kernel can execute code.
+                        This design provides:</p>
+                    <ul>
+                        <li><strong>System Stability:</strong> Prevents user programs from crashing the entire system
+                        </li>
+                        <li><strong>Security:</strong> Protects critical system functions from malicious code</li>
+                        <li><strong>Resource Management:</strong> Ensures fair allocation of system resources</li>
+                    </ul>
+                    <h4 class="text-lg font-semibold mt-4">Hands-On: Exploring Kernel Information</h4>
+                    <p class="code-p"># Check your kernel version and build information</p>
+                    <div id="language-bash" class="code-block">
+                        <pre>
+<code class="language-bash">uname -a</code>
+</pre>
+                    </div>
+                    <div class="card-image-output">
+                        <p>Output</p>
+                        <img src="images/output/1.png" alt="">
+                    </div>
+                    <p class="code-p"># See current date and time</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">date</code>
+</pre>
+                    </div>
+                    <div class="card-image-output">
+                        <p>Output</p>
+                        <img src="images/output/2.png" alt="">
+                    </div>
+                    <p class="code-p"># Display the current logged-in user</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">whoami</code>
+</pre>
+                    </div>
+                    <div class="card-image-output">
+                        <p>Output</p>
+                        <img src="images/output/3.png" alt="">
+                    </div>
+
+                    <div id="language-bash" class="code-block">
+                        <p class="code-p"># Show system uptime and load</p>
+                        <pre class="line-numbers">
+<code class="language-bash">uptime</code>
+</pre>
+                    </div>
+                    <div class="card-image-output">
+                        <p>Output</p>
+                        <img src="images/output/4.png" alt="">
+                    </div>
+
+                    <div id="language-bash" class="code-block">
+                        <p class="code-p"># View detailed kernel information</p>
+                        <pre class="line-numbers">
+<code class="language-bash">cat /proc/version</code>
+</pre>
+                    </div>
+                    <div class="card-image-output">
+                        <p>Output</p>
+                        <img src="images/output/5.png" alt="">
+                    </div>
+
+                    <div id="language-bash" class="code-block">
+                        <p class="code-p"># See what kernel modules are currently loaded</p>
+                        <pre class="line-numbers">
+<code class="language-bash">lsmod | head -10</code>
+</pre>
+                    </div>
+                    <div class="card-image-output">
+                        <p>Output</p>
+                        <img src="images/output/6.png" alt="">
+                    </div>
+
+                    <div id="language-bash" class="code-block">
+                        <p class="code-p"># Check kernel boot messages (system startup log)</p>
+                        <pre class="line-numbers">
+<code class="language-bash">dmesg | grep -i "linux version"</code>
+</pre>
+                    </div>
+                    <div class="card-image-output">
+                        <p>Output</p>
+                        <img src="images/output/7.png" alt="">
+                    </div>
+                </div>
+                <div class="pro-tips">
+                    <p><strong>⚠️ Important:</strong> Never attempt to modify kernel files directly unless you're an
+                        experienced system administrator. Always use proper tools and commands.</p>
+                </div>
+                <h3>Pillar 2: The Shell - Your Command Center</h3>
+                <h4>What is the Shell?</h4>
+                <p>The shell is your command interpreter - the interface where you communicate with Linux using text
+                    commands. It's like having a conversation with your computer in a language it understands.</p>
+                <h4>Popular Shell Types</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Shell</th>
+                                <th>Description</th>
+                                <th>Default Prompt</th>
+                                <th>Best For</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bash</td>
+                                <td>Bourne Again Shell (most common)</td>
+                                <td><code>user@host:~$</code></td>
+                                <td>General use, scripting</td>
+                            </tr>
+                            <tr>
+                                <td>Zsh</td>
+                                <td>Z Shell (feature-rich)</td>
+                                <td><code>%</code></td>
+                                <td>Power users, customization</td>
+                            </tr>
+                            <tr>
+                                <td>Fish</td>
+                                <td>Friendly Interactive Shell</td>
+                                <td><code>></code></td>
+                                <td>Beginners, auto-completion</td>
+                            </tr>
+                            <tr>
+                                <td>Dash</td>
+                                <td>Debian Almquist Shell</td>
+                                <td><code>$</code></td>
+                                <td>System scripts, speed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h4>Shell Components Deep Dive</h4>
+                <ol>
+                    <li><strong>Command Prompt Anatomy</strong><br>
+                        <pre class="bg-color"><code>username@hostname:current_directory$</code></pre>
+                        <strong>username:</strong> Your account name<br>
+                        <strong>hostname:</strong> Computer name<br>
+                        <strong>current_directory:</strong> Where you are in the filesystem<br>
+                        <strong>$:</strong> Regular user (<strong>#</strong> for root/admin)
+                    </li>
+                    <li><strong>Command Structure</strong><br>
+                        <pre class="bg-color">
+command [options] [arguments]
+    │       │         │
+    │       │         └── What to act upon
+    │       └── How to modify behavior
+    └── What action to take</pre>
+                    </li>
+                </ol>
+                <h3>Pillar 3: The Filesystem - Your Digital Filing Cabinet</h3>
+                <h4>Understanding Linux Filesystem Hierarchy</h4>
+                <p>Linux organizes everything as files in a tree-like structure starting from the root directory
+                    (<code>/</code>). This is fundamentally different from Windows' drive letters (C:, D:, etc.).
+                </p>
+                <h4>The Linux Directory Tree</h4>
+                <pre class="bg-color"><code>/                           &larr; Root directory (everything starts here)
+├── bin/                    &larr; Essential user command binaries
+├── boot/                   &larr; Boot loader files
+├── dev/                    &larr; Device files (hardware interfaces)
+├── etc/                    &larr; System configuration files
+├── home/                   &larr; User home directories
+│   ├── user1/
+│   └── user2/
+├── lib/                    &larr; Essential shared libraries
+├── media/                  &larr; Mount point for removable media
+├── mnt/                    &larr; Temporary mount point
+├── opt/                    &larr; Optional application software
+├── proc/                   &larr; Virtual filesystem (process info)
+├── root/                   &larr; Root user's home directory
+├── run/                    &larr; Runtime variable data
+├── sbin/                   &larr; System administration binaries
+├── srv/                    &larr; Service data
+├── sys/                    &larr; Virtual filesystem (system info)
+├── tmp/                    &larr; Temporary files
+├── usr/                    &larr; User utilities and applications
+│   ├── bin/                &larr; User command binaries
+│   ├── lib/                &larr; Libraries for user programs
+│   └── local/              &larr; Local software installations
+└── var/                    &larr; Variable data (logs, databases)
+    ├── log/                &larr; System and application logs
+    └── www/                &larr; Web server files</code></pre>
+                <h4 style="margin-top: 10px;">Key Directory Purposes Explained</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Directory</th>
+                                <th>Purpose</th>
+                                <th>What You'll Find</th>
+                                <th>Access Level</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>/home/</code></td>
+                                <td>User personal files</td>
+                                <td>Documents, downloads, configs</td>
+                                <td>User read/write</td>
+                            </tr>
+                            <tr>
+                                <td><code>/etc/</code></td>
+                                <td>System configuration</td>
+                                <td>Config files, startup scripts</td>
+                                <td>Admin only</td>
+                            </tr>
+                            <tr>
+                                <td><code>/var/log/</code></td>
+                                <td>System logs</td>
+                                <td>Error logs, access logs</td>
+                                <td>Admin read</td>
+                            </tr>
+                            <tr>
+                                <td><code>/tmp/</code></td>
+                                <td>Temporary files</td>
+                                <td>Temporary data, cleared on reboot</td>
+                                <td>Everyone</td>
+                            </tr>
+                            <tr>
+                                <td><code>/usr/bin/</code></td>
+                                <td>User programs</td>
+                                <td>Applications, utilities</td>
+                                <td>Everyone read</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h4>Popular Linux Distributions Comparison</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Distribution</th>
+                                <th>Best for</th>
+                                <th>Package Manager</th>
+                                <th>Security Focus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ubuntu</td>
+                                <td>Beginners, Desktopc</td>
+                                <td>Beginners, Desktop</td>
+                                <td>Medium</td>
+                            </tr>
+                            <tr>
+                                <td>CentOS/RHEL</td>
+                                <td>Enterprise Servers</td>
+                                <td>YUM/DNF</td>
+                                <td>High</td>
+                            </tr>
+                            <tr>
+                                <td>Kali Linux</td>
+                                <td>Penetration Testing</td>
+                                <td>APT</td>
+                                <td>Very High</td>
+                            </tr>
+                            <tr>
+                                <td>Debian</td>
+                                <td>Servers, Stability</td>
+                                <td>APT</td>
+                                <td>High</td>
+                            </tr>
+                            <tr>
+                                <td>Arch Linux</td>
+                                <td>Customizationc</td>
+                                <td>Customization</td>
+                                <td>Medium</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>The Linux Boot Process Explained</h3>
+                <h4>Brief Explanation</h4>
+                <ul>
+                    <li><strong>Power On:</strong> The process starts as soon as you turn on the computer.</li>
+                    <li><strong>BIOS/UEFI:</strong> The motherboard firmware initializes the hardware and checks
+                        everything is OK (POST – Power-On Self-Test).</li>
+                    <li><strong>Bootloader (e.g., GRUB):</strong> The bootloader finds and loads the Linux kernel
+                        into
+                        memory. Here, you may see a menu to select which OS or kernel to boot.</li>
+                    <li><strong>Kernel:</strong> The Linux kernel initializes your system's CPU, memory, devices,
+                        and
+                        mounts the filesystem.</li>
+                    <li><strong>Init System (systemd, SysVinit):</strong> The init process (called
+                        <strong>systemd</strong> on most modern systems) starts all the necessary services and
+                        brings
+                        the system to a usable state.
+                    </li>
+                    <li><strong>User Login:</strong> Finally, the login prompt appears, and you can log in to use
+                        your
+                        computer.</li>
+                </ul>
+                <div class="card-image">
+                    <img src="images/linux-boot-process-diagram.webp"
+                        alt="Linux boot process flowchart showing Power On, BIOS, GRUB, Kernel, INIT, and System Ready stages"
+                        title="Linux System Boot Sequence Diagram" width="800" height="450" loading="lazy"
+                        decoding="async">
+                    <img src="images/boot process.png" alt="">
+                </div>
+                <div class="pro-tips">
+                    <p class="font-bold">💡 Pro Tip:
+                        Use <code class="color">dmesg | less</code> to view boot messages and troubleshoot hardware
+                        issues.</p>
+                </div>
+            </div>
+
+            <!-- Chapter 2  -->
+            <div class="card linux-card" id="chapter-2">
+                <div class="card-header">
+                    <h2>📁 Chapter 2: Filesystem Hierarchy Standard (FHS)</h2>
+                </div>
+                <h3>Mastering the Linux Directory Tree</h3>
+                <p>Linux organizes everything in a hierarchical tree structure. Think of it as an upside-down tree
+                    with
+                    roots at the top (/) and branches extending downward. Understanding this structure is crucial
+                    for
+                    navigation and security.</p>
+                <h4>Key Directory Purposes Explained</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Directory</th>
+                                <th>Purpose</th>
+                                <th>Contents</th>
+                                <th>Security Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>/</code> (Root Directory)</td>
+                                <td>Foundation of filesystem</td>
+                                <td>Everything</td>
+                                <td>Compromise = total system control</td>
+                            </tr>
+                            <tr>
+                                <td><code>/bin</code></td>
+                                <td>Essential Binaries</td>
+                                <td>Core system commands (ls, cp, mv)</td>
+                                <td>Often symlinked to /usr/bin</td>
+                            </tr>
+                            <tr>
+                                <td><code>/boot</code></td>
+                                <td>Boot Files</td>
+                                <td>Kernel, bootloader configs</td>
+                                <td>Tampering prevents system boot</td>
+                            </tr>
+                            <tr>
+                                <td><code>/dev</code></td>
+                                <td>Device Files</td>
+                                <td>Hardware device interfaces</td>
+                                <td>Direct hardware access</td>
+                            </tr>
+                            <tr>
+                                <td><code>/etc</code></td>
+                                <td>Configuration</td>
+                                <td>System-wide config files</td>
+                                <td>Prime target for persistence</td>
+                            </tr>
+                            <tr>
+                                <td><code>/home</code></td>
+                                <td>User Directories</td>
+                                <td>Personal user data</td>
+                                <td>Privacy and credential risks</td>
+                            </tr>
+                            <tr>
+                                <td><code>/lib</code></td>
+                                <td>System Libraries</td>
+                                <td>Shared libraries and modules</td>
+                                <td>Library injection attacks</td>
+                            </tr>
+                            <tr>
+                                <td><code>/media</code></td>
+                                <td>Removable Media</td>
+                                <td>USB, CD/DVD mount points</td>
+                                <td>Potential malware entry</td>
+                            </tr>
+                            <tr>
+                                <td><code>/mnt</code></td>
+                                <td>Mount Points</td>
+                                <td>Temporary filesystem mounts</td>
+                                <td>Network share vulnerabilities</td>
+                            </tr>
+                            <tr>
+                                <td><code>/opt</code></td>
+                                <td>Optional Software</td>
+                                <td>Third-party applications</td>
+                                <td>Often less secured</td>
+                            </tr>
+                            <tr>
+                                <td><code>/proc</code></td>
+                                <td>Process Info</td>
+                                <td>Virtual filesystem for processes</td>
+                                <td>System information disclosure</td>
+                            </tr>
+                            <tr>
+                                <td><code>/root</code></td>
+                                <td>Root Home</td>
+                                <td>Superuser home directory</td>
+                                <td>Crown jewels of the system</td>
+                            </tr>
+                            <tr>
+                                <td><code>/run</code></td>
+                                <td>Runtime Data</td>
+                                <td>Process IDs, sockets</td>
+                                <td>Temporary but critical</td>
+                            </tr>
+                            <tr>
+                                <td><code>/sbin</code></td>
+                                <td>System Binaries</td>
+                                <td>Administrative commands</td>
+                                <td>Privileged operations</td>
+                            </tr>
+                            <tr>
+                                <td><code>/srv</code></td>
+                                <td>Service Data</td>
+                                <td>Data for system services</td>
+                                <td>Web server document roots</td>
+                            </tr>
+                            <tr>
+                                <td><code>/sys</code></td>
+                                <td>System Info</td>
+                                <td>Hardware and kernel data</td>
+                                <td>System configuration exposure</td>
+                            </tr>
+                            <tr>
+                                <td><code>/tmp</code></td>
+                                <td>Temporary Files</td>
+                                <td>Temporary storage</td>
+                                <td>Common attack vector</td>
+                            </tr>
+                            <tr>
+                                <td><code>/usr</code></td>
+                                <td>User Programs</td>
+                                <td>Applications and utilities</td>
+                                <td>Largest directory, many targets</td>
+                            </tr>
+                            <tr>
+                                <td><code>/var</code></td>
+                                <td>Variable Data</td>
+                                <td>Logs, caches, spools</td>
+                                <td>Evidence and log tampering</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h4>Exploring Key Directories</h4>
+                <p>Root Directory (<code class="color">/</code>) - Your Starting Point</p>
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Check your kernel version and build information</p>
+                    <pre class="line-numbers">
+<code class="language-bash">cd /
+ls -la</code>
+</pre>
+                </div>
+
+                <p><code class="color">cd /</code></p>
+                <p><strong>Purpose: </strong>Navigate to the root directory</p>
+                <ul>
+                    <li><code class="code-bg">cd</code> = Change Directory command </li>
+                    <li><code class="code-bg">/</code> = Root directory (the top-level directory of the entire file
+                        system)</li>
+                </ul>
+                <p><code class="color">ls -la</code></p>
+                <p><strong>Purpose: </strong>List all files and directories with detailed information</p>
+                <ul>
+                    <li><code class="code-bg">ls</code> = List command (shows directory contents)</li>
+                    <li><code class="code-bg">l</code> = Long format (shows detailed information like permissions,
+                        size,
+                        date)</li>
+                    <li><code class="code-bg">a</code> = All files (includes hidden files that start with a dot)
+                    </li>
+                </ul>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/8.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Explore critical configuration files</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ls -la /etc/ | head -10</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/9.png" alt="">
+                </div>
+
+                <p style="margin-bottom: 5px;"><strong>Explanation → </strong><code
+                        class="color">ls -la /etc/ | head -10</code></p>
+                <p style="margin-bottom: 5px;"><strong><code class="color">/etc</code> - Configuration Command
+                        Center</strong></p>
+                <p><strong>Purpose: </strong>Show the first 10 items in the /etc directory with details</p>
+                <ul>
+                    <li><code class="code-bg">ls -la /etc/</code> = List all files in /etc directory with long
+                        format
+                    </li>
+                    <li><code class="code-bg">|</code> = Pipe (sends output to next command)</li>
+                    <li><code class="code-bg">head -10</code> = Show only the first 10 lines</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># System version info</p>
+                    <pre class="line-numbers">
+<code class="language-bash">cat /etc/os-release</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/10.png" alt="">
+                </div>
+
+                <p style="margin-bottom: 5px;"><strong>Explanation → </strong><code
+                        class="color">cat /etc/os-release</code></p>
+                <p><strong>Purpose: </strong>Display operating system version and information</p>
+                <ul>
+                    <li><code class="code-bg">cat</code> = Display file contents</li>
+                    <li><code class="code-bg">/etc/os-release</code> = Standard file containing OS identification
+                        data
+                    </li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># User accounts (first 5 line)</p>
+                    <pre class="line-numbers">
+<code class="language-bash">cat /etc/passwd | head -5</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/11.png" alt="">
+                </div>
+                <p style="margin-bottom: 5px;"><strong>Explanation → </strong><code
+                        class="color">cat /etc/passwd | head -5</code></p>
+                <p><strong>Purpose: </strong>Display the first 5 user accounts from the system</p>
+                <ul>
+                    <li><code class="code-bg">cat /etc/passwd</code> = Display the password/user database file</li>
+                    <li><code class="code-bg">|</code> = Pipe output to next command</li>
+                    <li><code class="code-bg">head -5</code> = Show only first 5 lines</li>
+                </ul>
+                <div class="pro-tips">
+                    <p>🔒 <strong>Security Alert:</strong> The <code class="color">/etc</code> directory contains
+                        system-critical configurations. Always backup before modifications and monitor for
+                        unauthorized
+                        changes.</p>
+                </div>
+
+                <!-- /var - The Dynamic Data Hub  -->
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Check log files and variable data</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ls -la /var/</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/12.png" alt="">
+                </div>
+                <p style="margin-bottom: 3px;"><strong>Explanation → </strong><code class="color">ls -la /var/</code>
+                </p>
+                <p style="margin-bottom: 5px;"><strong><code class="color">/var</code> - The Dynamic Data
+                        Hub</strong>
+                </p>
+                <p><strong>Purpose: </strong>List all contents of the /var directory with detailed information</p>
+                <ul>
+                    <li><code class="code-bg">ls -la</code> = List all files/directories with long format details
+                    </li>
+                    <li><code class="code-bg">/var/</code> = Variable data directory (logs, temporary files,
+                        databases,
+                        etc.)</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Log file sizes</p>
+                    <pre class="line-numbers">
+<code class="language-bash">du -sh /var/log/*</code>            
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/13.png" alt="">
+                </div>
+                <p style="margin-bottom: 3px;"><strong>Explanation → </strong><code
+                        class="color">du -sh /var/log/*</code></p>
+                <p><strong>Purpose: </strong>Show disk usage size of each log file/directory</p>
+                <ul>
+                    <li><code class="code-bg">du</code> = Disk Usage command</li>
+                    <li><code class="code-bg">s</code> = Summary (total size for each item, not subdirectories)</li>
+                    <li><code class="code-bg">h</code> = Human-readable format (KB, MB, GB instead of bytes)</li>
+                    <li><code class="code-bg">/var/log/*</code> = All files and directories inside /var/log/</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Recent authentication attempts </p>
+                    <pre class="line-numbers">
+<code class="language-bash">tail -n 10 /var/log/auth.log</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/14.png" alt="">
+                </div>
+                <p style="margin-bottom: 3px;"><strong>Explanation → </strong><code
+                        class="color">tail -n 10 /var/log/auth.log</code></p>
+                <p><strong>Purpose: </strong>Display the last 10 lines of the authentication log</p>
+                <ul>
+                    <li><code class="code-bg">tail</code> = Show end of file</li>
+                    <li><code class="code-bg">n 10</code> = Show last 10 lines (you can change the number)</li>
+                    <li><code class="code-bg">/var/log/auth.log</code> = Authentication and authorization log file
+                    </li>
+                </ul>
+
+                <!-- /tmp - The Wild West Directory  -->
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Examine temporary files (security-critical)</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ls -la /tmp/</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/15.png" alt="">
+                </div>
+
+                <p style="margin-bottom: 3px;"><strong>Explanation → </strong><code class="color">ls -la /tmp/</code>
+                </p>
+                <p style="margin-bottom: 5px;"><strong><code class="color">/tmp</code> - The Wild West
+                        Directory</strong></p>
+                <p><strong>Purpose: </strong> List all files and directories in the temporary folder with detailed
+                    information</p>
+                <ul>
+                    <li><code class="code-bg">ls -la </code> = List all files (including hidden) with long format
+                    </li>
+                    <li><code class="code-bg">/tmp/</code> = Temporary directory where programs store temporary
+                        files
+                    </li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Check available space</p>
+                    <pre class="line-numbers">
+<code class="language-bash">df -h /tmp</code>                       
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/16.png" alt="">
+                </div>
+
+                <p style="margin-bottom: 3px;"><strong>Explanation → </strong><code class="color">df -h /tmp</code>
+                </p>
+                <p><strong>Purpose: </strong>Check available disk space for the /tmp directory</p>
+                <ul>
+                    <li><code class="code-bg">df</code> = Display filesystem disk space usage</li>
+                    <li><code class="code-bg">h</code> = Human-readable format (shows GB, MB instead of bytes)</li>
+                    <li><code class="code-bg">/tmp</code> = Check specifically the /tmp filesystem</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Files created today</p>
+                    <pre class="line-numbers">
+<code class="language-bash">sudo find /tmp -type f -mtime -1</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/17.png" alt="">
+                </div>
+                <p style="margin-bottom: 3px;"><strong>Explanation → </strong><code
+                        class="color">find /tmp -type f -mtime -1</code></p>
+                <p><strong>Purpose: </strong>Find all regular files in /tmp that were modified within the last 24
+                    hours
+                </p>
+                <ul>
+                    <li><code class="code-bg">find</code> = Search for files and directories</li>
+                    <li><code class="code-bg">/tmp</code> = Search location (temporary directory)</li>
+                    <li><code class="code-bg">type f</code> = Only find regular files (not directories or special
+                        files)
+                    </li>
+                    <li><code class="code-bg">mtime -1</code> = Modified time less than 1 day ago (within last 24
+                        hours)
+                    </li>
+                </ul>
+
+                <div class="pro-tips">
+                    <p>⚠️ <strong>Security Warning</strong>: <code class="color">/tmp</code> is world-writable and
+                        often
+                        exploited. Monitor for suspicious scripts, SUID binaries, and unusual activity.</p>
+                </div>
+                <h4>Directory Permissions Decoder</h4>
+                <p>Understanding permission strings is crucial for security:</p>
+                <pre class="bg-color">
+-rw-r--r-- 1 user user 1024 Aug 15 10:30 filename.txt
+│└┬┘└┬┘└┬┘ │  │    │     │      │           │
+│ │  │  │  │  │    │     │      │           └─ Filename
+│ │  │  │  │  │    │     │      └─ Modification timestamp
+│ │  │  │  │  │    │     └─ File size (bytes)
+│ │  │  │  │  │    └─ Group owner
+│ │  │  │  │  └─ User owner
+│ │  │  │  └─ Number of hard links
+│ │  │  └─ Other permissions (read, write, execute)
+│ │  └─ Group permissions (read, write, execute)
+│ └─ Owner permissions (read, write, execute)
+└─ File type indicator</pre>
+                <h4>Directory Permissions Quick Reference</h4>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-left">Permission</th>
+                                <th class="text-left">Owner</th>
+                                <th class="text-left">Group</th>
+                                <th class="text-left">Others</th>
+                                <th class="text-left">Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>drwxr-xr-x</td>
+                                <td>rwx</td>
+                                <td>r-x</td>
+                                <td>r-x</td>
+                                <td>Directory with full owner access</td>
+                            </tr>
+                            <tr>
+                                <td>-rw-r--r--</td>
+                                <td>rw-</td>
+                                <td>r--</td>
+                                <td>r--</td>
+                                <td>Regular file, owner can write</td>
+                            </tr>
+                            <tr>
+                                <td>-rwxr-xr-x</td>
+                                <td>rwx</td>
+                                <td>r-x</td>
+                                <td>r-x</td>
+                                <td>Executable file</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Chapter 3 -->
+            <div class="card linux-card" id="chapter-3">
+                <div class="card-header">
+                    <h2>🧭 Chapter 3: Navigation Mastery</h2>
+                </div>
+                <h3>Know Your Location with <code class="color">pwd</code></h3>
+                <p>The <code class="color">pwd</code> (Print Working Directory) command is your GPS in the Linux
+                    filesystem:</p>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Show current directory</p>
+                    <pre class="line-numbers">
+<code class="language-bash">pwd</code>    
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/18.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Show physical path (resolve symlinks) </p>
+                    <pre class="line-numbers">
+<code class="language-bash">pwd -P</code>                     
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/19.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Show logical path (default)</p>
+                    <pre class="line-numbers">
+<code class="language-bash">pwd -L</code>                      
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/20.png" alt="">
+                </div>
+
+                <h3>Master Directory Changes with <code class="color">cd</code> = Change Directory</h3>
+                <p>The <code class="color">cd</code> command is used to navigate between directories (folders) in
+                    the
+                    Linux/Unix file system. It changes your current working directory to a different location.</p>
+                <h4>Basic Syntax</h4>
+                <pre class="bg-color">
+cd [directory_path]
+</pre>
+                <h3>Common Uses and Examples:</h3>
+                <h4>1. Navigate to Home Directory</h4>
+
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Go to your home directory
+cd                                                
+# Also goes to home directory 
+cd ~                                                              
+# Another way to go home
+cd $HOME</code>                                           
+</pre>
+                </div>
+
+                <h4>2. Navigate to Specific Directory</h4>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Go to Documents folder
+cd /home/user/Documents 
+# Go to system configuration directory
+cd /etc                         
+# Go to log files directory
+cd /var/log</code>                                 
+</pre>
+                </div>
+                <h4>3. Navigate Using Relative Paths</h4>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Go to Documents in current directory</p>cd Documents                                                        
+# Go up one directory level
+cd ../                                                             
+# Go up two directory levels
+cd ../../ 
+# Go to folder in current directory
+cd ./folder</code>                                            
+</pre>
+                </div>
+                <h4>4. Navigate to Previous Directory</h4>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Go back to previous directory you were in
+cd -</code>                                                                                      
+</pre>
+                </div>
+                <h4>5. Navigate to Root Directory</h4>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Go to root directory (top of file system)
+cd /</code>                                                                                                 
+</pre>
+                </div>
+                <h4>Special Directory Symbols:</h4>
+                <ul>
+                    <li><code class="code-bg">.</code> = Current directory</li>
+                    <li><code class="code-bg">..</code> = Parent directory (one level up)</li>
+                    <li><code class="code-bg">~</code> = Home directory</li>
+                    <li><code class="code-bg">/</code> = Root directory</li>
+                    <li><code class="code-bg">-</code> = Previous directory</li>
+                </ul>
+                <h3>Practical Examples:</h3>
+                <p class="code-p"># Start in /home/user</p>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Shows: /home/user</p>pwd 
+# Now in: /home/user/Documents
+cd Documents
+# Now in: /home/user/Downloads
+cd ../Downloads
+# Now in: /tmp
+cd /tmp
+# Back to: /home/user/Downloads
+cd - 
+# Back to: /home/user (home)
+cd 
+# Now in: / (root)
+cd /</code>
+</pre>
+                </div>
+                <h3>Advanced Navigation Techniques</h3>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Move through multiple levels (Relative path navigation)
+cd documents/projects/current 
+# Start from root (# Absolute path navigation)
+cd /var/www/html/assets 
+# Now in: /home/user/Downloads
+cd /var/www/html/assets 
+# Auto-completes to Documents/
+cd Doc&lt;TAB&gt;
+# First subdirectory containing projects
+cd */projects</code>
+</pre>
+                </div>
+                <h3>Supercharge Navigation with <code class="color">CDPATH</code></h3>
+                <p><code class="color">CDPATH</code> is an environment variable that creates directory shortcuts,
+                    allowing you to jump to frequently-used directories from anywhere in the file system without
+                    typing
+                    full paths.</p>
+                <h4>How CDPATH Works</h4>
+                <p>When you use <code class="color">cd</code> with a relative path, the shell searches these
+                    locations
+                    in order:</p>
+                <ol>
+                    <li>Current directory (<code class="color">.</code>)</li>
+                    <li>Each directory listed in <code class="color">CDPATH</code></li>
+                    <li>Finds the first match and changes to that directory</li>
+                </ol>
+                <p>Set up directory shortcuts for instant teleportation:</p>
+                <h4>Path Breakdown:</h4>
+                <ul class="">
+                    <li><code class="code-bg">.</code> = Current directory (always search here first)</li>
+                    <li><code class="code-bg">~</code> = Home directory</li>
+                    <li><code class="code-bg">~/projects</code> = Your projects folder</li>
+                    <li><code class="code-bg">/var/www</code> = Web server files</li>
+                    <li><code class="code-bg">/opt</code> = Optional software directory</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Set CDPATH environment variable
+export CDPATH=".:~:~/projects:/var/www:/opt"
+# Works from anywhere if ~/projects exists
+cd projects        
+# Jumps to /var/www/html if it exists
+cd html 
+# Could jump to /var/logs if configured
+cd logs 
+# Make it permanent by adding to ~/.bashrc
+echo 'export CDPATH=".:~:~/projects:/var/www:/opt"' >> ~/.bashrc</code>
+</pre>
+                </div>
+                <h3>Practical Examples</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-left">Before CDPATH (Manual)</th>
+                                <th class="text-left">After CDPATH (Supercharged)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="color">cd /home/user/projects/webapp</code></td>
+                                <td><code class="color">cd webapp</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="color">cd /var/www/html</code></td>
+                                <td><code class="color">cd html</code></td>
+                            </tr>
+                            <tr>
+                                <td><code class="color">cd /opt/software</code></td>
+                                <td><code class="color">cd software</code></td>
+                            </tr>
+                            <tr>
+                                <td>Long, tedious paths</td>
+                                <td>Short, intuitive commands</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>Path Types: Absolute vs. Relative</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Path Type</th>
+                                    <th class="text-left">Example</th>
+                                    <th>When to Use</th>
+                                    <th>Advantages</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Absolute</td>
+                                    <td><code class="color">/home/user/documents/report.txt</code></td>
+                                    <td>Scripts, automation</td>
+                                    <td>Reliable, unambiguous</td>
+                                </tr>
+                                <tr>
+                                    <td>Relative</td>
+                                    <td><code class="color">../documents/report.txt</code></td>
+                                    <td>Interactive navigation</td>
+                                    <td>Shorter, flexible</td>
+                                </tr>
+                                <tr>
+                                    <td>Home-relative</td>
+                                    <td><code class="color">~/documents/report.txt</code></td>
+                                    <td>User-specific paths</td>
+                                    <td>Portable across users</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pro-tips">
+                        <p>💡 <strong>Pro Tip:</strong> Use absolute paths in scripts and cron jobs for reliability,
+                            relative paths for interactive navigation efficiency.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 4  -->
+            <div class="card linux-card" id="chapter-4">
+                <div class="card-header">
+                    <h2>📄 Chapter 4: File Operations Mastery</h2>
+                </div>
+                <h3>The ls Command: Your File System X-Ray (List Directory Contents)</h3>
+                <p>The ls command displays the contents of directories, showing files and subdirectories. It's one
+                    of
+                    the most fundamental and frequently used commands in Linux/Unix systems.</p>
+                <h4>Basic Listing Operations</h4>
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Basic listing</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ls</code>                  
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/21.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Long format with details</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ls -l</code>                            
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/22.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Include hidden files</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ls -a</code>                                 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/23.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Combined: long format + hidden </p>
+                    <pre class="line-numbers">
+<code class="language-bash">ls -la</code>                              
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/24.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Add human-readable file sizes </p>
+                    <pre class="line-numbers">
+<code class="language-bash">ls -lah</code>                            
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/25.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">-l</code> = long format (detailed information)</li>
+                    <li><code class="code-bg">-a</code> = all files (including hidden)</li>
+                    <li><code class="code-bg">-h</code> = human-readable file sizes (must be used with -l)</li>
+                </ul>
+                <h3>Advanced Listing Techniques</h3>
+
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Sort by modification time (newest first)
+ls -lt
+# Sort by file size (largest first)
+ls -lS        
+# Reverse sort order
+ls -lr
+# Show inode numbers
+ls -li 
+# Recursive listing
+ls -lR 
+# Color-coded output
+ls --color=always</code>
+</pre>
+                </div>
+                <h3>Understanding ls -la Output Anatomy:</h3>
+                <pre class="bg-color">
+-rwxr-xr--  1 alice dev 1.2K Nov 15 10:30 script.sh
+│           │   │    │    │   │            │
+│           │   │    │    │   │            └─ Filename
+│           │   │    │    │   └─ Modification timestamp
+│           │   │    │    └─ File size
+│           │   │    └─ Group owner
+│           │   └─ User owner
+│           └─ Number of hard links
+└─ Permissions (type + rwx for owner, group, others)
+</pre>
+                <h3>File Creation and Management</h3>
+                <h4>The Versatile <code class="color">touch</code> Command</h4>
+                <p>The <code class="color">touch</code> command in Unix/Linux systems is used to <strong>create
+                        empty
+                        files</strong> or <strong>update timestamps</strong> of existing files.</p>
+                <h4>What it does:</h4>
+                <ul>
+                    <li><strong>Creates</strong> new empty files if they don't exist</li>
+                    <li><strong>Updates</strong> the access and modification timestamps of existing files to current
+                        time</li>
+                    <li>Does NOT modify the content of existing files</li>
+                </ul>
+                <h4>Basic syntax:</h4>
+                <pre class="bg-color">
+touch filename
+</pre>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Create empty files
+touch newfile.txt
+# Create Multiple files
+touch file1.txt file2.txt file3.txt  
+# Updates access/modify time
+touch existing_file.txt  
+# Set specific timestamps (# YYYYMMDDhhmm format)
+touch -t 202311151030 dated_file.txt 
+# Human-readable date
+touch -d "2023-11-15 10:30" another_file.txt</code>
+</pre>
+                </div>
+                <h4>The <code class="color">cp</code> Command: Copying with Precision</h4>
+                <p>The <code class="color">cp</code> command in Unix/Linux systems is used to copy files and
+                    directories
+                    from one location to another.</p>
+                <h4>What it does:</h4>
+                <ul>
+                    <li><strong>Copies</strong> files or directories</li>
+                    <li>Creates <strong>duplicate</strong> of the original (original stays intact)</li>
+                    <li>Can copy to same directory with different name (duplicating)</li>
+                    <li>Can copy to different directory</li>
+                </ul>
+                <h4>Basic syntax:</h4>
+                <pre class="bg-color">
+cp source destination
+</pre>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Simple copy
+cp source.txt destination.txt          
+# Copy to directory
+cp source.txt /backup/   
+
+# Advanced copying options
+# Preserve permissions, timestamps
+cp -p source.txt backup.txt  
+# Recursive (for directories)
+cp -r directory/ /backup/ 
+# Interactive (prompt before overwrite)
+cp -i source.txt existing.txt
+# Verbose (show what's copied)
+cp -v *.txt /backup/
+# Update (copy only if newer)
+cp -u source.txt dest.txt</code>
+</pre>
+                </div>
+                <h4>Sample Output for <code class="color">cp -i</code></h4>
+                <pre class="bg-color">
+cp: overwrite 'existing.txt'? y   
+</pre>
+                <h4>Sample Output for <code class="color">cp -v</code></h4>
+                <pre class="bg-color">
+'document1.txt' -> '/backup/document1.txt'
+'document2.txt' -> '/backup/document2.txt'
+'notes.txt' -> '/backup/notes.txt'
+</pre>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">p</code> = Preserve original properties</li>
+                    <li><code class="code-bg">r</code> = Recursive (go deeper)</li>
+                    <li><code class="code-bg">i</code> = Interactive (ask me first)</li>
+                    <li><code class="code-bg">v</code> = Verbose (tell me what you're doing)</li>
+                    <li><code class="code-bg">u</code> = Update (only if newer)</li>
+                </ul>
+                <h3>The <code class="color">mv</code> Command: Moving and Renaming</h3>
+                <p>The <code class="color">mv</code> command in Unix/Linux systems is used to move or rename files
+                    and
+                    directories.</p>
+                <h4>What it does:</h4>
+                <ul>
+                    <li><strong>Moves</strong> files/folders from one location to another</li>
+                    <li><strong>Renames</strong> files/folders (moving within the same directory)</li>
+                    <li>Cuts and pastes (unlike <code class="color">cp</code> which copies)</li>
+                </ul>
+                <h4>Basic syntax:</h4>
+                <pre class="bg-color">
+mv source destination
+</pre>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Rename files and directories
+# Rename file
+mv oldname.txt newname.txt           
+# Rename directory
+mv old_directory new_directory  
+
+# Move files and directories
+# Move file
+mv file.txt /destination/directory/
+# Move multiple files
+mv *.log /var/log/archive/
+# Move directory
+mv directory/ /new/location/ 
+# Interactive and verbose options
+# Prompt before overwrite
+mv -i important.txt /backup/ 
+# Show move operations
+mv -v *.txt ~/documents/</code>
+</pre>
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">i</code> = Interactive (ask me first before overwriting)</li>
+                    <li><code class="code-bg">v</code> = Verbose (tell me what you're doing)</li>
+                </ul>
+
+                <h3>The <code class="color">rm</code> Command: Deletion with Caution</h3>
+                <p>The <code class="color">rm</code> command in Unix/Linux systems is used to remove (delete) files
+                    and
+                    directories.</p>
+                <h4>What it does:</h4>
+                <ul>
+                    <li><strong>Deletes</strong> files permanently</li>
+                    <li><strong>Removes</strong> directories when used with proper flags</li>
+                    <li>Files are typically <strong>gone forever</strong> (no recycle bin)</li>
+                </ul>
+                <h4>Basic syntax:</h4>
+                <pre class="bg-color">
+rm filename
+</pre>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Basic file removal
+# Remove single file
+rm unwanted.txt           
+# Remove multiple files
+rm file1.txt file2.txt
+# Remove files by pattern
+rm *.tmp 
+
+# Directory removal
+# Remove directory recursively
+rm -r directory_name/ /
+# Remove directory recursively
+rm -r directory_name/ /
+# Force removal (no prompts)
+rm -rf directory_name/
+
+# Safe removal practices
+# Interactive removal
+rm -i suspicious.txt
+# Interactive + verbose
+rm -iv *.tmp  
+# Prompt once for 3+ files
+rm -I directory/</code>
+</pre>
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">-r</code> = recursive (remove directories and their contents)</li>
+                    <li><code class="code-bg">-f</code> = force (no prompts, ignore non-existent files)</li>
+                    <li><code class="code-bg">-i</code> = interactive (prompt before each removal)</li>
+                    <li><code class="code-bg">-v</code> = verbose (show what's being removed)</li>
+                    <li><code class="code-bg">-I</code> = prompt once for multiple files (capital i)</li>
+                </ul>
+                <h4>Sample Output for <code class="color">rm -i</code></h4>
+                <pre class="bg-color">
+rm: remove regular file 'suspicious.txt'? y   
+</pre>
+                <h3>File Operations Safety Matrix</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-left">Command</th>
+                                <th class="text-left">Risk Level</th>
+                                <th>Use Case</th>
+                                <th>Safety Recommendation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="code">rm file.txt</code></td>
+                                <td>🟢 Low</td>
+                                <td>Single files</td>
+                                <td>Generally safe</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code">rm -i file.txt</code></td>
+                                <td>🟢 Very Low</td>
+                                <td>Any deletion</td>
+                                <td>Always recommended</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code">rm -r directory/</code></td>
+                                <td>🟡 Medium</td>
+                                <td>Directory removal</td>
+                                <td>Double-check path</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code">rm -rf directory/</code></td>
+                                <td>🔴 HIGH</td>
+                                <td>Force removal</td>
+                                <td>Use sparingly</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code">rm -rf /</code></td>
+                                <td>⚫ CRITICAL</td>
+                                <td>System destruction</td>
+                                <td>Never Execute</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pro-tips">
+                    <p>🚨 <strong>Security Warning:</strong> Always use the interactive flag (<code
+                            class="code">-i</code>) for important deletions. The <code class="code">rm -rf</code>
+                        combination can cause catastrophic data loss with a single typo.</p>
+                </div>
+            </div>
+
+            <!-- Chapter 5  -->
+            <div class="card linux-card" id="chapter-5">
+                <div class="card-header">
+                    <h2>👁️ Chapter 5: File Viewing and Content Analysis</h2>
+                </div>
+                <p>The <code class="color">cat</code> command in Unix/Linux systems is used to
+                    <strong>display</strong>,
+                    <strong>concatenate</strong>, and <strong>create</strong> file contents.
+                </p>
+                <h4>What it does:</h4>
+                <ul>
+                    <li><strong>Displays</strong> file contents on the screen</li>
+                    <li><strong>Concatenates</strong> (joins) multiple files together</li>
+                    <li><strong>Creates</strong> new files when used with redirection</li>
+                    <li><strong>Reads</strong> and outputs file contents to standard output</li>
+                </ul>
+                <h4>Basic syntax:</h4>
+                <pre class="bg-color">
+cat filename
+</pre>
+                <h3>Display Content with <code class="color">cat</code></h3>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Display entire file contents
+# Show complete file
+cat filename.txt            
+# Concatenate multiple files
+cat file1.txt file2.txt
+# Number all lines
+cat -n filename.txt
+# Number only non-blank lines
+cat -b filename.txt 
+# Show all characters (including hidden)
+cat -A filename.txt</code>
+</pre>
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">n</code> = Number all lines</li>
+                    <li><code class="code-bg">b</code> = Number only non-blank lines</li>
+                    <li><code class="code-bg">A</code> = Show all characters (including hidden ones)</li>
+                </ul>
+                <h3>Peek at Files with <code class="color">head</code> and <code class="color">tail</code></h3>
+                <p>The <code class="color">head</code> command in Unix/Linux systems is used to <strong>display the
+                        first few lines</strong> of a file or input.</p>
+                <h4>What it does:</h4>
+                <ul>
+                    <li><strong>Shows the beginning</strong> of files</li>
+                    <li><strong>Displays first 10 lines</strong> by default</li>
+                    <li><strong>Quick preview</strong> of file contents</li>
+                    <li><strong>Reads</strong> and outputs file contents to standard output</li>
+                </ul>
+                <h4>Basic syntax:</h4>
+                <pre class="bg-color">
+head filename
+</pre>
+                <h4>The <code class="color">head</code> Command - File Beginnings</h4>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># First 10 lines (default)</p>
+                    <pre class="line-numbers">
+<code class="language-bash">head filename.txt</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/26.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># First 5 lines</p>
+                    <pre class="line-numbers">
+<code class="language-bash">head -n 5 filename.txt</code>  
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/27.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># First 100 characters</p>
+                    <pre class="line-numbers">
+<code class="language-bash">head -c 100 filename.txt</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/28.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># All except last 5 lines</p>
+                    <pre class="line-numbers">
+<code class="language-bash">head -n -5 filename.txt</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/29.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">n NUMBER</code> = Show first NUMBER lines</li>
+                    <li><code class="code-bg">c NUMBER</code> = Show first NUMBER characters (bytes)</li>
+                    <li><code class="code-bg">n -NUMBER</code> = all Not including the end</li>
+                </ul>
+
+                <h3>The <code class="color">tail</code> Command - File Endings</h3>
+                <p>The <code class="color">tail</code>The tail command in Unix/Linux systems is used to
+                    <strong>display
+                        the last few lines</strong> of a file or input.
+                </p>
+                <h4>What it does:</h4>
+                <ul>
+                    <li><strong>Shows the end</strong> of files</li>
+                    <li><strong>Displays last 10 lines</strong> by default</li>
+                    <li><strong>Monitor file changes</strong> in real-time (with <code class="color">f</code>)</li>
+                    <li>Works with text files and command output</li>
+                </ul>
+                <h4>Basic syntax:</h4>
+                <pre class="bg-color">
+tail filename
+</pre>
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Last 10 lines (default)</p>
+                    <pre class="line-numbers">
+<code class="language-bash">tail filename.txt</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/30.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Last 20 lines</p>
+                    <pre class="line-numbers">
+<code class="language-bash">tail -n 12 filename.txt</code>   
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/31.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Last 50 characters</p>
+                    <pre class="line-numbers">
+<code class="language-bash">tail -c 50 filename.txt</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/32.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># From line 5 to end</p>
+                    <pre class="line-numbers">
+<code class="language-bash">tail -n +5 filename.txt</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/33.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Real-time monitoring (essential for logs)</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Follow file changes
+tail -f /var/log/syslog</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/34.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Follow with retry if file rotates</p>
+                    <pre class="line-numbers">
+<code class="language-bash">tail -F /var/log/syslog</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/35.png" alt="">
+                </div>
+
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">n NUMBER</code> = Show last NUMBER lines</li>
+                    <li><code class="code-bg">c NUMBER</code> = Show last NUMBER characters (bytes)</li>
+                    <li><code class="code-bg">f</code> = Follow (monitor file for new content)</li>
+                    <li><code class="code-bg">F</code> = Follow with retry (handles file rotation)</li>
+                    <li><code class="code-bg">+NUMBER</code> = Start from line NUMBER to end</li>
+                </ul>
+                <div class="pro-tips">
+                    <p>💡<strong>Pro Tip:</strong> Use <code class="color">tail -f</code> for real-time log
+                        monitoring
+                        during troubleshooting or security investigations.</p>
+                </div>
+                <h3>Interactive Viewing with <code class="color">less</code></h3>
+                <p>The <code class="color">less</code> command in Unix/Linux systems is used to <strong>view and
+                        navigate through file contents</strong> one screen at a time.</p>
+                <h4>What it does:</h4>
+                <ul>
+                    <li><strong>Displays file contents</strong> with pagination</li>
+                    <li><strong>Interactive navigation</strong> through large files</li>
+                    <li><strong>Search functionality</strong>within files</li>
+                    <li><strong>Memory efficient</strong> - doesn't load entire file at once</li>
+                    <li><strong>Read-only viewer</strong> - cannot edit files</li>
+                </ul>
+                <h4>Basic syntax:</h4>
+                <pre class="bg-color">
+less filename
+</pre>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Open file for interactive browsing
+less filename.txt           
+# Start in follow mode
+less +F /var/log/syslog
+# Start at end of file
+less +G filename.txt
+# No Line Wrapping
+less -N filename.txt 
+# Show all characters (including hidden)
+less -S filename.txt
+# Don't Clear Screen
+less -X filename.txt</code>    
+</pre>
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">N</code> = Show line numbers</li>
+                    <li><code class="code-bg">S</code> = Don't wrap long lines (horizontal scrolling)</li>
+                    <li><code class="code-bg">i</code> = Ignore case in searches</li>
+                    <li><code class="code-bg">X</code> = Don't clear screen when exiting</li>
+                    <li><code class="code-bg">+F</code> = Follow (live monitoring)</li>
+                    <li><code class="code-bg">+G</code> = Go to end (G is the "go to end" key in less)</li>
+                    <li><code class="code-bg">N</code> = Numbers (show line numbers)</li>
+                </ul>
+                <h3>Essential <code class="color">less</code> Navigation Commands:</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-left">Key</th>
+                                <th class="text-left">Action</th>
+                                <th class="text-left">Key</th>
+                                <th class="text-left">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="code-red">Space</code></td>
+                                <td>Next page</td>
+                                <td><code class="code-red">b</code></td>
+                                <td>Previous page</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-red">j</code></td>
+                                <td>Next line</td>
+                                <td><code class="code-red">k</code></td>
+                                <td>Previous line</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-red">g</code></td>
+                                <td>Go to beginning</td>
+                                <td><code class="code-red">G</code></td>
+                                <td>Go to end</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-red">/pattern</code></td>
+                                <td>Search forward</td>
+                                <td><code class="code-red">?pattern</code></td>
+                                <td>Search backward</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-red">n</code></td>
+                                <td>Next search result</td>
+                                <td><code class="code-red">N</code></td>
+                                <td>Previous search result</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-red">q</code></td>
+                                <td>Quit</td>
+                                <td><code class="code-red">h</code></td>
+                                <td>help</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>File Type Identification with <code class="color">file</code></h3>
+                <p>The <code class="color">file</code> command in Unix/Linux systems is used to <strong>determine
+                        the
+                        type and format</strong> of files by examining their contents.</p>
+                <h4>What it does:</h4>
+                <ul>
+                    <li><strong>Identifies file types</strong> regardless of file extension</li>
+                    <li><strong>Analyzes file content</strong> rather than just the filename</li>
+                    <li><strong>Detects file formats</strong> (text, binary, images, executables, etc.)</li>
+                    <li><strong>Shows file characteristics</strong> like encoding, architecture, etc.</li>
+                </ul>
+                <h4>Basic syntax:</h4>
+                <pre class="bg-color">
+file filename
+</pre>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash">file filename.txt</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/36.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash">file projects</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/37.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash">file unknown_data.bin</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/38.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Check all files in directory</p>
+                    <pre class="line-numbers">
+<code class="language-bash">file *</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/39.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">b</code> = Brief (show only file type, not filename)</li>
+                    <li><code class="code-bg">i</code> = Show <a href="">MIME</a> (Multipurpose Internet Mail
+                        Extensions) type instead of description</li>
+                    <li><code class="code-bg">L</code> = Follow symbolic links</li>
+                    <li><code class="code-bg">z</code> = Look inside compressed files</li>
+                </ul>
+                <div class="pro-tips">
+                    <p>🔍<strong> Security Application:</strong> Always use <code class="color">file</code> to
+                        verify
+                        file types before execution, especially when investigating potential malware or suspicious
+                        downloads.</p>
+                </div>
+            </div>
+
+            <!-- Chapter 6  -->
+            <div class="card linux-card" id="chapter-6">
+                <div class="card-header">
+                    <h2>🔍 Chapter 6: Hidden Files and Links</h2>
+                </div>
+                <h3>Understanding Hidden Files</h3>
+                <p>In Linux, any file or directory starting with a dot (<code class="color">.</code>) is hidden from
+                    standard directory listings. This feature reduces clutter but can also conceal malicious files.
+                </p>
+                <p class="code-p"># Find hidden files recursively</p>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Hidden files only</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find . -name ".*" -type f</code>  
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/40.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Hidden directories only</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find . -name ".*" -type d</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/40.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Detailed hidden file info</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find /home -name ".*" -exec ls -la {} \;</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/41.png" alt="">
+                </div>
+
+                <h3>Critical Hidden Files for Security</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-left">File/Directory</th>
+                                <th class="text-left">Purpose</th>
+                                <th class="text-left">Security Implications</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="color">.bash_history</code></td>
+                                <td>Command history</td>
+                                <td>May contain sensitive commands/passwords</td>
+                            </tr>
+                            <tr>
+                                <td><code class="color">.bashrc</code></td>
+                                <td>Shell configuration</td>
+                                <td>Can contain malicious aliases or functions</td>
+                            </tr>
+                            <tr>
+                                <td><code class="color">.ssh/</code></td>
+                                <td>SSH configuration</td>
+                                <td>Contains private keys and authorized hosts</td>
+                            </tr>
+                            <tr>
+                                <td><code class="color">.gnupg/</code></td>
+                                <td>GPG keys</td>
+                                <td>Encryption and signing keys</td>
+                            </tr>
+                            <tr>
+                                <td><code class="color">.mysql_history</code></td>
+                                <td>MySQL command history</td>
+                                <td>Database passwords and queries</td>
+                            </tr>
+                            <tr>
+                                <td><code class="color">.viminfo</code></td>
+                                <td>Vim editor info</td>
+                                <td>Recently edited files and search patterns</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>Understanding Links: Hard vs. Symbolic</h3>
+                <h4>Symbolic Links (Symlinks)</h4>
+                <p>Symbolic links are shortcuts that point to other files or directories:</p>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Create symbolic links</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ln -s /path/to/original /path/to/link</code> 
+</pre>
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Link to a directory</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ln -s /var/log/apache2 web_logs</code>
+</pre>
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Relative symlink</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ln -s ../shared-config.txt config.txt</code>
+</pre>
+                </div>
+                <p class="code-p"># Identify symbolic links</p>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># List only symlinks
+ls -la | grep "^l"</code> 
+</pre>
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Check if file is a symlink</p>
+                    <pre class="line-numbers">
+<code class="language-bash">file file.txt</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/42.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Show target of symlink</p>
+                    <pre class="line-numbers">
+<code class="language-bash">readlink file.txt</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/43.png" alt="">
+                </div>
+
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">-s</code> = symbolic/soft link (creates a pointer, not a copy)</li>
+                </ul>
+
+                <h4>Hard Links</h4>
+                <p>Hard links create multiple directory entries for the same file:</p>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Create Hard links</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ln original.txt hardlink.txt</code>
+</pre>
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Hard link across directories (same filesystem)</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ln /path/to/file /another/path/link</code> 
+</pre>
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Check inode numbers</p>
+                    <pre class="line-numbers">
+<code class="language-bash">ls -li original.txt hardlink.txt</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/44.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Find all hard links to file</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find . -samefile original.txt</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/45.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">ls -i</code> = show inode numbers</li>
+                    <li><code class="code-bg">ls -l</code> = symbolic/soft link (creates a pointer, not a copy)</li>
+                    <li><code class="code-bg">find -samefile</code> = locate all hard links to a file</li>
+                </ul>
+
+                <h3>Hard Link vs Symbolic Link Comparison:</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-left">Aspect</th>
+                                <th class="text-left">Hard Link</th>
+                                <th class="text-left">Symbolic Link</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="code-red">Inode</code></td>
+                                <td>Same as original</td>
+                                <td>Different inode</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-red">File deletion</code></td>
+                                <td>Original survives if links exist</td>
+                                <td>Broken link if original deleted</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-red">Cross-filesystem</code></td>
+                                <td>Not supported</td>
+                                <td>Supported</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-red">Directory linking</code></td>
+                                <td>Not allowed</td>
+                                <td>Allowed</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-red">Space usage</code></td>
+                                <td>No additional space</td>
+                                <td>Minimal additional space</td>
+                            </tr>
+                            <tr>
+                                <td><code class="code-red">Performance</code></td>
+                                <td>Direct access</td>
+                                <td>Slight overhead</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pro-tips">
+                    <p>🔒<strong> Security Best Practice: </strong>Always verify link destinations before following
+                        them, especially in scripts or automated processes.</p>
+                </div>
+            </div>
+            <!-- Chapter 7  -->
+            <div class="card linux-card" id="chapter-7">
+                <div class="card-header">
+                    <h2>🔎 Chapter 7: Search and Inventory Mastery</h2>
+                </div>
+                <h3>The <code class="color">find</code> Command: Your File System Detective</h3>
+                <p>The <code class="color">find</code> command is one of the most powerful tools in Linux, enabling
+                    complex searches across your entire system.</p>
+                <h4>Basic Search Patterns</h4>
+                <p class="code-p"># Search by filename</p>
+
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Case-sensitive search
+find . -name "*.txt"</code>  
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/46.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Case-insensitive search</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find . -iname "*.TXT"</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/47.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Wildcard patterns</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find /home -name "config*"</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/48.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Multiple patterns (.log OR .tmp)</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find . -name "*.log" -o -name "*.tmp"</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/49.png" alt="">
+                </div>
+
+                <h4>Search by File Type</h4>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Regular files only</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find /var -type f -name "*.log"</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/50.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type d</code> = Search for regular files only</li>
+                    <li><code class="code-bg">name "*.log"</code> = Match files ending with .log extension</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Directories only</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find /usr -type d -name "*bin*"</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/51.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type d</code> = Search for directories only</li>
+                    <li><code class="code-bg">name "*bin*"</code> = Match directories containing "bin" </li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Symbolic links only</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find /dev -type l</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/52.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type l</code> = Search for symbolic links only</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Executable files</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find . -type f -executable</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/53.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type f</code> = Search for regular files only</li>
+                    <li><code class="code-bg">executable</code> = Match files that are executable by current user
+                    </li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Readable files</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find . -type f -readable</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/54.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type f</code> = Search for regular files only</li>
+                    <li><code class="code-bg">readable</code> = Match files that are readable by current user</li>
+                </ul>
+
+                <h4>Time-Based Searches (Critical for Forensics)</h4>
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Search by modification time</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Modified in last 7 days
+find /var -type f -mtime -7</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/55.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type f</code> = Search for regular files only</li>
+                    <li><code class="code-bg">mtime -7</code> = Modified within the last 7 days (less than 7 days
+                        ago)
+                    </li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Modified more than 30 days ago</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find /tmp -type f -mtime +1</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/56.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type f</code> = Search for regular files only</li>
+                    <li><code class="code-bg">mtime +30</code> = Modified more than 30 days ago</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Modified in last 60 minutes</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find . -type f -mmin -60</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/57.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type f</code> = Search for regular files only</li>
+                    <li><code class="code-bg">mmin -60</code> = Modified within the last 60 minutes</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Search by access time</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Accessed in last 24 hours</p>
+find /home -type f -atime -1</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/58.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type f</code> = Search for regular files only</li>
+                    <li><code class="code-bg">atime -1</code> = Accessed within the last 24 hours (1 day)</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Not accessed in 7+ days</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find . -type f -atime +90</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/59.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type f</code> = Search for regular files only</li>
+                    <li><code class="code-bg">atime +90</code> = Not accessed for more than 90 days</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Search by creation time (if supported)</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Created after date</p>
+find . -type f -newerct "2025-08-27"</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/60.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type f</code> = Search for regular files only</li>
+                    <li><code class="code-bg">newerct "2023-11-01"</code> = Created after the specified date
+                        (November
+                        1, 2023)</li>
+                </ul>
+                <h4>Time Flag Summary:</h4>
+                <p><strong>Modification Time:</strong></p>
+                <ul>
+                    <li><code class="code-bg">mtime -N</code> = Modified less than N days ago</li>
+                    <li><code class="code-bg">mtime +N</code> = Modified more than N days ago</li>
+                    <li><code class="code-bg">mmin -N</code> = Modified less than N minutes ago</li>
+                </ul>
+                <p><strong>Access Time::</strong></p>
+                <ul>
+                    <li><code class="code-bg">atime -N</code> = Accessed less than N days ago</li>
+                    <li><code class="code-bg">atime +N</code> = Not accessed for more than N days</li>
+                </ul>
+                <p><strong>Creation Time:</strong></p>
+                <ul>
+                    <li><code class="code-bg">newerct "date"</code> = Created after specified date</li>
+                    <li><code class="code-bg">newermt "date"</code> = Modified after specified date</li>
+                </ul>
+
+                <h4>Size-Based Searches</h4>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Search by file size</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Files larger than 10MB
+find /var -type f -size +10M</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/61.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type f</code> = Search for regular files only</li>
+                    <li><code class="code-bg">size +100M</code> = Files larger than 100 megabytes</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Files smaller than 1KB</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find . -type f -size -1k</code>  
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/62.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type f</code> = Search for regular files only</li>
+                    <li><code class="code-bg">size -1k</code> = Files smaller than 1 kilobyte (1024 bytes)</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Files between 1k-10MB</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find /tmp -type f -size +1k -size -10M</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/63.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">type f</code> = Search for regular files only</li>
+                    <li><code class="code-bg">size +1k</code> = Files larger than 1 gigabyte</li>
+                    <li><code class="code-bg">size -10MB</code> = Files smaller than 2 gigabyte</li>
+                    <li><strong>Combined effect: </strong>Files between 1GB and 2GB in size</li>
+                </ul>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Empty files and directories</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find . -empty</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/64.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">empty</code> = Find empty files (0 bytes) and empty directories (no
+                        contents)</li>
+                </ul>
+                <h4>Size Unit Suffixes:</h4>
+                <p><strong>Available size units:</strong></p>
+                <ul>
+                    <li><code class="code-bg">c</code> = bytes</li>
+                    <li><code class="code-bg">w</code> = 2-byte words</li>
+                    <li><code class="code-bg">k</code> = kilobytes (1024 bytes)</li>
+                    <li><code class="code-bg">M</code> = megabytes (1024 KB)</li>
+                    <li><code class="code-bg">G</code> = gigabytes (1024 MB)</li>
+                    <li><code class="code-bg">T</code> = terabytes (1024 GB)</li>
+                </ul>
+                <h4>Size Operators:</h4>
+                <p><strong>Size prefixes:</strong></p>
+                <ul>
+                    <li><code class="code-bg">+N</code> = Greater than N units</li>
+                    <li><code class="code-bg">-N</code> = Less than N units</li>
+                    <li><code class="code-bg">N</code> = Exactly N units</li>
+                </ul>
+                <h3>Lightning-Fast Searches with <code class="color">locate</code></h3>
+                <p>The <code class="color">locate</code> command uses a pre-built database for instant filename
+                    searches:</p>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Update the locate database (run as root)</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Update file database</p>
+sudo updatedb</code>
+</pre>
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Find files named nginx.conf</p>
+                    <pre class="line-numbers">
+<code class="language-bash">locate nginx.conf</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/65.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Case-insensitive search</p>
+                    <pre class="line-numbers">
+<code class="language-bash">locate -i pdf</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/66.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Limit to 5 results</p>
+                    <pre class="line-numbers">
+<code class="language-bash">locate -l 5 "*.txt"</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/67.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">-i</code> = ignore case (case-insensitive search)</li>
+                    <li><code class="code-bg">-l NUMBER</code> = limit results to specified number of entries</li>
+                </ul>
+                <h3>Content Searching with <code class="color">grep</code></h3>
+                <p><code class="color">grep</code> (Global Regular Expression Print) is a powerful command-line text
+                    search utility in Linux that searches for patterns within files or input streams and prints
+                    matching
+                    lines.</p>
+                <h4>Basic Syntax</h4>
+                <pre class="bg-color">
+grep [OPTIONS] PATTERN [FILE...]
+</pre>
+                <h4>Basic Text Searching</h4>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Limit to 5 results</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Find "error" in syslog
+grep "error" /var/log/syslog
+# Case-insensitive search
+grep -i "warning" /var/log/messages  
+# Show line numbers
+grep -n "TODO" script.sh   
+# Count occurrences
+grep -c "failed" auth.log</code>
+</pre>
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">-i</code> = ignore case (case-insensitive search)</li>
+                    <li><code class="code-bg">-n</code> = show line numbers</li>
+                    <li><code class="code-bg">-c</code> = count matches (shows number, not the actual lines)</li>
+                </ul>
+
+                <h4>Recursive Directory Searching</h4>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Search through directory trees</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Search recursively
+grep -r "password" /etc/   
+# Recursive with line numbers
+grep -rn "TODO" ~/projects/ 
+# Recursive, case-insensitive
+grep -ri "copyright" /usr/src/
+# Search only Python files
+grep -r --include="*.py" "import" . 
+# Exclude log files
+grep -r --exclude="*.log" "error" .</code> 
+</pre>
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">-i</code> = ignore case (case-insensitive search)</li>
+                    <li><code class="code-bg">-r</code> = Search recursively through all subdirectories</li>
+                    <li><code class="code-bg">-n</code> = Display line numbers where matches are found</li>
+                </ul>
+                <h4>Additional Recursive Flags:</h4>
+                <p><strong>File Filtering:</strong></p>
+                <ul>
+                    <li><code class="code-bg">-include="pattern"</code> = Only search files matching pattern</li>
+                    <li><code class="code-bg">-exclude="pattern"</code> = Skip files matching pattern</li>
+                    <li><code class="code-bg">-exclude-dir="pattern"</code> = Skip directories matching pattern</li>
+                </ul>
+
+                <h4>Advanced grep Techniques</h4>
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Context and formatting</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Show 3 lines before/after match
+grep -C 3 "error" logfile.txt 
+# 2 before, 1 after
+grep -B 2 -A 1 "warning" log.txt
+# Invert match (exclude lines)
+grep -v "INFO" application.log 
+# Extended regex
+grep -E "(error|warning|critical)" log.txt  
+# Fixed string (no regex)
+grep -F "literal.string" file.txt</code>
+</pre>
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">-C 3</code> = Show 3 lines of context (both before and after each
+                        match)
+                    </li>
+                    <li><code class="code-bg">-B 2</code> = Show 2 lines before each match</li>
+                    <li><code class="code-bg">-A 1</code> = Show 1 line after each match</li>
+                    <li><code class="code-bg">-v 1</code> = Invert match (show lines that do NOT contain the
+                        pattern)
+                    </li>
+                    <li><code class="code-bg">-E</code> = Use extended regular expressions (same as <code
+                            class="color">egrep</code>)</li>
+                    <li><code class="code-bg">-F</code> = Treat pattern as fixed string (no regular expression
+                        interpretation)</li>
+                </ul>
+
+                <h3>Search Command Comparison Matrix</h3>
+                <!-- Search Command Comparison Matrix -->
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-left">Command</th>
+                                <th class="text-left">Strengths</th>
+                                <th class="text-left">Speed</th>
+                                <th>Use Cases</th>
+                                <th>Database Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code class="color">find</code></td>
+                                <td>Complex filters, real-time</td>
+                                <td>Slower</td>
+                                <td>Custom searches, file attributes</td>
+                                <td>No</td>
+                            </tr>
+                            <tr>
+                                <td><code class="color">locate</code></td>
+                                <td>Instant results</td>
+                                <td>Very Fast</td>
+                                <td>Simple filename searches</td>
+                                <td>Yes (updatedb)</td>
+                            </tr>
+                            <tr>
+                                <td><code class="color">grep</code></td>
+                                <td>Content searching</td>
+                                <td>Medium</td>
+                                <td>Text pattern matching</td>
+                                <td>No</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Chapter 8  -->
+            <div class="card linux-card" id="chapter-8">
+                <div class="card-header">
+                    <h2>💾 Chapter 8: Disk Usage and System Monitoring</h2>
+                </div>
+                <h3>Filesystem Analysis with <code class="color">df</code></h3>
+                <p>The <code class="color">df</code> (disk free) command shows filesystem disk space usage:</p>
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Basic disk usage</p>
+                    <pre class="line-numbers">
+<code class="language-bash">df</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/68.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Human-readable format (KB, MB, GB)</p>
+                    <pre class="line-numbers">
+<code class="language-bash">df -h</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/69.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Human-readable with 1000-byte units</p>
+                    <pre class="line-numbers">
+<code class="language-bash">df -H</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/70.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Show filesystem types</p>
+                    <pre class="line-numbers">
+<code class="language-bash">df -T</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/71.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Show inode usage instead of blocks</p>
+                    <pre class="line-numbers">
+<code class="language-bash">df -i</code>   
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/72.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">-h</code> = human-readable (1024-byte units: 1K = 1024 bytes)</li>
+                    <li><code class="code-bg">-H</code> = human-readable (1000-byte units: 1K = 1000 bytes)</li>
+                    <li><code class="code-bg">-T</code> = show filesystem type</li>
+                    <li><code class="code-bg">-i</code> = show inode information instead of block usage</li>
+                </ul>
+                <!-- Focused Filesystem Monitoring   -->
+                <h4>Focused Filesystem Monitoring</h4>
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Monitor specific filesystems</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Root filesystem only
+df -h /</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/73.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Multiple specific paths</p>
+                    <pre class="line-numbers">
+<code class="language-bash">df -h /home /var</code> 
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/74.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Filter important filesystems</p>
+                    <pre class="line-numbers">
+<code class="language-bash">df -h | grep -E "(/$|/home|/var)"</code>\
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/75.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Inode monitoring (important for many small files)</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Highlight filesystems >80% inode usage
+df -i | awk '$5+0 > 80 {print}'</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/76.png" alt="">
+                </div>
+                <p style="margin-bottom: 5px;"><strong>Explanation → </strong><code
+                        class="color">df -i | awk '$5+0 > 80 {print}'</code></p>
+                <p><strong>Purpose: </strong>Shows filesystems where inode usage is over 80% (helps identify
+                    partitions
+                    running out of available file slots).</p>
+                <ul>
+                    <li><code class="code-bg">i</code> = Show inode information instead of block usage</li>
+                    <li><code class="code-bg">|</code> = Pipe (sends output to next command)</li>
+                    <li><code class="code-bg">$5</code> = References the 5th field (Use% column - inode usage
+                        percentage)</li>
+                    <li><code class="code-bg">+0</code> = Converts the string to numeric value (removes the %
+                        symbol)
+                    </li>
+                    <li><code class="code-bg">> 80</code> = Condition to check if usage is greater than 80%</li>
+                    <li><code class="code-bg">{print}</code> = Action to print the entire line when condition is
+                        true
+                    </li>
+                </ul>
+                <!-- Directory Usage Analysis with du   -->
+                <h4>Directory Usage Analysis with <code class="color">du</code></h4>
+                <p>The <code class="color">du</code> (disk usage) command analyzes directory space consumption:</p>
+
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Summarize directory size
+du -sh /var/log</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/77.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Top 10 largest subdirectories</p>
+du -h /var/log/ | sort -hr | head -10</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/78.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># All files and dirs with sizes
+du -ah . | head -20</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/79.png" alt="">
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Depth 1 only (immediate subdirs)
+du -d 1 -h /usr</code>
+</pre>
+                </div>
+                <div class="card-image-output">
+                    <p>Output</p>
+                    <img src="images/output/80.png" alt="">
+                </div>
+                <p><strong>Flag description</strong></p>
+                <ul>
+                    <li><code class="code-bg">s</code> = Summarize (show only total size, not individual
+                        subdirectories)
+                    </li>
+                    <li><code class="code-bg">h</code> = Human-readable format (KB, MB, GB, etc.)</li>
+                    <li><code class="code-bg">a</code> = Show all files and directories (not just directories)</li>
+                    <li><code class="code-bg">d 1</code> = Maximum depth of 1 level (show only immediate
+                        subdirectories)
+                    </li>
+                </ul>
+                <!-- Critical Disk Usage Thresholds -->
+                <h3>Critical Disk Usage Thresholds</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="text-left">Usage Level</th>
+                                <th class="text-left">Action Required</th>
+                                <th class="text-left">Risk Assessment</th>
+                                <th>Automated Response</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="color: green;">
+                                    < 70%</td>
+                                <td>Normal monitoring</td>
+                                <td>🟢 Low</td>
+                                <td>Continue monitoring</td>
+                            </tr>
+                            <tr>
+                                <td style="color: yellow;">70-85%</td>
+                                <td>Plan cleanup</td>
+                                <td>🟡 Medium</td>
+                                <td>Send notification</td>
+                            </tr>
+                            <tr>
+                                <td style="color: orangered;">85-95%</td>
+                                <td>Immediate attention</td>
+                                <td>🟠 High</td>
+                                <td>Alert administrators</td>
+                            </tr>
+                            <tr>
+                                <td style="color: red;">> 95%</td>
+                                <td>Emergency cleanup</td>
+                                <td>🔴 Critical</td>
+                                <td>Stop non-essential services</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h4>Essential Monitoring Commands</h4>
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Continuous monitoring</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Update every 5 seconds</p>
+watch -n 5 'df -h'</code>    
+</pre>
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Monitor log growth</p>
+                    <pre class="line-numbers">
+<code class="language-bash">watch -n 10 'du -sh /var/log'</code>
+</pre>
+                </div>
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Find disk space consumers</p>
+                    <pre class="line-numbers">
+<code class="language-bash"># Interactive disk usage analyzer
+ncdu /</code>
+</pre>
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Clean old temp files</p>
+                    <pre class="line-numbers">
+<code class="language-bash">find /tmp -type f -mtime +7 -delete</code>
+</pre>
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Clean old systemd logs</p>
+                    <pre class="line-numbers">
+<code class="language-bash">journalctl --vacuum-time=30d</code> 
+</pre>
+                </div>
+
+                <div id="language-bash" class="code-block">
+                    <p class="code-p"># Clean package cache (Ubuntu/Debian)</p>
+                    <pre class="line-numbers">
+<code class="language-bash">apt-get autoremove && apt-get autoclean</code>
+</pre>
+                </div>
+                <div class="pro-tips">
+                    <p>💡<strong> Pro Tip:</strong> Set up automated monitoring with tools like <code
+                            class="color">cron</code> and <code class="color">df</code> to alert you before disk
+                        space
+                        becomes critical.</p>
+                </div>
+            </div>
+            <!-- Ad Banner  -->
+            <div class="ad-banner-in-content">
+                <p>Ad</p>
+                <!-- <img src="https://placehold.co/768x150/555/white?text=Advertisement%0A768x10%0A(Large+Rectangle)"
+                        alt="Advertisement 336x280 (Large Rectangle)"> -->
+            </div>
+            <!-- Module Summary  -->
+            <div class="module-summary linux-card">
+                <h2>🏆 Module Summary and Practical Challenges</h2>
+                <h3>🎯 Skills Mastery Checklist</h3>
+                <h4>Fundamental Knowledge:</h4>
+                <ul>
+                    <li>Linux Architecture: Understand kernels, distributions, and boot processes</li>
+                    <li>FHS Structure: Navigate the filesystem hierarchy confidently</li>
+                    <li>Security Awareness: Identify vulnerabilities in file operations</li>
+                </ul>
+                <h4>Core Navigation Skills</h4>
+                <ul>
+                    <li>Path Mastery: Switch between absolute, relative, and home-relative paths</li>
+                    <li>Efficient Movement: Use cd, pwd, and CDPATH for rapid navigation</li>
+                    <li>Directory Analysis: Understand permissions and ownership</li>
+                </ul>
+                <h4>File Operation Proficiency:</h4>
+                <ul>
+                    <li>Safe File Management: Create, copy, move, and delete files securely</li>
+                    <li>Content Analysis: View and analyze file contents effectively</li>
+                    <li>Hidden File Detection: Find and evaluate concealed system files</li>
+                </ul>
+                <h4>Advanced Search Capabilities:</h4>
+                <ul>
+                    <li>Multi-tool Searching: Combine find, locate, and grep strategically</li>
+                    <li>Time-based Forensics: Search files by creation, modification, and access times</li>
+                    <li>Size and Type Filtering: Locate files by attributes and characteristics</li>
+                </ul>
+                <h4>System Monitoring Expertise:</h4>
+                <ul>
+                    <li>Disk Usage Analysis: Monitor filesystem usage and identify bottlenecks</li>
+                    <li>Proactive Maintenance: Set up automated monitoring and cleanup procedures</li>
+                </ul>
+                <div class="upcoming-module">
+                    <h3>Upcoming Module</h3>
+                    <p><strong>Module 2: </strong><a href="../Module 2/index.html">User and group management with
+                            security
+                            considerations</a>
+                    </p>
+                </div>
+            </div>
+
+            <div class="congrats">
+                <h2>🚀 Next Steps in Your Linux Journey</h2>
+                <p>Congratulations! You've successfully completed Module 1 and built a solid foundation in Linux
+                    command-line navigation and file system operations. You're now ready to tackle more topics.</p>
+            </div>
+            </section>
+        </main>
+
+        <main class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations,
+                    and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable
+                    knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                    alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home
+                        Page</a>
+                </div>
+            </div>
+
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a></li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block medium">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                    alt="Advertisement 300x250 (Medium Rectangle)" /> -->
+            </div>
+            <div class="ad-block small">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                    alt="Advertisement 320x100 (Large Mobile Banner)" /> -->
+            </div>
+        </main>
+        <button id="scrollUpBtn" aria-label="Scroll to top" style="display:none;">
+            <div class="progress-wrapper">
+                <svg class="progress-circle" viewBox="0 0 36 36" aria-hidden="true">
+                    <path class="bg1" d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <path class="progress" d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831" />
+                </svg>
+
+                <svg class="arrow-overlay" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+        </button>
+
+    </div>
+
+
+
+    <footer class="footer">
+        <div class="waves">
+            <div class="wave" id="wave1"></div>
+            <div class="wave" id="wave2"></div>
+            <div class="wave" id="wave3"></div>
+            <div class="wave" id="wave4"></div>
+        </div>
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../color-palettes/index.html">Color Spaces</a></li>
+            <li class="menu-item"><a class="menu-link"
+                    href="../../../Resources/digital-resources/digital-resources-hub.html">Resources</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpireHub | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="../prism/prism.js"></script>
+</body>
+
+</html>

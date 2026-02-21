@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../images/icon.webp" sizes="32x46" type="image/png">
+
+    <!-- SEO Title (57 characters) -->
+    <title>Windows File Structure Guide - NTFS, FAT32 & ReFS</title>
+
+    <!-- Meta Description (157 characters) -->
+    <meta name="description"
+        content="Master Windows file structure with this beginner-friendly guide. Learn NTFS, file permissions, directory hierarchy, and organization best practices.">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Windows File Structure Guide - NTFS, FAT32 & ReFS">
+    <meta property="og:description"
+        content="Complete tutorial on Windows file systems, directory structure, permissions, and file management for beginners and IT professionals.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devspirehub.com/windows-file-system">
+    <meta property="og:image" content="https://devspirehub.com/images/windows-file-system.webp">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Windows File Structure Guide - NTFS, FAT32 & ReFS">
+    <meta name="twitter:description"
+        content="Master Windows file structure with this beginner-friendly guide covering NTFS, permissions, and directory organization.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/windows-file-system">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Complete Guide to Windows File Structure System",
+        "description": "Comprehensive tutorial on Windows file systems including NTFS, FAT32, exFAT, and ReFS with practical examples",
+        "author": {
+          "@type": "Organization",
+          "name": "DevSpireHub"
+        },
+        "datePublished": "2026-01-14",
+        "dateModified": "2026-01-14",
+        "image": "https://devspirehub.com/images/windows-file-system.webp",
+        "articleSection": "Operating Systems",
+        "keywords": ["Windows File Structure", "NTFS", "File System", "File Permissions", "Windows Directory"]
+      }
+      </script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "Networking Fundamentals Tutorial: Complete Step-by-Step Guide",
+          "description": "Comprehensive networking fundamentals tutorial covering VPN configuration, network topology, wireless networking, and hands-on Cisco labs.",
+          "author": {
+            "@type": "Organization",
+            "name": "DevSpireHub"
+          },
+          "datePublished": "2026-01-13",
+          "dateModified": "2026-01-13",
+          "publisher": {
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://devspirehub.com/images/icon.webp"
+            }
+          },
+          "keywords": "networking fundamentals, VPN tutorial, network topology, wireless networking, Cisco labs, LAN vs WAN, ethernet cabling",
+          "proficiencyLevel": "Beginner to Intermediate"
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "url": "https://devspirehub.com/",
+            "logo": "https://devspirehub.com/../../../images/icon.web",
+            "description": "DevSpireHub - Programming, Projects, Ethical hacking, Networking, Cloud & AI",
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Kumaradoss",
+                "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+            ],
+            "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16",
+            ]
+        }
+    </script>
+
+    <script type=application/ld+json>
+        {
+            "@context": "https://schema.org",
+            "@type": "SiteNavigationElement",
+            "name": [
+                "Home",
+                "Chapter"
+            ],
+            "url": [
+                "https://devspirehub.com/home",
+                "https://devspirehub.com/chapter"
+            ]
+        }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+    <!-- Performance & Core Web Vitals -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="prism/prism.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Auto Ads Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX"
+        crossorigin="anonymous"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-XXXXXXXXXX",
+            enable_page_level_ads: true,
+            overlays: { bottom: true }
+        });
+    </script>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <!-- <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button> -->
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Chapter <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#chapter-1">Introduction</a></li>
+                            <li><a href="#chapter-2">File System</a></li>
+                            <li><a href="#chapter-3">Windows File System Hierarchy</a></li>
+                            <li><a href="#chapter-4">File Paths & Naming Conventions</a></li>
+                            <li><a href="#chapter-5">File Attributes & Permissions</a></li>
+                            <li><a href="#chapter-6">Practical Demonstrations</a></li>
+                            <li><a href="#chapter-7">Conclusion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Header Banner Ad -->
+    <div class="ad-container ad-header">
+        <div class="ad-label">Advertisement</div>
+        <div id="ad-leaderboard-top">
+            <!-- Google AdSense Code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+                data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <div class="main-content-wrapper container">
+        <main class="left-column">
+            <!-- Course Header Card  -->
+            <div class="card">
+                <div class="content">
+                    <h1>Windows File Structure: Complete Guide for Beginners</h1>
+                    <p class="sub"><strong class="subtitle">Welcome to the Ultimate Windows File System
+                            Tutorial</strong></p>
+                    <div class="card-main-info">
+                        <p class="intro">This comprehensive tutorial is designed for beginners and IT professionals who
+                            want to understand how Windows files and
+                            folders are organized, managed, and secured. Covering essential topics like file structure
+                            hierarchy, system folders,
+                            file paths, naming conventions, permissions, and efficient organization strategies, this
+                            guide provides step-by-step
+                            explanations and practical examples.</p>
+                        <div class="card-image">
+                            <img src="images/windows-file-system.webp" alt="Windows File System Tutorial" loading="lazy"
+                                decoding="async" fetchpriority="auto">
+                        </div>
+
+                        <p>Whether you’re troubleshooting Windows errors, setting up a secure folder system, or simply
+                            wanting to improve your
+                            workflow, our expertly crafted content will teach you everything from basic navigation to
+                            advanced management tips.
+                            Explore real-world scenarios, learn about Windows directory structure (C:, D:, Program
+                            Files, Users, AppData), and
+                            discover the best practices for file security, backup, and recovery.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Learning Objectives Card  -->
+            <div class="card learning-objectives-card">
+                <div class="card-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>Learning Objectives</h2>
+                </div>
+                <div class="learning-objectives-grid">
+                    <div class="objective-item">
+                        <p>1. <a href="#chapter-1">Introduction</a></p>
+                        <p>2. <a href="#chapter-2">File System</a></p>
+                        <p>3. <a href="#chapter-3">Windows File System Hierarchy</a></p>
+                        <p>4. <a href="#chapter-4">File Paths & Naming Conventions</a></p>
+                        <p>5. <a href="#chapter-5">File Attributes & Permissions</a></p>
+                        <p>6. <a href="#chapter-6">Practical Demonstrations</a></p>
+                        <p>7. <a href="#chapter-7">Conclusion</a></p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="chapter-1">
+                <div class="card-header">
+                    <h2>Introduction</h2>
+                    <p>Windows file structure is the organizational system that manages how files and folders are stored
+                        on your computer.
+                        Understanding this structure is essential for efficient file management, troubleshooting, and
+                        securing your data. This
+                        tutorial explains the Windows file system hierarchy, including NTFS, FAT32, and ReFS, along with
+                        practical guidance on
+                        file permissions, directory navigation, and organization strategies. Whether you're a beginner
+                        learning file management
+                        or an IT professional optimizing system performance, this guide provides step-by-step
+                        instructions for mastering Windows
+                        file structure.</p>
+                </div>
+                <div class="objective-item" style="margin-top: 10px;">
+                    <div class="list">
+                        <ul>
+                            <li>To explain what a file system is and why understanding Windows file structure is
+                                important.</li>
+                            <li>To describe types of Windows file systems (e.g., FAT32, exFAT, NTFS, ReFS) with their
+                                best use cases and limitations.</li>
+                            <li>To guide users through navigating Windows directories (system, user, and application
+                                folders), including critical system
+                                and hidden folders.</li>
+                            <li>To teach best practices for file naming, permissions, security, backup, and recovery.
+                            </li>
+                            <li>To enable troubleshooting, efficient management, and protection of files using both File
+                                Explorer and command-line tools.</li>
+                            <li>To provide practical tips for organization, maintenance, and advanced file system topics
+                                like disk management,
+                                optimization, scripting, and automation.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In-Content Ad #1 -->
+            <div class="ad-container ad-in-content">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-after-intro">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX"
+                        data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <!-- Chapter 1  -->
+            <div class="card networking-card" id="chapter-2">
+                <div class="card-header">
+                    <h1>Complete Guide to Windows File Structure System</h1>
+                </div>
+                <div class="content">
+                    <p>A comprehensive tutorial for understanding how Windows organizes and manages files on your
+                        computer.</p>
+                    <h3 class="section-title">Introduction</h3>
+                    <p>The Windows file system is the foundation that organizes all data on your computer - from system
+                        files that run Windows itself to your personal documents and photos. Understanding this
+                        structure is crucial for users, developers, and IT professionals to effectively manage,
+                        troubleshoot, and secure their systems.[<a href="" class="link">4</a>] [<a href=""
+                            class="link">7</a>]</p>
+                </div>
+                <div class="content">
+                    <div class="list">
+                        <h4 class="section-title">What is a File System?</h4>
+                        <p>A file system is a method used by operating systems to store, organize, and retrieve data on
+                            storage devices like hard drives, SSDs, and USB drives. Think of it as a sophisticated
+                            filing cabinet that:</p>
+                        <ul>
+                            <li>Organizes files into folders and directories.</li>
+                            <li>Keeps track of where each file is stored.</li>
+                            <li>Manages file names, sizes, and permissions.</li>
+                            <li>Ensures data integrity and security.</li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <h4>Why Understanding Windows File Structure Matters</h4>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">For Users:</strong></p>
+                            <ul>
+                                <li>Navigate your computer efficiently.</li>
+                                <li>Organize files logically.</li>
+                                <li>Troubleshoot storage issues.</li>
+                                <li>Protect important data.</li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">For Developers:</strong></p>
+                            <ul>
+                                <li>Write applications that interact properly with the file system.</li>
+                                <li>Understand where to store application data.</li>
+                                <li>Implement proper file handling.</li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">For IT Professionals:</strong></p>
+                            <ul>
+                                <li>Manage enterprise file systems.</li>
+                                <li>Implement security policies.</li>
+                                <li>Troubleshoot file system corruption.</li>
+                                <li>Plan backup and recovery strategies.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="content">
+                        <h3>Types of File Systems in Windows</h3>
+                        <p>Windows supports several file system types, each designed for different use cases and storage
+                            requirements. [<a href="" class="link">1</a>] [<a href="" class="link">4</a>]</p>
+                        <h4>FAT16 and FAT32 (File Allocation Table)</h4>
+                        <p><strong>Definition</strong>: FAT32 is an older file system that uses a 32-bit file allocation
+                            table to manage data.</p>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">FAT32 Characteristics:</strong></p>
+                            <ul>
+                                <li>Maximum file size: 4GB</li>
+                                <li>Maximum partition size: 2TB</li>
+                                <li>Compatibility: Works with almost all operating systems.</li>
+                                <li>Structure: Simple file allocation table tracks file locations.</li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">Best Use Cases:</strong></p>
+                            <ul>
+                                <li>USB flash drives and external storage.</li>
+                                <li>Devices that need cross-platform compatibility.</li>
+                                <li>Older systems and embedded devices.</li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">Limitations:</strong></p>
+                            <ul>
+                                <li>No built-in security features.</li>
+                                <li>Limited file size support.</li>
+                                <li>No journaling (less reliable).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4>exFAT (Extended File Allocation Table)</h4>
+                        <p><strong>Definitions</strong>: exFAT is a modern replacement for FAT32 designed by Microsoft,
+                            optimized for flash drives.</p>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">exFAT Features:</strong></p>
+                            <ul>
+                                <li>Maximum file size: 16 exabytes (virtually unlimited).</li>
+                                <li>Maximum partition size: 64 zebibytes.</li>
+                                <li>Optimized: For flash drives and external storage.</li>
+                                <li>Compatibility: Supported by modern Windows, macOS, and Linux.</li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">Best Use Cases:</strong></p>
+                            <ul>
+                                <li>Large external drives.</li>
+                                <li>Sharing large files between different operating systems.</li>
+                                <li>SD cards and other removable media.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <h4>NTFS (New Technology File System)</h4>
+                        <p><strong>Definition</strong>: NTFS is the default file system for modern Windows versions,
+                            offering advanced features.</p>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">NTFS Advanced Features:</strong></p>
+                            <ul>
+                                <li><strong>Security</strong>: File-level permissions and encryption.</li>
+                                <li><strong>Reliability</strong>: Journaling prevents data corruption.</li>
+                                <li><strong>Large files</strong>: Supports files larger than 4GB.</li>
+                                <li><strong>Compression</strong>: Built-in file compression.</li>
+                                <li><strong>Quotas</strong>: Disk space management per user.</li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">Structure Components:</strong></p>
+                            <ul>
+                                <li>Master File Table (MFT): Central database of all files.</li>
+                                <li>Security descriptors: Access control information.</li>
+                                <li>Attributes: File metadata and properties.</li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">Best Use Cases:</strong></p>
+                            <ul>
+                                <li>Windows system drives.</li>
+                                <li>Enterprise environments.</li>
+                                <li>Any scenario requiring security and reliability.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="content">
+                        <h4>ReFS (Resilient File System)</h4>
+                        <p><strong>Definition</strong>: ReFS is Microsoft’s next-generation file system designed for
+                            fault tolerance and data integrity.</p>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">ReFS Modern Features:</strong></p>
+                            <ul>
+                                <li><strong>Data integrity</strong>: Automatic error detection and correction.</li>
+                                <li><strong>Scalability</strong>: Designed for very large volumes.</li>
+                                <li><strong>Snapshots</strong>: Point-in-time copies for backup.</li>
+                                <li><strong>Storage Spaces</strong>: Integration with Windows storage virtualization.
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">Current Limitations:</strong></p>
+                            <ul>
+                                <li>Limited to Windows Server and Windows Pro.</li>
+                                <li>Cannot be used for system boot drives.</li>
+                                <li>Still evolving technology.</li>
+                            </ul>
+                        </div>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">Best Use Cases:</strong></p>
+                            <ul>
+                                <li>Data archival and backup systems.</li>
+                                <li>Large-scale file servers.</li>
+                                <li>Storage pools with redundancy requirements.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="table-container">
+                        <h3>Comparison Table:</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>FAT32</th>
+                                    <th>exFAT</th>
+                                    <th>NTFS</th>
+                                    <th>ReFS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Max File Size</td>
+                                    <td>4 GB</td>
+                                    <td>16 EB</td>
+                                    <td>16 TB</td>
+                                    <td>35 PB+</td>
+                                </tr>
+                                <tr>
+                                    <td>Max Volume Size</td>
+                                    <td>2 TB</td>
+                                    <td>128 PB</td>
+                                    <td>256 TB</td>
+                                    <td>Huge</td>
+                                </tr>
+                                <tr>
+                                    <td>Permissions</td>
+                                    <td>No</td>
+                                    <td>No</td>
+                                    <td>Yes</td>
+                                    <td>Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Journaling</td>
+                                    <td>No</td>
+                                    <td>No</td>
+                                    <td>Yes</td>
+                                    <td>Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Use-case</td>
+                                    <td>Flash, SD</td>
+                                    <td>Flash, SD</td>
+                                    <td>System, HDD</td>
+                                    <td>Server, Storage</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <hr>
+                    <div class="content" id="chapter-3">
+                        <h3>Windows File System Hierarchy</h3>
+                        <p>The <strong>Windows File System Hierarchy</strong> refers to the organized, tree-like
+                            structure in which Windows stores and manages files and folders on a computer.</p>
+                        <p>Understanding the Windows directory structure helps you navigate and manage your system
+                            effectively.</p>
+                        <h4>Drive Letters and Root Directories</h4>
+                        <div class="code-block">
+                            <pre>
+<code>C:\ (Primary System Drive)
+├── Windows\             <span># Core operating system files</span>
+├── Program Files\       <span># 64-bit applications</span>
+├── Program Files (x86)\ <span># 32-bit applications</span>
+├── Users\               <span># User profiles and data</span>
+├── ProgramData\         <span># Application data (all users)</span>
+└── temp\                <span># Temporary files</span></code>
+</pre>
+                        </div>
+                        <div class="list">
+                            <h4>Common Drive Assignments:</h4>
+                            <ul>
+                                <li><strong>C:</strong>: Primary system drive (Windows installation).</li>
+                                <li><strong>D:</strong>: Secondary hard drive or DVD/CD drive.</li>
+                                <li><strong>E:</strong>, <strong>F:</strong>, etc.: Additional drives, USB devices,
+                                    network drives.</li>
+                            </ul>
+                        </div>
+                        <div class="content">
+                            <h4>Critical System Folders</h4>
+                            <p class="sub"><strong class="subtitle">Windows Directory (C:\Windows)</strong></p>
+                            <p>Contains core operating system files that Windows needs to run:</p>
+                            <div class="code-block">
+                                <pre>
+<code>C:\Windows\
+├── System32\       <span># Essential system files and drivers</span>
+├── SysWOW64\       <span># 32-bit system files (on 64-bit systems)</span>
+├── Boot\           <span># Boot configuration and files</span>
+├── Fonts\          <span># System fonts</span>
+├── Temp\           <span># System temporary files</span>
+└── assembly\       <span># .NET Framework assemblies</span></code>
+</pre>
+                            </div>
+                            <p><strong>⚠️ Warning</strong>: Never manually delete files from the Windows directory
+                                unless you're an advanced user performing specific troubleshooting.</p>
+                            <div class="list">
+                                <h4>Program Files Directories</h4>
+                                <p>Where installed applications store their executable files:</p>
+                                <ul>
+                                    <li><strong>C:\Program Files</strong>: 64-bit applications on 64-bit systems.</li>
+                                    <li><strong>C:\Program Files (x86)</strong>: 32-bit applications on 64-bit systems.
+                                    </li>
+                                </ul>
+                            </div>
+                            <h4>Users Directory (C:\Users)</h4>
+                            <p>Contains individual user profiles and personal data:</p>
+                            <div class="code-block">
+                                <pre>
+<code>C:\Users\
+├── [Username]\       <span># Individual user folder</span>
+│   ├── Desktop\      <span># Desktop files and shortcuts</span>
+│   ├── Documents\    <span># User documents</span>
+│   ├── Downloads\    <span># Downloaded files</span>
+│   ├── Pictures\     <span># Photo collections</span>
+│   ├── Music\        <span># Audio files</span>
+│   ├── Videos\       <span># Video files</span>
+│   └── AppData\      <span># Application-specific user data</span>
+│       ├── Local\    <span># Machine-specific app data</span>
+│       ├── LocalLow\ <span># Low-privilege app data</span>
+│       └── Roaming\  <span># Profile-portable app data</span>
+├── Public\           <span># Shared files for all users</span>
+└── Default\          <span># Template for new user accounts</span></code>
+</pre>
+                            </div>
+                            <h4>Hidden and Protected System Files</h4>
+                            <div class="list">
+                                <p><strong>AppData Folder</strong>: Contains user-specific application data</p>
+                                <ul>
+                                    <li><strong>Local</strong>: Data tied to specific computer.</li>
+                                    <li><strong>LocalLow</strong>: Low-privilege application data.</li>
+                                    <li><strong>Roaming</strong>: Data that follows user profiles across networks.</li>
+                                </ul>
+                            </div>
+                            <div class="code-block">
+                                <pre>
+<code># View hidden/system files (Command Prompt)
+dir /a:h                    <span># Hidden files only</span>
+dir /a:s                    <span># System files only</span>
+dir /a:hs                   <span># Hidden and system files</span>
+attrib +h +s filename.txt   <span># Make file hidden and system</span></code>
+</pre>
+                            </div>
+                            <h4>User Profile Structure</h4>
+                            <p class="sub"><strong class="subtitle">AppData Directory Breakdown:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code>%USERPROFILE%\AppData\
+├── Local\                    <span># Local machine specific data</span>
+│   ├── Temp\                 <span># User temporary files</span>
+│   ├── Microsoft\Windows\    <span># Windows-specific data</span>
+│   └── [ApplicationName]\    <span># App-specific local data</span>
+├── Roaming\                  <span># Roaming profile data</span>
+│   ├── Microsoft\Windows\    <span># Roaming Windows settings</span>
+│   └── [ApplicationName]\    <span># App-specific roaming data</span>
+└── LocalLow\                 <span># Low integrity applications</span>
+    └── [ApplicationName]\    <span># Sandboxed app data</span></code>
+</pre>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Security Significance:</strong></p>
+                            <div class="list">
+                                <ul>
+                                    <li><strong>AppData\Local</strong>: Often contains cached credentials and tokens.
+                                    </li>
+                                    <li><strong>AppData\Roaming</strong>: Synchronized across domain computers</li>
+                                    <li><strong>AppData\LocalLow</strong>: Used by sandboxed applications (browsers,
+                                        etc.).</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="content" id="chapter-4">
+                            <h3>File Paths & Naming Conventions</h3>
+                            <p>Understanding how Windows handles file paths is essential for effective file management
+                                and programming.</p>
+                            <h4>Absolute vs Relative Paths</h4>
+                            <p><strong>Absolute Path</strong>: Complete path from drive root</p>
+                            <div class="code-block">
+                                <pre>
+<code>C:\Users\JohnDoe\Documents\report.docx
+D:\Projects\Website\index.html</code>
+</pre>
+                            </div>
+                            <p><strong>Relative Path</strong>: Path relative to current directory</p>
+                            <div class="code-block">
+                                <pre>
+<code>Documents\report.docx           <span># From user home directory</span>
+..\Pictures\photo.jpg           <span># Up one level, then Pictures</span>
+.\scripts\backup.bat            <span># Current directory, then scripts</span></code>
+</pre>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Path Separators:</strong></p>
+                                <ul>
+                                    <li>Windows uses backslash (<code class="code">\</code>) as the primary separator.
+                                    </li>
+                                    <li>Forward slash (<code class="code">/</code>) also works in many contexts.</li>
+                                    <li>UNC paths for network resources: <code
+                                            class="code">\\server\share\folder</code>.</li>
+                                </ul>
+                            </div>
+                            <h4>File Naming Rules and Restrictions</h4>
+                            <p><strong>>Reserved Characters</strong> (cannot be used in filenames):</p>
+                            <div class="code-block">
+                                <pre>
+<code>< > : " | ? * / \</code>
+</pre>
+                            </div>
+                            <p><strong>Reserved Names</strong> (cannot be used in filenames):</p>
+                            <div class="code-block">
+                                <pre>
+<code>CON, PRN, AUX, NUL
+COM1 through COM9
+LPT1 through LPT9</code>
+</pre>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Naming Guidelines:</strong></p>
+                                <ul>
+                                    <li>Maximum filename length: 255 characters.</li>
+                                    <li>Maximum path length: 260 characters (traditional limit).</li>
+                                    <li>Case-insensitive but case-preserving.</li>
+                                    <li>Trailing spaces and periods are automatically removed.</li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Best Practices for File Naming:</strong></p>
+                                <ul>
+                                    <li>Use descriptive, meaningful names.</li>
+                                    <li>Avoid special characters for compatibility.</li>
+                                    <li>Consider using dates in YYYY-MM-DD format for sorting.</li>
+                                    <li>Keep names reasonably short but descriptive.</li>
+                                </ul>
+                            </div>
+                            <h4>Extended Path Support</h4>
+                            <div class="list">
+                                <p>Modern Windows versions support longer paths (up to 32,767 characters) when:</p>
+                                <ul>
+                                    <li>Long path support is enabled in Windows settings.</li>
+                                    <li>Applications are designed to handle extended paths.</li>
+                                    <li>Paths are prefixed with <code class="code">\\?\</code> for API calls.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="content" id="chapter-5">
+                            <h3>File Attributes & Permissions</h3>
+                            <p>Windows files have various attributes and permissions that control access and behavior.
+                            </p>
+                            <h4>File Attributes</h4>
+                            <p>File attributes are metadata properties associated with files and folders that define
+                                specific behaviors, characteristics, or system-level flags. These attributes control how
+                                the operating system and applications treat the file.</p>
+                            <p class="sub"><strong class="subtitle">Basic File Attributes</strong></p>
+                            <p><strong>Common Attributes:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code><span># View file attributes</span>
+attrib filename.txt
+
+<span># Common attributes:</span>
+R - Read-only
+H - Hidden
+S - System
+A - Archive</code>
+</pre>
+                            </div>
+                            <div class="list">
+                                <ul>
+                                    <li><strong>Read-only</strong>: File cannot be modified or deleted.</li>
+                                    <li><strong>Hidden</strong>: File not visible in normal directory listings.</li>
+                                    <li><strong>System</strong>: Critical system file, usually hidden.</li>
+                                    <li><strong>Archive</strong>: File has been modified since last backup</li>
+                                </ul>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Viewing and Modifying Attributes:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code><span># View file attributes</span>
+attrib filename.txt
+
+<span># Set read-only attribute</span>
+attrib +R filename.txt
+
+<span># Remove hidden attribute</span>
+attrib -H filename.txt
+
+<span># Multiple attributes</span>
+attrib +R +H important_file.txt</code>
+</pre>
+                            </div>
+                            <div class="table-container">
+                                <p class="sub"><strong class="subtitle">Common File Attributes:</strong></p>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Attribute</th>
+                                            <th>Description</th>
+                                            <th>Effect</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Read-only</td>
+                                            <td>File cannot be modified or deleted</td>
+                                            <td>Prevents accidental changes</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hidden</td>
+                                            <td>File not visible in normal directory listings</td>
+                                            <td>Conceals system or sensitive files</td>
+                                        </tr>
+                                        <tr>
+                                            <td>System</td>
+                                            <td>Critical system file used by the OS</td>
+                                            <td>Should not be altered by users</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Archive</td>
+                                            <td>File has been modified since last backup</td>
+                                            <td>Used by backup software</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Compressed</td>
+                                            <td>File is compressed to save disk space</td>
+                                            <td>Automatic compression/decompression</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Encrypted</td>
+                                            <td>File is encrypted for security</td>
+                                            <td>Requires proper credentials to access</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <h4>File Permissions</h4>
+                            <p>File permissions are access control rules that determine which users or groups can
+                                perform specific actions (read, write, execute) on files and folders. They form the
+                                foundation of file system security.</p>
+                            <div class="table-container">
+                                <p><strong>Basic Permission Types:</strong></p>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Permission</th>
+                                            <th>Symbol</th>
+                                            <th>Files</th>
+                                            <th>Folders</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Read</td>
+                                            <td>r</td>
+                                            <td>View file contents</td>
+                                            <td>List directory contents</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Write</td>
+                                            <td>w</td>
+                                            <td>Modify file contents</td>
+                                            <td>Create/delete files in directory</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Execute</td>
+                                            <td>x</td>
+                                            <td>Run executable files</td>
+                                            <td>Enter/traverse directory</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Permission Scopes:</strong></p>
+                                <ul>
+                                    <li><strong>Owner/User</strong> - The user who owns the file</li>
+                                    <li><strong>Group</strong> - Users belonging to the file's group</li>
+                                    <li><strong>Others/Everyone</strong> - All other users on the system</li>
+                                </ul>
+                            </div>
+                            <h4>NTFS Permissions (Access Control)</h4>
+                            <p>NTFS provides granular security through Access Control Lists (ACLs):</p>
+                            <p class="sub"><strong class="subtitle">Basic Permissions:</strong></p>
+                            <div class="list">
+                                <ul>
+                                    <li><strong>Full Control</strong>: Complete access to file/folder.</li>
+                                    <li><strong>Modify</strong>: Read, write, delete file contents.</li>
+                                    <li><strong>Read & Execute</strong>: View and run files.</li>
+                                    <li><strong>Read</strong>: View file contents only.</li>
+                                    <li><strong>Write</strong>: Modify file contents.</li>
+                                </ul>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Advanced Permissions:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code><span>Advanced NTFS Permissions:</span>
+├── Traverse Folder/Execute File
+├── List Folder/Read Data
+├── Read Attributes
+├── Read Extended Attributes
+├── Create Files/Write Data
+├── Create Folders/Append Data
+├── Write Attributes
+├── Write Extended Attributes
+├── Delete
+├── Delete Subfolders and Files
+├── Read Permissions
+├── Change Permissions
+└── Take Ownership</code>
+</pre>
+                            </div>
+                            <h4>Ownership and Access Control</h4>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">File Ownership:</strong></p>
+                                <ul>
+                                    <li>Every file has an owner (usually the creator).</li>
+                                    <li>Owner can modify permissions.</li>
+                                    <li>Administrators can take ownership.</li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Security Groups:</strong></p>
+                                <ul>
+                                    <li><strong>Administrators</strong>: Full system access.</li>
+                                    <li><strong>Users</strong>: Standard user permissions.</li>
+                                    <li><strong>Everyone</strong>: All users on the system.</li>
+                                    <li><strong>Authenticated Users</strong>: All logged-in users.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="content" id="chapter-6">
+                            <h3>Practical Demonstrations</h3>
+                            <p>Let's walk through common file system tasks to reinforce your understanding.</p>
+                            <h4>Navigating with File Explorer</h4>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Opening File Explorer:</strong></p>
+                                <ul>
+                                    <li>Windows key + E</li>
+                                    <li>Click folder icon in taskbar.</li>
+                                    <li>Right-click Start menu → File Explorer</li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Navigation Tips:</strong></p>
+                                <ul>
+                                    <li>Use address bar for quick navigation: <code
+                                            class="code">C:\Users\%USERNAME%\Documents</code>.</li>
+                                    <li>Breadcrumb navigation in address bar.</li>
+                                    <li>Use arrow keys and Enter for keyboard navigation.</li>
+                                    <li>Ctrl+L to focus address bar.</li>
+                                </ul>
+                            </div>
+                            <h4>Viewing Hidden and System Files</h4>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Enable Advanced View Options:</strong></p>
+                                <ol>
+                                    <li>Open File Explorer.</li>
+                                    <li>Click <strong>View</strong> → <strong>Options</strong> → <strong>Change folder
+                                            and search options</strong>.</li>
+                                    <li>Select <strong>View</strong> tab.</li>
+                                    <li><strong>Uncheck</strong>: "Hide extensions for known file types".</li>
+                                    <li><strong>Uncheck</strong>: "Hide protected operating system files".</li>
+                                    <li><strong>Check</strong>: "Show hidden files, folders, and drives".</li>
+                                </ol>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Using Command Line:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code><span># List all files including hidden</span>
+dir /a
+
+<span># List only hidden files</span>
+dir /ah
+
+<span># List system files</span>
+dir /as</code>
+</pre>
+                            </div>
+                            <h4>Checking File Properties and Permissions</h4>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Through File Explorer:</strong></p>
+                                <ol>
+                                    <li>Right-click file or folder.</li>
+                                    <li>Select "Properties".</li>
+                                    <li>General tab: Basic attributes.</li>
+                                    <li>Security tab: Permissions and ownership.</li>
+                                    <li>Details tab: Extended metadata.</li>
+                                </ol>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Using Command Line Tools:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code><span># View file information</span>
+dir filename.txt
+
+<span># Check permissions (PowerShell)</span>
+Get-Acl filename.txt | Format-List
+
+<span># View detailed file information</span>
+fsutil file queryfileid filename.txt</code>
+</pre>
+                            </div>
+                            <h4>Creating and Managing Folders</h4>
+                            <p><strong>Best Practices for Folder Structure:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code>C:\Users\[<span>Username</span>]\
+├── Documents\
+│   ├── Work\
+│   │   ├── Projects\
+│   │   ├── Reports\
+│   │   └── Templates\
+│   ├── Personal\
+│   └── Archive\
+├── Desktop\
+└── Downloads\
+    ├── Software\
+    ├── Documents\
+    └── Media\</code>
+</pre>
+                            </div>
+                            <p><strong>Command Line Folder Operations:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code><span># Create directory</span>
+mkdir "Project Files\2025\Reports"
+
+<span># Create nested directories</span>
+md "C:\Data\Backup\Daily\Monday"
+
+<span># Remove empty directory</span>
+rmdir "Old Folder"
+
+<span># Remove directory and contents</span>
+rmdir /s "Folder With Files"</code>
+</pre>
+                            </div>
+                        </div>
+                        <div class="content">
+                            <h3>Best Practices</h3>
+                            <p>Following these guidelines will help you maintain an organized and secure file system.
+                            </p>
+                            <h4>Efficient File Organization</h4>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Hierarchical Structure:</strong></p>
+                                <ul>
+                                    <li>Create logical folder hierarchies.</li>
+                                    <li>Group related files together.</li>
+                                    <li>Use consistent naming conventions.</li>
+                                    <li>Limit folder depth (generally no more than 5-6 levels deep).</li>
+                                </ul>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Document Management:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code>Documents\
+├── Active Projects\    <span># Current work</span>
+├── Archive\            <span># Completed projects</span>
+├── Templates\          <span># Reusable documents</span>
+├── Reference\          <span># Important documents for reference</span>
+└── Inbox\              <span># Temporary location for new files</span></code>
+</pre>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Regular Maintenance:</strong></p>
+                                <ul>
+                                    <li>Review and clean up Downloads folder monthly.</li>
+                                    <li>Archive old projects.</li>
+                                    <li>Delete temporary files.</li>
+                                    <li>Organize Desktop files into proper folders.</li>
+                                </ul>
+                            </div>
+                            <h4>Backup and Recovery Strategies</h4>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">3-2-1 Backup Rule:</strong></p>
+                                <ul>
+                                    <li>3 copies of important data.</li>
+                                    <li>2 different types of media.</li>
+                                    <li>1 copy stored off-site.</li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Windows Built-in Tools:</strong></p>
+                                <ul>
+                                    <li><strong>File History</strong>: Automatic backup of user files.</li>
+                                    <li><strong>System Restore</strong>: Restore points for system files.</li>
+                                    <li><strong>Windows Backup</strong>: Full system backup capability.</li>
+                                </ul>
+                            </div>
+                            <p class="sub"><strong class="subtitle">File System Backup Locations:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code>C:\Users\[<span>Username</span>]\
+├── Documents\          ✅ <span>Backup essential</span>
+├── Desktop\            ✅ <span>Backup essential</span>
+├── Pictures\           ✅ <span>Backup essential</span>
+├── Downloads\          ⚠️ <span>Review and backup selectively</span>
+└── AppData\            ⚠️ <span>Application settings (some apps)</span></code>
+</pre>
+                            </div>
+                            <h4>Security Best Practices</h4>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Access Control:</strong></p>
+                                <ul>
+                                    <li>Use standard user accounts for daily work.</li>
+                                    <li>Only use administrator accounts when necessary.</li>
+                                    <li>Regularly review file permissions.</li>
+                                    <li>Remove access for former users/employees.</li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Data Protection:</strong></p>
+                                <ul>
+                                    <li>Enable BitLocker for drive encryption.</li>
+                                    <li>Use strong passwords for user accounts.</li>
+                                    <li>Keep Windows and antivirus software updated.</li>
+                                    <li>Be cautious with files from unknown sources.</li>
+                                </ul>
+                            </div>
+                            <h4>Common Mistakes to Avoid</h4>
+                            <div class="list list-none">
+                                <p class="sub"><strong class="subtitle">Dangerous Actions:</strong></p>
+                                <ul>
+                                    <li>❌ Never delete files from C:\Windows\ unless you
+                                        know exactly what you're doing.
+                                    </li>
+                                    <li>❌ Don't store personal files on the Desktop (affects system performance).</li>
+                                    <li>❌ Avoid using admin accounts for routine tasks.</li>
+                                    <li>❌ Don't ignore disk space warnings.</li>
+                                </ul>
+                            </div>
+                            <div class="list list-none">
+                                <p class="sub"><strong class="subtitle">File Naming Mistakes:</strong></p>
+                                <ul>
+                                    <li>❌ Using special characters that cause compatibility issues.</li>
+                                    <li>❌ Creating files with names longer than 255 characters.</li>
+                                    <li>❌ Using reserved system names (CON, PRN, etc.).</li>
+                                </ul>
+                            </div>
+                            <div class="list list-none">
+                                <p class="sub"><strong class="subtitle">Organization Mistakes:</strong></p>
+                                <ul>
+                                    <li>❌ Storing everything in Downloads folder.</li>
+                                    <li>❌ Creating too many nested folders (hard to navigate).</li>
+                                    <li>❌ Not backing up important data regularly.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="content">
+                            <h3>Advanced Topics & Next Steps</h3>
+                            <p>Ready to deepen your understanding? Here are advanced topics to explore.</p>
+                            <h4>Disk Management and Partitioning</h4>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Disk Management Console (diskmgmt.msc):</strong>
+                                </p>
+                                <ul>
+                                    <li>Create and format partitions.</li>
+                                    <li>Assign drive letters.</li>
+                                    <li>Extend or shrink volumes.</li>
+                                    <li>Convert between disk types.</li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Advanced Storage Features:</strong></p>
+                                <ul>
+                                    <li>Dynamic disks vs basic disks.</li>
+                                    <li>RAID configurations.</li>
+                                    <li>Storage Spaces for redundancy.</li>
+                                    <li>Virtual hard disks (VHD/VHDX).</li>
+                                </ul>
+                            </div>
+                            <h4>File System Optimization</h4>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Performance Optimization:</strong></p>
+                                <ul>
+                                    <li>Disk Cleanup utility for removing temporary files.</li>
+                                    <li>Disk Defragmentation (for traditional hard drives)s.</li>
+                                    <li>SSD optimization (TRIM command).</li>
+                                    <li>Page file and hibernation file management.</li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Monitoring Tools:</strong></p>
+                                <ul>
+                                    <li>Performance Monitor for disk I/O metrics.</li>
+                                    <li>Resource Monitor for real-time file system activity.</li>
+                                    <li>Event Viewer for file system errors.</li>
+                                    <li>PowerShell cmdlets for advanced management.</li>
+                                </ul>
+                            </div>
+                            <h4>File System Corruption and Recovery</h4>
+                            <p class="sub"><strong class="subtitle">Built-in Recovery Tools:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code><span># Check disk for errors</span>
+chkdsk C: /f /r
+
+<span># System file checker</span>
+sfc /scannow
+
+<span># Component store verification</span>
+dism /online /cleanup-image /checkhealth</code>
+</pre>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Advanced Recovery Scenarios:</strong></p>
+                                <ul>
+                                    <li>Boot from Windows Recovery Environment.</li>
+                                    <li>Use third-party data recovery tools.</li>
+                                    <li>Professional data recovery services for physical damage.</li>
+                                    <li>Understanding file system journals and logs.</li>
+                                </ul>
+                            </div>
+                            <h4>Scripting and Automation</h4>
+                            <p class="sub"><strong class="subtitle">PowerShell for File Management:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code><span># Get folder sizes</span>
+Get-ChildItem | Measure-Object -Property Length -Sum
+
+<span># Find large files</span>
+Get-ChildItem -Recurse | Where {$_.Length -gt 100MB} | Select Name, Length
+
+<span># Set permissions</span>
+Set-Acl -Path "C:\Data" -AclObject $acl</code>
+</pre>
+                            </div>
+                            <div class="list">
+                                <p class="sub"><strong class="subtitle">Batch Scripting for Automation:</strong></p>
+                                <ul>
+                                    <li>Automated backup scripts.</li>
+                                    <li>File organization scripts.</li>
+                                    <li>System maintenance routines.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="content" id="chapter-7">
+                            <h3>Key Takeaways</h3>
+                            <h4>Essential Concepts to Remember:</h4>
+                            <div class="list">
+                                <ol>
+                                    <li><strong>File System Types</strong>: NTFS for system drives, FAT32/exFAT for
+                                        removable media, ReFS for advanced scenarios.</li>
+                                    <li><strong>Directory Structure</strong>: Understanding Windows system folders, user
+                                        directories, and the purpose of each.</li>
+                                    <li><strong>Path Management</strong>: Knowing the difference between absolute and
+                                        relative paths, file naming rules, and length limitations.</li>
+                                    <li><strong>Permissions</strong>: NTFS provides granular security controls through
+                                        users, groups, and permissions.</li>
+                                    <li><strong>Organization</strong>: Logical folder hierarchies and consistent naming
+                                        conventions improve productivity.</li>
+                                    <li><strong>Security</strong>: Regular backups, proper access controls, and avoiding
+                                        common mistakes protect your data.</li>
+                                    <li><strong>Maintenance</strong>: Regular cleanup, monitoring, and optimization keep
+                                        your file system healthy.</li>
+                                </ol>
+                            </div>
+                            <p class="sub"><strong class="subtitle">Quick Reference Commands:</strong></p>
+                            <div class="code-block">
+                                <pre>
+<code>dir /a              <span># List all files including hidden</span>
+attrib +h file.txt  <span># Hide a file</span>
+chkdsk C: /f        <span># Check disk for errors</span>
+sfc /scannow        <span># Verify system files</span></code>
+</pre>
+                            </div>
+                            <div class="card-image"><img src="images/image 2.png" alt=""></div>
+                            <p class="conclusion">Understanding the Windows file structure system provides the
+                                foundation
+                                for effective computer use, whether you're a
+                                casual user organizing photos or an IT professional managing enterprise systems. The
+                                principles learned here apply
+                                across all Windows versions and will serve you well as technology continues to evolve.
+                            </p>
+                        </div>
+
+                        <div class="content reference">
+                            <h3>References:</h3>
+                            <div class="list">
+                                <ol>
+                                    <li><a href="https://ieeexplore.ieee.org/document/10489789/" target="_blank"
+                                            class="link">https://ieeexplore.ieee.org/document/10489789/</a></li>
+                                    <li><a href="https://ieeexplore.ieee.org/document/9110074/" target="_blank"
+                                            class="link">https://ieeexplore.ieee.org/document/9110074/</a></li>
+                                    <li><a href="https://www.semanticscholar.org/paper/fbf12b1a94dce56e41e0c9af3396d34ede3f1e8e"
+                                            target="_blank"
+                                            class="link">https://www.semanticscholar.org/paper/fbf12b1a94dce56e41e0c9af3396d34ede3f1e8e</a>
+                                    </li>
+                                    <li><a href="http://www.atlantis-press.com/php/paper-details.php?id=25847716"
+                                            target="_blank"
+                                            class="link">http://www.atlantis-press.com/php/paper-details.php?id=25847716</a>
+                                    </li>
+                                    <li><a href="https://journal.aptii.or.id/index.php/Repeater/article/view/343"
+                                            target="_blank"
+                                            class="link">https://journal.aptii.or.id/index.php/Repeater/article/view/343</a>
+                                    </li>
+                                    <li><a href="https://www.semanticscholar.org/paper/bb6e7031f204d11914c6a1a34d98a3372a66d086"
+                                            target="_blank"
+                                            class="link">https://www.semanticscholar.org/paper/bb6e7031f204d11914c6a1a34d98a3372a66d086</a>
+                                    </li>
+                                    <li><a href="https://www.semanticscholar.org/paper/c1d9355f019d0baba1d86cfccfc232331552f367"
+                                            target="_blank"
+                                            class="link">https://www.semanticscholar.org/paper/c1d9355f019d0baba1d86cfccfc232331552f367</a>
+                                    </li>
+                                    <li><a href="https://ieeexplore.ieee.org/document/10871898/" target="_blank"
+                                            class="link">https://ieeexplore.ieee.org/document/10871898/</a></li>
+                                    <li><a href="https://arxiv.org/pdf/1903.01955.pdf" target="_blank"
+                                            class="link">https://arxiv.org/pdf/1903.01955.pdf</a></li>
+                                    <li><a href="https://arxiv.org/pdf/1207.5990.pdf" target="_blank"
+                                            class="link">https://arxiv.org/pdf/1207.5990.pdf</a></li>
+                                    <li><a href="https://arxiv.org/pdf/2403.15701.pdf" target="_blank"
+                                            class="link">https://arxiv.org/pdf/2403.15701.pdf</a></li>
+                                    <li><a href="https://arxiv.org/pdf/1312.1810.pdf" target="_blank"
+                                            class="link">https://arxiv.org/pdf/1312.1810.pdf</a></li>
+                                    <li><a href="https://www.ijfmr.com/papers/2024/3/19648.pdf" target="_blank"
+                                            class="link">https://www.ijfmr.com/papers/2024/3/19648.pdf</a></li>
+                                    <li><a href="http://arxiv.org/pdf/2501.04993.pdf" target="_blank"
+                                            class="link">http://arxiv.org/pdf/2501.04993.pdf</a></li>
+                                    <li><a href="https://arxiv.org/pdf/2401.08858.pdf" target="_blank"
+                                            class="link">https://arxiv.org/pdf/2401.08858.pdf</a></li>
+                                    <li><a href="https://arxiv.org/pdf/2011.01024.pdf" target="_blank"
+                                            class="link">https://arxiv.org/pdf/2011.01024.pdf</a></li>
+                                    <li><a href="https://dl.acm.org/doi/pdf/10.1145/3565026" target="_blank"
+                                            class="link">https://dl.acm.org/doi/pdf/10.1145/3565026</a></li>
+
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pre-Footer Ad -->
+            <div class="ad-container ad-pre-footer">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-pre-footer">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX"
+                        data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+            <div class="next">
+                <div class="header">
+                    <h3>Networking Fundamentals I</h3>
+                    <p>Tutorial</p>
+                </div>
+                <div class="content">
+                    <p>This tutorial provides a complete, hands-on guide to networking fundamentals, including
+                        IP addressing, MAC addresses,
+                        DNS, DHCP, OSI and TCP/IP models, subnetting, static IP configuration, and practical
+                        troubleshooting for beginners.
+                    </p>
+                    <a href="../Network Fundamentals 1/index.html" class="next-button">Go To Tutorial</a>
+                </div>
+            </div>
+            <div class="next">
+                <div class="header">
+                    <h3>Common Network Protocols</h3>
+                    <p>Info</p>
+                </div>
+                <div class="content">
+                    <p>This tutorial introduces essential network protocols, explaining their functions, security
+                        features, and practical roles
+                        in networking, development, and cybersecurity.
+                    </p>
+                    <a href="../Common Network Protocols/index.html" class="next-button">Go To Tutorial</a>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Side -->
+        <main class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+
+            <!-- Color palette -->
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home Page</a>
+                </div>
+            </div>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a></li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+        </main>
+        <button id="scrollUpBtn" aria-label="Scroll to top" style="display:none;">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg1" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer Banner Ad -->
+    <div class="ad-container ad-footer">
+        <div class="ad-label">Advertisement</div>
+        <div id="ad-footer-banner">
+            <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+                data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../color-palettes/index.html">Color Spaces</a></li>
+            <li class="menu-item"><a class="menu-link"
+                    href="../../../Resources/digital-resources/digital-resources-hub.html">Resources</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpireHub | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="prism/prism.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+
+</body>
+
+</html>

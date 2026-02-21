@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../images/icon.webp" sizes="32x46" type="image/png">
+    <!-- Primary Meta Tags -->
+    <title>N8N Payroll Automation: Complete Setup Guide</title>
+    <meta name="description"
+        content="Learn n8n payroll automation with Google Sheets, Telegram, and Linear. Step-by-step tutorial with API setup, credential configuration, and troubleshooting.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://devspirehub.com/Automation/Projects/n8n-payroll-automation-workflow-tutorial">
+    <meta property="og:title" content="n8n Payroll Automation: Complete Setup Guide 2026">
+    <meta property="og:description"
+        content="Learn n8n payroll automation with Google Sheets, Telegram, and Linear. Step-by-step tutorial with API setup, credential configuration, and troubleshooting.">
+    <meta property="og:image" content="https://devspirehub.com/images/n8n-payroll-automation.webp">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url"
+        content="https://devspirehub.com/Automation/Projects/n8n-payroll-automation-workflow-tutorial">
+    <meta property="twitter:title" content="n8n Payroll Automation: Complete Setup Guide 2026">
+    <meta property="twitter:description"
+        content="Learn n8n payroll automation with Google Sheets, Telegram, and Linear. Step-by-step tutorial with API setup, credential configuration, and troubleshooting.">
+    <meta property="twitter:image"
+        content="https://devspirehub.com/Automation/Projects/n8n-payroll-automation-workflow-tutorial/images/n8n-payroll-automation.webp">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/Automation/Projects/n8n-payroll-automation-workflow-tutorial">
+
+    <!-- Additional SEO -->
+    <meta name="author" content="DevSpireHub">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Your existing stylesheets -->
+    <link rel="stylesheet" href="style.css">
+
+    <script type=application/ld+json>
+        {
+            "@context": "https://schema.org",
+            "@type": "SiteNavigationElement",
+            "name": [
+                "Home"
+            ],
+            "url": [
+                "https://devspirehub.com/home",
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "url": "https://devspirehub.com/",
+            "logo": "https://devspirehub.com/../../../images/icon.web",
+            "description": "DevSpire - Programming, Projects, Ethical hacking, Networking, Cloud & AI",
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Kumaradoss",
+                "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+            ],
+            "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16",
+            ]
+        }
+</script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "n8n Payroll Automation: Complete Setup Guide 2026",
+      "description": "Learn n8n payroll automation with Google Sheets, Telegram, and Linear. Step-by-step tutorial with API setup, credential configuration, and troubleshooting.",
+      "image": "https://devspirehub.com/Automation/Projects/n8n-payroll-automation-workflow-tutorial/images/n8n-payroll-automation.webp",
+      "author": {
+        "@type": "Organization",
+        "name": "DevSpireHub"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "DevSpireHub",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://devspirehub.com/../../../images/icon.webp"
+        }
+      },
+      "datePublished": "2026-01-19",
+      "dateModified": "2026-01-19",
+      "articleSection": "Automation Tutorial",
+      "keywords": ["n8n", "payroll automation", "workflow automation", "Google Sheets API", "Telegram bot", "Linear API"],
+      "proficiencyLevel": "Beginner to Intermediate",
+      "dependencies": "n8n, Google Sheets, Telegram, Linear",
+      "skillLevel": "Beginner"
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="../../../Programming/Projects/Prism/prism.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <!-- <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button> -->
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../index.html">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <main class="left-column">
+            <!-- Course Header Card  -->
+            <div class="card">
+                <div class="content">
+                    <h1>n8n Payroll Automation Workflow: Complete Tutorial</h1>
+                    <div class="card-main-info">
+                        <p class="intro">Welcome to the complete <strong>n8n payroll automation workflow</strong>
+                            tutorial. This guide shows you how to automate payroll management using n8n's powerful
+                            workflow automation platform integrated with Google Sheets, Telegram, Google Drive, and
+                            Linear. You'll learn to automatically log employee salary data, send instant notifications
+                            via Telegram bot, create automated backups in Google Drive, and update Linear issues—all
+                            from a single workflow trigger. This step-by-step tutorial includes API credential setup,
+                            node configuration, and troubleshooting tips for beginners and intermediate users looking to
+                            streamline their payroll processes.
+                        </p>
+                        <div class="card-image">
+                            <img src="images/n8n-payroll-automation.webp"
+                                alt="n8n Payroll Automation: Complete Setup Guide">
+                        </div>
+                        <h3>What this workflow does:</h3>
+                        <div class="objective-item" style="margin-top: 10px;">
+                            <div class="list">
+                                <ul>
+                                    <li>Generates or receives a batch of employee payroll data.</li>
+                                    <li>Automatically appends this data to a Google Sheet for structured
+                                        record-keeping..</li>
+                                    <li>Sends instant payroll notifications via Telegram to individuals or groups.</li>
+                                    <li>Creates a backup of the payroll spreadsheet in Google Drive.</li>
+                                    <li>Posts a neatly formatted summary (as a table) to a Linear issue, keeping the
+                                        broader team in sync with payroll activity.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p>Use this workflow to automate your payroll updates, keep all stakeholders informed, and
+                            maintain reliable records—all
+                            from a single, easy-to-run n8n automation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="chapter-1">
+                <div class="card-header">
+                    <h2>Overview</h2>
+                    <p>Welcome to your end-to-end guide for the “Payroll Automation” n8n workflow project!
+                        This tutorial shows you how to import, configure, and run a payroll automation workflow that
+                        logs salary data in Google
+                        Sheets, sends Telegram notifications, and updates Linear issues—using exact nodes and settings
+                        from your uploaded
+                        workflow.</p>
+                    <div class="action-buttons">
+                        <!-- Download Project Button -->
+                        <button class="action-button download-btn" onclick="downloadProject()">
+                            <i class="fas fa-download"></i>Download Project
+                        </button>
+
+                        <!-- View GitHub Button -->
+                        <a href="https://github.com/kumaradoss16/N8N/tree/main/Automated%20Payroll%20Management%20with%20Google%20Sheets,%20Telegram,%20Drive,%20and%20Linear"
+                            target="_blank" class="action-button github-btn">
+                            <i class="fab fa-github"></i>View GitHub
+                        </a>
+                    </div>
+
+                </div>
+                <div class="objective-item" style="margin-top: 10px;">
+                    <div class="list">
+                        <ul>
+                            <li>To explain what a file system is and why understanding Windows file structure is
+                                important.</li>
+                            <li>To describe types of Windows file systems (e.g., FAT32, exFAT, NTFS, ReFS) with their
+                                best use cases and limitations.</li>
+                            <li>To guide users through navigating Windows directories (system, user, and application
+                                folders), including critical system
+                                and hidden folders.</li>
+                            <li>To teach best practices for file naming, permissions, security, backup, and recovery.
+                            </li>
+                            <li>To enable troubleshooting, efficient management, and protection of files using both File
+                                Explorer and command-line tools.</li>
+                            <li>To provide practical tips for organization, maintenance, and advanced file system topics
+                                like disk management,
+                                optimization, scripting, and automation.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Chapter 1  -->
+            <div class="card networking-card" id="chapter-2">
+                <div class="card-header">
+                    <h3>1. Introduction</h2>
+                </div>
+                <div class="content">
+                    <p>Welcome to your end-to-end guide for the “Payroll Automation” n8n workflow project!
+                        This tutorial shows you how to import, configure, and run a payroll automation workflow that
+                        logs salary data in Google
+                        Sheets, sends Telegram notifications, and updates Linear issues—using exact nodes and settings
+                        from your uploaded
+                        workflow.
+                    </p>
+                    <div class="list">
+                        <h4 class="section-title">Prerequisites:</h4>
+                        <ul>
+                            <li>n8n account (<a href="https://youtu.be/RvAD2__YYjg?si=AlpIQ-QYl1IRKFcj"
+                                    class="link">self-hosted</a> or cloud).</li>
+                            <li>Google account (Sheets & Drive).</li>
+                            <li>Telegram account (app and bot).</li>
+                            <li>Linear account (for issue tracking).</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>2. How to Import the Workflow in n8n</h3>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Step-by-step:</strong></p>
+                        <ol>
+                            <li>Log in to n8n.</li>
+                            <li>Click <strong>Import</strong> (top or sidebar).</li>
+                            <li>Upload your project file: <code class="code">Google Spreadsheet.json</code>.</li>
+                            <li>The workflow appears on the n8n canvas, auto-populating all node names and settings.
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>3. Services & Nodes Inventory</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Node Name</th>
+                                    <th>Provider/Service</th>
+                                    <th>Credential Type</th>
+                                    <th>Used In (Node Fields)</th>
+                                    <th>Custom Code / API / Endpoint</th>
+                                    <th>Manual Trigger</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>n8n</td>
+                                    <td>N/A</td>
+                                    <td>N/A</td>
+                                    <td>N/A</td>
+                                    <td>N/A</td>
+                                    <td>Manual Trigger</td>
+                                </tr>
+                                <tr>
+                                    <td>Calculate Salaries</td>
+                                    <td>n8n Function</td>
+                                    <td>N/A</td>
+                                    <td>Function node</td>
+                                    <td>Uses item.json["Employee Name"]...</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Google Sheets Append</td>
+                                    <td>Google Sheets</td>
+                                    <td>OAuth2</td>
+                                    <td>Credential dropdown: Google Sheets account 2</td>
+                                    <td>Sheet ID, append operation</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Send a text message</td>
+                                    <td>Telegram</td>
+                                    <td>Bot Token</td>
+                                    <td>Credential dropdown: Telegram account</td>
+                                    <td>chatId, text, parsemode</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Update file</td>
+                                    <td>Google Drive</td>
+                                    <td>OAuth2</td>
+                                    <td>Credential dropdown: Google Drive account</td>
+                                    <td>FileId, newUpdatedFileName</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Code in JavaScript</td>
+                                    <td>n8n Code</td>
+                                    <td>N/A</td>
+                                    <td>Custom code node</td>
+                                    <td>Reference: item.json.Employee Name</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Update an issue</td>
+                                    <td>Linear</td>
+                                    <td>OAuth2</td>
+                                    <td>Credential dropdown: Linear account</td>
+                                    <td>description, title, issueId</td>
+                                    <td>N/A</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>4. API Credential Setup & Service Provisioning</h3>
+                    <h4>4.1 Google Sheets & Google Drive (OAuth2)</h4>
+                    <p class="sub"><strong class="subtitle">A. Overview:</strong></p>
+                    <p>Used for appending payroll data and saving drive files. Requires Google Sheets/Drive API and
+                        OAuth2 with Calendar/Drive/Sheets scopes.</p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">B. Steps to Provision:</strong></p>
+                        <ol>
+                            <li>Create Google account and login to <a href="https://console.cloud.google.com/"
+                                    class="link">Google Cloud Console</a>.</li>
+                            <li>Create a new project.</li>
+                            <li>Enable “Google Sheets API” and “Google Drive API”.</li>
+                            <li>Go to “APIs & Services &#x27F6; Credentials &#x27F6; Create credentials &#x27F6; OAuth
+                                client ID” ([Insert
+                                screenshot: Credentials creation]).</li>
+                            <li>Set “Application type”: Web App.</li>
+                            <li>Redirect URI (n8n):</li>
+                            <ul>
+                                <li><strong>For n8n cloud</strong>:
+                                    https://app.n8n.cloud/rest/oauth2-credential/callback</li>
+                                <li><strong>For self-hosted</strong>:
+                                    http://localhost:5678/rest/oauth2-credential/callback or your deployed domain.</li>
+                            </ul>
+                            <li>Give consent screen info and click “Create”.</li>
+                            <li>Copy <code class="code">CLIENT_ID </code>and <code class="code">CLIENT_SECRET</code>.
+                            </li>
+                            <div class="card-image">
+                                <img src="images/google-cloud-oauth-client-id-configuration.webp"
+                                    alt="Google Cloud Console OAuth 2.0 Client ID configuration for web application showing authorized JavaScript origins redirect URIs and client secrets management interface for API authentication setup"
+                                    title="Google OAuth Client ID Setup for n8n Integration" loading="lazy"
+                                    decoding="async" fetchpriority="low" />
+
+                            </div>
+                            <li>Save these for n8n set-up.</li>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">C. n8n Credential Setup:</strong></p>
+                        <ul>
+                            <li>Go to Credentials > New > Google Sheets/Google Drive OAuth2.</li>
+                            <li>Paste Client ID, Client Secret.</li>
+                            <li>Redirect URI: copy from n8n credential setup screen.</li>
+                            <li>Test and save.</li>
+                            <div class="card-image">
+                                <img src="images/google-sheets-account-connection.webp"
+                                    alt="Google Sheets OAuth2 API connection interface with client ID and reconnect options"
+                                    title="Google Sheets OAuth Authentication Configuration" width="1200" height="800"
+                                    loading="lazy" />
+
+                            </div>
+                            <div class="card-image">
+                                <img src="images/google-drive-account-connection.webp"
+                                    alt="Google Drive OAuth2 API credentials connection interface with client authentication and domain settings"
+                                    title="Google Drive API Connection Configuration for n8n" width="1200" height="800"
+                                    loading="lazy" />
+
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">D. Example Node Setup:</strong></p>
+                        <ul>
+                            <li>Node: <strong>Google Sheets Append</strong>.</li>
+                            <ul>
+                                <li>Select credential: Google Sheets account 2</li>
+                                <li>Sheet ID: 1x6rwWFWh7LkIkCl9FI-lZ********************** in the link of the Google
+                                    Sheet.</li>
+                                <li>Value Input Mode: RAW</li>
+                            </ul>
+                            <li>Node: <strong>Update file</strong> (Google Drive).</li>
+                            <ul>
+                                <li>Select credential: Google Drive account.</li>
+                                <li>FileId: Use file URL for your sheet.</li>
+                                <li>newUpdatedFileName: <code
+                                        class="code">Payroll-Backup-{{$now.format('dd-LL-yyyy')}}.xlsx</code>.</li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">E. Test & Verify:</strong></p>
+                        <ul>
+                            <li>Open Google Sheets/Drive node in n8n, click "Test Credential".</li>
+                            <li>Should return OK with 200, file and sheet access confirmed.</li>
+                            <li>For errors: check scope, redirect URI, and client type.</li>
+                        </ul>
+                    </div>
+                    <h4>4.2 Telegram (Bot Token)</h4>
+                    <p class="sub"><strong class="subtitle">A. Overview:</strong></p>
+                    <p>Telegram node sends payroll notifications. Needs Telegram bot token and chat/user ID.</p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">B. Steps to Provision:</strong></p>
+                        <ol>
+                            <li>Open Telegram app.</li>
+                            <li>Search @BotFather, start chat.</li>
+                            <li>Send /newbot, follow prompts (name and username).</li>
+                            <div class="card-image">
+                                <img src="images/telegram-botfather-bot-creation-tutorial.webp"
+                                    alt="Telegram BotFather conversation showing complete bot creation process including username selection bot token generation and HTTP API setup instructions"
+                                    title="How to Create a Telegram Bot Using BotFather - Step by Step Guide"
+                                    loading="lazy" decoding="async" />
+
+                            </div>
+                            <li>Copy returned Bot Token.</li>
+                            <li>(Optional) Set description, photo: /setdescription, /setuserpic.</li>
+                            <li>Send /setprivacy to toggle privacy if using in group.</li>
+                            <li>Paste token in n8n credential.</li>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">C. n8n Credential Setup:</strong></p>
+                        <ul>
+                            <li>Go to Credentials > New > Telegram API.</li>
+                            <li>Paste token: BOT_TOKEN = <code
+                                    class="code">123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11</code></li>
+                            <div class="card-image">
+                                <img src="images/telegram-account-credentials.webp"
+                                    alt="Telegram account OAuth configuration screen showing connection status and API access token fields"
+                                    title="Telegram API Authentication Setup for n8n" loading="lazy" />
+
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">D. Example Node Setup:</strong></p>
+                        <ul>
+                            <li>Node: <strong>Send a text message</strong>.</li>
+                            <ul>
+                                <li>Credential: Telegram account</li>
+                                <li>chatId: Paste numeric chat ID</li>
+                                <li>text: Use expressions like <code
+                                        class="code">Payroll entry for {{$json["Employee Name"]}}</code>.</li>
+                                <li>parsemode: HTML</li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">E. Test & Verify:</strong></p>
+                        <ul>
+                            <li>Open Google Sheets/Drive node in n8n, click "Test Credential" ([Insert screenshot: Test
+                                button]).</li>
+                            <li>Should return OK with 200, file and sheet access confirmed.</li>
+                            <li>For errors: check scope, redirect URI, and client type.</li>
+                        </ul>
+                    </div>
+                    <h4>4.3 Linear (OAuth2)</h4>
+                    <p class="sub"><strong class="subtitle">A. Overview:</strong></p>
+                    <p>Manages issue tracking, updates payroll info to Linear as issues..</p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">B. Steps to Provision:</strong></p>
+                        <ol>
+                            <li>Login to Linear (<a href="https://linear.app" class="link">https://linear.app</a>).</li>
+                            <li>In Settings > API > Create new OAuth Application ([Insert screenshot: Linear API
+                                settings]).</li>
+                            <li>Set App name: e.g. “n8n Payroll”.</li>
+                            <li>Redirect URI: from n8n credential screen.</li>
+                            <li>Choose scopes: “Issues:write”, “Issues:read”.</li>
+                            <li>Save and copy <code class="code">CLIENT_ID</code> / <code
+                                    class="code">CLIENT_SECRET</code>.</li>
+                            <div class="card-image">
+                                <img src="images/n8n-oauth-credentials-linear-api.webp"
+                                    alt="N8N application API settings showing OAuth credentials with client ID client secret developer token and redirect URIs for Linear integration"
+                                    title="N8N OAuth Credentials Configuration for Linear API Integration"
+                                    loading="lazy" decoding="async" />
+
+                            </div>
+
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">C. n8n Credential Setup:</strong></p>
+                        <ul>
+                            <li>Go to Credentials > New > Linear OAuth2.</li>
+                            <li>Paste client ID and secret.</li>
+                            <li>Set redirect URI as before.</li>
+                            <div class="card-image">
+                                <img src="images/linear-oauth-account-connection-n8n.webp"
+                                    alt="Linear account OAuth2 API connection screen displaying account connected status with client ID secret and redirect URL configuration for n8n workflow"
+                                    title="Linear OAuth2 Authentication Setup in n8n Automation" loading="lazy"
+                                    decoding="async" />
+
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">D. Example Node Setup:</strong></p>
+                        <ul>
+                            <li>Node: <strong>Update an issue</strong>.</li>
+                            <ul>
+                                <li>Credential: Linear account</li>
+                                <li>issueId: your Linear Issue ID (shown in Linear web app)</li>
+                                <li>description: Use <code class="code">{{$json.description}}</code> (from previous Code
+                                    node).</li>
+                                <li>title: PAYROLL</li>
+                            </ul>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">E. Test & Verify:</strong></p>
+                        <ul>
+                            <li>Execute node to update issue in Linear.</li>
+                            <li>Confirm issue is updated via app; see output in n8n.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>5. Telegram Bot & Chat ID Quick Reference</h3>
+                    <div class="list">
+                        <h4>A. Create Telegram Bot</h4>
+                        <ol>
+                            <li>In Telegram app, search @BotFather, <code class="code">/newbot</code>.</li>
+                            <li>Give bot name/username, copy token.</li>
+                            <li>Use <code class="code">/setprivacy</code> as needed.</li>
+                            <li>Read usage notes: bots cannot message a user/group without “starting” first.</li>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <h4>B. Get Telegram Chat/User ID</h4>
+                        <p class="sub"><strong class="subtitle">Method 1</strong>: @userinfobot</p>
+                        <ul>
+                            <li>Search @userinfobot, send <code class="code">/start</code>.</li>
+                            <li>Receives reply: “Your Telegram ID: 123456789”</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Method 2</strong>: Get Updates API</p>
+                        <ul>
+                            <li>Send message to your bot or group..</li>
+                            <li>Use:
+                                <div class="code-block">
+                                    <pre>
+<code>curl -s "https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates" | jq</code>
+</pre>
+                                </div>
+                            </li>
+                            <li>Find <code class="code">"chat":{"id":...}</code> in output. Group chat IDs are negative.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Method 3</strong>: Capture with n8n</p>
+                        <ul>
+                            <li>Use Telegram Trigger node, check message payload for <code class="code">chat.id</code>.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <h4>C. Configure Telegram Node</h4>
+                        <ul>
+                            <li><strong>Bot Token</strong>: paste from BotFather.</li>
+                            <li><strong>Chat ID</strong>: paste Numeric ID (e.g. 2058407139 or group ID as -123456789).
+                            </li>
+                            <li><strong>Text</strong>: <code
+                                    class="code">Payroll entry for {{$json["Employee Name"]}}...</code></li>
+                            <li><strong>parsemode</strong>: HTML/Markdown</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <h4>D. Test Integration</h4>
+                        <ul>
+                            <li>Run n8n node.</li>
+                            <li>Confirm message arrives in Telegram chat.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <h4>Troubleshooting</h4>
+                        <ul>
+                            <li>403: add bot to group/user must start chat.</li>
+                            <li>400: verify chat ID and bot token.</li>
+                            <li>401: confirm token/correct bot.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>6. Node Configuration Walkthrough</h3>
+                    <p class="sub"><strong class="subtitle">Manual Trigger</strong>: Start workflow manually (no setup).
+                    </p>
+                    <div class="card-image">
+                        <img src="images/manual-trigger-node.webp"
+                            alt="n8n Manual Trigger node configuration screen explaining workflow execution start point"
+                            title="Manual Trigger Setup for n8n Workflow Execution" loading="lazy" />
+
+                    </div>
+                    <p class="sub"><strong class="subtitle">Calculate Salaries</strong>: Built-in sample data, function
+                        formats salary/date:</p>
+                    <div id="language-c" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-c">item.<span class="yellow">json</span>[<span class="blue">"Employee Name"</span>] // Use for downstream nodes</code>
+</pre>
+                    </div>
+                    <p>Outputs array of records like:</p>
+                    <div id="language-c" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-c">{ <span class="yellow">"Employee Name"</span>: <span class="blue">"Vignesh"</span>, <span class="yellow">"Designation"</span>: <span class="blue">"Web Developer"</span>, <span class="yellow">"Salary"</span>: <span class="dark-blue">12000</span>, <span class="yellow">"Date"</span>: <span class="blue">"25/09/2025"</span> }</code>
+</pre>
+                    </div>
+                    <div class="card-image">
+                        <img src="images/calculate-salaries-node.webp"
+                            alt="n8n Calculate Salaries node with JavaScript code showing formatDate function and employee data processing"
+                            title="Salary Calculation Logic in n8n Automation Workflow" loading="lazy" />
+
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Google Sheets Append:</strong></p>
+                        <ul>
+                            <li><strong>Credential</strong>: Google Sheets account 2</li>
+                            <li><strong>Sheet ID</strong>: Use your Google Sheet ID.</li>
+                            <li><strong>Values</strong>: <code class="code">{{$json["Employee Name"]}}</code>,
+                                <code class="code">{{$json["Salary"]}}</code>, etc.
+                            </li>
+                            <div class="card-image">
+                                <img src="images/google-sheets-append.webp"
+                                    alt="n8n Google Sheets Append node configuration with spreadsheet ID range and RAW value input mode"
+                                    title="Google Sheets Integration for Employee Data Entry" loading="lazy" />
+
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Send a text message:</strong></p>
+                        <ul>
+                            <li><strong>Credential</strong>: Telegram account</li>
+                            <li><strong>chatId</strong>: 2058407139 (example)</li>
+                            <li><strong>text</strong>: <code
+                                    class="code">Payroll entry for {{$json["Employee Name"]}} ({{$json["Designation"]}}) of ₹{{$json["Salary"]}}...</code>
+                            </li>
+                            <div class="card-image">
+                                <img src="images/send-telegram-message.webp"
+                                    alt="n8n Send a text message node with Telegram integration showing payroll confirmation message and chat ID"
+                                    title="Telegram Notification Setup in n8n Workflow" loading="lazy" />
+
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Code in JavaScript:</strong></p>
+                        <ul>
+                            <li><strong>Inputs</strong>: Builds Markdown table from payroll JSON objects.</li>
+                            <li><strong>Outputs</strong>: <code class="code">json.description</code>—used downstream for
+                                Linear node.</li>
+                            <div class="card-image">
+                                <img src="images/code-javascript-node.webp"
+                                    alt="n8n Code in JavaScript node showing employee data table formatting with name designation salary date columns"
+                                    title="JavaScript Code Node for Employee Data Processing in n8n" loading="lazy" />
+
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Update an issue:</strong></p>
+                        <ul>
+                            <li><strong>Credential</strong>: Linear account</li>
+                            <li><strong>issueId</strong>: (Linear issue ID, e.g., WEB-108).</li>
+                            <li><strong>updateFields</strong>: assigneeId, description (Markdown table), title.</li>
+                            <div class="card-image">
+                                <img src="images/update-issue-node.webp"
+                                    alt="n8n Update an Issue node configuration with Linear account credentials and payroll description fields"
+                                    title="n8n Linear Integration for Issue Management" loading="lazy" />
+
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Update file:</strong></p>
+                        <ul>
+                            <li><strong>Credential</strong>: Google Drive account</li>
+                            <li><strong>fileId</strong>: (your spreadsheet URL)</li>
+                            <li><strong>newUpdatedFileName</strong>: Payroll-Backup-date.xlsx</li>
+                            <div class="card-image">
+                                <img src="images/update-file-node.webp"
+                                    alt="n8n Update File node configuration showing Google Drive file update with dynamic filename and URL parameters"
+                                    title="Configure n8n Update File Node for Google Sheets Payroll" loading="lazy" />
+
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>7. Run & Test the Workflow</h3>
+                    <div class="list">
+                        <ol>
+                            <li>Click <strong>Execute Workflow</strong> on Manual Trigger node.</li>
+                            <li>Review execution steps and logs inside n8n.</li>
+                            <li>Check Google Sheet, Telegram app, Google Drive, and Linear issues for updates.</li>
+                        </ol>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>8. Common Errors & Troubleshooting</h3>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Error</th>
+                                    <th>How to Fix</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">redirect_uri_mismatch</code></td>
+                                    <td>Ensure redirect URI matches n8n credentials exactly.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">invalid_client</code></td>
+                                    <td>Re-copy and paste Client ID and Secret.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">unauthorized</code> (401/403)</td>
+                                    <td>Confirm token, chat/user ID, API/key setup.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">rate_limit</code></td>
+                                    <td>Wait and retry, check quotas in cloud/API dashboard.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">missing scopes</code></td>
+                                    <td>Edit API/app config to add needed scopes and re-authenticate.</td>
+                                </tr>
+                                <tr>
+                                    <td>Telegram: 403 Forbidden</td>
+                                    <td>Add bot to group; user must start chat with bot.</td>
+                                </tr>
+                                <tr>
+                                    <td>Telegram: 400 Bad Request</td>
+                                    <td>Check chat ID used—should be numeric and match intended chat.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>9. Security Best Practices</h3>
+                    <div class="list">
+                        <ul>
+                            <li><strong>Minimal scopes</strong>: Only enable required API scopes.</li>
+                            <li><strong>Key rotation</strong>: Regularly update credentials, revoke unused keys.</li>
+                            <li><strong>Restrict API key usage</strong>: By IP, referrer, or app.</li>
+                            <li>Never share or commit secret keys/tokens to repos.</li>
+                            <li>Use environment variables for secrets (.env).</li>
+                            <li>Remove API keys from workflows shared publicly.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>10. Maintenance & Token Rotation</h3>
+                    <div class="list">
+                        <ul>
+                            <li>Track expiration/rotation for OAuth2 tokens (Google, Linear).</li>
+                            <li>Set up reminders for periodic credential review.</li>
+                            <li>Revoke old credentials in cloud console/providers.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>11. Appendices</h3>
+                    <p>Sample cURL - Telegram sendMessage:</p>
+                    <div id="language-c" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-c">curl -X POST <span class="blue">"https://api.telegram.org/bot<YOUR_BOT_TOKEN>/sendMessage"</span> \
+    -d chat_id=<CHAT_ID> \
+    -d text=<span class="blue">"Test message from n8n"</span></code>
+</pre>
+                    </div>
+                    <div class="list">
+                        <p><strong>Useful console links:</strong></p>
+                        <ul>
+                            <li><a href="https://console.cloud.google.com/" class="link">Google Cloud Console</a></li>
+                            <li><a href="https://t.me/BotFather" class="link">Telegram BotFather</a></li>
+                            <li><a href="https://linear.app" class="link">Linear App</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>12. Deliverables</h3>
+                    <div class="table-container">
+                        <h4>A. Credentials Cheat-Sheet</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Provider</th>
+                                    <th>Credential Type</th>
+                                    <th>Paste Location (n8n)</th>
+                                    <th>Redirect URI (if needed)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Google Sheets</td>
+                                    <td>OAuth2</td>
+                                    <td>Google Sheets OAuth Credential</td>
+                                    <td><a href="https://app.n8n.cloud/rest/oauth2-credential/callback"
+                                            class="link">https://app.n8n.cloud/rest/oauth2-credential/callback</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Google Drive</td>
+                                    <td>OAuth2</td>
+                                    <td>Google Drive OAuth Credential</td>
+                                    <td><a href="https://app.n8n.cloud/rest/oauth2-credential/callback"
+                                            class="link">https://app.n8n.cloud/rest/oauth2-credential/callback</a></td>
+                                </tr>
+                                <tr>
+                                    <td>Telegram</td>
+                                    <td>Bot Token</td>
+                                    <td>Telegram API Credential</td>
+                                    <td>N/A</td>
+                                </tr>
+                                <tr>
+                                    <td>Linear</td>
+                                    <td>OAuth2</td>
+                                    <td>Linear OAuth Credential</td>
+                                    <td><a href="https://app.n8n.cloud/rest/oauth2-credential/callback"
+                                            class="link">https://app.n8n.cloud/rest/oauth2-credential/callback</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>B. README Snippet</h4>
+                    <div class="objective-item" style="margin-top: 10px;">
+                        <p style="margin-bottom: 5px;"><span class="green"># n8n Payroll Automation Workflow</span>
+                        </p>
+                        <p>Import this workflow in n8n, set up your Google Sheets/Drive, Telegram, and Linear API
+                            credentials, and run the workflow
+                            to automatically log payroll entries, send notifications, save backups, and manage issues!
+                            See the full tutorial for setup steps, credential creation, and troubleshooting.</p>
+                    </div>
+                    <div class="list">
+                        <h4>C. Telegram Quick Reference</h4>
+                        <ul>
+                            <li>Create bot with BotFather, copy token.</li>
+                            <li>Get chat ID using @userinfobot or /getUpdates.</li>
+                            <li>Add bot to group if needed.</li>
+                            <li>Configure Telegram node with credentials and IDs.</li>
+                            <li>Test sendMessage with cURL if troubleshooting.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>13. Security & Verification</h3>
+                    <div class="list">
+                        <ul>
+                            <li>Follow official provider guides: <a
+                                    href="https://developers.google.com/identity/protocols/oauth2" class="link">Google
+                                    Sheets OAuth</a>, <a href="https://core.telegram.org/bots" class="link">Telegram
+                                    Bots API</a>, <a href="https://developers.linear.app/docs/" class="link">Linear API
+                                    Docs</a>.
+                            </li>
+                            <li>If you encounter “label not found,” always use provider search bar and documentation
+                                links.</li>
+                            <li>Use n8n's Test button for credential validation.</li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>Conclusion</h3>
+                    <p><strong>Automate Payroll with n8n: Effortless Google Sheets, Telegram, and Linear
+                            Integration</strong>
+                        Streamline your payroll process with this beginner-friendly n8n workflow. Automatically
+                        calculate salaries, log entries in Google Sheets, send instant Telegram notifications, and
+                        update Linear issues—saving time, reducing errors, and improving team transparency. Complete
+                        setup instructions, credential configuration, and troubleshooting tips are included, making
+                        payroll automation simple, secure, and scalable for small businesses or teams.</p>
+                </div>
+            </div>
+            <section id="other-work-section" class="other-work-section">
+                <h2>Other Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="card-image">
+                            <img src="../whatsapp-attendance-tracker-n8n-tutorial/images/whatsapp-n8n-workflow-canvas-overview.webp"
+                                alt="WhatsApp Attendance Tracker">
+                        </div>
+                        <div class="project-card-content">
+                            <h3>WhatsApp Attendance Tracker</h3>
+                            <p>A Beginner's Complete Guide to Automating Employee Attendance via WhatsApp Messages.</p>
+                            <div class="automation-tag">
+                                <div class="icon-btn" data-tooltip="WhatsApp"><i class="fab fa-whatsapp"></i></div>
+                                <div class="icon-btn" data-tooltip="JavaScript Code"><i class="fas fa-code"></i></div>
+                                <div class="icon-btn" data-tooltip="Telegram"><i class="fab fa-telegram-plane"></i>
+                                </div>
+                                <div class="icon-btn" data-tooltip="Google Drive"><i class="fab fa-google-drive"></i>
+                                </div>
+                                <div class="icon-btn" data-tooltip="Google Sheet"><i class="fas fa-table"></i></div>
+                            </div>
+                            <a href="../whatsapp-attendance-tracker-n8n-tutorial/index.html"
+                                class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Side -->
+        <main class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+
+            <div class="color-palette" style="margin-top: 30px">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                    alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home
+                        Page</a>
+                </div>
+            </div>
+
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a></li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block medium">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                    alt="Advertisement 300x250 (Medium Rectangle)" /> -->
+            </div>
+            <div class="ad-block small">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                    alt="Advertisement 320x100 (Large Mobile Banner)" /> -->
+            </div>
+            <div class="related-tags">
+                <h3>Related Tags</h3>
+                <div class="tag-container">
+                    <ol>
+                        <li><a href=""><span class="tag python">#python</span></a></li>
+                        <li><a href=""><span class="tag js">#javascript</span></a></li>
+                        <li><a href=""><span class="tag hacking">#ethical hacking</span></a></li>
+                        <li><a href=""><span class="tag hacking">#networking</span></a></li>
+                        <li><a href=""><span class="tag hacking">#cybersecurity</span></a></li>
+                        <li><a href=""><span class="tag hacking">#linux</span></a></li>
+                        <li><a href=""><span class="tag hacking">#webdev</span></a></li>
+                    </ol>
+                </div>
+            </div>
+        </main>
+        <button id="scrollUpBtn" aria-label="Scroll to top" style="display:none;">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg1" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+
+
+
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../index.html">Home</a></li>
+            <li class="menu-item"><a href="../../../Wallpaper/index.html" class="menu-link">Wallpapers</a></li>
+            <li class="menu-item"><a href="../../../color-palettes/index.html" class="menu-link">Color Space</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2025 DevSpireHub | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="../../../Programming/Projects/Prism/prism.css"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+
+</body>
+
+</html>

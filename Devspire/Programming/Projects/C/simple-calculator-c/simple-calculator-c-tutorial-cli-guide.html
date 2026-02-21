@@ -1,0 +1,1362 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../../../images/icon.webp" sizes="32x46" type="image/png">
+    <!-- Primary SEO Tags -->
+    <title>Simple Calculator in C: Build CLI Math Program Tutorial</title>
+    <meta name="description"
+        content="Learn to build a simple calculator in C with this beginner tutorial. Complete CLI program with menu interface, input validation, and arithmetic operations. Includes full source code and exercises.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/Programming/Projects/C/simple-calculator-c">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devspirehub.com/Programming/Projects/C/simple-calculator-c">
+    <meta property="og:title" content="Simple Calculator in C: Complete CLI Tutorial with Source Code">
+    <meta property="og:description"
+        content="Build a menu-driven calculator in C with input validation and arithmetic operations. Perfect beginner project with step-by-step explanations and complete source code.">
+    <meta property="og:image"
+        content="https://devspirehub.com/Programming/Projects/C/images/simple-calculator-c-tutorial-cli-guide.webp">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url"
+        content="https://devspirehub.com/Programming/Projects/C/simple-calculator-c-tutorial-cli-guide">
+    <meta property="twitter:title" content="Simple Calculator in C: Build CLI Math Program Tutorial">
+    <meta property="twitter:description"
+        content="Complete C calculator tutorial with menu system, error handling, and modular functions. Perfect for beginners learning C programming.">
+    <meta property="twitter:image"
+        content="https://devspirehub.com/Programming/Projects/C/images/simple-calculator-c-tutorial-cli-guide.webp">
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="Programming Tutorials">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="article:published_time" content="2026-01-20T00:00:00+00:00">
+    <meta name="article:modified_time" content="2026-01-20T00:00:00+00:00">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#1e88e5">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Existing Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Structured Data (JSON-LD) for HowTo -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "name": "How to Create a Simple Calculator in C",
+          "description": "Step-by-step tutorial for building a menu-driven calculator in C with CLI interface, input validation, and five arithmetic operations.",
+          "image": "https://devspirehub.com/Programming/Projects/C/images/simple-calculator-c-tutorial-cli-guide.webp",
+          "totalTime": "PT1H",
+          "estimatedCost": {
+            "@type": "MonetaryAmount",
+            "currency": "USD",
+            "value": "0"
+          },
+          "tool": [
+            {
+              "@type": "HowToTool",
+              "name": "C Compiler (GCC, MinGW, or Clang)"
+            },
+            {
+              "@type": "HowToTool",
+              "name": "Text Editor or IDE (VS Code, Code::Blocks, Dev-C++)"
+            }
+          ],
+          "supply": [
+            {
+              "@type": "HowToSupply",
+              "name": "C Standard Library (stdio.h, stdlib.h)"
+            }
+          ],
+          "step": [
+            {
+              "@type": "HowToStep",
+              "name": "Include Required Headers",
+              "text": "Include stdio.h for input/output functions and stdlib.h for standard library utilities.",
+              "position": 1
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Define Function Prototypes",
+              "text": "Declare mathematical operation functions (add, subtract, multiply, divide, modulus) and utility functions (menu display, input validation).",
+              "position": 2
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Implement Main Function with Do-While Loop",
+              "text": "Create main program loop that displays menu, gets user choice, performs calculations, and continues until user exits.",
+              "position": 3
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Create Mathematical Operation Functions",
+              "text": "Implement five arithmetic functions: addition, subtraction, multiplication, division (with zero-check), and modulus.",
+              "position": 4
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Implement Input Validation",
+              "text": "Create functions to validate menu choices and numeric input, with buffer clearing to prevent input errors.",
+              "position": 5
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Add Error Handling",
+              "text": "Implement division-by-zero checks and invalid input handling with user-friendly error messages.",
+              "position": 6
+            },
+            {
+              "@type": "HowToStep",
+              "name": "Compile and Test",
+              "text": "Compile with gcc using flags -Wall -Wextra -std=c99 and test all operations including edge cases.",
+              "position": 7
+            }
+          ],
+          "audience": {
+            "@type": "Audience",
+            "audienceType": "Beginner Programmers"
+          },
+          "keywords": "C calculator, simple calculator C, C programming project, CLI calculator tutorial, C arithmetic program, menu-driven C program"
+        }
+    </script>
+
+    <!-- Article Schema -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "Simple Calculator in C: Complete CLI Tutorial",
+          "description": "Comprehensive tutorial for building a menu-driven calculator in C with input validation, error handling, and modular function design.",
+          "image": "https://devspirehub.com/Programming/Projects/C/images/simple-calculator-c-tutorial-cli-guide.webp",
+          "author": {
+            "@type": "Organization",
+            "name": "DevSpireHub"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://devspirehub.com/images/icon.webp"
+            }
+          },
+          "datePublished": "2026-01-20",
+          "dateModified": "2026-01-20",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://devspirehub.com/Programming/Projects/C/simple-calculator-c
+          },
+          "programmingLanguage": "C",
+          "dependencies": "C Standard Library (stdio.h, stdlib.h)",
+          "proficiencyLevel": "Beginner"
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "url": "https://devspirehub.com/",
+            "logo": "https://devspirehub.com/images/icon.webp",
+            "description": "DevSpireHub - Programming, Projects, Ethical Hacking, Networking, Cloud & AI",
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Kumaradoss",
+                "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+            ],
+            "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16"
+            ]
+        }
+    </script>
+
+    <!-- SoftwareSourceCode Schema -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "SoftwareSourceCode",
+          "name": "Simple Calculator CLI Program",
+          "description": "C program implementing menu-driven calculator with five arithmetic operations and input validation",
+          "programmingLanguage": "C",
+          "codeRepository": "https://github.com/kumaradoss16/Projects-Programming/tree/main/C_Cpp/Projects",
+          "runtime": "C Standard Library",
+          "targetProduct": {
+            "@type": "SoftwareApplication",
+            "name": "Simple Calculator",
+            "applicationCategory": "EducationalApplication",
+            "operatingSystem": "Windows, Linux, macOS"
+          }
+        }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Prism.js CSS theme -->
+    <link rel="stylesheet" href="../../Prism/prism.css" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../../index.html" target="_self">Home</a></li>
+                    <li><a href="#implementation-details">Implementations</a></li>
+                    <li><a href="#other-work-section">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <!-- Left Side  -->
+        <main class="left-column">
+            <section class="project-details-section">
+                <h1>Simple Calculator in C: Complete Tutorial with CLI Interface</h1>
+                <p>Learn How to Create a Simple Calculator in C:
+                    Step-by-Step
+                    Guide for
+                    Beginners</p>
+                <div class="image-placeholder">
+                    <img src="images/simple-calculator-c-tutorial-cli-guide.webp"
+                        alt="simple-calculator-c-tutorial-cli-guide" loading="lazy" />
+                </div>
+                <p>
+                    This comprehensive <strong>simple calculator in C tutorial</strong> teaches you how
+                    to build a fully functional menu-driven calculator with a command-line interface from
+                    scratch. Perfect for beginner C programmers, this project demonstrates essential
+                    programming concepts including function organization, switch statement control flow,
+                    input validation, and error handling. Learn to create a C calculator program that
+                    performs five arithmetic operations—addition, subtraction, multiplication, division,
+                    and modulus—with professional input validation and zero-division protection. This
+                    step-by-step guide includes complete source code, compilation instructions, common
+                    mistake solutions, and practice exercises to strengthen your C programming foundation.
+                </p>
+
+            </section>
+
+            <section class="table-of-contents-section">
+                <h2><i class="fas fa-list"></i>Table of Contents</h2>
+                <ol>
+                    <li><a href="#source-code">Source Code</a></li>
+                    <li><a href="#mistakes">Common Mistakes and Debugging Tips</a></li>
+                    <li><a href="#practice">Practice Exercise</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ol>
+            </section>
+
+            <section id="implementation-details" class="implementation-section">
+                <h2>Implementation Details</h2>
+                <p>This project is perfect for beginners learning C programming as it covers essential concepts like
+                    functions, switch
+                    statements, input validation, and user interaction.
+                </p>
+                <div class="list">
+                    <h4>What This Project Does</h4>
+                    <p>Our calculator will perform five basic mathematical operations:</p>
+                    <ul>
+                        <li>➕ Addition</li>
+                        <li>➖ Subtraction</li>
+                        <li>✖️ Multiplication</li>
+                        <li>➗ Division (with zero-division protection)</li>
+                        <li>📊 Modulus (remainder operation)</li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <h4>Why This Project Is Useful</h4>
+                    <ul>
+                        <li><strong>Practical Application</strong>: Demonstrates real-world programming concepts.</li>
+                        <li><strong>Function Usage</strong>: Shows how to organize code with modular functions.</li>
+                        <li><strong>Input Validation</strong>: Teaches error handling and user input validation.</li>
+                        <li><strong>Menu Systems</strong>: Introduces menu-driven programming patterns.</li>
+                        <li><strong>Foundation Building</strong>: Perfect stepping stone to more complex projects.</li>
+                    </ul>
+                </div>
+                <div class="content">
+                    <h4>Program Flow and Logic</h4>
+                    <p>Here's how our calculator works step by step:</p>
+                    <div class="code-block">
+                        <pre>
+<code>        START
+          |
+    ┌─────▼─────┐
+    │  Display  │
+    │   Menu    │
+    └─────┬─────┘
+          │
+    ┌─────▼─────┐
+    │   Get     │
+    │User Choice│
+    └─────┬─────┘
+          │
+    ┌─────▼─────┐     NO
+    │Choice = 6?├────────┐
+    │  (Exit)   │        │
+    └─────┬─────┘        │
+          │ YES          │
+    ┌─────▼─────┐        │
+    │    END    │        │
+    └───────────┘        │
+                         │
+           ┌─────────────┘
+           │
+           ▼
+    ┌─────────────┐
+    │   Get Two   │
+    │   Numbers   │
+    └─────┬───────┘
+          │
+    ┌─────▼─────┐
+    │  Perform  │
+    │ Operation │
+    │  (Switch) │
+    └─────┬─────┘
+          │
+    ┌─────▼─────┐
+    │  Display  │
+    │  Result   │
+    └─────┬─────┘
+          │
+    ┌─────▼─────┐
+    │Continue or│
+    │   Exit?   │
+    └─────┬─────┘
+          │
+          └──────────────┐
+                         │
+                    ┌────▼────┐
+                    │  LOOP   │
+                    │  BACK   │
+                    └─────────┘</code>
+</pre>
+                    </div>
+                    <div class="list">
+                        <h4>Key Programming Concepts Used:</h4>
+                        <ol>
+                            <li><strong>Functions</strong>: Each operation has its own function.</li>
+                            <li><strong>Switch Statement</strong>: Menu selection handling.</li>
+                            <li><strong>Do-While Loop</strong>: Continues until user exits.</li>
+                            <li><strong>Input Validation</strong>: Prevents errors and crashes.</li>
+                            <li><strong>Modular Design</strong>: Clean, organized code structure</li>
+                        </ol>
+                    </div>
+                </div>
+                <hr style="margin: 20px 0;">
+
+                <div class="implementation-code-section" id="source-code">
+                    <div class=" code-header">
+                        <h3 class="code-title">Complete Source Code</h3>
+                        <button class="copy-button" id="copyCodeBtnC">
+                            <i class="fas fa-copy"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <div id="language-c" class="code-block">
+                        <p>Calculator.c</p>
+                        <pre class="line-numbers">
+<code class="language-c" id="codeSnippetC">/*
+===============================================================================
+                        SIMPLE CALCULATOR - CLI VERSION
+===============================================================================
+Description: A beginner-friendly calculator program in C with menu interface
+Author: C Programming Tutorial
+Features: Addition, Subtraction, Multiplication, Division, Modulus
+Compilation: gcc -Wall -Wextra -std=c99 -o calculator calculator.c
+===============================================================================
+*/
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+/* ===============================================================================
+                                FUNCTION PROTOTYPES
+=============================================================================== */
+
+// Mathematical operation functions
+double add(double a, double b);
+double subtract(double a, double b);
+double multiply(double a, double b);
+double divide(double a, double b);
+int modulus(int a, int b);
+
+// Utility functions
+void displayMenu(void);
+void clearInputBuffer(void);
+int getValidChoice(void);
+double getValidNumber(const char* prompt);
+void displayResult(double result, const char* operation);
+void pressEnterToContinue(void);
+
+/* ===============================================================================
+                                    MAIN FUNCTION
+=============================================================================== */
+
+int main(void) {
+    int choice;
+    double num1, num2, result;
+
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("                    WELCOME TO SIMPLE CALCULATOR v1.0\n");
+    printf("===============================================================================\n");
+    printf("This calculator performs basic mathematical operations.\n");
+    printf("Follow the menu prompts to perform calculations.\n");
+
+    // Main program loop - continues until user chooses to exit
+    do {
+        displayMenu();
+        choice = getValidChoice();
+
+        // Handle exit option
+        if (choice == 6) {
+            printf("\n");
+            printf("===============================================================================\n");
+            printf("                    THANK YOU FOR USING THE CALCULATOR!\n");
+            printf("===============================================================================\n");
+            break;
+        }
+
+        // Get input numbers for calculation
+        printf("\n");
+        num1 = getValidNumber("Enter first number: ");
+        num2 = getValidNumber("Enter second number: ");
+
+        printf("\n");
+        printf("===============================================================================\n");
+
+        // Perform calculation based on user choice
+        switch (choice) {
+            case 1: // Addition
+                result = add(num1, num2);
+                displayResult(result, "Addition");
+                printf("%.2f + %.2f = %.2f\n", num1, num2, result);
+                break;
+
+            case 2: // Subtraction
+                result = subtract(num1, num2);
+                displayResult(result, "Subtraction");
+                printf("%.2f - %.2f = %.2f\n", num1, num2, result);
+                break;
+
+            case 3: // Multiplication
+                result = multiply(num1, num2);
+                displayResult(result, "Multiplication");
+                printf("%.2f × %.2f = %.2f\n", num1, num2, result);
+                break;
+
+            case 4: // Division
+                if (num2 == 0) {
+                    printf("                              ERROR: DIVISION BY ZERO\n");
+                    printf("===============================================================================\n");
+                    printf("❌ Cannot divide by zero! Please try again with a non-zero divisor.\n");
+                } else {
+                    result = divide(num1, num2);
+                    displayResult(result, "Division");
+                    printf("%.2f ÷ %.2f = %.2f\n", num1, num2, result);
+                }
+                break;
+
+            case 5: // Modulus
+                // Modulus only works with integers
+                if (num2 == 0) {
+                    printf("                              ERROR: MODULUS BY ZERO\n");
+                    printf("===============================================================================\n");
+                    printf("❌ Cannot perform modulus by zero! Please try again.\n");
+                } else {
+                    int intNum1 = (int)num1;
+                    int intNum2 = (int)num2;
+                    int modResult = modulus(intNum1, intNum2);
+                    printf("                               MODULUS RESULT\n");
+                    printf("===============================================================================\n");
+                    printf("✓ %d %% %d = %d\n", intNum1, intNum2, modResult);
+                }
+                break;
+
+            default:
+                printf("                                 INVALID CHOICE\n");
+                printf("===============================================================================\n");
+                printf("❌ Please select a valid option (1-6).\n");
+        }
+
+        pressEnterToContinue();
+
+    } while (choice != 6);
+
+    return 0;
+}
+
+/* ===============================================================================
+                            MATHEMATICAL OPERATION FUNCTIONS
+=============================================================================== */
+
+/**
+ * Addition function
+ * @param a: First number
+ * @param b: Second number
+ * @return: Sum of a and b
+ */
+double add(double a, double b) {
+    return a + b;
+}
+
+/**
+ * Subtraction function
+ * @param a: First number (minuend)
+ * @param b: Second number (subtrahend)
+ * @return: Difference of a and b
+ */
+double subtract(double a, double b) {
+    return a - b;
+}
+
+/**
+ * Multiplication function
+ * @param a: First number
+ * @param b: Second number
+ * @return: Product of a and b
+ */
+double multiply(double a, double b) {
+    return a * b;
+}
+
+/**
+ * Division function
+ * @param a: Dividend
+ * @param b: Divisor (should not be zero)
+ * @return: Quotient of a divided by b
+ */
+double divide(double a, double b) {
+    return a / b;
+}
+
+/**
+ * Modulus function (remainder after division)
+ * @param a: Dividend (integer)
+ * @param b: Divisor (integer, should not be zero)
+ * @return: Remainder of a divided by b
+ */
+int modulus(int a, int b) {
+    return a % b;
+}
+
+/* ===============================================================================
+                                UTILITY FUNCTIONS
+=============================================================================== */
+
+/**
+ * Display the main menu options
+ */
+void displayMenu(void) {
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("                               CALCULATOR MENU\n");
+    printf("===============================================================================\n");
+    printf("Choose an operation:\n");
+    printf("  1. ➕  Addition       (a + b)\n");
+    printf("  2. ➖  Subtraction    (a - b)\n");
+    printf("  3. ✖️   Multiplication (a × b)\n");
+    printf("  4. ➗  Division       (a ÷ b)\n");
+    printf("  5. 📊  Modulus        (a %% b)\n");
+    printf("  6. 🚪  Exit Program\n");
+    printf("===============================================================================\n");
+}
+
+/**
+ * Clear input buffer to handle invalid input
+ */
+void clearInputBuffer(void) {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {
+        // Clear the input buffer
+    }
+}
+
+/**
+ * Get valid menu choice from user
+ * @return: Valid choice (1-6)
+ */
+int getValidChoice(void) {
+    int choice;
+
+    while (1) {
+        printf("Enter your choice (1-6): ");
+
+        if (scanf("%d", &choice) == 1) {
+            clearInputBuffer();
+            if (choice >= 1 && choice <= 6) {
+                return choice;
+            } else {
+                printf("❌ Invalid choice! Please enter a number between 1 and 6.\n\n");
+            }
+        } else {
+            clearInputBuffer();
+            printf("❌ Invalid input! Please enter a numeric choice (1-6).\n\n");
+        }
+    }
+}
+
+/**
+ * Get valid number from user with custom prompt
+ * @param prompt: Message to display to user
+ * @return: Valid floating-point number
+ */
+double getValidNumber(const char* prompt) {
+    double number;
+
+    while (1) {
+        printf("%s", prompt);
+
+        if (scanf("%lf", &number) == 1) {
+            clearInputBuffer();
+            return number;
+        } else {
+            clearInputBuffer();
+            printf("❌ Invalid input! Please enter a valid number.\n");
+        }
+    }
+}
+
+/**
+ * Display formatted result header
+ * @param result: The calculated result
+ * @param operation: Name of the operation performed
+ */
+void displayResult(double result, const char* operation) {
+    printf("                               %s RESULT\n", operation);
+    printf("===============================================================================\n");
+    printf("✓ ");
+}
+
+/**
+ * Pause program and wait for user to press Enter
+ */
+void pressEnterToContinue(void) {
+    printf("\n📝 Press Enter to continue...");
+    getchar();
+}
+
+/* ===============================================================================
+                                END OF PROGRAM
+=============================================================================== */</code></pre>
+                    </div>
+                    <div class="copy-feedback" id="copyFeedbackC"></div>
+                    <h4>Compilation and Execution</h4>
+                    <div class="code-block">
+                        <pre>
+<code>gcc -Wall -Wextra -std=c99 -o calculator calculator.c</code>
+</pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">How to Run:</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code>./calculator    <span># Linux/Mac</span>
+calculator.exe  <span># Windows</span></code>
+</pre>
+                    </div>
+                    <h4>Sample Input and Output</h4>
+                    <p>Here's what you'll see when running the program:</p>
+                    <div class="code-block">
+                        <pre>
+<code>===============================================================================
+WELCOME TO SIMPLE CALCULATOR v1.0
+===============================================================================
+This calculator performs basic mathematical operations.
+Follow the menu prompts to perform calculations.
+
+===============================================================================
+CALCULATOR MENU
+===============================================================================
+Choose an operation:
+1. ➕ Addition (a + b)
+2. ➖ Subtraction (a - b)
+3. ✖️ Multiplication (a × b)
+4. ➗ Division (a ÷ b)
+5. 📊 Modulus (a % b)
+6. 🚪 Exit Program
+===============================================================================
+Enter your choice (1-6): 1
+
+Enter first number: 15.5
+Enter second number: 7.3
+
+===============================================================================
+Addition RESULT
+===============================================================================
+✓ 15.50 + 7.30 = 22.80
+
+📝 Press Enter to continue...
+
+===============================================================================
+CALCULATOR MENU
+===============================================================================
+Choose an operation:
+1. ➕ Addition (a + b)
+2. ➖ Subtraction (a - b)
+3. ✖️ Multiplication (a × b)
+4. ➗ Division (a ÷ b)
+5. 📊 Modulus (a % b)
+6. 🚪 Exit Program
+===============================================================================
+Enter your choice (1-6): 4
+
+Enter first number: 100
+Enter second number: 0
+
+===============================================================================
+ERROR: DIVISION BY ZERO
+===============================================================================
+❌ Cannot divide by zero! Please try again with a non-zero divisor.
+
+📝 Press Enter to continue...</code>
+</pre>
+                    </div>
+                    <hr>
+                    <div class="content" id="mistakes">
+                        <h3>Common Mistakes and Debugging Tips</h3>
+                        <h4>1. Forgetting break in Switch Statements</h4>
+                        <p><strong>❌ Wrong:</strong></p>
+                        <div id="language-c" class="code-block">
+                            <pre class="line-numbers">
+<code class="language-c">switch (choice) {
+    case 1:
+        result = add(num1, num2);
+        // Missing break - will continue to case 2!
+    case 2:
+        result = subtract(num1, num2);
+        break;
+}</code></pre>
+                        </div>
+                        <p><strong>✅ Correct:</strong></p>
+                        <div id="language-c" class="code-block">
+                            <pre class="line-numbers">
+<code class="language-c">switch (choice) {
+    case 1:
+        result = add(num1, num2);
+        break;  // Essential!
+    case 2:
+        result = subtract(num1, num2);
+        break;
+}</code></pre>
+                        </div>
+                        <h4>2. Not Handling Division by Zero</h4>
+                        <p><strong>❌ Wrong:</strong></p>
+                        <div id="language-c" class="code-block">
+                            <pre class="line-numbers">
+<code class="language-c">double divide(double a, double b) {
+    return a / b; // Will cause runtime error if b = 0
+}</code></pre>
+                        </div>
+                        <p><strong>✅ Correct:</strong></p>
+                        <div id="language-c" class="code-block">
+                            <pre class="line-numbers">
+<code class="language-c">// In main function:
+if (num2 == 0) {
+    printf("Error: Cannot divide by zero!\n");
+} else {
+    result = divide(num1, num2);
+    printf("%.2f ÷ %.2f = %.2f\n", num1, num2, result);
+}</code></pre>
+                        </div>
+                        <h4>3. Input Buffer Problems</h4>
+                        <p><strong>❌ Problem</strong>: When <code class="code"><span class="orange">scanf</span></code>
+                            fails, invalid input stays
+                            in buffer</p>
+                        <div id="language-c" class="code-block">
+                            <pre class="line-numbers">
+<code class="language-c">scanf("%d", &choice);  // If user enters "abc", it stays in buffer</code></pre>
+                        </div>
+                        <p><strong>✅ Solution</strong>: Clear the buffer after each input</p>
+                        <div id="language-c" class="code-block">
+                            <pre class="line-numbers">
+<code class="language-c">if (scanf("%d", &choice) == 1) {
+    clearInputBuffer();  // Clear any remaining input
+    // Process valid input
+} else {
+    clearInputBuffer();  // Clear invalid input
+    // Handle error
+}</code></pre>
+                        </div>
+                        <h4>4. Infinite Loops in Input Validation</h4>
+                        <p><strong>❌ Wrong:</strong></p>
+                        <div id="language-c" class="code-block">
+                            <pre class="line-numbers">
+<code class="language-c">do {
+    printf("Enter choice: ");
+    scanf("%d", &choice);
+} while (choice < 1 || choice > 6);  // No handling of invalid input</code></pre>
+                        </div>
+                        <p><strong>✅ Correct:</strong></p>
+                        <div id="language-c" class="code-block">
+                            <pre class="line-numbers">
+<code class="language-c">while (1) {
+    printf("Enter choice: ");
+    if (scanf("%d", &choice) == 1 && choice >= 1 && choice <= 6) {
+        clearInputBuffer();
+        break;  // Valid input received
+    } else {
+        clearInputBuffer();
+        printf("Invalid input! Try again.\n");
+    }
+}</code></pre>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="content" id="practice">
+                        <h4>Practice Exercises</h4>
+                        <p class="sub"><strong class="subtitle">Exercise 1</strong>: Add Power Operation</p>
+                        <p><strong>Challenge</strong>: Add a power operation (a^b) to the calculator.</p>
+                        <div class="list">
+                            <ol>
+                                <li>Add option 7 to the menu.</li>
+                                <li>Create a <code class="code">
+                                    <span class="orange">power</span>()</code> function.</li>
+                                <li>Add a new case in the switch statement.</li>
+                                <li>You can use a loop or include <code
+                                        class="code"><span class="green">&lt;math.h&gt;</span></code> and use <code
+                                        class="code"><span class="orange">pow</span>()</code> function.</li>
+                            </ol>
+                        </div>
+                        <div id="language-c" class="code-block">
+                            <pre class="line-numbers">
+<code class="language-c">// Add this include at the top
+#include <math.h>
+
+// Add this function
+double power(double base, double exponent) {
+    return pow(base, exponent);
+}
+
+// Update the menu display
+void displayMenu(void) {
+    printf("\n");
+    printf("===============================================================================\n");
+    printf("                               CALCULATOR MENU\n");
+    printf("===============================================================================\n");
+    printf("Choose an operation:\n");
+    printf("  1. ➕  Addition       (a + b)\n");
+    printf("  2. ➖  Subtraction    (a - b)\n");
+    printf("  3. ✖️   Multiplication (a × b)\n");
+    printf("  4. ➗  Division       (a ÷ b)\n");
+    printf("  5. 📊  Modulus        (a %% b)\n");
+    printf("  6. ⚡  Power          (a ^ b)\n");  // New option
+    printf("  7. 🚪  Exit Program\n");              // Updated exit option
+    printf("===============================================================================\n");
+}
+
+// Add this case in the switch statement (before case 7)
+case 6: // Power
+    result = power(num1, num2);
+    displayResult(result, "Power");
+    printf("%.2f ^ %.2f = %.2f\n", num1, num2, result);
+    break;
+
+// Update exit condition and validation to use 7 instead of 6</code></pre>
+                        </div>
+                        <p class="sub"><strong class="subtitle">Exercise 2</strong>: Add Square Root Operation</p>
+                        <p><strong>Challenge</strong>: Add square root functionality that works on a single number.</p>
+                        <div class="list">
+                            <ol>
+                                <li>Add square root option to menu.</li>
+                                <li>Only ask for one number (not two).</li>
+                                <li>Validate that the number is non-negative.</li>
+                                <li>Use <code class="code"><span class="orange">sqrt</span>()</code> from <code
+                                        class="code"><span class="green">&lt;math.h&gt;</span></code>function.</li>
+                            </ol>
+                        </div>
+                        <div id="language-c" class="code-block">
+                            <pre class="line-numbers">
+<code class="language-c">// Add this function
+double squareRoot(double number) {
+    return sqrt(number);
+}
+
+// Add to menu (option 7, making exit option 8)
+printf("  7. √   Square Root    (√a)\n");
+printf("  8. 🚪  Exit Program\n");
+
+// Add this case in switch statement
+case 7: // Square Root
+    if (num1 < 0) {
+        printf("                              ERROR: NEGATIVE NUMBER\n");
+        printf("===============================================================================\n");
+        printf("❌ Cannot calculate square root of negative number!\n");
+    } else {
+        result = squareRoot(num1);
+        displayResult(result, "Square Root");
+        printf("√%.2f = %.2f\n", num1, result);
+    }
+    break;
+
+// Note: For square root, you might want to modify the input logic
+// to only ask for one number when choice == 7</code></pre>
+                        </div>
+                        <p class="sub"><strong class="subtitle">Exercise 2</strong>: Add Memory Functions</p>
+                        <p><strong>Challenge</strong>: Implement basic memory functions (M+, M-, MR, MC) like a real
+                            calculator.</p>
+                        <div class="list">
+                            <ol>
+                                <li>Add global memory variable.</li>
+                                <li>Add menu options for Memory Add, Memory Subtract, Memory Recall, Memory Clear.</li>
+                                <li>Allow using memory value as input for calculationse.</li>
+                            </ol>
+                        </div>
+                        <div id="language-c" class="code-block">
+                            <pre class="line-numbers">
+<code class="language-c">// Add global variable
+double memory = 0.0;
+
+// Add these functions
+void memoryAdd(double value) {
+    memory += value;
+    printf("✓ Memory: %.2f (Added %.2f)\n", memory, value);
+}
+
+void memorySubtract(double value) {
+    memory -= value;
+    printf("✓ Memory: %.2f (Subtracted %.2f)\n", memory, value);
+}
+
+void memoryRecall(void) {
+    printf("✓ Memory Recall: %.2f\n", memory);
+}
+
+void memoryClear(void) {
+    memory = 0.0;
+    printf("✓ Memory Cleared\n");
+}
+
+// Update menu with memory options (9-12)
+printf("  9. M+  Memory Add\n");
+printf(" 10. M-  Memory Subtract\n");
+printf(" 11. MR  Memory Recall\n");
+printf(" 12. MC  Memory Clear\n");
+printf(" 13. 🚪  Exit Program\n");
+
+// Add cases in switch statement
+case 9: // Memory Add
+    num1 = getValidNumber("Enter number to add to memory: ");
+    memoryAdd(num1);
+    break;
+case 10: // Memory Subtract
+    num1 = getValidNumber("Enter number to subtract from memory: ");
+    memorySubtract(num1);
+    break;
+case 11: // Memory Recall
+    memoryRecall();
+    break;
+case 12: // Memory Clear
+    memoryClear();
+    break;</code></pre>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="content" id="conclusion">
+                        <h3>Conclusion</h3>
+                        <p><strong>Congratulations!</strong> 🎉 You've successfully created a fully functional
+                            calculator in C with:</p>
+                        <p>The simple calculator tutorial in C provides an excellent introduction to using basic
+                            programming concepts such as
+                            variables, user input, conditional statements (if-else or switch-case), and arithmetic
+                            operations. By building this
+                            project step-by-step, beginners learn how to structure a console application that performs
+                            addition, subtraction,
+                            multiplication, and division based on user input. This foundational exercise helps new
+                            programmers develop their logic
+                            and C coding skills while gaining confidence in building interactive command-line tools.</p>
+                        <div class=" action-buttons">
+                            <!-- Download Project Button -->
+                            <button class="action-button download-btn" onclick="downloadProject()">
+                                <i class="fas fa-download"></i>Download
+                            </button>
+
+                            <!-- View GitHub Button -->
+                            <a href="https://github.com/kumaradoss16/Projects-Programming/tree/main/C_Cpp/Projects"
+                                target="_blank" class="action-button github-btn">
+                                <i class="fab fa-github"></i>View GitHub
+                            </a>
+                        </div>
+                        <div class="list">
+                            <h4>Next Steps:</h4>
+                            <ol>
+                                <li>Try the exercises above to enhance your calculator.</li>
+                                <li>Add more operations like factorial, trigonometric functions.</li>
+                                <li>Create a GUI version using libraries like GTK or ncurses.</li>
+                                <li>Implement expression parsing to evaluate complex expressions like "2+3*4".</li>
+                                <li>Add history functionality to remember previous calculations.</li>
+                            </ol>
+                        </div>
+                        <div class="list">
+                            <h4>Key Programming Skills Learned:</h4>
+                            <ul>
+                                <li>Function definition and organization.</li>
+                                <li>Switch statement control flow.</li>
+                                <li>Input validation techniques.</li>
+                                <li>Error handling patterns.</li>
+                                <li>User interface design in CLI.</li>
+                                <li>Modular programming principles.</li>
+                            </ul>
+                        </div>
+                        <p>Keep practicing and building more projects to strengthen your C programming foundation! 🚀
+                        </p>
+                        <p class="rainbow-text"><strong>Happy Coding!</strong></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ad Banner  -->
+            <div class="ad-banner-in-content">
+                <p>Ad</p>
+                <!-- <img src="https://placehold.co/768x150/555/white?text=Advertisement%0A768x10%0A(Large+Rectangle)"
+                                alt="Advertisement 336x280 (Large Rectangle)"> -->
+            </div>
+
+            <!-- My Other Projects  -->
+            <section id="other-work-section" class="other-work-section">
+                <h2 style="margin-top: 20px;">Other Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="../../Python/shooter-game/images/space-shooter-game-python-pygame-tutorial.webp"
+                            alt="Shooter Game Python Pygame Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Shooter Game</h4>
+                            <p>This is a beginner-friendly guide for building a Space Shooter game with Python and
+                                Pygame, covering coding concepts and
+                                project structure.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Pygame</span>
+                            </div>
+                            <a href="../../Python/shooter-game/space-shooter-game-python-pygame-tutorial.html"
+                                title="Shooter Game Python Pygame Project Tutorial" class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Python/to-do-cli-app/images/todo-cli-app-python.webp"
+                            alt="To-Do CLI App Python Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>To-Do CLI App</h4>
+                            <p>Interactive command-line to-do list manager with Python, featuring list operations,
+                                persistent tasks, and practical
+                                coding exercises.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                            </div>
+                            <a href="../../Python/to-do-cli-app/todo-cli-app-python-tutorial.html"
+                                title="To-Do CLI App Python Project Tutorial" class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Web/weather-app/images/weather-app-html-css-javascript-tutorial.webp"
+                            alt="Weather App HTML CSS JavaScript Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Weather App</h4>
+                            <p>Responsive weather app with real-time API data, feature comparison, and intuitive design
+                                for global city forecasts.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag">CSS</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                            <a href="../../Web/weather-app/weather-app-html-css-javascript-tutorial.html"
+                                title="Weather App HTML CSS JavaScript Project Tutorial"
+                                class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Web/team-card-app/images/cricket-team-card-app.webp"
+                            alt="Team Card App HTML CSS JavaScript Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Team Card App</h4>
+                            <p>Interactive team card application for cricket, featuring dynamic team selection, player
+                                filters, and customizable
+                                light/dark themes.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag">CSS</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                            <a href="../../Web/team-card-app/cricket-team-card-app-html-css-javascript-tutorial.html"
+                                title="Team Card App HTML CSS JavaScript Project Tutorial"
+                                class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../C++/password-strength-checker/images/password-strength-checker.webp"
+                            alt="Password Strength Checker in C++ Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Password Strength Checker</h4>
+                            <p>Multi-Password Batch Strength Checker (C++), designed to check multiple passwords at
+                                once, show
+                                individual strength, and
+                                provide a summary report.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C++</span>
+                            </div>
+                            <a href="../../C++/password-strength-checker/password-strength-checker-cpp-tutorial-guide.html"
+                                title="Password Strength Checker in C++ Project Tutorial"
+                                class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../vpn-connectivity-verification-cpp/images/vpn-tool-before-connection-terminal-output.webp"
+                            alt="VPN Connectivity verification in C Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>VPN Connectivity verification in C</h4>
+                            <p>Efficient C program to verify VPN status, routing, and DNS configurations through
+                                comprehensive public IP and network
+                                adapter analysis.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C</span>
+                            </div>
+                            <a href="../vpn-connectivity-verification-cpp/build-vpn-verification-tool-c-tutorial.html"
+                                title="VPN Connectivity verification in C Project Tutorial"
+                                class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Side  -->
+        <aside class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                    alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home Page</a>
+                </div>
+            </div>
+
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a></li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block medium">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                    alt="Advertisement 300x250 (Medium Rectangle)" /> -->
+            </div>
+            <div class="ad-block small">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                    alt="Advertisement 320x100 (Large Mobile Banner)" /> -->
+            </div>
+            <div class="related-tags">
+                <h3>Related Tags</h3>
+                <div class="tag-container">
+                    <ol>
+                        <li><a href=""><span class="tag python">#python</span></a></li>
+                        <li><a href=""><span class="tag js">#javascript</span></a></li>
+                        <li><a href=""><span class="tag hacking">#ethical hacking</span></a></li>
+                        <li><a href=""><span class="tag hacking">#networking</span></a></li>
+                        <li><a href=""><span class="tag hacking">#cybersecurity</span></a></li>
+                        <li><a href=""><span class="tag hacking">#linux</span></a></li>
+                        <li><a href=""><span class="tag hacking">#webdev</span></a></li>
+                    </ol>
+                </div>
+            </div>
+        </aside>
+        <button id="scrollUpBtn" aria-label="Scroll to top">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+    <!-- Footer  -->
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../../index.html">Home</a></li>
+            <li class="menu-item"><a href="../../../../Wallpaper/index.html" class="menu-link">Wallpapers</a></li>
+            <li class="menu-item"><a href="../../../../color-palettes/index.html" class="menu-link">Color Space</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpireHub | All Rights Reserved</p>
+    </footer>
+
+    <script src="../Prism/prism.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <!-- Prism.js core and language -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+    <!-- Prism.js line-numbers plugin -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

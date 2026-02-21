@@ -1,0 +1,2951 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Master networking fundamentals with this comprehensive tutorial covering IP addressing, MAC addresses, DNS, DHCP, subnetting, and hands-on labs. Perfect for IT support, network technicians, and beginners preparing for CompTIA Network+ and CCNA certifications.">
+    <meta property="og:title" content="Networking Fundamentals Tutorial - Complete Beginner's Guide">
+    <meta property="og:description"
+        content="Learn IP addressing, DNS, DHCP, subnetting with hands-on labs and practical examples">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devspirehub.com/Networking/Tutorials/network-fundamentals-1">
+    <meta property="og:image"
+        content="https://devspirehub.com/Networking/Tutorials/network-fundamentals-1/images/network-fundamentals-1.png">
+
+    <link rel="icon" href="../../../images/icon.webp" sizes="32x46" type="image/png">
+    <title>Networking Fundamentals Tutorial - Complete Guide to IP, DNS, DHCP, Subnetting | DevSpireHub</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/Networking/Tutorials/network-fundamentals-1">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Additional SEO -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="author" content="DevSpireHub">
+    <meta name="publisher" content="DevSpireHub">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="prism/prism.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script type=application/ld+json>
+        {
+            "@context": "https://schema.org",
+            "@type": "SiteNavigationElement",
+            "name": [
+                "Home",
+                "Chapter"
+            ],
+            "url": [
+                "https://devspirehub.com/home",
+                "https://devspirehub.com/chapter"
+            ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "url": "https://devspirehub.com/",
+            "logo": "https://devspirehub.com/../../../images/icon.web",
+            "description": "DevSpireHub - Programming, Projects, Ethical hacking, Networking, Cloud & AI",
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Kumaradoss",
+                "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+            ],
+            "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16",
+            ]
+        }
+    </script>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": "Networking Fundamentals 1 - Complete Step-by-Step Tutorial",
+            "description": "Learn IP addressing, DNS, DHCP, subnetting with hands-on labs and practical examples.",
+            "author": {
+            "@type": "Organization",
+            "name": "DevSpireHub"
+            },
+            "publisher": {
+            "@type": "Organization",
+            "name": "DevSpireHub"
+            },
+            "datePublished": "2025-09-26",
+            "dateModified": "2026-01-19",
+            "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://devspirehub.com/Networking/Tutorials/network-fundamentals-1"
+            }
+        }
+    </script>
+
+    <!-- Auto Ads Script -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX"
+        crossorigin="anonymous"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-XXXXXXXXXX",
+            enable_page_level_ads: true,
+            overlays: { bottom: true }
+        });
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <!-- <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button> -->
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../..index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Chapter <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#chapter-1">IP
+                                    Addressing and Classes</a></li>
+                            <li><a href="#chapter-2">MAC
+                                    Addresses</a></li>
+                            <li><a href="#chapter-3">DNS (Domain
+                                    Name System)</a></li>
+                            <li><a href="#chapter-4">DHCP
+                                    (Dynamic Host Configuration Protocol)</a></li>
+                            <li><a href="#chapter-5">OSI and
+                                    TCP/IP Models</a></li>
+                            <li><a href="#chapter-6">Subnetting
+                                    Basics</a></li>
+                            <li><a href="#chapter-7">Static IP
+                                    Configuration Lab</a></li>
+                            <li><a href="#chapter-8">Introduction
+                                    to Network Connectivity Testing</a></li>
+                            <li><a href="#chapter-9">Mini-Project: Virtual Machine Network Lab</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <main class="left-column">
+            <!-- Course Header Card  -->
+            <div class="card">
+                <div class="content">
+                    <h1>Networking Fundamentals 1 - Complete Step-by-Step Tutorial</h1>
+                    <div class="card-main-info">
+                        <p class="intro">Welcome to Networking Fundamentals I, a comprehensive tutorial designed to
+                            teach essential networking concepts for
+                            beginners and IT professionals. This practical guide covers IP addressing, MAC addresses,
+                            DNS, DHCP, subnetting, and the
+                            OSI model with hands-on labs and real-world examples. Whether you're preparing for CompTIA
+                            Network+ certification, CCNA,
+                            or starting your career in IT support, this step-by-step tutorial provides the foundational
+                            knowledge needed to
+                            configure networks, troubleshoot connectivity issues, and understand how modern networks
+                            operate. Learn through
+                            practical exercises, command-line tools, and virtual machine labs that build real-world
+                            networking skills</p>
+                        <div class="card-image">
+                            <img src="images/network-fundamentals-1.png"
+                                alt="Networking Fundamentals 1 - Complete Step-by-Step Tutorial">
+                        </div>
+
+                        <p>You'll gain confidence in configuring IP addresses, identifying and managing MAC addresses,
+                            understanding how DNS and
+                            DHCP operate, and using core tools to troubleshoot and maintain your network. You'll explore
+                            both fundamental theory
+                            such as the OSI and TCP/IP models and hands-on skills including subnetting, static IP
+                            configuration, and real-world
+                            network troubleshooting.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Learning Objectives Card  -->
+            <div class="card learning-objectives-card">
+                <div class="card-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>Learning Objectives</h2>
+                </div>
+                <div class="learning-objectives-grid">
+                    <div class="objective-item">
+                        <p>1. <a href="#chapter-0">Course
+                                Introduction & Objectives</a></p>
+                        <p>2. <a href="#chapter-1">IP
+                                Addressing and Classes</a></p>
+                        <p>3. <a href="#chapter-2">MAC
+                                Addresses</a></p>
+                        <p>4. <a href="#chapter-3">DNS (Domain
+                                Name System)</a></p>
+                        <p>5. <a href="#chapter-4">DHCP
+                                (Dynamic Host Configuration Protocol)</a></p>
+                        <p>6. <a href="#chapter-5">OSI and
+                                TCP/IP Models</a></p>
+                        <p>7. <a href="#chapter-6">Subnetting
+                                Basics</a></p>
+                        <p>8. <a href="#chapter-7">Static IP
+                                Configuration Lab</a></p>
+                        <p>9. <a href="#chapter-8">Introduction
+                                to Network Connectivity Testing</a></p>
+                        <p>10. <a href="#chapter-9">Mini-Project: Virtual Machine Network Lab</a></p>
+                        <p>11. <a href="#chapter-10">Conclusion</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" id="chapter-0">
+                <div class="card-header">
+                    <h2>1. Course Introduction & Objectives</h2>
+                    <p>By the end of this tutorial, you will master essential networking concepts and be able to:</p>
+                </div>
+                <div class="objective-item" style="margin-top: 10px;">
+                    <div class="list">
+                        <ul>
+                            <li>Configure IP addresses and understand different classes.</li>
+                            <li>Work with MAC addresses and understand their purpose.</li>
+                            <li>Set up DNS and understand DHCP functionality.</li>
+                            <li>Navigate OSI and TCP/IP networking models.</li>
+                            <li>Perform basic subnetting calculations.</li>
+                            <li>Configure static IP addresses and test network connectivity.</li>
+                            <li>Use command-line tools for network troubleshooting.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Chapter 1  -->
+            <div class="card networking-card" id="chapter-1">
+                <div class="card-header">
+                    <h2>2. IP Addressing and Classes</h2>
+                </div>
+                <div class="content">
+                    <h3 class="section-title">What is an IP Address?</h3>
+                    <p>An IP address is like a postal address for devices on a network. Just as your home needs a unique
+                        street address to
+                        receive mail, every device on a network needs a unique IP address to communicate.
+                    </p>
+                </div>
+                <div class="content">
+                    <div class="list">
+                        <h4 class="section-title">Key Points:</h4>
+                        <ul>
+                            <li><strong>IPv4</strong>: 32-bit addresses (e.g., 192.168.1.100).</li>
+                            <li><strong>IPv6</strong>: 128-bit addresses (for future expansion).</li>
+                            <li><strong>Format</strong>: Four numbers (0-255) separated by dots.</li>
+                        </ul>
+                    </div>
+
+                </div>
+                <h4>IP Address Structure</h4>
+                <div class="card-image">
+                    <img src="images/ipv4-address-structure.webp"
+                        alt="IPv4 address structure showing four octets 192.168.1.100 divided into network and host portions">
+                </div>
+                <p>Each number represents 8 bits (1 octet), ranging from 0-255.</p>
+                <!-- Table 1: Components and Interactions -->
+                <div class="table-container">
+                    <h4>IP Address Classes</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Class</th>
+                                <th>First Octet Range</th>
+                                <th>Address Range</th>
+                                <th>Default Subnet Mask</th>
+                                <th>Network/Host Bits</th>
+                                <th>Max Hosts</th>
+                                <th>Typical Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="blue">Class A</td>
+                                <td>1-126</td>
+                                <td>1.0.0.0 - 126.255.255.255</td>
+                                <td>255.0.0.0 (/8)</td>
+                                <td>8 network, 24 host</td>
+                                <td>16,777,214</td>
+                                <td>Large organizations</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Class B</td>
+                                <td>128-191</td>
+                                <td>128.0.0.0 - 191.255.255.255</td>
+                                <td>255.255.0.0 (/16)</td>
+                                <td>16 network, 16 host</td>
+                                <td>65,534</td>
+                                <td>Medium organizations</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Class C</td>
+                                <td>192-223</td>
+                                <td>192.0.0.0 - 223.255.255.255</td>
+                                <td>255.255.255.0 (/24)</td>
+                                <td>24 network, 8 host</td>
+                                <td>254</td>
+                                <td>Small networks</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h4>Definition of IPv6 Address</h4>
+                <p><strong>IPv6 (Internet Protocol version 6)</strong> is the most recent version of the Internet
+                    Protocol, designed to replace IPv4. An
+                    IPv6 address is a 128-bit alphanumeric string used to identify devices on a network. It allows
+                    for a vastly larger
+                    number of unique addresses than IPv4.</p>
+                <h4>IPv6 Address Format</h4>
+                <div class="list">
+                    <ol>
+                        <li>Written as eight groups of four hexadecimal digits, separated by colons (<code
+                                class="code">:</code>).</li>
+                        <li>Example: <code class="code">2001:0db8:85a3:0000:0000:8a2e:0370:7334</code>.</li>
+                        <li>Leading zeros in each group can be omitted.</li>
+                        <li>A consecutive group of zeros can be replaced with <code class="code">::</code> once per
+                            address for
+                            simplification.</li>
+                        <li>Example (compressed): <code class="code">2001:db8:85a3::8a2e:370:7334</code>.</li>
+                    </ol>
+                </div>
+                <div class="table-container">
+                    <h4>IPv4 vs IPv6 Comparison</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>IPv4</th>
+                                <th>IPv6</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="blue">Address Length</td>
+                                <td>32 bits</td>
+                                <td>128 bits</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Address Format</td>
+                                <td>Decimal, four octets separated by dots (e.g., 192.168.1.1)</td>
+                                <td>Hexadecimal, eight groups separated by colons (e.g., 2001:0db8::1)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Address Space</td>
+                                <td>~4.3 billion addresses</td>
+                                <td>~340 undecillion addresses</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Header Complexity</td>
+                                <td>Simple</td>
+                                <td>More complex but more efficient in routing</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Security</td>
+                                <td>Optional (IPSec is optional)</td>
+                                <td>Built-in support for IPSec</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Configuration</td>
+                                <td>Manual or DHCP</td>
+                                <td>Auto-configuration (Stateless Address AutoConfig)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">NAT (Network Address Translation)</td>
+                                <td>Common due to limited address space</td>
+                                <td>Not needed due to vast address space</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Broadcast</td>
+                                <td>Supports broadcast</td>
+                                <td>No broadcast (uses multicast instead)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Fragmentation</td>
+                                <td>Done by sender and routers</td>
+                                <td>Done only by the sender</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h4>Public IP Address</h4>
+                <p>A <strong>public IP address</strong> is a globally unique IP address assigned by an Internet
+                    Service Provider (ISP) that allows devices to communicate over
+                    the internet. These addresses are routable on the public internet and can be accessed from
+                    anywhere in the world.
+                </p>
+                <div class="list">
+                    <p><strong class="subtitle">Key Characteristics:</strong></p>
+                    <ol>
+                        <li>Globally unique (no two devices share the same public IP).</li>
+                        <li>Assigned and controlled by ISPs.</li>
+                        <li>Required for internet access.</li>
+                        <li>Costs money to obtain.</li>
+                        <li>Visible to the entire internet.</li>
+                        <li>Less secure (exposed to attacks).</li>
+                    </ol>
+                </div>
+                <h4>Private IP Address</h4>
+                <p>A <strong>private IP address</strong> is a non-routable IP address used within local networks
+                    (LANs) for internal communication between devices. These
+                    addresses are assigned by routers and cannot be accessed directly from the internet.
+                </p>
+                <div class="list">
+                    <p><strong class="subtitle">Key Characteristics:</strong></p>
+                    <ol>
+                        <li>Non-unique (can be reused in different networks).</li>
+                        <li>Assigned by local routers/network devices.</li>
+                        <li>Used for internal network communication only.</li>
+                        <li>Free of cost.</li>
+                        <li>Not accessible from the internet.</li>
+                        <li>More secure (hidden from external access).</li>
+                    </ol>
+                </div>
+                <div class="table-container">
+                    <h4>Private IP Address Ranges (RFC 1918)</h4>
+                    <p>Private IP addresses are reserved for internal use and defined by <a class="link"
+                            href="https://datatracker.ietf.org/doc/html/rfc1918">RFC 1918</a>:</p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Class</th>
+                                <th>IP Range</th>
+                                <th>Subnet Mask</th>
+                                <th>CIDR</th>
+                                <th>Number of IPs</th>
+                                <th>Typical Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="blue">Class A</td>
+                                <td>10.0.0.0 - 10.255.255.255</td>
+                                <td>255.0.0.0</td>
+                                <td>/8</td>
+                                <td>16,777,216</td>
+                                <td>Large organizations</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Class B</td>
+                                <td>172.16.0.0 - 172.31.255.255</td>
+                                <td>255.255.0.0</td>
+                                <td>/16</td>
+                                <td>1,048,576</td>
+                                <td>Medium organizations</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Class C</td>
+                                <td>192.168.0.0 - 192.168.255.255</td>
+                                <td>255.255.255.0</td>
+                                <td>/24</td>
+                                <td>65,536</td>
+                                <td>Home/small office</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p><strong>Real-World Example</strong>: Your home router uses 192.168.1.1 (private)
+                    internally but
+                    gets a public IP from your ISP for
+                    internet access.</p>
+                <div class="table-container">
+                    <h3>Comparison Table: Public vs Private IP Addresses</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>Public IP Address</th>
+                                <th>Private IP Address</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Scope</td>
+                                <td>Global reach</td>
+                                <td>Local network only</td>
+                            </tr>
+                            <tr>
+                                <td>Uniqueness</td>
+                                <td>Globally unique</td>
+                                <td>Non-unique (reusable)</td>
+                            </tr>
+                            <tr>
+                                <td>Communication</td>
+                                <td>Internet communication</td>
+                                <td>Internal network communication</td>
+                            </tr>
+                            <tr>
+                                <td>Assigned by</td>
+                                <td>Internet Service Provider (ISP)</td>
+                                <td>Local router/network device</td>
+                            </tr>
+                            <tr>
+                                <td>Cost</td>
+                                <td>Paid service</td>
+                                <td>Free</td>
+                            </tr>
+                            <tr>
+                                <td>Security</td>
+                                <td>Less secure (exposed)</td>
+                                <td>More secure (internal)</td>
+                            </tr>
+                            <tr>
+                                <td>Access</td>
+                                <td>Accessible from anywhere</td>
+                                <td>Only within local network</td>
+                            </tr>
+                            <tr>
+                                <td>Routing</td>
+                                <td>Routable on internet</td>
+                                <td>Non-routable on internet</td>
+                            </tr>
+                            <tr>
+                                <td>Example</td>
+                                <td>8.8.8.8, 17.5.7.8</td>
+                                <td>192.168.1.100, 10.0.0.5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-container">
+                    <h4>Special Purpose IP Ranges</h4>
+                    <p><strong class="subtitle">Reserved/Special Use Addresses</strong></p>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Range</th>
+                                <th>Purpose</th>
+                                <th>Classification</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="blue">0.0.0.0 - 0.255.255.255</td>
+                                <td>"This network"</td>
+                                <td>Reserved</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">127.0.0.0 - 127.255.255.255</td>
+                                <td>Loopback (localhost)</td>
+                                <td>Reserved</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">169.254.0.0 - 169.254.255.255</td>
+                                <td>Link-local (APIPA)</td>
+                                <td>Reserved</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">224.0.0.0 - 239.255.255.255</td>
+                                <td>Multicast (Class D)</td>
+                                <td>Special</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">240.0.0.0 - 255.255.255.255</td>
+                                <td>Experimental (Class E)</td>
+                                <td>Reserved</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="sub"><strong class="subtitle">Link-local address</strong></p>
+                <p>A link-local address in IPv4 is a special type of IP address that is automatically assigned to a
+                    network interface when
+                    no IP address is available from DHCP, and no static IP has been set. Its main role is to enable
+                    communication only
+                    within the local network segment (link); it cannot be routed or accessed from outside the local
+                    subnet.
+                </p>
+                <p class="sub"><strong class="subtitle">Loopback address</strong></p>
+                <p>A loopback address in IPv4 is a special IP address range that is reserved for testing network
+                    functions on the local
+                    computer. It allows the device to send network traffic to itself, bypassing any network hardware or
+                    external
+                    destinations.</p>
+
+                <h3>Hands-On Exercise 1: Find Your IP Address</h3>
+                <h4>Windows Commands:</h4>
+                <div class="code-block">
+                    <pre>
+<code >ipconfig <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Basic IP info</span>
+ipconfig /all <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Detailed configuration</span>
+ipconfig /release <span>&nbsp;&nbsp;# Release current IP</span>
+ipconfig /renew <span>&nbsp;&nbsp;&nbsp;&nbsp;# Get new IP from DHCP</span></code>
+</pre>
+                </div>
+                <h4>Linux Commands:</h4>
+                <div class="code-block">
+                    <pre>
+<code >ip addr show <span>&nbsp;&nbsp;# Modern Linux command</span>
+ifconfig <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Traditional command</span>
+hostname -I <span>&nbsp;&nbsp;&nbsp;# Just the IP address</span>
+ip route <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Show routing table</span></code>
+</pre>
+                </div>
+
+                <div class="list">
+                    <p><strong class="subtitle">Public IP Address:</strong></p>
+                    <ul>
+                        <li>Search "What is my IP" on Google.</li>
+                        <li>Visit <a href="https://www.whatismyip.com">whatismyip.com</a>.</li>
+                        <li>Use command: <code class="code">curl ifconfig.me</code>.</li>
+                    </ul>
+                </div>
+                <h3>Real-World Example</h3>
+                <h4>Home Network Setup:</h4>
+                <div class="card-image">
+                    <img src="images/network-setup.webp" alt="Home Network Setup">
+                </div>
+                <div class="list">
+                    <ul>
+                        <li><strong>Public IP</strong>: 203.0.113.45 (assigned by ISP).</li>
+                        <li><strong>Private IPs</strong>: 192.168.1.x (assigned by router).</li>
+                        <li><strong>NAT</strong>: Router translates between public and private addresses.</li>
+                    </ul>
+                </div>
+                <p>This structure allows multiple devices to share one public IP address while maintaining separate
+                    private addresses for
+                    internal communication.</p>
+                <div class="list">
+                    <h4>What to Record:</h4>
+                    <ul>
+                        <li>Your current IP address and its class.</li>
+                        <li>Subnet mask.</li>
+                        <li>Default gateway (router IP).</li>
+                        <li>DNS servers.</li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <h4>Practice Exercise:</h4>
+                    <p>Identify the class of these IP addresses:</p>
+                    <ul>
+                        <li>10.0.0.1 ⟶ Class A (Private).</li>
+                        <li>172.16.5.10 ⟶ Class B (Private).</li>
+                        <li>172.16.5.10 ⟶ Class B (Private).</li>
+                        <li>203.45.67.89 ⟶ Class C (Public).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- In-Content Ad #1 -->
+            <div class="ad-container ad-in-content">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-after-intro">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX"
+                        data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <!-- Chapter 2  -->
+            <div class="card networking-card" id="chapter-2">
+                <div class="card-header">
+                    <h2>3. MAC Addresses (Media Access Control)</h2>
+                </div>
+                <div class="content">
+                    <h3 class="section-title">What is a MAC Address?</h3>
+                    <p>A MAC address is like a permanent serial number burned into your network card. Unlike IP
+                        addresses that can change, MAC
+                        addresses are unique and permanent. [<a class="link"
+                            href="https://www.geeksforgeeks.org/computer-networks/mac-address-in-computer-network">2</a>]
+                    </p>
+                    <p>A <strong>MAC (Media Access Control) Address</strong> is a unique <strong>48-bit</strong>
+                        hardware identifier that is permanently embedded into a Network
+                        Interface Card (NIC) during the manufacturing process. It serves as the physical address of a
+                        network device and
+                        operates at the <strong>Data Link Layer (Layer 2)</strong> of the OSI model.</p>
+                </div>
+                <div class="list">
+                    <p>In the <strong>IEEE 802</strong> standard, the Data Link Layer is divided into two sublayers :
+                    </p>
+                    <ol>
+                        <li><strong>Logical Link Control (LLC) Sublayer</strong> - Handles error detection and flow
+                            control</li>
+                        <li><strong>Media Access Control (MAC) Sublayer</strong> - Manages access to the physical medium
+                        </li>
+                    </ol>
+                    <p>The MAC address is specifically used by the <strong>Media Access Control sublayer</strong> to
+                        ensure proper frame delivery within a local
+                        network segment.</p>
+                </div>
+                <div class="card-image">
+                    <h4>Format and Structure:</h4>
+                    <img src="images/mac-address-format-structure.webp" alt="MAC address format showing 48-bit
+                        hexadecimal address 00:1A:2B:3C:4D:5E structure">
+                    <div class="list">
+                        <p><strong class="subtitle">Common Formatting Styles</strong></p>
+                        <ul>
+                            <li>Windows: <code class="code">0-1A-2B-3C-4D-5E</code> (hyphens).</li>
+                            <li>Linux/Unix: <code class="code">00:1A:2B:3C:4D:5E</code> (colons).</li>
+                            <li>Cisco: <code class="code">001A.2B3C.4D5E</code> (dots every 4 digits).</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p><strong class="subtitle">Key Characteristics:</strong></p>
+                        <ul>
+                            <li>48 bits (6 bytes) long.</li>
+                            <li>First 3 bytes = Manufacturer ID (OUI).</li>
+                            <li>Last 3 bytes = Device unique identifier.</li>
+                            <li>Never changes (factory-assigned).</li>
+                            <li>Written in hexadecimal (0-9, A-F).</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="list">
+                    <h4>Types of MAC Addresses</h4>
+                    <p><strong class="subtitle">Based on Network Interface Type</strong></p>
+                    <ul>
+                        <li><strong>Wired NIC MAC</strong> - For Ethernet connections.</li>
+                        <li><strong>Wireless NIC MAC</strong> - For Wi-Fi connections.</li>
+                        <li><strong>Bluetooth MAC</strong> - For Bluetooth devices.</li>
+                    </ul>
+                    <p><strong class="subtitle">Based on Address Scope</strong></p>
+                    <ul>
+                        <li><strong>Unicast</strong> - Identifies a single device.</li>
+                        <li><strong>Multicast</strong> - Identifies a group of devices.</li>
+                        <li><strong>Broadcast</strong> - Addresses all devices (FF:FF:FF:FF:FF:FF).</li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <h4>Real-World Uses of MAC Addresses</h4>
+                    <ol>
+                        <li><strong>Network Switches</strong> learn which devices are on which ports.</l>
+                        <li><strong>Wi-Fi Security</strong> can filter devices by MAC address (MAC filtering)</l>
+                        <li><strong>Wake-on-LAN</strong> uses MAC to wake sleeping computers.</li>
+                        <li><strong>DHCP Reservations</strong> assign same IP to same MAC address.</li>
+                        <li><strong>Asset Tracking</strong> IT departments track hardware by MAC.</li>
+                    </ol>
+                </div>
+
+                <h3>Hands-On Exercise 2: Find Your MAC Address</h3>
+                <h4>Windows Methods:</h4>
+                <div class="code-block">
+                    <pre>
+<code>getmac /v <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Verbose (v) MAC address info</span>
+ipconfig /all <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Shows MAC as "Physical Address"</span>
+wmic bios get serialnumber <span>&nbsp;# Additional hardware info</span></code>
+</pre>
+                </div>
+                <h4>Linux Methods:</h4>
+                <div class="code-block">
+                    <pre>
+<code>ip link show <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# Show all interface MAC addresses</span>
+cat /sys/class/net/eth0/address <span>&nbsp;&nbsp;&nbsp;# Ethernet MAC</span>
+cat /sys/class/net/wlan0/address <span>&nbsp;&nbsp;# Wi-Fi MAC</span>
+arp <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# ARP table entries</span></code>
+</pre>
+                </div>
+                <div class="list">
+                    <h4>Try This Exercise:</h4>
+                    <ol>
+                        <li>Find your Wi-Fi and Ethernet MAC addresses.</li>
+                        <li>Look up the manufacturer using first 6 digits at: <a
+                                href="https://maclookup.app/">https://maclookup.app/</a>.</li>
+                        <li>Use <code class="code">arp -a</code> to discover other devices on your network</li>
+                        <li>Create a network device inventory table (Example):</li>
+                    </ol>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Device Name</th>
+                                    <th>IP Address</th>
+                                    <th>MAC Address</th>
+                                    <th>Device Type</th>
+                                    <th>Manufacturer</th>
+                                    <th>Model</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                    <th>OS/Firmware</th>
+                                    <th>Last Seen</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">RT-Gateway</td>
+                                    <td>192.168.1.1</td>
+                                    <td>00:1A:2B:3C:4D:5E</td>
+                                    <td>Router</td>
+                                    <td>Cisco</td>
+                                    <td>ISR-4331</td>
+                                    <td>Server Room</td>
+                                    <td>Active</td>
+                                    <td>IOS 16.12.04</td>
+                                    <td>2025-09-18 14:30</td>
+                                    <td>Main gateway</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">SW-Floor1</td>
+                                    <td>192.168.1.10</td>
+                                    <td>11:22:33:44:55:66</td>
+                                    <td>Switch</td>
+                                    <td>Netgear</td>
+                                    <td>GS108</td>
+                                    <td>Floor 1 Closet</td>
+                                    <td>Active</td>
+                                    <td>Firmware 2.3</td>
+                                    <td>2025-09-18 14:25</td>
+                                    <td>8-port switch</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">PC-Admin</td>
+                                    <td>192.168.1.100</td>
+                                    <td>AA:BB:CC:DD:EE:FF</td>
+                                    <td>Desktop</td>
+                                    <td>Dell</td>
+                                    <td>OptiPlex 7090</td>
+                                    <td>Office 201</td>
+                                    <td>Active</td>
+                                    <td>Windows 11 Pro</td>
+                                    <td>2025-09-18 14:35</td>
+                                    <td>Admin workstation</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">PR-Office</td>
+                                    <td>192.168.1.25</td>
+                                    <td>FF:EE:DD:CC:BB:AA</td>
+                                    <td>Printer</td>
+                                    <td>HP</td>
+                                    <td>LaserJet 400</td>
+                                    <td>Office 205</td>
+                                    <td>Active</td>
+                                    <td>Firmware v3.2</td>
+                                    <td>2025-09-18 14:20</td>
+                                    <td>Network printer</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">AP-Wifi1</td>
+                                    <td>192.168.1.50</td>
+                                    <td>99:88:77:66:55:44</td>
+                                    <td>Access Point</td>
+                                    <td>Ubiquiti</td>
+                                    <td>UAP-AC-Lite</td>
+                                    <td>Ceiling-Floor1</td>
+                                    <td>Active</td>
+                                    <td>UniFi 6.0.14</td>
+                                    <td>2025-09-18 14:28</td>
+                                    <td>Main WiFi AP</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">CAM-Entry</td>
+                                    <td>192.168.1.200</td>
+                                    <td>12:34:56:78:90:AB</td>
+                                    <td>IP Camera</td>
+                                    <td>Hikvision</td>
+                                    <td>DS-2CD2143G2</td>
+                                    <td>Front Entry</td>
+                                    <td>Active</td>
+                                    <td>V5.7.10</td>
+                                    <td>2025-09-18 14:32</td>
+                                    <td>Security camera</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <h4>View Other Devices' MACs:</h4>
+                <div class="code-block">
+                    <pre>
+<code>arp -a <span>&nbsp;&nbsp;# Shows MAC addresses of recently contacted devices</span></code>
+</pre>
+                </div>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="card networking-card" id="chapter-3">
+                <div class="card-header">
+                    <h2>4. DNS (Domain Name System)</h2>
+                </div>
+                <div class="content">
+                    <h3 class="section-title">What is DNS?</h3>
+                    <p><strong>DNS</strong> is like the internet's phone book. It translates human-friendly names (<a
+                            href="https://www.google.com"></a>google.com) into IP addresses that computers
+                        understand. [<a class="link" href="https://www.cloudflare.com/learning/dns/what-is-dns">3</a>]
+                    </p>
+
+                    <h4>The DNS Process:</h4>
+                    <div class="output bg">
+                        <div class="output-text">
+                            <p>User Action: Type <span class="blue">"google.com"</span> in browser</p>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8675;</span>
+                            <p>DNS Query: <span class="blue">"What's the IP for google.com?"</span></p>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8675;</span>
+                            <p>DNS Server: <span class="blue">"google.com = 142.250.191.46"</span></p>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8675;</span>
+                            <p>Browser: Connects to 142.250.191.46</p>
+                        </div>
+                    </div>
+                    <div class="card-image">
+                        <img src="images/dns-resolution-process-diagram.webp"
+                            alt="Six-step DNS query process from user input to browser connection with IP address">
+                    </div>
+                    <div class="list">
+                        <h4>How DNS Works Step-by-Step</h4>
+                        <ol>
+                            <li><strong>User Input</strong>: You enter "google.com" in browser.</li>
+                            <li><strong>Local Cache Check</strong>: Computer checks if it already knows the IP.</li>
+                            <li><strong>DNS Query</strong>: If not cached, asks configured DNS server.</li>
+                            <li><strong>Recursive Lookup</strong>: DNS server queries other servers if needed.</li>
+                            <li><strong>Response</strong>: DNS server returns IP address (142.250.191.46).</li>
+                            <li><strong>Connection</strong>: Your browser connects to that IP address.</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="list">
+                    <h4>Explanation</h4>
+                    <p class="sub"><strong class="subtitle">Step 1: User Input</strong></p>
+                    <p><strong>🌐 Browser</strong>: User types "google.com".</p>
+                    <ul>
+                        <li><strong>Purpose</strong>: Start the web browsing process.</li>
+                        <li><strong>Simple Explanation</strong>: You enter a website name (like google.com) in your
+                            browser's address bar instead of typing a complicated number. This is
+                            much easier to remember than an IP address like 142.250.191.46.</li>
+                    </ul>
+                    <p class="sub"><strong class="subtitle">Step 2: Local Cache Check</strong></p>
+                    <p><strong>💻 Computer</strong>: Checks "local DNS cache".</p>
+                    <ul>
+                        <li><strong>Purpose</strong>: Speed up browsing by checking stored information first.</li>
+                        <li><strong>Simple Explanation</strong>: Your computer looks in its memory to see if it already
+                            knows the IP address for google.com. This is like checking your
+                            phone's contact list before asking someone for a phone number.</li>
+                    </ul>
+                    <p class="sub"><strong class="subtitle">Step 3: DNS Query</strong></p>
+                    <p><strong>🗂️ DNS Server</strong>: "DNS query if not cached".</p>
+                    <ul>
+                        <li><strong>Purpose</strong>: Ask for help when the computer doesn't know the answer.</li>
+                        <li><strong>Simple Explanation</strong>: If your computer doesn't have the IP address saved, it
+                            asks your internet provider's DNS server for help. It's like
+                            calling directory assistance when you can't find a phone number.</li>
+                    </ul>
+                    <p class="sub"><strong class="subtitle">Step 4: Recursive Lookup</strong></p>
+                    <p><strong>🔍 Server Stack</strong>: "DNS server performs recursive lookup".</p>
+                    <ul>
+                        <li><strong>Purpose</strong>: Find the correct answer by asking multiple sources.</li>
+                        <li><strong>Simple Explanation</strong>: The DNS server searches through a network of other
+                            servers to find the right IP address. Think of it like asking
+                            different librarians until someone finds the book you need.</li>
+                    </ul>
+                    <p class="sub"><strong class="subtitle">Step 5: DNS Response</strong></p>
+                    <p><strong>📡 DNS Server Returns</strong>: "DNS server returns IP (142.250.191.46)".</p>
+                    <ul>
+                        <li><strong>Purpose</strong>: Provide the computer with the actual internet address.</li>
+                        <li><strong>Simple Explanation</strong>: The DNS server sends back the IP address
+                            (142.250.191.46) to your computer. This is like getting the actual street
+                            address after asking for directions to "the big red house".</li>
+                    </ul>
+                    <p class="sub"><strong class="subtitle">Step 6: Browser Connection</strong></p>
+                    <p><strong>🌍 Globe/Serve</strong>: "Browser connects to IP address".</p>
+                    <ul>
+                        <li><strong>Purpose</strong>: Establish communication with the actual website.</li>
+                        <li><strong>Simple Explanation</strong>: Your browser uses the IP address to connect directly to
+                            Google's servers and load the website. It's like using the
+                            street address to drive to the correct house.s</li>
+                    </ul>
+                </div>
+                <div class="list">
+                    <h4>Why This Process Matters</h4>
+                    <p><strong>Real-World Analogy</strong>: DNS is like a phone book for the internet.</p>
+                    <ul>
+                        <li><strong>Without DNS</strong>: You'd have to memorize numbers like 142.250.191.46 for every
+                            website.
+                        </li>
+                        <li><strong>With DNS</strong>: You can simply type google.com and let the system find the right
+                            address.
+                        </li>
+                        <li><strong>Speed</strong>: The cache system makes frequently visited sites load faster.</li>
+                        <li><strong>Reliability</strong>: Multiple DNS servers ensure websites can always be found.</li>
+                    </ul>
+                    <p><strong>Time</strong>: This entire process happens in milliseconds, making web browsing feel
+                        instant even though multiple computers are working
+                        together to translate your request.</p>
+                </div>
+                <h4>DNS Hierarchy</h4>
+                <div class="code-block">
+                    <pre>
+<code>Root Servers (.)
+    ├── Top Level Domain (.com, .org, .net)
+    │   ├── Authoritative Servers (google.com)
+    │   └── Subdomains (mail.google.com)
+    └── Local DNS Cache</code>
+</pre>
+                </div>
+                <div class="table-container">
+                    <h4>Common DNS Servers</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Provider</th>
+                                <th>Primary DNS</th>
+                                <th>Secondary DNS</th>
+                                <th>Benefits</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="blue">Google</td>
+                                <td>8.8.8.8</td>
+                                <td>8.8.4.4</td>
+                                <td>Fast, reliable, free</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Cloudflare</td>
+                                <td>1.1.1.1</td>
+                                <td>1.0.0.1</td>
+                                <td>Privacy-focused, fast</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">OpenDNS</td>
+                                <td>208.67.222.222</td>
+                                <td>208.67.220.220</td>
+                                <td>Content filtering</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Quad9</td>
+                                <td>9.9.9.9</td>
+                                <td>149.112.112.112</td>
+                                <td>Security filtering</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Hands-On Exercise 3: DNS Testing</h3>
+                <h4>Test DNS Resolution:</h4>
+                <div class="code-block">
+                    <pre>
+<code>nslookup google.com           <span># Basic DNS lookup</span> 
+nslookup google.com 8.8.8.8   <span># Use specific DNS server</span> 
+ping google.com               <span># Test connectivity + DNS</span></code>
+</pre>
+                </div>
+                <h4>Advanced DNS Testing:</h4>
+                <div class="code-block">
+                    <pre>
+<code>nslookup -type=MX google.com   <span># Mail server records</span>
+nslookup -type=NS google.com   <span># Name server records</span></code>
+</pre>
+                </div>
+                <div class="list">
+                    <h4>Change DNS Settings (Windows):</h4>
+                    <ol>
+                        <li>Control Panel ⟶ Network and Internet ⟶ Network Connections</li>
+                        <li>Right-click your adapter ⟶ Properties</li>
+                        <li>Select "Internet Protocol Version 4 (TCP/IPv4)" ⟶ Properties</li>
+                        <li>Select "Use the following DNS server addresses"</li>
+                        <li>Enter: Primary: 8.8.8.8, Secondary: 8.8.4.4</li>
+                        <li>Test: <code class="code">nslookup google.com</code></li>
+                    </ol>
+                </div>
+                <h4>Linux DNS Configuration:</h4>
+                <div class="code-block">
+                    <pre>
+<code><span># View current DNS settings</span>
+cat /etc/resolv.conf
+
+<span># Temporary change (Ubuntu/Debian)</span>
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf
+
+<span># Test the change</span>
+nslookup google.com
+
+<span># Check specific record type</span>
+dig example.com MX
+dig example.com TXT
+
+<span># Check all records</span>
+dig example.com ANY</code>
+</pre>
+                </div>
+                <div class="table-container">
+                    <h4>Common DNS Record Types</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Record Type</th>
+                                <th>Full Name</th>
+                                <th>Purpose</th>
+                                <th>Points To</th>
+                                <th>Example</th>
+                                <th>Use Case</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="blue">A</td>
+                                <td>Address</td>
+                                <td>Maps domain to IPv4 address</td>
+                                <td>IPv4 address</td>
+                                <td>example.com ⟶ 192.0.2.1</td>
+                                <td>Basic website hosting</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">AAAA</td>
+                                <td>IPv6 Address</td>
+                                <td>Maps domain to IPv6 address</td>
+                                <td>IPv6 address</td>
+                                <td>example.com ⟶ 2001:db8::1</td>
+                                <td>Modern IPv6 websites</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">CNAME</td>
+                                <td>Canonical Name</td>
+                                <td>Creates alias/redirect</td>
+                                <td>Another domain name</td>
+                                <td>www.example.com ⟶ example.com</td>
+                                <td>Subdomain redirects</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">MX</td>
+                                <td>Mail Exchange</td>
+                                <td>Directs email traffic</td>
+                                <td>Mail server hostname</td>
+                                <td>example.com ⟶ mail.example.com</td>
+                                <td>Email routing</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">NS</td>
+                                <td>Name Server</td>
+                                <td>Specifies authoritative DNS servers</td>
+                                <td>DNS server hostname</td>
+                                <td>example.com ⟶ ns1.provider.com</td>
+                                <td>DNS delegation</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">TXT</td>
+                                <td>Text</td>
+                                <td>Stores text information</td>
+                                <td>Text string</td>
+                                <td>example.com ⟶ "v=spf1 include:_spf.google.com ~all"</td>
+                                <td>Verification, SPF, DKIM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h4>DNS Troubleshooting Exercise:</h4>
+                <p>Try to resolve these domains and note the response times:</p>
+                <div class="list">
+                    <ol>
+                        <li><a href="https://google.com" class="link">google.com</a></li>
+                        <li><a href="https://facebook.com" class="link">facebook.com</a></li>
+                        <li><a href="https://github.com" class="link">github.com</a></li>
+                        <li><a href="https://stackoverflow.com" class="link">overflow.com</a></li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- In-Content Ad #2 -->
+            <div class="ad-container ad-in-content">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-after-section3">
+                    <ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <!-- Chapter 4 -->
+            <div class="card networking-card" id="chapter-4">
+                <div class="card-header">
+                    <h2>5. DHCP (Dynamic Host Configuration Protocol)</h2>
+                </div>
+                <div class="content">
+                    <h3 class="section-title">What is DHCP?</h3>
+                    <p><strong>DHCP - (Dynamic Host Configuration Protocol)</strong>
+                        DHCP is a network management protocol used to automatically assign IP addresses and other
+                        network configuration settings (like subnet mask, default gateway, and DNS servers) to devices
+                        on a network. [<a class="link"
+                            href="https://mkdev.me/posts/how-networks-work-what-is-a-switch-router-dns-dhcp-nat-vpn-and-a-dozen-of-other-useful-things">3</a>]
+                        [<a class="link"
+                            href="https://www.univention.com/blog-en/2019/03/brief-introduction-dhcp-dns">4</a>]
+                    </p>
+                    <div class="list">
+                        <ul>
+                            <li><strong>Dynamic</strong>: Assigns IPs automatically (no manual setup needed).</li>
+                            <li><strong>Centralized</strong>: Managed by a DHCP server.</li>
+                            <li><strong>Efficient</strong>: Prevents IP conflicts by tracking active leases.</li>
+                            <li><strong>Common Usage</strong>: Home Wi-Fi routers use DHCP to give IPs to phones,
+                                laptops, smart devices.</li>
+                        </ul>
+                    </div>
+                    <h4>The DHCP Process (DORA)</h4>
+                    <p class="sub"><strong class="subtitle">Step-by-step process</strong>:</p>
+                    <div class="output bg">
+                        <div class="output-text">
+                            <p>1. <span class="blue">DISCOVER</span> ⟶ <span class="yellow">Client</span>: "I need an IP
+                                address!" (Broadcast)</p>
+                            <p>2. <span class="blue">OFFER</span> ⟵ <span class="yellow">Server</span>: "Here's IP
+                                192.168.1.105" (Broadcast)</p>
+                            <p>3. <span class="blue">REQUEST</span> ⟶ <span class="yellow">Client</span>: "I'll take
+                                that IP" (Broadcast)></p>
+                            <p>4. <span class="blue">ACKNOWLEDGE</span> ⟵ <span class="yellow">Server</span>: "IP
+                                confirmed, lease: 24 hours" (Unicast)</p>
+                        </div>
+                    </div>
+                    <div class="card-image">
+                        <img src="images/dhcp-dora-process-diagram.webp"
+                            alt="DHCP DORA process showing Discover Offer Request Acknowledge four-step sequence">
+                    </div>
+                    <div class="list">
+                        <p><strong>Real-World Example</strong>: When you connect your phone to Wi-Fi, DHCP automatically
+                            provides:</p>
+                        <ol>
+                            <li>IP address (192.168.1.105)</li>
+                            <li>Subnet mask (255.255.255.0)</li>
+                            <li>Gateway (192.168.1.1)</li>
+                            <li>DNS servers (8.8.8.8, 8.8.4.4)</li>
+                            <li>Lease time (24 hours)</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <h4>DHCP vs Static IP Comparison</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Aspect</th>
+                                <th>DHCP</th>
+                                <th>Static IP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Configuration</td>
+                                <td>Automatic</td>
+                                <td>Manual setup</td>
+                            </tr>
+                            <tr>
+                                <td>Best for</td>
+                                <td>User devices, phones, laptops</td>
+                                <td>Servers, printers, network devices</td>
+                            </tr>
+                            <tr>
+                                <td>IP Changes</td>
+                                <td>Can change after reboot/lease expires</td>
+                                <td>Always the same</td>
+                            </tr>
+                            <tr>
+                                <td>Management</td>
+                                <td>Easy for many devices</td>
+                                <td>Precise control</td>
+                            </tr>
+                            <tr>
+                                <td>Troubleshooting</td>
+                                <td>May need to check DHCP server</td>
+                                <td>Direct configuration</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Hands-On Exercise 4: DHCP Commands</h3>
+                <h4>Test DHCP on Windows:</h4>
+                <div class="code-block">
+                    <pre>
+<code>ipconfig /release        <span># Release current IP</span>
+ipconfig /renew          <span># Request new IP from DHCP</span>
+ipconfig /all            <span># View full configuration including lease info</span></code>
+</pre>
+                </div>
+                <p><strong>What Happens:</strong></p>
+                <p>Your computer releases its current IP and requests a new one from your router's DHCP server.</p>
+                <h4>Linux DHCP Commands:</h4>
+                <div class="code-block">
+                    <pre>
+<code>sudo dhclient -r         <span># Release IP</span>
+sudo dhclient           <span># Renew IP</span>
+ip addr show            <span># Check new configuration</span></code>
+</pre>
+                </div>
+                <div class="list">
+                    <h4>DHCP Information Exercise:</h4>
+                    <p>After running <code class="code">ipconfig /all</code>, document:</p>
+                    <ul>
+                        <li>DHCP Enabled: Yes/No</li>
+                        <li>DHCP Server IP</li>
+                        <li>Lease Obtained timestamp</li>
+                        <li>Lease Expires timestamp</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Chapter 5 -->
+            <div class="card networking-card" id="chapter-5">
+                <div class="card-header">
+                    <h2>6. OSI and TCP/IP Models</h2>
+                </div>
+                <div class="content">
+                    <h3 class="section-title">OSI Model (Open Systems Interconnection Model)</h3>
+                    <p>The <strong>OSI model</strong> is a conceptual framework that standardizes how different computer
+                        systems communicate over a network. It divides the communication process into 7 distinct layers,
+                        with each layer having specific functions.[<a
+                            href="https://www.cloudflare.com/learning/ddos/glossary/open-systems-interconnection-model-osi"
+                            class="link">5</a>]</p>
+                    <p>This model helps engineers and developers understand, design, and troubleshoot networking systems
+                        in a structured way.</p>
+                    <div class="table-container">
+                        <h4>OSI Model Layers</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Layer</th>
+                                    <th>Name</th>
+                                    <th>Function</th>
+                                    <th>Real-World Example</th>
+                                    <th>Protocols</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>7</td>
+                                    <td class="blue">Application</td>
+                                    <td>What users interact with</td>
+                                    <td>Web browser, email client</td>
+                                    <td>HTTP, FTP, SMTP</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td class="blue">Presentation</td>
+                                    <td>Data formatting/encryption</td>
+                                    <td>JPEG images, MP3 files</td>
+                                    <td>SSL/TLS, JPEG</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td class="blue">Session</td>
+                                    <td>Manage connections</td>
+                                    <td>Login sessions, video calls</td>
+                                    <td>NetBIOS, RPC</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td class="blue">Transport</td>
+                                    <td>Reliable data delivery</td>
+                                    <td>Ensure all data arrives</td>
+                                    <td>TCP, UDP</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td class="blue">Network</td>
+                                    <td>Routing between networks</td>
+                                    <td>IP addresses, routers</td>
+                                    <td>IP, ICMP</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td class="blue">Data Link</td>
+                                    <td>Local network delivery</td>
+                                    <td>MAC addresses, switches</td>
+                                    <td>Ethernet, Wi-Fi</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="blue">Physical</td>
+                                    <td>Cables and electrical signals</td>
+                                    <td>Network cables, radio waves</td>
+                                    <td>Ethernet cables</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>TCP/IP Model (Transmission Control Protocol / Internet Protocol Model)</h3>
+                    <p>The <strong>TCP/IP model</strong> is a practical networking framework that defines how devices
+                        communicate over the internet and most modern networks. It is the foundation of the internet and
+                        describes how data is packaged, addressed, transmitted, routed, and received.</p>
+                    <p>Unlike the 7-layer OSI model, the TCP/IP model has 4 layers, and it maps closely to real-world
+                        protocols used today.</p>
+                    <div class="card-image">
+                        <img src="images/tcpip-model-4-layers-structure.webp"
+                            alt="TCP/IP model four layers Network Access Internet Transport and Application">
+                    </div>
+                    <h4>✅ The 4 Layers of the TCP/IP Model (Bottom to Top):</h4>
+                    <div class="list">
+                        <ol>
+                            <li class="sub"><strong class="subtitle">Network Access Layer (or Link Layer)</strong></li>
+                            <ul>
+                                <li>Responsible for physical network hardware, MAC addressing, and data framing.</li>
+                                <li>Examples: Ethernet, Wi-Fi, ARP.</li>
+                            </ul>
+                            <li class="sub"><strong class="subtitle">Internet Layer</strong></li>
+                            <ul>
+                                <li>Handles addressing, routing, and delivering data packets across networks.</li>
+                                <li>Examples: IP (IPv4, IPv6), ICMP.</li>
+                            </ul>
+                            <li class="sub"><strong class="subtitle">Transport Layer</strong></li>
+                            <ul>
+                                <li>Ensures reliable data delivery, error checking, and flow control..</li>
+                                <li>Examples: TCP (reliable), UDP (fast, connectionless).</li>
+                            </ul>
+                            <li class="sub"><strong class="subtitle">Application Layer</strong></li>
+                            <ul>
+                                <li>Provides services for end-user applications and defines how applications use the
+                                    network.</li>
+                                <li>Examples: HTTP/HTTPS (web), FTP (file transfer), DNS, SMTP/IMAP (email).</li>
+                            </ul>
+                        </ol>
+                    </div>
+                    <h4>Data Flow Example</h4>
+                    <p><strong>When you visit a website:</strong></p>
+                    <div class="output bg">
+                        <div class="output-text">
+                            <p>Layer <span class="blue">7</span> (Application): HTTP request "GET /index.html"</p>
+                            <p>Layer <span class="blue">4</span> (Transport): TCP ensures reliable delivery</p>
+                            <p>Layer <span class="blue">3</span> (Network): IP routes through routers</p>
+                            <p>Layer <span class="blue">2</span> (Data Link): Ethernet frames with MAC addresses</p>
+                            <p>Layer <span class="blue">1</span> (Physical): Electrical signals on cables</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-image">
+                    <img src="images/osi-tcp-ip-model.webp"
+                        alt="OSI model seven layers from Physical to Application with protocols and functions">
+                </div>
+                <div class="content">
+                    <h3>Hands-On Exercise 5: See Layers in Wireshark</h3>
+                    <div class="list">
+                        <h4>Install Wireshark:</h4>
+                        <ol>
+                            <li>Download from <a href="https://www.wireshark.org/"
+                                    class="link">https://www.wireshark.org/</a>.</li>
+                            <li>Install with default settings.</li>
+                            <li>Run as Administrator (Windows).</li>
+                        </ol>
+                        <h4>Capture Network Traffic:</h4>
+                        <ol>
+                            <li>Open Wireshark.</li>
+                            <li>your active network interface.</li>
+                            <li>Click "Start capturing packets" (blue fin icon).</li>
+                            <li>Open web browser, visit <a href="https://github.com/"
+                                    class="link">https://github.com/</a>.</li>
+                            <li>Stop capture after 30 seconds.</li>
+                        </ol>
+                        <h4>Analyze a Packet:</h4>
+                        <ol>
+                            <li>Filter for HTTP: Type http in filter bar.</li>
+                            <li>Find an HTTP GET request packet.</li>
+                            <li>Expand each layer in the packet details:</li>
+                            <ul>
+                                <li>Frame: Physical layer information.</li>
+                                <li>Ethernet II: MAC addresses (Layer 2).</li>
+                                <li>Internet Protocol: Source/destination IPs (Layer 3).</li>
+                                <li>Transmission Control Protocol: Port numbers (Layer 4).</li>
+                                <li>Hypertext Transfer Protocol: Web request (Layer 7). </li>
+                            </ul>
+                        </ol>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="list">
+                        <h4>Exercise Questions:</h4>
+                        <ol>
+                            <li><strong>What is the source MAC address?</strong></li>
+                            <p>The source MAC address is the hardware (physical) address of the network interface card
+                                (NIC) that sent the frame.</p>
+                            <ul>
+                                <li>Example format: <code class="code">00:1A:2B:3C:4D:5E</code>.</li>
+                                <li>You can find it in the Ethernet II section of a Wireshark capture, under "Source".
+                                </li>
+                            </ul>
+                            <li><strong>What is the destination IP address?</strong></li>
+                            <p>The destination IP address is the logical address of the device that should receive the
+                                packet.</p>
+                            <ul>
+                                <li>Example: <code class="code">142.250.191.46</code> (Google server).</li>
+                                <li>You can find it in the IP Header section under "Destination".</li>
+                            </ul>
+                            <li><strong>Which TCP port is being used?</strong></li>
+                            <p>The TCP port shows which application/service is being accessed on the destination
+                                machine.</p>
+                            <ul>
+                                <li>Example: TCP Port 80 (for HTTP) or TCP Port 443 (for HTTPS).</li>
+                                <li>You can find it in the Transmission Control Protocol section under "Destination
+                                    Port" and "Source Port".</li>
+                            </ul>
+                            <li><strong>What HTTP method is being used?</strong></li>
+                            <p>The HTTP method tells you what action is being requested by the client (browser).</p>
+                            <p>Common methods:</p>
+                            <ul>
+                                <li><code class="code">GET</code> ⟶ Requesting a resource (web page, image, etc.).</li>
+                                <li><code class="code">POST</code> ⟶ Sending data (form submission, API request).</li>
+                                <li>You can find it in the Hypertext Transfer Protocol section in Wireshark, usually
+                                    right at the start of the request line:</li>
+                            </ul>
+                        </ol>
+                    </div>
+                    <div class="code-block">
+                        <pre>
+<code>GET / HTTP/1.1</code>
+</pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- In-Content Ad #3 -->
+            <div class="ad-container ad-in-content">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-after-section5">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX"
+                        data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <!-- Chapter 6 -->
+            <div class="card networking-card" id="chapter-6">
+                <div class="card-header">
+                    <h2>7. Subnetting Basics</h2>
+                </div>
+                <div class="content">
+                    <h3 class="section-title">What is Subnetting?</h3>
+                    <p>Subnetting divides large networks into smaller sub-networks. It's like dividing a large apartment
+                        building into separate floors and units.[<a
+                            href="https://www.cbtnuggets.com/blog/technology/networking/networking-basics-what-is-ipv4-subnetting"
+                            class="link">6</a>]</p>
+                    <div class="list">
+                        <h4>Why Use Subnetting?</h4>
+                        <ol>
+                            <li><strong>Security</strong>: Separate departments/functions (Finance vs HR).</li>
+                            <li><strong>Performance</strong>: Reduce broadcast traffic and network congestion.</li>
+                            <li><strong>Management</strong>: Easier troubleshooting and organization.</li>
+                            <li><strong>Efficiency</strong>: Better IP address utilization</li>
+                            <li><strong>Control</strong>: Apply different policies to different subnets.</li>
+                        </ol>
+                    </div>
+                    <h4>Subnet Mask Explained</h4>
+                    <p>A subnet mask determines which part of an IP address identifies the network vs. individual hosts.
+                    </p>
+                    <p class="sub"><strong class="subtitle">Binary Explanation</strong>:</p>
+                    <div class="output bg">
+                        <div class="output-text">
+                            <p>IP Address: 192.168.1.100 = 11000000.10101000.00000001.01100100</p>
+                            <p>Subnet Mask: 255.255.255.0 = 11111111.11111111.11111111.00000000</p>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└───
+                                Network ───┘ └ Host ─┘</p>
+                        </div>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Common Subnet Masks</strong>:</p>
+                    <div class="output bg">
+                        <div class="output-text">
+                            <p><span class="yellow">/8</span> = <span class="blue">255.0.0.0</span> ⟶ 16,777,214 hosts
+                                (Class A default)</p>
+                            <p><span class="yellow">/16</span> = <span class="blue">255.255.0.0</span> ⟶ 65,534 hosts
+                                (Class B default)</p>
+                            <p><span class="yellow">/24</span> = <span class="blue">255.255.255.0</span> ⟶ 254 hosts
+                                (Class C default)</p>
+                            <p><span class="yellow">/25</span> = <span class="blue">255.255.255.128</span> ⟶ 126 hosts
+                            </p>
+                            <p><span class="yellow">/2</span> = <span class="blue">255.255.255.192</span> ⟶ 62 hosts</p>
+                            <p><span class="yellow">/27</span> = <span class="blue">255.255.255.224</span> ⟶ 30 hosts
+                            </p>
+                        </div>
+                    </div>
+                    <h4>Subnet Calculation Example</h4>
+                    <p><strong>Network: 192.168.1.0/24</strong></p>
+                    <div class="output bg">
+                        <div class="output-text">
+                            <p><span class="blue">Network Address</span>: <span class="yellow">192.168.1.0</span> (first
+                                address, not usable for hosts)</p>
+                            <p><span class="blue">Subnet Mask</span>: <span class="yellow">255.255.255.0 </span> (/24 =
+                                24 network bits)</p>
+                            <p><span class="blue">First Usable Host</span>: <span class="yellow">192.168.1.1</span>
+                                (usually the router/gateway)</p>
+                            <p><span class="blue">Last Usable Host</span>: <span class="yellow">192.168.1.254</span></p>
+                            <p><span class="blue">Broadcast Address</span>: <span class="yellow">192.168.1.255</span>
+                                (last address, not usable for hosts)</p>
+                            <p><span class="blue">Total Addresses</span>: <span class="yellow">256</span></p>
+                            <p><span class="blue">Total Usable Hosts</span>: <span class="yellow">254 (256 - 2)</span>
+                            </p>
+                        </div>
+                    </div>
+                    <h4>Formula for Total Usable Hosts</h4>
+                    <p>Total Usable Hosts = 2 <sup><em>(Number of Host Bits)</em></sup> - 2</p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Explanation</strong>:</p>
+                        <ul>
+                            <li>Number of Host Bits = Total bits in IP address (32 for IPv4) − Network bits (prefix
+                                length).</li>
+                            <li>We subtract 2 addresses because:</li>
+                            <ul>
+                                <li>One is reserved for the <strong>Network Address</strong>.</li>
+                                <li>One is reserved for the <strong>Broadcast Address</strong>.</li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Hands-On Exercise 6: Subnet Practice</h3>
+                    <h4>Calculate for these networks:</h4>
+                    <div class="list">
+                        <p><strong>Network 1: 10.0.0.0/8</strong></p>
+                        <ul>
+                            <li>Network address: ?</li>
+                            <li>Broadcast address: ?</li>
+                            <li>First usable host: ?</li>
+                            <li>Last usable host: ?</li>
+                            <li>Total usable hosts: ?</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p><strong>Network 2: 172.16.0.0/16</strong></p>
+                        <ul>
+                            <li>Network address: ?</li>
+                            <li>Broadcast address: ?</li>
+                            <li>First usable host: ?</li>
+                            <li>Last usable host: ?</li>
+                            <li>Total usable hosts: ?</li>
+                        </ul>
+                    </div>
+                    <div class="output bg">
+                        <div class="output-text">
+                            <p><span class="orange">1. Network 1 (10.0.0.0/8):</span></p>
+                            <p>- <span class="blue">Network</span>: 10.0.0.0</p>
+                            <p>- <span class="blue">Broadcast</span>: 10.255.255.255</p>
+                            <p>- <span class="blue">First host</span>: 10.0.0.1</p>
+                            <p>- <span class="blue">Last host</span>: 10.255.255.254</p>
+                            <p>- <span class="blue">Total hosts</span>: 16,777,214</p>
+                            <br>
+                            <p><span class="orange">2. Network 2 (172.16.0.0/16):</span></p>
+                            <p>- <span class="blue">Network</span>: 172.16.0.0</p>
+                            <p>- <span class="blue">Broadcast</span>: 172.16.255.255</p>
+                            <p>- <span class="blue">First host</span>: 172.16.0.1</p>
+                            <p>- <span class="blue">Last host</span>: 172.16.255.254</p>
+                            <p>- <span class="blue">Total hosts</span>: 65,534</p>
+                        </div>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Use Online Calculator:</strong></p>
+                    <p>Visit <a href="https://www.subnet-calculator.com" class="link">subnet-calculator.com</a> to
+                        verify your calculations and explore different subnet sizes.</p>
+                </div>
+            </div>
+
+            <!-- Chapter 7 -->
+            <div class="card networking-card" id="chapter-7">
+                <div class="card-header">
+                    <h2>8. Static IP Configuration Lab</h2>
+                </div>
+                <div class="content">
+                    <p>In most computer networks, devices typically receive IP addresses automatically from a DHCP
+                        server. However, in many real-world scenarios, you need devices with a permanent and unchanging
+                        IP address. This is where Static IP Configuration comes into play.</p>
+                    <p>A <strong>static IP</strong> address is manually assigned to a device and remains fixed until
+                        changed by an administrator. This ensures consistent connectivity, making it easier for users
+                        and applications to locate and communicate with the device.</p>
+                    <div class="table-container">
+                        <h4>When to Use Static IP Addresses</h4>
+                        <p>Static IPs are manually assigned and never change:</p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Use Case</th>
+                                    <th>Why Static IP?</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">Servers</td>
+                                    <td>Users need consistent address</td>
+                                    <td>Web server at 192.168.1.10</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Printers</td>
+                                    <td>Easy to find and connect</td>
+                                    <td>Printer at 192.168.1.20</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Network devices</td>
+                                    <td>Management interface</td>
+                                    <td>Router at 192.168.1.1</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Security cameras</td>
+                                    <td>Remote monitoring</td>
+                                    <td>Camera at 192.168.1.50</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">Development/Testing</td>
+                                    <td>Consistent environment</td>
+                                    <td>Test server at 192.168.1.100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Lab Setup</h3>
+                    <div class="list">
+                        <h4> Prerequisites</h4>
+                        <ul>
+                            <li>A computer running Windows 10/11 or a Linux distribution (Ubuntu/Debian or RHEL/CentOS).
+                            </li>
+                            <li>Administrative privileges.</li>
+                            <li>Access to a working network with internet connectivity.</li>
+                            <li>Basic knowledge of IP addressing and subnet masks.</li>
+                        </ul>
+                        <div class="card-image">
+                            <img src="images/static-ip-configuration.webp"
+                                alt="Windows network adapter TCP IPv4 properties with static IP 192.168.1.150 configuration">
+                        </div>
+                        <div class="table-container">
+                            <h4>📋 Planned Configuration</h4>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Value</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="blue">Current Network</td>
+                                        <td>192.168.1.0/24</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="blue">Planned Static IP</td>
+                                        <td>192.168.1.150 (Win) / 192.168.1.151 (Linux)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="blue">Subnet Mask</td>
+                                        <td>255.255.255.0</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="blue">Default Gateway</td>
+                                        <td>192.168.1.1</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="blue">DNS Primary</td>
+                                        <td>8.8.8.8</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="blue">DNS Secondary</td>
+                                        <td>8.8.4.4</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="list">
+                            <h4>🖥️ Part 1 – Configure Static IP on Windows</h4>
+                            <p class="sub"><strong class="subtitle">Step 1: Open Network Connections</strong></p>
+                            <ol>
+                                <li>Press <strong>Windows + R</strong>, type <code class="code">ncpa.cpl</code>, and
+                                    press <strong>Enter</strong>.</li>
+                                <li>Locate your <strong>active network adapter</strong> (Ethernet/Wi-Fi).</li>
+                                <li>Right-click ⟶ <strong>Properties</strong>.</li>
+                            </ol>
+                        </div>
+                        <div class="list">
+                            <p class="sub"><strong class="subtitle">Step 2: Configure TCP/IPv4</strong></p>
+                            <ol>
+                                <li>Select <strong>Internet Protocol Version 4 </strong>(TCP/IPv4) ⟶ click
+                                    <strong>Properties</strong>.
+                                </li>
+                                <li>Select Use the following IP address</li>
+                                <li>Enter values:</li>
+                                <ul>
+                                    <li>IP address: <code class="code">192.168.1.150</code>.</li>
+                                    <li>Subnet mask: <code class="code">255.255.255.0</code>.</li>
+                                    <li>Default gateway: <code class="code">192.168.1.1</code>.</li>
+                                </ul>
+                                <li>Select Use the following DNS server addresses</li>
+                                <ol>
+                                    <li>Preferred: <code class="code">8.8.8.8</code></li>
+                                    <li>Alternate: <code class="code">8.8.4.4</code></li>
+                                </ol>
+                                <li>Click <strong>OK</strong> ⟶ <strong>Close</strong>.</li>
+                            </ol>
+                        </div>
+                        <p class="sub"><strong class="subtitle">Step 3: Verify & Test</strong></p>
+                        <p>Open Command Prompt and run:</p>
+                        <div class="code-block">
+                            <pre>
+<code>ipconfig /all           <span># Verify new settings</span>
+ping 192.168.1.1        <span># Test gateway connectivity</span>
+ping 8.8.8.8            <span># Test external connectivity</span>
+ping google.com         <span># Test DNS resolution</span>
+nslookup google.com     <span># Verify DNS server functionality</span></code>
+</pre>
+                        </div>
+                    </div>
+                    <h3>🐧 Part 2 – Configure Static IP on Linux</h3>
+                    <h4>Option A: Ubuntu/Debian with Netplan</h4>
+                    <p class="sub"><strong class="subtitle">Step 1: Backup & Edit Configuration</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code><span># Backup current configuration</span>
+sudo cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.backup
+
+<span># Edit configuration</span>
+sudo nano /etc/netplan/00-installer-config.yaml</code>
+</pre>
+                    </div>
+                    <p>Add or modify:</p>
+                    <div class="code-block">
+                        <pre>
+<code>network:
+  version: 2
+  ethernets:
+    enp0s3:   <span># Replace with your interface name (check with 'ip link')</span>
+      dhcp4: false
+      addresses: [192.168.1.151/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]</code>
+</pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Step 2: Apply & Verify</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code>sudo netplan apply
+ip addr show               <span># Verify IP address</span>
+ping 192.168.1.1           <span># Test gateway</span>
+ping 8.8.8.8               <span># Test internet</span>
+ping google.com            <span># Test DNS</span></code>
+</pre>
+                    </div>
+                    <h4>Option B: RHEL / CentOS Method</h4>
+                    <p>Edit network script:</p>
+                    <div class="code-block">
+                        <pre>
+<code><span># Edit interface configuration</span>
+sudo nano /etc/sysconfig/network-scripts/ifcfg-eth0</code>
+</pre>
+                    </div>
+                    <p>Add/modify:</p>
+                    <div class="code-block">
+                        <pre>
+<code><span># Add these lines:</span>
+BOOTPROTO=static
+IPADDR=192.168.1.151
+NETMASK=255.255.255.0
+GATEWAY=192.168.1.1
+DNS1=8.8.8.8
+DNS2=8.8.4.4</code>
+</pre>
+                    </div>
+                    <p>Restart networking:</p>
+                    <div class="code-block">
+                        <pre>
+<code><span># Restart networking</span>
+sudo systemctl restart network
+ip addr show</code>
+</pre>
+                    </div>
+                    <div class="table-container">
+                        <h4>✅ Verification Checklist</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Test</th>
+                                    <th>Expected Result</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">ipconfig / ip addr</td>
+                                    <td>Shows new static IP address</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">ping 192.168.1.1</td>
+                                    <td>Replies received (gateway reachable)</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">ping 8.8.8.8</td>
+                                    <td>Replies received (internet reachable)</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">ping google.com</td>
+                                    <td>Successful resolution + replies</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">nslookup google.com</td>
+                                    <td>Shows correct DNS server response</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="list">
+                        <p class="sub">📚 <strong class="subtitle">Key Takeaways</strong></p>
+                        <ul>
+                            <li>Static IPs are essential for devices that need a consistent address.</li>
+                            <li>Always plan IP addressing carefully to avoid IP conflicts.</li>
+                            <li>Verify connectivity step by step — start local (gateway) ⟶ then external (internet) ⟶
+                                then DNS.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 7 -->
+            <div class="card networking-card" id="chapter-7">
+                <div class="card-header">
+                    <h2>9. Introduction to Network Connectivity Testing</h2>
+                </div>
+                <div class="content">
+                    <p><strong>Network connectivity</strong> is the backbone of all modern communication — from browsing
+                        the web to accessing business applications. When a connection fails, knowing <strong>how to
+                            systematically test and troubleshoot the network</strong> is essential for quickly
+                        identifying and resolving problems.</p>
+                    <p>Network connectivity testing uses a combination of diagnostic commands and a layer-by-layer
+                        approach to pinpoint where an issue lies. By starting at the physical layer (cables, Wi-Fi, link
+                        status) and progressing through the data link, network, and application layers, we can isolate
+                        problems efficiently — whether they are caused by misconfiguration, DNS issues, or internet
+                        outages.</p>
+                    <div class="table-container">
+                        <h4>Essential Network Commands</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Windows Command</th>
+                                    <th>Linux Command</th>
+                                    <th>Purpose</th>
+                                    <th>Example Output</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">ipconfig</code></td>
+                                    <td><code class="code">ip addr show</code></td>
+                                    <td>Show IP configuration</td>
+                                    <td>IP, subnet, gateway</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">ipconfig /all</code></td>
+                                    <td><code class="code">ip route show</code></td>
+                                    <td>Detailed network info</td>
+                                    <td>DNS, DHCP, lease</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">ping target</code></td>
+                                    <td><code class="code">ping target</code></td>
+                                    <td>Test connectivity</td>
+                                    <td>4 packets, response time</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">tracert target</code></td>
+                                    <td><code class="code">traceroute target</code></td>
+                                    <td>Show network path</td>
+                                    <td>Each router hop</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">nslookup target</code></td>
+                                    <td><code class="code">dig target</code></td>
+                                    <td>Test DNS resolution</td>
+                                    <td>IP address lookup</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">arp -a</code></td>
+                                    <td><code class="code">arp -a</code></td>
+                                    <td>Show MAC address table</td>
+                                    <td>IP to MAC mappings</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>Systematic Network Troubleshooting</h4>
+                    <div class="code-block">
+                        <pre>
+<code><span class="yellow">1. Physical Layer:</span>    <span>Check cables, lights, power</span>
+<span class="yellow">2. Data Link Layer:</span>   <span>Check for link-local connectivity</span>
+<span class="yellow">3. Network Layer:</span>     <span>Test IP configuration and routing</span>
+<span class="yellow">4. Application Layer:</span> <span>Test specific services (web, email)</span></code>
+</pre>
+                    </div>
+                    <h4>The Layer-by-Layer Approach:</h4>
+                    <div class="code-block">
+                        <pre>
+<code><span># 1. Physical Layer - Check connections</span>
+<span># Verify cables, Wi-Fi, link lights</span>
+
+<span># 2. Data Link Layer - Check interface</span>
+ipconfig /all               <span># Verify interface is up</span>
+
+<span># 3. Network Layer - Test IP connectivity </span> 
+ping 127.0.0.1              <span># Test local stack</span>
+ping 192.168.1.1            <span># Test local gateway</span>
+ping 8.8.8.8                <span># Test remote connectivity</span>
+
+<span># 4. Transport/Application - Test services</span>
+nslookup google.com         <span># Test DNS resolution</span>
+telnet google.com 80        <span># Test specific service</span></code>
+</pre>
+                    </div>
+                    <h3>Hands-On Exercise 7: Network Troubleshooting Scenarios</h3>
+                    <h4>Scenario 1: "The internet is slow"</h4>
+                    <p class="sub"><strong class="subtitle">Your systematic approach:</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code><span># Step 1: Check your IP configuration</span>
+ipconfig /all
+
+<span># Step 2: Test local connectivity (your router)</span>
+ping 192.168.1.1
+
+<span># Step 3: Test external connectivity (Google DNS)</span>
+ping 8.8.8.8
+
+<span># Step 4: Test DNS resolution</span>
+nslookup google.com
+
+<span># Step 5: Trace route to see where delays occur</span>
+tracert google.com
+
+<span># Step 6: Check for duplicate IP addresses</span>
+ping -t 192.168.1.1</code>
+</pre>
+                    </div>
+                    <h4>Scenario 2: "Can't access website"</h4>
+                    <p class="sub"><strong class="subtitle">Troubleshooting steps:</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code><span># Test basic connectivity</span>
+ping google.com
+
+<span># If ping fails, test DNS</span>
+nslookup google.com
+nslookup google.com 8.8.8.8
+
+<span># If DNS works, test specific ports</span>
+telnet google.com 80
+telnet google.com 443</code>
+</pre>
+                    </div>
+                    <h4>Troubleshooting Decision Tree</h4>
+                    <div class="code-block">
+                        <pre>
+<code>Network Problem Reported
+│
+├─ Can you ping 127.0.0.1? (localhost)
+│  ├─ NO ⟶ TCP/IP stack problem
+│  └─ YES ⟶ Continue
+│
+├─ Can you ping your default gateway?
+│  ├─ NO ⟶ Local network problem
+│  │      ├─ Check cables
+│  │      ├─ Check IP configuration
+│  │      └─ Check switch/router
+│  └─ YES ⟶ Continue
+│
+├─ Can you ping 8.8.8.8?
+│  ├─ NO ⟶ Internet connectivity problem
+│  │      └─ Contact ISP or check router WAN
+│  └─ YES ⟶ Continue
+│
+└─ Can you ping google.com?
+   ├─ NO ⟶ DNS problem
+   │      ├─ Change DNS to 8.8.8.8
+   │      └─ Check DNS configuration
+   └─ YES ⟶ Application-specific problem</code>
+</pre>
+                    </div>
+                </div>
+                <div class="content">
+                    <h4>Common Issues and Solutions</h4>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Problem 1:</strong> <code class="code">ping</code> fails
+                            with "Request timed out"</p>
+                        <ul>
+                            <li><strong>Check</strong>: Physical connections (cables, Wi-Fi).</li>
+                            <li><strong>Check</strong>: IP configuration (correct subnet).</li>
+                            <li><strong>Check</strong>: Target device is powered on and responding.</li>
+                            <li><strong>Test</strong>: Different IP addresses in same subnet.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Problem 2:</strong> Can ping IPs but not domain names
+                        </p>
+                        <ul>
+                            <li><strong>Cause</strong>: DNS resolution issue.</li>
+                            <li><strong>Solution</strong>: Change DNS servers to 8.8.8.8 and 8.8.4.4.</li>
+                            <li><strong>Test</strong>: <code class="code">nslookup google.com 8.8.8.8</code>.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Problem 3:</strong> "Duplicate IP address detected"</p>
+                        <ul>
+                            <li><strong>Cause</strong>: Another device has same static IP.</li>
+                            <li><strong>Solution</strong>: Check DHCP scope and static IP assignments.</li>
+                            <li><strong>Prevention</strong>: Document all static IP assignments.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Problem 4:</strong> Intermittent connectivity</p>
+                        <ul>
+                            <li><strong>Check</strong>: Cable connections (loose connections).</li>
+                            <li><strong>Check</strong>: Wi-Fi signal strength and interference.</li>
+                            <li><strong>Monitor</strong>: <code class="code">ping -t 192.168.1.1</code> for packet loss.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pre-Footer Ad -->
+            <div class="ad-container ad-pre-footer">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-pre-footer">
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXX"
+                        data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <!-- Chapter 8 -->
+            <div class="card networking-card" id="chapter-8">
+                <div class="card-header">
+                    <h2>10. Mini-Project: Virtual Machine Network Lab</h2>
+                </div>
+                <div class="content">
+                    <h4>Project Objective</h4>
+                    <p>Create a controlled networking environment with two virtual machines using static IP addresses.
+                        Test connectivity and document the entire process.</p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Requirements</strong></p>
+                        <ul>
+                            <li>Oracle VirtualBox (free download from <a href="https://www.virtualbox.org"
+                                    class="link">virtualbox.org</a>).</li>
+                            <li>Two Ubuntu Desktop VMs.</li>
+                            <li>Static IP configuration.</li>
+                            <li>Comprehensive connectivity testing.</li>
+                            <li>Professional documentation.</li>
+                        </ul>
+                    </div>
+                    <h4>Step-by-Step Instructions</h4>
+                    <p class="sub"><strong class="subtitle">Phase 1: Create Virtual Network Infrastructure</strong></p>
+                    <div class="list">
+                        <p><strong>Step 1: Install VirtualBox</strong></p>
+                        <ol>
+                            <li>Download VirtualBox from <a href="https://www.virtualbox.org/"
+                                    class="link">https://www.virtualbox.org/</a>.</li>
+                            <li>Install with default settings.</li>
+                            <li>Download Ubuntu Desktop ISO from <a href="https://ubuntu.com"
+                                    class="link">ubuntu.com</a>.</li>
+                        </ol>
+                    </div>
+                    <div class="list">
+                        <p><strong>Step 2: Create Host-Only Network</strong></p>
+                        <ol>
+                            <li>Open VirtualBox Manager.</li>
+                            <li>File ⟶ Host Network Manager.</li>
+                            <li>Click "Create" to make a new host-only network.</li>
+                            <li>Configure the adapter:</li>
+                            <ul>
+                                <li>IPv4 Address: 192.168.56.1</li>
+                                <li>IPv4 Network Mask: 255.255.255.0</li>
+                                <li>DHCP Server: Disable (we'll use static IPs)</li>
+                            </ul>
+                        </ol>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Phase 2: Create and Configure Virtual Machines</strong></p>
+                    <div class="list">
+                        <p><strong>Step 3: Create First Virtual Machine</strong></p>
+                        <ol>
+                            <li>New ⟶ Name: "NetworkLab-VM1"</li>
+                            <li>Type: Linux, Version: Ubuntu (64-bit)</li>
+                            <li>Memory: 2048 MB</li>
+                            <li>Create Virtual Hard Disk: 20 GB</li>
+                            <li>Settings ⟶ Network:</li>
+                            <ul>
+                                <li>Adapter 1: Host-only Adapter</li>
+                                <li>Name: vboxnet0</li>
+                            </ul>
+                        </ol>
+                        <p><strong>Step 4: Create Second Virtual Machine</strong></p>
+                        <ol>
+                            <li>New ⟶ Name: "NetworkLab-VM2"</li>
+                            <li>Same specifications as VM1</li>
+                            <li>Settings ⟶ Network:</li>
+                            <ul>
+                                <li>Adapter 1: Host-only Adapter</li>
+                                <li>Name: vboxnet0</li>
+                            </ul>
+                        </ol>
+                        <p><strong>Step 5: Install Ubuntu on Both VMs</strong></p>
+                        <ol>
+                            <li>Start each VM and install Ubuntu Desktop.</li>
+                            <li>Create user accounts: student1 and student2.</li>
+                            <li>Complete installation and reboot.</li>
+                        </ol>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Phase 3: Network Configuration</strong></p>
+                    <p><strong>Step 6: Configure Static IP on VM1</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code><span># Check interface name</span>
+ip link show
+
+<span># Edit network configuration</span>
+sudo nano /etc/netplan/00-installer-config.yaml</code>
+</pre>
+                    </div>
+                    <p>VM1 Configuration:</p>
+                    <div class="code-block">
+                        <pre>
+<code>network:
+  version: 2
+  ethernets:
+    enp0s3: <span># Replace with your interface name</span>
+      dhcp4: false
+      addresses: [192.168.56.10/24]
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]</code>
+</pre>
+                    </div>
+                    <p><strong>Step 7: Configure Static IP on VM2</strong></p>
+                    <p>VM2 Configuration:</p>
+                    <div class="code-block">
+                        <pre>
+<code>network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      addresses: [192.168.56.11/24]
+      nameservers:
+        addresses: [8.8.8.8, 8.8.4.4]</code>
+</pre>
+                    </div>
+                    <p>Apply configurations on both VMs:</p>
+                    <div class="code-block">
+                        <pre>
+<code>sudo netplan apply
+ip addr show</code>
+</pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Phase 4: Connectivity Testing</strong></p>
+                    <p><strong>Step 8: Basic Connectivity Tests</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code><span># From VM1 (192.168.56.10):</span>
+ping 127.0.0.1             <span># Test localhost</span>
+ping 192.168.56.10         <span># Test own IP</span>
+ping 192.168.56.11         <span># Test VM2</span>
+arp -a                     <span># Check ARP table</span>
+
+<span># From VM2 (192.168.56.11):</span>
+ping 127.0.0.1             <span># Test localhost</span>
+ping 192.168.56.11         <span># Test own IP</span>
+ping 192.168.56.10         <span># Test VM1</span>
+arp -a                     <span># Check ARP table/code></span></code>
+</pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Step 9: Advanced Network Testing</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code><span># Network discovery</span>
+nmap -sn 192.168.56.0/24   <span># Scan for active hosts</span>
+
+<span># Detailed connectivity analysis</span>
+traceroute 192.168.56.10   <span># Should show 1 hop (direct)</span></code>
+</pre>
+                    </div>
+                    <h4>Expected Results Documentation</h4>
+                    <p class="sub"><strong class="subtitle">Create a project report with these sections:</strong></p>
+                    <p><strong>1. Network Topology Diagram</strong></p>
+                    <div class="code-block">
+                        <pre>
+<code>    ┌─────────────────┐         ┌─────────────────┐
+    │  NetworkLab-VM1 │         │ NetworkLab-VM2  │
+    │  192.168.56.10  │         │  192.168.56.11  │
+    └─────────┬───────┘         └─────────┬───────┘
+              │                           │
+              └────────┬──────────────────┘
+                       │
+            ┌──────────┴───────────┐
+            │   VirtualBox Host    │
+            │    192.168.56.1      │
+            │  (Host-Only Adapter) │
+            └──────────────────────┘</code>
+</pre>
+                    </div>
+                    <p><strong>2. IP Configuration Summary</strong></p>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>VM</th>
+                                    <th>Hostname</th>
+                                    <th>IP Address</th>
+                                    <th>Subnet Mask</th>
+                                    <th>Interface</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="blue">VM1</td>
+                                    <td>networklab-vm1</td>
+                                    <td>192.168.56.10</td>
+                                    <td>255.255.255.0</td>
+                                    <td>enp0s3</td>
+                                    <td>Active</td>
+                                </tr>
+                                <tr>
+                                    <td class="blue">VM2</td>
+                                    <td>networklab-vm2</td>
+                                    <td>192.168.56.11</td>
+                                    <td>255.255.255.0</td>
+                                    <td>enp0s3</td>
+                                    <td>Active</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>3. Connectivity Test Results</h4>
+                    <div class="code-block">
+                        <pre>
+<code><span class="grey"># VM1 to VM2 ping results:</span>
+PING 192.168.56.11 (192.168.56.11) 56(84) bytes of data.
+64 bytes from 192.168.56.11: icmp_seq=1 time=0.234 ms
+64 bytes from 192.168.56.11: icmp_seq=2 time=0.187 ms
+--- 192.168.56.11 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss</code>
+</pre>
+                    </div>
+                    <h4>4. ARP Table Analysis</h4>
+                    <div class="code-block">
+                        <pre>
+<code><span class="grey"># VM1 ARP table after communication:</span>
+Address         HWtype  HWaddress           Flags Mask  Iface
+192.168.56.11   ether   08:00:27:XX:XX:XX   C           enp0s3</code>
+</pre>
+                    </div>
+                </div>
+                <div class="content">
+                    <h4>Troubleshooting Common Issues</h4>
+                    <div class="list">
+                        <p><strong>Issue</strong>: VMs can't ping each other.</p>
+                        <ul>
+                            <li><strong>Check</strong>: Both VMs are on same virtual network (vboxnet0).</li>
+                            <li><strong>Check</strong>: IP addresses are in same subnet (192.168.56.0/24).</li>
+                            <li><strong>Check</strong>: Netplan configuration applied successfully.</li>
+                            <li><strong>Test</strong>: <code class="code">sudo netplan --debug apply</code>.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p><strong>Issue</strong>: Network configuration doesn't persist.</p>
+                        <ul>
+                            <li><strong>Solution</strong>: Ensure <a href="https://spacelift.io/blog/yaml"
+                                    class="link">YAML</a> indentation is correct in netplan file.</li>
+                            <li><strong>Check</strong>: File permissions: <code
+                                    class="code">sudo chmod 644 /etc/netplan/00-installer-config.yaml</code>.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p><strong>Issue</strong>: Can't resolve domain names.</p>
+                        <ul>
+                            <li><strong>Solution</strong>: Add nameservers to netplan configuration.</li>
+                            <li><strong>Check</strong>: <code class="code">nslookup google.com</code>.</li>
+                        </ul>
+                    </div>
+                    <h4>Project Extensions (Optional)</h4>
+                    <div class="list">
+                        <p><strong>Advanced Challenges:</strong></p>
+                        <ol>
+                            <li>Add a third VM with IP 192.168.56.12.</li>
+                            <li>Install SSH server on all VMs and test remote connections.</li>
+                            <li>Set up file sharing using Samba between VMs.</li>
+                            <li>Monitor network traffic using tcpdump or Wireshark.</li>
+                            <li>Create different subnets and test routing.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card networking-card" id="conclusion">
+                <div class="table-container">
+                    <h2>Glossary of Networking Fundamentals Tutorial Terms</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="blue">ARP (Address Resolution Protocol)</td>
+                                <td>Protocol used to map IP addresses to MAC addresses on a local network</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">APIPA (Automatic Private IP Addressing)</td>
+                                <td>Feature that automatically assigns IP addresses in the 169.254.0.0/16 range when
+                                    DHCP is unavailable</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Broadcast Address</td>
+                                <td>Special address used to send data to all devices on a network segment (e.g.,
+                                    192.168.1.255)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">CIDR (Classless Inter-Domain Routing)</td>
+                                <td>Method of IP addressing that uses prefix notation (e.g., /24) to define network
+                                    portions</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Class A Network</td>
+                                <td>IP address range 1-126 in first octet, default subnet mask 255.0.0.0, supports
+                                    16,777,214 hosts</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Class B Network</td>
+                                <td>IP address range 128-191 in first octet, default subnet mask 255.255.0.0, supports
+                                    65,534 hosts</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Class C Network</td>
+                                <td>IP address range 192-223 in first octet, default subnet mask 255.255.255.0, supports
+                                    254 hosts</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Default Gateway</td>
+                                <td>Router's IP address that serves as the exit point from a local network to other
+                                    networks</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DHCP (Dynamic Host Configuration Protocol)</td>
+                                <td>Network protocol that automatically assigns IP addresses and network configuration
+                                    to devices</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DHCP Lease</td>
+                                <td>Time period for which a DHCP-assigned IP address is valid (typically 24 hours)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DNS (Domain Name System)</td>
+                                <td>System that translates human-readable domain names (google.com) into IP addresses
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DNS Cache</td>
+                                <td>Temporary storage of DNS query results to speed up future requests</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DNS Record Types</td>
+                                <td>Different types of DNS entries: A (IPv4), AAAA (IPv6), MX (mail), NS (nameserver),
+                                    TXT (text)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">DORA Process</td>
+                                <td>DHCP four-step process: Discover, Offer, Request, Acknowledge</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Ethernet</td>
+                                <td>Common network technology for local area networks using cables and MAC addresses
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Host</td>
+                                <td>Any device connected to a network (computer, printer, phone, etc.)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">IP Address (IPv4)</td>
+                                <td>32-bit numerical address used to identify devices on a network (e.g., 192.168.1.100)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">IP Address (IPv6)</td>
+                                <td>128-bit alphanumeric address format designed to replace IPv4 (e.g., 2001:db8::1)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">ISP (Internet Service Provider)</td>
+                                <td>Company that provides internet access and assigns public IP addresses</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">LAN (Local Area Network)</td>
+                                <td>Network covering a small geographic area like home, office, or building</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Loopback Address</td>
+                                <td>Special IP address (127.0.0.1) that refers to the local machine itself</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">MAC Address</td>
+                                <td>48-bit unique hardware identifier permanently assigned to network interface cards
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Multicast</td>
+                                <td>Method of sending data to a specific group of devices simultaneously</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">NAT (Network Address Translation)</td>
+                                <td>Process of translating private IP addresses to public IP addresses</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Network Address</td>
+                                <td>First IP address in a subnet range, identifies the network itself (not assignable to
+                                    hosts)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Network Interface Card (NIC)</td>
+                                <td>Hardware component that connects a device to a network</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">OSI Model</td>
+                                <td>7-layer networking model: Physical, Data Link, Network, Transport, Session,
+                                    Presentation, Application</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Ping</td>
+                                <td>Network utility used to test connectivity between devices</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Private IP Address</td>
+                                <td>IP addresses reserved for internal network use (10.x.x.x, 172.16-31.x.x,
+                                    192.168.x.x)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Public IP Address</td>
+                                <td>Globally unique IP address assigned by ISPs for internet communication</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">RFC 1918</td>
+                                <td>Internet standard defining private IP address ranges</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Router</td>
+                                <td>Network device that forwards data between different networks</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Static IP Address</td>
+                                <td>Manually assigned IP address that doesn't change automatically</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Subnet</td>
+                                <td>Logical subdivision of an IP network into smaller network segments</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Subnet Mask</td>
+                                <td>32-bit number that defines which portion of an IP address represents the network vs.
+                                    host</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Subnetting</td>
+                                <td>Process of dividing a large network into smaller, manageable sub-networks</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Switch</td>
+                                <td>Network device that connects devices within a local network using MAC addresses</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">TCP/IP Model</td>
+                                <td>4-layer networking model: Network Access, Internet, Transport, Application</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Traceroute</td>
+                                <td>Network diagnostic tool that shows the path packets take from source to destination
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Unicast</td>
+                                <td>Method of sending data from one device to another specific device</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">VLAN (Virtual Local Area Network)</td>
+                                <td>Logical grouping of devices on different physical network segments</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">WAN (Wide Area Network)</td>
+                                <td>Network covering a large geographic area, connecting multiple LANs</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Wi-Fi</td>
+                                <td>Wireless networking technology based on IEEE 802.11 standards</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="table-container">
+                    <h3>Additional Networking Terms</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="blue">Broadcast Domain</td>
+                                <td>Network segment where broadcast packets are delivered to all connected devices</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Default Subnet Mask</td>
+                                <td>Standard subnet mask for each IP class (Class A: /8, Class B: /16, Class C: /24)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">FQDN (Fully Qualified Domain Name)</td>
+                                <td>Complete domain name including hostname and domain (e.g., www.google.com)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Hexadecimal</td>
+                                <td>Base-16 number system used for MAC addresses and IPv6 addresses</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">IP Conflict</td>
+                                <td>Error that occurs when two devices have the same IP address on a network</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Link-Local Address</td>
+                                <td>IP address automatically assigned when DHCP fails (169.254.x.x range)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Octet</td>
+                                <td>8-bit portion of an IPv4 address (each number separated by dots)</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Port Number</td>
+                                <td>Numerical identifier for specific services or applications (HTTP: 80, HTTPS: 443)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Recursive DNS Query</td>
+                                <td>DNS lookup process where servers query other servers to find the answer</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Reserved IP Ranges</td>
+                                <td>Special-purpose IP addresses not used for regular host addressing</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Root DNS Servers</td>
+                                <td>Top-level DNS servers that direct queries to appropriate domain servers</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">TTL (Time To Live)</td>
+                                <td>Value that determines how long DNS records are cached</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Virtual Machine (VM)</td>
+                                <td>Software-based computer system running on physical hardware</td>
+                            </tr>
+                            <tr>
+                                <td class="blue">Wireshark</td>
+                                <td>Network protocol analyzer tool used to capture and examine network traffic</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="content">
+                    <h3>🏁 Conclusion & Next Steps</h3>
+                    <p>Congratulations! 🎉 By completing this <strong>Networking Fundamentals</strong> I tutorial, you
+                        have built a strong foundation in networking that will serve you in both academic and real-world
+                        scenarios. You now understand:</p>
+                    <p>✅ IP Addressing & Classes – How devices identify and communicate on a network.</p>
+                    <p>✅ MAC Addresses – The permanent hardware identifiers used at Layer 2.</p>
+                    <p>✅ DNS & DHCP – The services that translate names to IPs and automate address assignment.</p>
+                    <p>✅ OSI & TCP/IP Models – The conceptual and practical frameworks of modern networking.</p>
+                    <p>✅ Subnetting – How to divide and manage networks efficiently.</p>
+                    <p>These concepts are the <strong>building blocks of IT and cybersecurity</strong>, enabling you to
+                        troubleshoot networks, configure devices, and prepare for more advanced topics like firewalls,
+                        VLANs, VPNs, penetration testing, and ethical hacking.</p>
+                    <p>When you are comfortable with these fundamentals, move on to Networking Fundamentals II, where
+                        you’ll dive into routing, switching, VLANs, NAT, firewalls, and packet analysis — preparing you
+                        for real-world IT jobs, ethical hacking, and certification exams (CCNA, CompTIA Network+, etc.).
+                    </p>
+                    <p>Keep practicing, stay curious, and turn this knowledge into real-world expertise! 🌐💻</p>
+                </div>
+            </div>
+            <div class="next-section">
+                <div class="next">
+                    <div class="header">
+                        <h3>Networking Fundamentals II</h3>
+                        <p>Tutorial</p>
+                    </div>
+                    <div class="content">
+                        <p>Networking Fundamentals II tutorial builds on core concepts from part I, covering advanced
+                            topologies, networking
+                            devices, IP addressing, VLANs, WANs, and hands-on labs for real-world configuration and
+                            troubleshooting.
+                        </p>
+                        <a href="../Network Fundamentals 1/index.html" class="next-button">Go To Next Tutorial</a>
+                    </div>
+                </div>
+                <div class="next">
+                    <div class="header">
+                        <h3>Windows File System</h3>
+                        <p>Tutorial</p>
+                    </div>
+                    <div class="content">
+                        <p>This guide covers the fundamentals of the Windows file structure, including system hierarchy,
+                            directories, naming
+                            conventions, permissions, and practical tips for organizing and securing files.
+                        </p>
+                        <a href="../Windows File System/index.html" class="next-button">Go To Tutorial</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+        <!-- Right Side -->
+        <main class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+
+            <!-- Color palette -->
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home Page</a>
+                </div>
+            </div>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:160px;height:600px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a></li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:600px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+            <aside class="sidebar-ad-container">
+                <div class="ad-label">Advertisement</div>
+                <div id="ad-sidebar-sticky">
+                    <!-- 300x250 Ad Unit -->
+                    <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px"
+                        data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </aside>
+        </main>
+        <button id="scrollUpBtn" aria-label="Scroll to top" style="display:none;">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg1" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer Banner Ad -->
+    <div class="ad-container ad-footer">
+        <div class="ad-label">Advertisement</div>
+        <div id="ad-footer-banner">
+            <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px"
+                data-ad-client="ca-pub-XXXXXXXXXX" data-ad-slot="XXXXXXXXXX"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../color-palettes/index.html">Color Spaces</a></li>
+            <li class="menu-item"><a class="menu-link"
+                    href="../../../Resources/digital-resources/digital-resources-hub.html">Resources</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpireHub | All Rights Reserved</p>
+    </footer>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "Networking Fundamentals I - Complete Step-by-Step Tutorial",
+      "description": "Master networking fundamentals with comprehensive coverage of IP addressing, DNS, DHCP, subnetting, and hands-on labs",
+      "author": {
+        "@type": "Organization",
+        "name": "DevSpireHub"
+      },
+      "datePublished": "2025-09-18",
+      "proficiencyLevel": "Beginner",
+      "articleSection": "Networking",
+      "keywords": ["networking fundamentals", "IP addressing", "DNS", "DHCP", "subnetting", "OSI model", "network configuration"]
+    }
+    </script>
+
+    <script src="script.js"></script>
+    <script src="prism/prism.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-c.min.js"></script>
+
+</body>
+
+</html>

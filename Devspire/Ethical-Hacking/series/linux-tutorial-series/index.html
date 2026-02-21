@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../images/icon.webp" sizes="32x46" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ✅ SEO: Optimized Title Tag (57 chars) -->
+    <title>Linux for Security Professionals – Complete Tutorial Series</title>
+
+    <!-- ✅ SEO: Meta Description (155 chars) -->
+    <meta name="description"
+        content="Master Linux for security professionals with our 10-module tutorial series. Learn file navigation, user management, networking, and ethical hacking from scratch.">
+
+    <!-- ✅ SEO: Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/Ethical-Hacking/series/linux-tutorial-series">
+
+    <!-- ✅ SEO: Open Graph Tags -->
+    <meta property="og:title" content="Linux for Security Professionals – Complete Tutorial Series">
+    <meta property="og:description"
+        content="Master Linux for security professionals with our 10-module tutorial series. Learn file navigation, user management, networking, and ethical hacking from scratch.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devspirehub.com/Ethical-Hacking/series/linux-tutorial-series">
+    <meta property="og:image" content="https://devspirehub.com/images/kali-linux.webp">
+    <meta property="og:site_name" content="DevSpireHub">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- ✅ SEO: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Linux for Security Professionals – Complete Tutorial Series">
+    <meta name="twitter:description"
+        content="Master Linux for security professionals with our 10-module tutorial series covering file navigation, user management, and network security.">
+    <meta name="twitter:image" content="https://devspirehub.com/images/kali-linux.webp">
+
+    <link rel="icon" href="../../../images/icon.webp" sizes="32x32" type="image/webp">
+
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- ✅ SEO: Fixed Organization Schema (corrected logo URL + trailing comma) -->
+    <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "DevSpireHub",
+                "url": "https://devspirehub.com/",
+                "logo": "https://devspirehub.com/images/icon.webp",
+                "description": "DevSpireHub - Programming, Projects, Ethical Hacking, Networking, Cloud & AI",
+                "founder": [
+                {
+                    "@type": "Person",
+                    "name": "Kumaradoss",
+                    "url": "https://www.linkedin.com/in/kumaradoss-s/"
+                }
+                ],
+                "sameAs": [
+                "https://www.linkedin.com/in/kumaradoss-s/",
+                "https://github.com/kumaradoss16"
+                ]
+            }
+        </script>
+
+    <!-- ✅ SEO: Added Course Schema for the tutorial series -->
+    <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "Course",
+                "name": "Linux for Security Professionals: The Ultimate System Mastery Series",
+                "description": "A comprehensive 10-module Linux tutorial series for penetration testers, forensic analysts, and system auditors. Covers file navigation, user management, networking, and system hardening.",
+                "provider": {
+                    "@type": "Organization",
+                    "name": "DevSpireHub",
+                    "url": "https://devspirehub.com/"
+                },
+                "hasCourseInstance": [
+                    {
+                        "@type": "CourseInstance",
+                        "name": "Module 1: Linux Master File Navigation",
+                        "courseMode": "online"
+                    },
+                    {
+                        "@type": "CourseInstance",
+                        "name": "Module 2: Linux User Management",
+                        "courseMode": "online"
+                    }
+                ],
+                "numberOfCredits": "10",
+                "educationalLevel": "Beginner to Intermediate",
+                "audience": {
+                    "@type": "Audience",
+                    "audienceType": "Security Professionals, Penetration Testers, Ethical Hackers"
+                }
+            }
+        </script>
+
+    <!-- ✅ SEO: Fixed SiteNavigationElement Schema (type attribute quoted) -->
+    <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "SiteNavigationElement",
+                "name": ["Home", "Linux Tutorials"],
+                "url": [
+                    "https://devspirehub.com/home",
+                    "https://devspirehub.com/Ethical-Hacking/series/linux-tutorial-series"
+                ]
+            }
+        </script>
+
+    <!-- ✅ SEO: BreadcrumbList Schema -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://devspirehub.com/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Linux Tutorials",
+                    "item": "https://devspirehub.com/Ethical-Hacking/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": "Linux for Security Professionals",
+                    "item": "https://devspirehub.com/Ethical-Hacking/series/linux-tutorial-series"
+                }
+            ]
+        }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../index.html#hacking-series-grid" class="home">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <main class="left-column">
+            <!-- Course Header Card  -->
+            <div class="card">
+                <h1>Linux for Security Professionals: The Ultimate System Mastery Series</h1>
+                <p style="margin-bottom: 20px;">Master the backbone of cybersecurity with our Linux System for Security
+                    Professionals series—a
+                    comprehensive, 10-module,
+                    60–90 hour deep-dive into the Linux ecosystem. This curriculum is specifically engineered for
+                    penetration testers,
+                    forensic analysts, and system auditors who need to move beyond basic terminal usage.
+                </p>
+                <div class="card-image-output">
+                    <img src="../../../images/kali-linux.webp"
+                        alt="Linux for Security Professionals: The Ultimate System Mastery Series" loading="lazy"
+                        decoding="async" fetchpriority="auto">
+                </div>
+                <div class="hacking-card-grid">
+                    <!-- Card 1  -->
+                    <div class="hacking-card">
+                        <div class="module">1</div>
+                        <div class="header">
+                            <i class="fab fa-linux"></i>
+                            <div class="title-group">
+                                <h3>Linux Master File Navigation</h3>
+                                <span class="tag level-tag">Module 1</span>
+                            </div>
+                        </div>
+                        <p>This Linux command line tutorial teaches you essential terminal navigation and file system
+                            operations from the ground.
+                            up.</p>
+                        <div class="card-footer">
+                            <span><i class="fas fa-clock"></i>10 hr</span>
+                            <a href="../../Linux/linux-master-file-navigation-tutorial/index.html"
+                                title="Linux Master File Navigation Tutorial">Start
+                                Learning</a>
+                        </div>
+                    </div>
+                    <!-- Card 2  -->
+                    <div class="hacking-card">
+                        <div class="header">
+                            <div class="module">2</div>
+                            <i class="fab fa-linux"></i>
+                            <div class="title-group">
+                                <h3>Linux User Management</h3>
+                                <span class="tag level-tag">Module 2</span>
+                            </div>
+                        </div>
+                        <p>Beginner-friendly Networking Fundamentals tutorial covering core concepts, diagrams, and
+                            real-world examples to build a
+                            strong networking foundation.</p>
+                        <div class="card-footer">
+                            <span><i class="fas fa-clock"></i>10 hr</span>
+                            <a href="../../Linux/linux-user-management-tutorial/index.html"
+                                title="Linux User Management Tutorial">Start Learning</a>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="content">
+                    <h3>More Modules Coming Soon!</h3>
+                    <p>I'm hard at work finalizing the remaining chapters of the Linux System for
+                        Security Professionals series.
+                        Our goal is to provide you with the most high-quality, up-to-date technical training
+                        possible.
+                    </p>
+                    <p>The remaining modules in this 10-module series are currently being updated and will be
+                        released
+                        shortly. These upcoming
+                        sections include:</p>
+                    <div class="list">
+                        <ul>
+                            <li><Strong>Module 3: </Strong>Process monitoring, analysis, and forensic techniques.</li>
+                            <li><Strong>Module 4: </Strong>System log analysis and centralized logging solutions.</li>
+                            <li><Strong>Module 5: </Strong>Service management and daemon configuration.</li>
+                            <li><Strong>Module 6: </Strong>Network configuration and security hardening.</li>
+                            <li><Strong>Module 7: </Strong>Kernel module management and system customization.</li>
+                            <li><Strong>Module 8: </Strong>Package management and secure software installation.</li>
+                            <li><Strong>Module 9: </Strong>Cron job management and scheduled task security.</li>
+                            <li><Strong>Module 10: </Strong>System backup and recovery procedures.</li>
+                        </ul>
+                    </div>
+                    <div class="content">
+                        <h4>Stay Connected 🛡️</h4>
+                        <p>Don't miss out when the new content drops! Stay in touch with me to get notified the moment
+                            these
+                            modules go live.</p>
+                        <p><strong>Bookmark this page</strong> and check back weekly.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Side -->
+        <main class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear
+                    explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable
+                    knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+
+            <!-- Color palette -->
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                            alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home
+                        Page</a>
+                </div>
+            </div>
+
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a>
+                        </li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a>
+                        </li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block medium">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                        <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                            alt="Advertisement 300x250 (Medium Rectangle)" /> -->
+            </div>
+
+            <div class="ad-block small">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                        <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                            alt="Advertisement 320x100 (Large Mobile Banner)" /> -->
+            </div>
+        </main>
+        <button id="scrollUpBtn" aria-label="Scroll to top" style="display:none;">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg1" d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                                  a 15.9155 15.9155 0 0 1 0 31.831
+                                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../color-palettes/index.html">Color Spaces</a></li>
+            <li class="menu-item"><a class="menu-link"
+                    href="../../../Resources/digital-resources/digital-resources-hub.html">Resources</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpireHub | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+</body>
+
+</html>

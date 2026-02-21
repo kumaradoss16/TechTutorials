@@ -1,0 +1,849 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../../../images/icon.webp" sizes="32x46" type="image/png">
+    <!-- Primary Title Tag: 58 characters, keyword-optimized -->
+    <title>Weather App Tutorial: HTML, CSS & JavaScript Guide</title>
+
+    <!-- Meta Description: 158 characters, action-oriented -->
+    <meta name="description"
+        content="Build a real-time weather app using HTML, CSS, and JavaScript with OpenWeatherMap API. Get temperature, humidity, and wind data instantly. Step-by-step tutorial.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/Programming/Projects/Web/weather-app">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Weather App Tutorial: HTML, CSS & JavaScript with OpenWeatherMap API">
+    <meta property="og:description"
+        content="Learn to build a responsive weather application that fetches real-time data using OpenWeatherMap API. Complete tutorial with source code for beginners.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devspirehub.com/Programming/Projects/Web/weather-app">
+    <meta property="og:image"
+        content="https://devspirehub.com/Programming/Projects/Web/images/weather-app-html-css-javascript-tutorial.webp">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Build a Weather App with HTML, CSS & JavaScript">
+    <meta name="twitter:description"
+        content="Step-by-step tutorial on creating a real-time weather app using OpenWeatherMap API. Perfect for beginners learning web development.">
+    <meta name="twitter:image"
+        content="https://devspirehub.com/Programming/Projects/Web/images/weather-app-html-css-javascript-tutorial.webp">
+
+    <!-- Robots & Indexing -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#222222">
+
+    <!-- Performance: Preconnect to External Resources -->
+    <link rel="preconnect" href="https://api.openweathermap.org">
+    <link rel="dns-prefetch" href="https://api.openweathermap.org">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Structured Data (JSON-LD Schema) -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "How to Build a Weather App with HTML, CSS and JavaScript",
+          "description": "Complete beginner-friendly tutorial on creating a real-time weather application using HTML, CSS, JavaScript, and OpenWeatherMap API integration.",
+          "author": {
+            "@type": "Person",
+            "name": "Your Name"
+          },
+          "datePublished": "2026-01-20",
+          "dateModified": "2026-01-20",
+          "image": "https://devspirehub.com/Programming/Projects/Web/images/weather-app-html-css-javascript-tutorial.webp",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Your Website Name",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://devspirehub.com/images/icon.webp"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://devspirehub.com/Programming/Projects/Web/weather-appp"
+          },
+          "keywords": ["weather app", "HTML CSS JavaScript", "OpenWeatherMap API", "web development tutorial", "JavaScript fetch API"],
+          "proficiencyLevel": "Beginner",
+          "articleSection": "Web Development Tutorials",
+          "about": {
+            "@type": "Thing",
+            "name": "Web Application Development"
+          },
+          "teaches": ["HTML", "CSS", "JavaScript", "API Integration"],
+          "educationalLevel": "Beginner to Intermediate"
+        }
+        </script>
+
+    <!-- FAQ Schema for Rich Snippets -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I get an OpenWeatherMap API key?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sign up for a free account at OpenWeatherMap.org, navigate to the API keys section in your dashboard, and copy your unique API key to use in your weather app JavaScript code."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "What technologies are needed to build a weather app?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "You need HTML for structure, CSS for styling, JavaScript for logic and API calls, and access to a weather API like OpenWeatherMap. Basic knowledge of async/await and fetch API is helpful."
+              }
+            }
+          ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "url": "https://devspirehub.com/",
+            "logo": "https://devspirehub.com/images/icon.webp",
+            "description": "DevSpireHub - Programming, Projects, Ethical Hacking, Networking, Cloud & AI",
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Kumaradoss",
+                "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+            ],
+            "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16"
+            ]
+        }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Prism.js CSS theme -->
+    <link rel="stylesheet" href="prism.css" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../../index.html">Home</a></li>
+                    <li><a href="#implementation-details">Implementations</a></li>
+                    <li><a href="#conclusion-section">Demo</a></li>
+                    <li><a href="#other-work-section">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <!-- Left Side  -->
+        <main class="left-column">
+            <section class="project-details-section">
+                <h1>Weather App Tutorial: Build with HTML, CSS and JavaScript</h1>
+                <p>Learn how to create a Weather App with feature comparison using
+                    HTML, CSS, and JavaScript. Step-by-step guide for beginners.</p>
+                <div class="image-placeholder">
+                    <img src="images/weather-app-html-css-javascript-tutorial.webp"
+                        alt="weather-app-html-css-javascript-tutorial" />
+                </div>
+                <p>This comprehensive <strong>Weather App tutorial</strong> teaches you
+                    how to build a real-time weather application using <strong>HTML, CSS,
+                        and JavaScript</strong> with the <strong>OpenWeatherMap API</strong>.
+                    Learn to fetch live weather data, display temperature in Celsius, show
+                    humidity percentages, and present wind speed information for any city
+                    worldwide. This beginner-friendly guide covers responsive design,
+                    asynchronous JavaScript with fetch API, error handling for invalid cities,
+                    and dynamic UI updates based on weather conditions. Perfect for developers
+                    learning API integration and modern web development techniques.</p>
+            </section>
+
+            <section class="table-of-contents-section">
+                <h2><i class="fas fa-list"></i>Table of Contents</h2>
+                <ol>
+                    <li><a href="#prerequisites">Introduction</a></li>
+                    <li><a href="#language-html">HTML Code</a></li>
+                    <li><a href="#language-css">CSS Code</a></li>
+                    <li><a href="#language-js">JavaScript Code</a></li>
+                    <li><a href="#conclusion-section">Conclusion</a></li>
+                </ol>
+            </section>
+
+            <section id="prerequisites" class="prerequisites-section">
+                <h2><i class="fas fa-clipboard-check"></i>Prerequisites</h2>
+                <ul>
+                    <li><i class="fab fa-html5"></i>HTML</li>
+                    <li><i class="fab fa-css3"></i>CSS</li>
+                    <li><i class="fab fa-js"></i>JavaScript</li>
+                    <li><i class="fas fa-cloud"></i>OpenWeatherMap API</li>
+                </ul>
+            </section>
+
+            <section id="implementation-details" class="implementation-section">
+                <h2>Implementation Details</h2>
+                <p>This section breaks down how the Weather App was built. It covers
+                    the core front-end technologies HTML, CSS, and modern
+                    JavaScript used to create the user interface and handle asynchronous
+                    API calls to retrieve real-time weather information.</p>
+
+                <div class="implementation-code-section">
+                    <div class="code-terminal-container">
+                        <div class="code-header">
+                            <h3 class="code-title">HTML Code (<span class="language-label">index.html</span>)</h3>
+                            <button class="copy-button" id="copyCodeBtnHtml">
+                                <i class="fas fa-copy"></i>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div id="language-html" class="code-block">
+                            <pre class="line-numbers">
+                            <code id="codeSnippetHtml" class="language-html">
+<span>&lt;!DOCTYPE html&gt;</span>
+<span>&lt;html lang="en"&gt;</span>
+<span>&lt;head&gt;</span>
+<span>    &lt;meta charset="UTF-8"&gt;</span>
+<span>    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span>
+<span>    &lt;title&gt;&lt;/title&gt;</span>
+<span>    &lt;link rel="stylesheet" href="style.css"&gt;</span>
+<span>&lt;/head&gt;</span>
+<span>&lt;body&gt;</span>
+<span>    &lt;div class="card"&gt;</span>
+<span>        &lt;div class="search"&gt;</span>
+<span>            &lt;input type="text" placeholder="Enter city name" spellcheck="false"&gt;</span>
+<span>            &lt;button&gt;&lt;img src="images/search1.png" alt="search icon"&gt;&lt;/button&gt;</span>
+<span>        &lt;/div&gt;</span>
+<span>        &lt;div class="error"&gt;</span>
+<span>            &lt;p&gt;&lt;/p&gt;</span>
+<span>        &lt;/div&gt;</span>
+<span>        &lt;div class="weather"&gt;</span>
+<span>            &lt;img src="" alt="" class="weather-icon"&gt;</span>
+<span>            &lt;h1 class="temp"&gt;&lt;/h1&gt;</span>
+<span>            &lt;h2 class="city"&gt;&lt;/h2&gt;</span>
+<span>            &lt;div class="details"&gt;</span>
+<span>                &lt;div class="col"&gt;</span>
+<span>                    &lt;img src="images/humidity.png" alt="humidity" class="humidity-icon"&gt;</span>
+<span>                    &lt;div&gt;</span>
+<span>                        &lt;p class="humidity"&gt;&lt;/p&gt;</span>
+<span>                        &lt;p&gt;&lt;/p&gt;</span>
+<span>                    &lt;/div&gt;</span>
+<span>                &lt;/div&gt;</span>
+<span>                &lt;div class="col"&gt;</span>
+<span>                    &lt;img src="images/wind.png" alt="wind speed" class="wind-icon"&gt;</span>
+<span>                    &lt;div&gt;</span>
+<span>                        &lt;p class="wind"&gt;&lt;/p&gt;</span>
+<span>                        &lt;p&gt;&lt;/p&gt;</span>
+<span>                    &lt;/div&gt;</span>
+<span>                &lt;/div&gt;</span>
+<span>            &lt;/div&gt;</span>
+<span>        &lt;/div&gt;</span>
+<span>    &lt;/div&gt;</span>
+<span>    &lt;script src="script.js"&gt;&lt;/script&gt;</span>
+<span>&lt;/body&gt;</span>
+<span>&lt;/html&gt;</span>
+
+                            </code>
+                        </pre>
+                        </div>
+                        <div class="copy-feedback" id="copyFeedbackHtml"></div>
+                        <div class="explanation html">
+                            <p>The <span>index.html</span> file for your Weather App is the structural blueprint of the
+                                application.
+                                It lays out all the visual
+                                components you see on the screen, including the main weather card, the city search bar,
+                                areas for displaying
+                                temperature, city name, weather icons, and detailed metrics like humidity and wind
+                                speed. It essentially organizes the
+                                content, setting the stage for CSS to style it and JavaScript to make it interactive.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="code-terminal-container">
+                        <div class="code-header">
+                            <h3 class="code-title">CSS Code (<span class="language-label">style.css</span>)</h3>
+                            <button class="copy-button" id="copyCodeBtnCss">
+                                <i class="fas fa-copy"></i>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div id="language-css" class="code-block">
+                            <pre class="line-numbers">
+                                <code id="codeSnippetCss" class="language-css">
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background: #222222;
+}
+
+.card {
+    width: 90%;
+    max-width: 470px;
+    background: linear-gradient(135deg, rgb(50, 127, 235), rgb(255, 0, 0));
+    color: #ffffff;
+    margin: 100px auto 0;
+    border-radius: 20px;
+    padding: 40px 35px;
+    text-align: center;
+    box-shadow: 0 0 10px whitesmoke;
+}
+
+.search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.search input {
+    border: 0;
+    outline: 0;
+    background: #ebfffc;
+    color: #555;
+    padding: 10px 25px;
+    height: 60px;
+    border-radius: 30px;
+    border: 1px solid black;
+    flex: 1;
+    margin-right: 16px;
+    font-size: 18px;
+}
+
+.search button {
+    border: 1px solid black;
+    outline: 0;
+    background: #ebfffc;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+}
+
+.search button img {
+    width: 40px;
+}
+
+.weather-icon {
+    width: 170px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.weather-icon:hover, .col img:hover {
+    transform: scale(1.1);
+}
+
+.weather h1 {
+    font-size: 80px;
+    font-weight: 500;
+}
+
+.weather h2 {
+    font-size: 45px;
+    font-weight: 400;
+    margin-top: -10px;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin-top: 80px;
+}
+
+.col {
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.col img {
+    width: 60px;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.humidity, .wind {
+    font-size: 25px;
+    margin-top: -6px;
+}
+
+.weather {
+    display: none;
+}
+
+.error {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 10px;
+    color: red;
+    display: none;
+}
+
+                                </code>
+                            </pre>
+                        </div>
+                        <div class="copy-feedback" id="copyFeedbackCss"></div>
+                        <div class="explanation css">
+                            <p>The <span>style.css</span> file for your Weather App is responsible for its entire visual
+                                appearance. It dictates the colors, fonts,
+                                sizes, and layout of all elements defined in the HTML. This includes setting the dark
+                                background, styling the main
+                                weather card with gradients and shadows, designing the search bar, sizing and animating
+                                icons, and controlling the
+                                initial visibility of the weather display and error messages. In essence, it transforms
+                                the app's basic structure into a
+                                polished and visually appealing interface.</p>
+                        </div>
+                    </div>
+                    <div class="code-terminal-container">
+                        <div class="code-header">
+                            <h3 class="code-title">JavaScript Code (<span class="language-label">script.js</span>)</h3>
+                            <button class="copy-button" id="copyCodeBtnJs">
+                                <i class="fas fa-copy"></i>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div id="language-js" class="code-block">
+                            <pre class="line-numbers">
+                                    <code id="codeSnippetJs" class="language-javascript">
+const apiKey = "Your_API_Key";
+const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=";
+
+const searchBox = document.querySelector(".search input");
+const searchBtn = document.querySelector(".search button");
+const weatherIcon = document.querySelector(".weather-icon");
+
+async function checkWeather(city) {
+  const response = await fetch(apiUrl + city + `&appid=${apiKey}`);
+
+  if (response.status == 404) {
+    document.querySelector(".error").style.display = "block";
+    document.querySelector(".weather").style.display = "none";
+  } else {
+    var data = await response.json();
+
+    document.querySelector(".city").innerHTML = data.name;
+    document.querySelector(".temp").innerHTML = Math.round(data.main.temp) + "°C";
+    document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
+    document.querySelector(".wind").innerHTML = data.wind.speed + "km/h";
+
+    const weatherConditions = ["Clouds", "Clear", "Rain", "Drizzle", "Mist", "Snow", "Thunderstorm", "Fog"];
+    if (weatherConditions.includes(data.weather[0].main)) {
+      weatherIcon.src = `images/${data.weather[0].main}.png`;
+    } else {
+      weatherIcon.src = "images/default.png";
+    }
+
+    document.querySelector(".weather").style.display = "block";
+    document.querySelector(".error").style.display = "none";
+  }
+}
+
+searchBtn.addEventListener("click", () => {
+  checkWeather(searchBox.value);
+});
+
+
+                                    </code>
+                                </pre>
+                        </div>
+                        <div class="copy-feedback" id="copyFeedbackJs"></div>
+                        <div class="explanation js">
+                            <p>The <span>script.js</span> file is the brain of your Weather App. It connects to an
+                                online weather service to fetch real-time data
+                                for any city you search for. It then dynamically updates the app's display with the
+                                temperature, city name, humidity,
+                                wind speed, and a corresponding weather icon. It also handles showing an error if a city
+                                isn't found.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ad Banner  -->
+            <div class="ad-banner-in-content">
+                <p>Ad</p>
+                <!-- <img src="https://placehold.co/768x150/555/white?text=Advertisement%0A768x10%0A(Large+Rectangle)"
+                    alt="Advertisement 336x280 (Large Rectangle)"> -->
+            </div>
+
+            <!-- Project Conclusion  -->
+            <section id="conclusion-section" class="conclusion-section">
+                <h2>Project Conclusion</h2>
+                <p>This Weather App project successfully demonstrates the integration of <b>HTML</b> for structuring
+                    content, <b>CSS</b>
+                    for intuitive and responsive design, and <b>JavaScript</b> for dynamic data fetching and user
+                    interaction.</p>
+                <div class="key">
+                    <h3>Key achievements include:</h3>
+
+                    <ul>
+                        <li><b>Responsive design</b> that adapts gracefully across various devices.</li>
+                        <li><b>Real-time weather data display</b> through API integration.</li>
+                        <li>A <b>modular structure</b> (HTML for content, CSS for style, JS for logic) that ensures easy
+                            understanding and
+                            future enhancements.</li>
+                    </ul>
+                </div>
+                <div class="action-buttons">
+                    <a href="https://github.com/kumaradoss16/Projects-Programming/tree/main/JavaScript/Weather%20App"
+                        class="action-button live-preview"><i class="fas fa-eye"></i>Source Code</a>
+                    <a href="" class="action-button source-code"><i class="fab fa-github"></i>Live Preview</a>
+                </div>
+                <p class="last">This project provides a practical example of fetching and displaying external data using
+                    a public
+                    API, handling user
+                    input, and dynamically updating the web interface, making it a valuable learning resource for
+                    beginners in web
+                    development.</p>
+            </section>
+
+            <!-- Preview  -->
+            <!-- <section id="experience-section" class="experience-section">
+                <h2>Preview</h2>
+                <div class="action-buttons">
+                    <a href="" class="action-button live-preview"><i class="fas fa-eye"></i>Live Preview</a>
+                    <a href="" class="action-button source-code"><i class="fab fa-github"></i>Source Code</a>
+                </div>
+            </section> -->
+
+            <!-- My Other Projects  -->
+            <section id="other-work-section" class="other-work-section">
+                <h2 style="margin-top: 20px;">Other Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="../../Python/shooter-game/images/space-shooter-game-python-pygame-tutorial.webp"
+                            alt="Shooter Game Python Pygame Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Shooter Game</h4>
+                            <p>This is a beginner-friendly guide for building a Space Shooter game with Python and
+                                Pygame, covering coding concepts and
+                                project structure.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Pygame</span>
+                            </div>
+                            <a href="../../Python/shooter-game/space-shooter-game-python-pygame-tutorial.html"
+                                title="Shooter Game Python Pygame Project Tutorial" class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Python/to-do-cli-app/images/todo-cli-app-python.webp"
+                            alt="To-Do CLI App Python Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>To-Do CLI App</h4>
+                            <p>Interactive command-line to-do list manager with Python, featuring list operations,
+                                persistent tasks, and practical
+                                coding exercises.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                            </div>
+                            <a href="../../Python/to-do-cli-app/todo-cli-app-python-tutorial.html"
+                                title="To-Do CLI App Python Project Tutorial" class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Web/team-card-app/images/cricket-team-card-app.webp"
+                            alt="Team Card App HTML CSS JavaScript Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Team Card App</h4>
+                            <p>This Cricket Team Card App is an interactive web application
+                                built with HTML, CSS, and JavaScript that showcases detailed
+                                information about top international cricket teams.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag">CSS</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                            <a href="../../Web/team-card-app/cricket-team-card-app-html-css-javascript-tutorial.html"
+                                title="Team card App HTML CSS JavaScript Project Tutorial"
+                                class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../C/simple-calculator-c/images/simple-calculator-c-tutorial-cli-guide.webp"
+                            alt="Simple Calculator in C Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Simple Calculator in C</h4>
+                            <p>This comprehensive simple calculator in C tutorial teaches you how to build a fully
+                                functional menu-driven calculator
+                                with a command-line interface from scratch..</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C</span>
+                            </div>
+                            <a href="../../C/simple-calculator-c/simple-calculator-c-tutorial-cli-guide.html"
+                                title="Simple Calculator in C Project Tutorial" class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Python/atm-management-system/images/atm-management-system-python-cli-interface.webp"
+                            alt="ATM Management System Python Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>ATM Management System in Python</h4>
+                            <p>This Python application implements a multi-user ATM system with SQLite-backed
+                                persistence,
+                                featuring account management, financial transactions, and administrative controls.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">SQLite</span>
+                            </div>
+                            <a href="../../Python/atm-management-system/atm-management-system-python-sqlite-tutorial.html"
+                                title="ATM Management System Python Project Tutorial" class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../C/vpn-connectivity-verification-cpp/images/vpn-tool-before-connection-terminal-output.webp"
+                            alt="VPN Connectivity verification in C Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>VPN Connectivity verification in C</h4>
+                            <p>Efficient C program to verify VPN status, routing, and DNS configurations through
+                                comprehensive public IP and network
+                                adapter analysis.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C</span>
+                            </div>
+                            <a href="../../C/vpn-connectivity-verification-cpp/build-vpn-verification-tool-c-tutorial.html"
+                                title="VPN Connectivity verification in C Project Tutorial"
+                                class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Side  -->
+        <aside class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                    alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home Page</a>
+                </div>
+            </div>
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a></li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block medium">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                    alt="Advertisement 300x250 (Medium Rectangle)" /> -->
+            </div>
+            <div class="ad-block small">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                    alt="Advertisement 320x100 (Large Mobile Banner)" /> -->
+            </div>
+
+        </aside>
+        <button id="scrollUpBtn" aria-label="Scroll to top">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer  -->
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../color-palettes/index.html">Color Space</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpireHub | All Rights Reserved</p>
+    </footer>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+    <script src="prism.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

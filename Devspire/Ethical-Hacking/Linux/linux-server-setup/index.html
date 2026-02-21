@@ -1,0 +1,2442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../images/icon.webp" sizes="32x46" type="image/png">
+    <!-- SEO Title (59 characters) -->
+    <title>Linux Server Setup Guide - Ubuntu, SSH, Apache & More</title>
+
+    <!-- Meta Description (158 characters) -->
+    <meta name="description"
+        content="Learn Linux server setup with this free Ubuntu tutorial. Step-by-step guide covering SSH, Apache, MySQL, firewall, and security—no domain needed.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/linux-server-setup">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Linux Server Setup Guide - Ubuntu Tutorial for Beginners">
+    <meta property="og:description"
+        content="Free, comprehensive Ubuntu server tutorial covering installation, SSH security, web servers, databases, and automation.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devspirehub.com/linux-server-setup">
+    <meta property="og:image" content="https://devspirehub.com/images/linux-server.webp">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Linux Server Setup Guide - Ubuntu Tutorial">
+    <meta name="twitter:description"
+        content="Master Ubuntu server administration with this beginner-friendly, step-by-step tutorial covering SSH, Apache, MySQL, and security.">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "TechArticle",
+            "headline": "Linux Server Setup: Complete Ubuntu Tutorial for Beginners",
+            "description": "Comprehensive guide to setting up and securing an Ubuntu server with SSH, Apache, MySQL, firewall configuration, and automated backups.",
+            "author": {
+            "@type": "Organization",
+            "name": "DevSpireHub"
+            },
+            "datePublished": "2024-10-21",
+            "dateModified": "2026-01-19",
+            "image": "https://devspirehub.com/images/linux-server.webp",
+            "articleSection": "Linux Administration",
+            "keywords": ["Linux Server Setup", "Ubuntu Server", "SSH Configuration", "Apache Web Server", "Linux Security", "Server Administration"],
+            "educationalLevel": "Beginner to Intermediate",
+            "teaches": ["Ubuntu Server Installation", "SSH Key Authentication", "Firewall Configuration", "Web Server Management", "Database Security"]
+  }
+  </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "url": "https://devspirehub.com/",
+            "logo": "https://devspirehub.com/../../../images/icon.web",
+            "description": "DevSpireHub - Programming, Projects, Ethical hacking, Networking, Cloud & AI",
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Kumaradoss",
+                "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+            ],
+            "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16",
+            ]
+        }
+    </script>
+
+    <script type=application/ld+json>
+        {
+            "@context": "https://schema.org",
+            "@type": "SiteNavigationElement",
+            "name": [
+                "Home",
+                "Chapter"
+            ],
+            "url": [
+                "https://devspirehub.com/home",
+                "https://devspirehub.com/chapter"
+            ]
+        }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+    <!-- Performance Optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../prism/prism.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <!-- <button class="menu-toggle" type="button" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button> -->
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Chapter <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#install-ubuntu-server">Section 1: Install and Update Linux Server</a></li>
+                            <li><a href="#ssh-configuration">Section 2: Set Up SSH for Secure Remote Access</a></li>
+                            <li><a href="#ufw-firewall">Section 3: Configure Firewall Using UFW</a></li>
+                            <li><a href="#user-management">Section 4: Create and Manage Users with Limited
+                                    Privileges</a></li>
+                            <li><a href="#web-server">Section 5: Install and Configure Web Server</a></li>
+                            <li><a href="#database-setup">Section 6: Set Up and Secure MySQL/MariaDB</a></li>
+                            <li><a href="#install-php-or-python">Section 7: Install PHP or Python</a></li>
+                            <li><a href="#ssl-certificates">Section 8: Enable HTTPS Using Self-Signed SSL
+                                    Certificates</a></li>
+                            <li><a href="#automatic-updates">Section 9: Schedule Automatic Updates</a></li>
+                            <li><a href="#system-monitoring">Section 10: System Monitoring Setup</a></li>
+                            <li><a href="#backup-restore">Section 11: Backup and Restore Basics</a></li>
+                            <li><a href="#optional-tools">Section 12: Install Optional Management Tools</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <main class="left-column">
+            <!-- Course Header Card  -->
+            <div class="card">
+                <div class="content">
+                    <h1>Linux Server Setup: Complete Ubuntu Tutorial for Beginners</h1>
+                    <p>Are you ready to master Linux server administration using only free, open-source tools? This
+                        step-by-step Linux Server
+                        Setup for Beginners tutorial empowers you to build, secure, and manage your own Ubuntu server
+                        from scratch—without any
+                        paid software or complex prerequisites. Designed specifically for beginners, hobbyists,
+                        students, and aspiring system
+                        administrators, this hands-on guide walks you through every essential skill: from safe remote
+                        access (SSH) and firewall
+                        hardening with UFW, to deploying local web servers (Apache/Nginx), setting up secure databases,
+                        automating system
+                        updates, and implementing basic monitoring and backup strategies.</p>
+                    <div class="card-image-output">
+                        <img src="images/linux server.png"
+                            alt="Ubuntu server installation screen in VirtualBox or VMware">
+                    </div>
+                    <div class="card-main-info">
+                        <p>Whether you're building a development VM, personal lab, or a practice environment for
+                            certifications, this Linux
+                            tutorial delivers practical, real-world examples. All instructions are tailored for
+                            localhost or internal IP use—no
+                            domain name required—making this the perfect foundation for learning Linux in a secure,
+                            affordable, and accessible way.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Learning Objectives Card  -->
+            <div class="card learning-objectives-card">
+                <div class="card-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>Learning Objectives</h2>
+                </div>
+                <div class="learning-objectives-grid">
+                    <div class="objective-item">
+                        <p><strong><i class="fas fa-file-alt"></i> Section 1</strong> - <a
+                                href="#install-ubuntu-server">Install and
+                                configure Ubuntu Server from scratch</a></p>
+                        <p><strong><i class="fas fa-file-alt"></i> Section 2</strong> - <a href="#ssh-configuration">Set
+                                up
+                                secure
+                                SSH access with key-based authentication</a></p>
+                        <p><strong><i class="fas fa-file-alt"></i> Section 3</strong> - <a
+                                href="#ufw-firewall">Configure
+                                UFW
+                                firewall for enhanced security</a></p>
+                        <p><strong><i class="fas fa-file-alt"></i> Section 4</strong> - <a
+                                href="#user-management">Create and
+                                manage user accounts with proper privileges</a></p>
+                        <p><strong><i class="fas fa-file-alt"></i> Section 5</strong> - <a href="#web-server">Install
+                                and
+                                configure Apache/Nginx web server</a></p>
+                        <p><strong><i class="fas fa-file-alt"></i> Section 6</strong> - <a href="#database-setup">Set up
+                                and
+                                secure MySQL/MariaDB database</a></p>
+                        <p><strong><i class="fas fa-file-alt"></i> Section 7</strong> - <a
+                                href="#install-php-or-python">Install PHP
+                                or
+                                Python for web applications</a></p>
+                        <p><strong><i class="fas fa-file-alt"></i> Section 8</strong> - <a
+                                href="#ssl-certificates">Enable
+                                HTTPS Using Self-Signed SSL Certificates</a></p>
+                        <p><strong><i class="fas fa-file-alt"></i> Section 9</strong> - <a
+                                href="#automatic-updates">Schedule
+                                Automatic Updates</a></p>
+                        <p><strong><i class="fas fa-file-alt"></i> Section 10</strong> - <a
+                                href="#system-monitoring">System
+                                Monitoring Setup</a></p>
+                        <p><strong><i class="fas fa-file-alt"></i> Section 11</strong> - <a
+                                href="#backup-restore">Backup
+                                and Restore Basics</a></p>
+                        <p><strong><i class="fas fa-file-alt"></i> Section 11</strong> - <a
+                                href="#optional-tools">Install
+                                Optional Management Tools</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card linux-card introduction-card">
+                <h2>Introduction</h2>
+                <p>Linux server setup requires proper planning, security configuration, and system administration
+                    knowledge. This
+                    comprehensive Ubuntu server tutorial teaches beginners how to install, secure, and manage a Linux
+                    server from scratch
+                    using free, open-source tools. You'll learn essential skills including SSH configuration for secure
+                    remote access,
+                    Apache web server installation, MySQL database management, UFW firewall configuration, and automated
+                    backup strategies.
+                    Whether you're building a development environment, personal lab, or practice server for
+                    certifications, this
+                    step-by-step guide provides practical, real-world examples—no domain name or paid services required.
+                </p>
+                <h3>Real-world Applications</h3>
+                <div class="list">
+                    <p>This setup is perfect for:</p>
+                    <ul>
+                        <li><strong>Small business websites</strong> - Host company websites and blogs.</li>
+                        <li><strong>Development environments</strong> - Test applications before production.</li>
+                        <li><strong>Learning platform</strong> - Practice Linux administration skills.</li>
+                        <li><strong>Personal projects</strong> - Host portfolio sites, APIs, or web apps.</li>
+                        <li><strong>Educational purposes</strong> - Teaching server management concepts.</li>
+                    </ul>
+                </div>
+                <div class="content">
+                    <h4>Prerequisites</h4>
+                    <div class="list">
+                        <ul>
+                            <li>VirtualBox or VMware.</li>
+                            <li>Basic command-line knowledge.</li>
+                            <li>Internet connection for downloads.</li>
+                            <li>2GB RAM minimum, 20GB storage recommended.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Chapter 1  -->
+            <div class="card linux-card" id="install-ubuntu-server">
+                <div class="card-header">
+                    <h2>Section 1: Install and Update Linux Server</h2>
+                </div>
+                <div class="content">
+                    <p>This section covers the foundation of your Linux journey by guiding you through installing and
+                        updating a new Ubuntu
+                        server. You'll learn how to set up your system in a virtual machine or cloud environment,
+                        configure essential settings,
+                        and apply the latest security updates—ensuring your server is secure, stable, and ready for
+                        practical use.
+                    </p>
+                    <div class="table-container">
+                        <h4>✅ Beginner Setup Checklist</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Step</th>
+                                    <th>Task</th>
+                                    <th>Tool / Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Choose your Linux distribution</td>
+                                    <td>Ubuntu Server LTS or Debian</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Download and verify ISO image</td>
+                                    <td>Check SHA256 checksum</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Install Linux in a VM or on a spare PC</td>
+                                    <td>VirtualBox, VMware, or bare metal</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Create a non-root user with sudo privileges</td>
+                                    <td><code class="code">adduser username &amp;&amp; usermod -aG sudo username</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>Enable remote access</td>
+                                    <td>Install and test <code class="code">openssh-server</code></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>Update the system</td>
+                                    <td><code class="code">sudo apt update &amp;&amp; sudo apt upgrade</code></td>
+                                </tr>
+                                <tr>
+                                    <td>7</td>
+                                    <td>Set static IP (optional)</td>
+                                    <td>Edit <code class="code">/etc/netplan/</code> config</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>Secure basic firewall</td>
+                                    <td>Use <code class="code">ufw allow ssh</code> and <code class="code">enable</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>9</td>
+                                    <td>Take a system snapshot or backup</td>
+                                    <td>So you can revert before next sections</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="list">
+                        <h3>1. Deploy Ubuntu Server 24.04 LTS:</h3>
+                        <ul>
+                            <li>Select Ubuntu Server 24.04 LTS (Long Term Support).</li>
+                            <li>Choose minimum 1GB RAM, 25GB storage.</li>
+                            <li>Enable SSH keys during setup.</li>
+                            <li>Ubuntu 24.04.3 LTS can be either GUI or non-GUI, depending on which edition (flavor or
+                                installer) you download. Let’s
+                                break it down clearly:</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <h4>1.1 Ubuntu Desktop 24.04.3 LTS</h4>
+                        <p><strong>Has GUI (Graphical User Interface)</strong></p>
+                        <ul>
+                            <li>Comes with the GNOME desktop environment.</li>
+                            <li>Suitable if you want a full desktop experience like Windows or macOS.</li>
+                            <li>ISO name usually looks like: <code>ubuntu-24.04.3-desktop-amd64.iso</code></li>
+                            <li>Good for general learning, GUI-based tools, or software testing.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <h4>1.2 Ubuntu Server 24.04.3 LTS</h4>
+                        <p><strong>No GUI (Command-Line Interface only)</strong></p>
+                        <ul>
+                            <li>Optimized for performance, security, and server tasks.</li>
+                            <li>Ideal for learning server administration, networking, ethical hacking labs, etc.</li>
+                            <li>ISO name usually looks like: <code>ubuntu-24.04.3-live-server-amd64.iso</code></li>
+                            <li>You interact with it using the terminal (CLI) — but you can manually install a GUI later
+                                if you want.</li>
+                        </ul>
+                    </div>
+                    <h4>Optional: Add GUI to Server Later</h4>
+                    <p>If you install the Server version and later decide you want a graphical interface, you can add
+                        one using:</p>
+                    <p class="sub">1️⃣ <strong class="subtitle">Install the GUI</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">sudo apt update
+sudo apt install xubuntu-desktop -y</code></pre>
+                    </div>
+                    <p>This installs the XFCE desktop environment with a display manager (usually <code>lightdm</code>).
+                    </p>
+                    <p>If you install the Server version and later decide you want a graphical interface, you can add
+                        one using:</p>
+                    <p class="sub">2️⃣ <strong class="subtitle">Start the GUI manually</strong></p>
+                    <p>After installation, you can start the GUI with:</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">sudo systemctl start lightdm</code></pre>
+                    </div>
+                    <p><code class="code">lightdm</code> is the display manager installed with Xubuntu.</p>
+                    <p>Or if you installed Lubuntu:</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">sudo systemctl start sddm</code></pre>
+                    </div>
+                    <p><code class="code">sddm</code> is the default for LXQt.</p>
+                    <p class="sub">3️⃣ <strong class="subtitle">Enable GUI to start at boot</strong></p>
+                    <p>If you want your server to boot directly into the GUI instead of the command line:</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">sudo systemctl set-default graphical.target</code></pre>
+                    </div>
+                    <p>To switch back to CLI boot:</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">sudo systemctl set-default multi-user.target</code></pre>
+                    </div>
+                    <div class="table-container">
+                        <h4>Recommendation (for learning)</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Goal</th>
+                                    <th>Recommended Version</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Learn Linux commands, server setup, networking, ethical hacking</td>
+                                    <td>Ubuntu Server 24.04.3 LTS</td>
+                                </tr>
+                                <tr>
+                                    <td>Learn GUI + basic Linux usage</td>
+                                    <td>Ubuntu Desktop 24.04.3 LTS</td>
+                                </tr>
+                                <tr>
+                                    <td>Learn both (flexible)</td>
+                                    <td>Install Server, then add GUI later if needed</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>Local Installation (VirtualBox/VMware)</h3>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">1. Download Ubuntu Server 24.04 LTS:</strong></p>
+                        <ul>
+                            <li>Visit: <a class="link" href="https://ubuntu.com/download/server"
+                                    class="link">https://ubuntu.com/download/server</a></li>
+                            <li>Download the ISO file (~1.5GB).</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">2. Create Virtual Machine:</strong></p>
+                        <ul>
+                            <li>Allocate 2GB RAM, 20GB storage.</li>
+                            <li>Mount Ubuntu ISO</li>
+                            <li>Follow installation wizard</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">3. Basic Installation Steps:</strong></p>
+                        <ul>
+                            <li>Select language and keyboard layout.</li>
+                            <li>Choose "Install Ubuntu Server".</li>
+                            <li>Configure network settings.</li>
+                            <li>Create user account with sudo privileges.</li>
+                            <li>Install OpenSSH Server when prompted.</li>
+                        </ul>
+                    </div>
+                    <h4>Initial System Update</h4>
+                    <p><strong>Why important</strong>: Ensures latest security patches and packages are installed.</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Update package lists
+sudo apt update
+
+# Upgrade installed packages
+sudo apt upgrade -y
+
+# Install essential packages
+sudo apt install -y curl wget git vim htop tree unzip</code></pre>
+                    </div>
+                    <h4>Tool Descriptions for Essential Linux Utilities</h4>
+                    <p>Here's a breakdown of what each tool does and why they're essential:</p>
+                    <div class="list">
+                        <p class="sub">🌐 <strong class="subtitle">Network & Download Tools</strong></p>
+                        <p>1. <code class="code">curl</code> - <strong>Client URL Tool</strong></p>
+                        <ul>
+                            <li><strong>Purpose</strong>: Transfer data to/from servers using various protocols (HTTP,
+                                HTTPS, FTP, SCP).</li>
+                            <li><strong>Common Uses</strong>:</li>
+                            <ul class="nested-list">
+                                <li>Download files from the internet.</li>
+                                <li>Test API endpoints.</li>
+                                <li>Check website availability.</li>
+                                <li>Automate web interactions in scripts.</li>
+                            </ul>
+                            <li><strong>Example</strong>: <code class="code">curl -O https://example.com/file.zip</code>
+                            </li>
+                        </ul>
+                        <p>2. <code class="code">wget</code> - <strong>Web Get Utility</strong></p>
+                        <ul>
+                            <li><strong>Purpose</strong>: Non-interactive network downloader.</li>
+                            <li><strong>Common Uses</strong>:</li>
+                            <ul class="nested-list">
+                                <li>Download entire websites (recursive).</li>
+                                <li>Resume interrupted downloads.</li>
+                                <li>Download files via FTP.</li>
+                            </ul>
+                            <li><strong>Key Feature</strong>: Better than curl for recursive downloads.</li>
+                            <li><strong>Example</strong>: <code
+                                    class="code">wget -c https://example.com/large-file.iso</code> (resumes download)
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub">💻 <strong class="subtitle">Development & System Tools</strong></p>
+                        <p>1. <code class="code">git</code> - <strong>Version Control System</strong></p>
+                        <ul>
+                            <li><strong>Purpose</strong>: Track changes in source code during software development.</li>
+                            <li><strong>Common Uses</strong>:</li>
+                            <ul class="nested-list">
+                                <li>Clone repositories: <code class="code">git clone https://github.com/user/repo</code>
+                                </li>
+                                <li>Track file changes.</li>
+                                <li>Collaborate with other developers.</li>
+                                <li>Manage code versions and branches.</li>
+                            </ul>
+                            <li><strong>Essential for</strong>: Developers, system administrators, anyone working with
+                                code.
+                            </li>
+                        </ul>
+                        <p>2. <code class="code">vim</code> - <strong>Text Editor</strong></p>
+                        <ul>
+                            <li><strong>Purpose</strong>: Powerful, modal text editor.</li>
+                            <li><strong>Common Uses</strong>:</li>
+                            <ul class="nested-list">
+                                <li>Editing configuration files.</li>
+                                <li>Writing scripts and code.</li>
+                                <li>Quick file modifications via SSH.</li>
+                            </ul>
+                            <li><strong>Key Feature</strong>: Available on virtually all Linux systems.</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub">📊 <strong class="subtitle">System Monitoring & Management</strong></p>
+                        <p>1. <code class="code">htop</code> - <strong>Interactive Process Viewer</strong></p>
+                        <ul>
+                            <li><strong>Purpose</strong>:Real-time system monitoring (enhanced <code
+                                    class="code">top</code>).</li>
+                            <li><strong>Common Uses</strong>:</li>
+                            <ul class="nested-list">
+                                <li>View CPU, memory, and swap usage.</li>
+                                <li>Monitor running processes.</li>
+                                <li>Kill misbehaving applications.</li>
+                                <li>Sort processes by resource usage.</li>
+                            </ul>
+                            <li><strong>Advantage</strong>: Colorful, interactive, user-friendly interface</li>
+                        </ul>
+                    </div>
+                    <div class="list">
+                        <p class="sub">📁 <strong class="subtitle">File Management Utilities</strong></p>
+                        <p>1. <code class="code">tree</code> - <strong>Display directory structures in a tree
+                                format</strong></p>
+                        <ul>
+                            <li><strong>Purpose</strong>: Track changes in source code during software development.</li>
+                            <li><strong>Common Uses</strong>:</li>
+                            <ul class="nested-list">
+                                <li>Visualize complex directory hierarchies.
+                                </li>
+                                <li>Understand project structures.</li>
+                                <li>Quick inventory of folder contents.</li>
+                            </ul>
+                            <li><strong>Example</strong>: <code class="code">tree /var/www</code> shows entire website
+                                structure
+                            </li>
+                        </ul>
+                        <p>2. <code class="code">unzip</code> - <strong>Archive Extraction</strong></p>
+                        <ul>
+                            <li><strong>Purpose</strong>: Extract files from ZIP archives.</li>
+                            <li><strong>Common Uses</strong>:</li>
+                            <ul class="nested-list">
+                                <li>Unpack downloaded software.</li>
+                                <li>Extract compressed backups.</li>
+                                <li>Handle Windows-compatible archives.</li>
+                            </ul>
+                            <li><strong>Companion</strong>: Often used with <code class="code">zip</code> for creating
+                                archives.</li>
+                        </ul>
+
+                        <div class="list">
+                            <h4>🛠 Practical Scenarios</h4>
+                            <ul>
+                                <p class="sub"><strong class="subtitle">System Administrator:</strong></p>
+                                <li>Use <code class="code">curl</code> to check web service health.</li>
+                                <li>Use <code class="code">htop</code> to monitor server performance.</li>
+                                <li>Use <code class="code">vim</code> to edit configuration files.</li>
+                            </ul>
+                            <ul>
+                                <p class="sub"><strong class="subtitle">Developer:</strong></p>
+                                <li>Use <code class="code">git</code> for version control.</li>
+                                <li>Use <code class="code">wget</code> to download dependencies.</li>
+                                <li>Use <code class="code">tree</code> to view project structure.</li>
+                            </ul>
+                            <ul>
+                                <p class="sub"><strong class="subtitle">Power User:</strong></p>
+                                <li>Use <code class="code">unzip</code> for file management.</li>
+                                <li>Use <code class="code">htop</code> for system diagnostics.</li>
+                                <li>Use <code class="code">cur/wget</code> for automated downloads.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Chapter 2  -->
+            <div class="card linux-card" id="ssh-configuration">
+                <div class="card-header">
+                    <h2>Section 2: Set Up SSH for Secure Remote Access</h2>
+                </div>
+                <div class="content">
+                    <h3>Understanding SSH Security</h3>
+                    <p>SSH (Secure Shell) provides encrypted communication. Key-based authentication is more secure than
+                        passwords as it
+                        prevents brute-force attacks.</p>
+                    <h4>Step 1: Generate SSH Key Pair (From Local Machine)</h4>
+                    <p>On your local computer (Windows/Mac/Linux):</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Generate RSA key pair (4096 bits for extra security)
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+# When prompted:
+# - Press Enter for default location (~/.ssh/id_rsa)
+# - Enter a passphrase for extra security (optional but recommended)</code></pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Flag Breakdown:</strong></p>
+                    <div class="list">
+                        <p><code class="code">-t rsa</code> - <strong>Type of Key</strong></p>
+                        <ul>
+                            <li>Creates an RSA encryption key.</li>
+                            <li>Alternative types: ed25519 (newer, faster) or dsa (older).</li>
+                        </ul>
+                        <p><code class="code">-b 4096</code> - <strong>Bit Strength</strong></p>
+                        <ul>
+                            <li>Specifies 4096-bit key length for enhanced security.</li>
+                            <li>Default is 2048 bits - 4096 is much stronger.</li>
+                            <li>Higher bits = harder to crack but slightly slower.</li>
+                        </ul>
+                        <p><code class="code">-C "your_email@example.com"</code> - <strong>Comment/Identifier</strong>
+                        </p>
+                        <ul>
+                            <li>Adds a label to identify the key owner.</li>
+                            <li>Appears in the public key file.</li>
+                            <li>Helps manage multiple keys</li>
+                        </ul>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Common Usage:</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Add to GitHub/GitLab
+cat ~/.ssh/id_rsa.pub
+
+# Copy to server
+ssh-copy-id user@server.com</code></pre>
+                    </div>
+                    <h4>Step 2: Copy Public Key to Server</h4>
+                    <p><strong>Method 1: Using ssh-copy-id (Linux/Mac)</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">ssh-copy-id username@your-server-ip</code></pre>
+                    </div>
+                    <p><strong>Method 2: Manual copy (All platforms)</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Display your public key
+cat ~/.ssh/id_rsa.pub
+
+# Copy the output, then on your server:
+mkdir -p ~/.ssh
+nano ~/.ssh/authorized_keys
+# Paste the public key, save and exit
+
+# Set proper permissions
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys</code></pre>
+                    </div>
+                    <h4>Step 3: Secure SSH Configuration</h4>
+                    <p><strong>Why important</strong>: Default SSH settings are often insecure. These changes prevent
+                        common attacks.</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Backup original config
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.backup
+
+# Edit SSH configuration
+sudo nano /etc/ssh/sshd_config
+
+# Make these changes:
+Port 2222 # Change from default port 22
+PermitRootLogin no # Disable root login
+PasswordAuthentication no # Require key-based auth
+PubkeyAuthentication yes # Enable key authentication
+MaxAuthTries 3</code></pre>
+                    </div>
+                    <p><strong>Restart SSH service:</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">sudo systemctl restart ssh
+sudo systemctl status ssh # Verify it's running</code></pre>
+                    </div>
+                    <p><strong>Test new configuration (open new terminal):</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">ssh -p 2222 username@your-server-ip</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 3 -->
+            <div class="card linux-card" id="ufw-firewall">
+                <div class="card-header">
+                    <h2>Section 3: Configure Firewall Using UFW</h2>
+                </div>
+                <div class="content">
+                    <h3>Understanding UFW</h3>
+                    <p class="definition">
+                        UFW (Uncomplicated Firewall) is a user-friendly command-line tool in Linux used to manage the
+                        system's firewall. It provides a simple and easy way to allow or block network traffic without
+                        needing to write complex iptables rules manually.
+                    </p>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">What UFW Does</strong></p>
+                        <ul>
+                            <li>Controls incoming and outgoing network connections.</li>
+                            <li>Allows or blocks specific ports (e.g., 22, 80, 443).</li>
+                            <li>Manages firewall rules in a simplified way.</li>
+                            <li>Provides an easier interface to work with the underlying <code
+                                    class="code">iptables</code>/<code class="code">nftables</code>.</li>
+                        </ul>
+                    </div>
+                    <p>UFW (Uncomplicated Firewall) simplifies iptables management. It follows the principle of "deny by
+                        default, allow by exception."</p>
+                    <h4>Step 1: Install and Enable UFW</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Install UFW (usually pre-installed)
+sudo apt install ufw
+
+# Check current status
+sudo ufw status
+
+# Set default policies
+sudo ufw default deny incoming
+sudo ufw default allow outgoing</code></pre>
+                    </div>
+
+                    <h4>Step 2: Configure Essential Rules</h4>
+                    <p>Why each rule is important:</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Allow SSH (use your custom port)
+sudo ufw allow 2222/tcp
+# Critical: Do this BEFORE enabling UFW to avoid lockout
+
+# Allow HTTP (web server)
+sudo ufw allow 80/tcp
+
+# Allow HTTPS (secure web)
+sudo ufw allow 443/tcp
+
+# Enable UFW
+sudo ufw enable
+
+# Check status
+sudo ufw status verbose</code></pre>
+                    </div>
+
+                    <h4>Step 3: Additional Security Rules</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Allow specific IP for SSH (more secure)
+sudo ufw allow from YOUR_HOME_IP to any port 2222
+
+# Rate limiting for SSH (prevent brute force)
+sudo ufw limit 2222/tcp
+
+# Allow ping (ICMP)
+sudo ufw allow in on eth0 from any to any port 22 proto icmp</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 4  -->
+            <div class="card linux-card" id="user-management">
+                <div class="card-header">
+                    <h2>Section 4: Create and Manage Users with Limited Privileges</h2>
+                </div>
+                <div class="content">
+                    <h3>Understanding User Management</h3>
+                    <p class="definition">
+                        User management with limited privileges in Linux means creating and controlling user accounts so
+                        they can perform only specific, restricted actions on the system.
+                        Users are given minimum required permissions instead of full administrative (root) access.
+                    </p>
+                    <h4>Step 1: Create Standard User</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Create new user
+sudo adduser webdev
+
+# Add to specific groups (without sudo)
+sudo usermod -aG www-data webdev  # For web server access
+
+# Create user with home directory
+sudo useradd -m -s /bin/bash developer
+sudo passwd developer</code></pre>
+                    </div>
+                    <div class="list">
+                        <p><code class="code">useradd</code> Flags:</p>
+                        <ul>
+                            <li><code class="code">-m</code>/<code class="code">--create-home</code> - Create home
+                                directory at <code class="code">/home/developer</code>.</li>
+                            <li><code class="code">-s /bin/bash</code> - Set default shell to Bash (user's command
+                                interface).</li>
+                            <li><strong>Use Case</strong> - Automated user creation in scripts.</li>
+                        </ul>
+                        <p><code class="code">usermod</code> Flags:</p>
+                        <ul>
+                            <li><code class="code">-aG</code> - Append to Group (without removing from other groups).
+                            </li>
+                            <li><code class="code">www-data</code> - Web server group for accessing web files.</li>
+                        </ul>
+                    </div>
+
+                    <h4>Step 2: Create Administrative User</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Create admin user
+sudo adduser sysadmin
+
+# Add to sudo group (Ubuntu)
+sudo usermod -aG sudo sysadmin
+
+# Test sudo access (switch to user first)
+su - sysadmin
+sudo whoamisudo systemcl   # Should return 'root'</code></pre>
+                    </div>
+
+                    <h4>Step 3: Configure User Permissions</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># View user groups
+groups username
+id username
+
+# Remove from group
+sudo deluser username groupname
+
+# Set file ownership
+sudo chown -R webdev:www-data /var/www/html/
+
+# Set directory permissions
+sudo chmod 755 /var/www/html/
+sudo chmod 644 /var/www/html/index.html</code></pre>
+                    </div>
+                    <div class="list">
+                        <p><code class="code">chown</code> Flags:</p>
+                        <ul>
+                            <li><code class="code">-R</code> - Recursive - Apply to all files and subdirectories.</li>
+                            <li><code class="code">webdev:www-data</code> - user:group ownership.</li>
+                        </ul>
+                    </div>
+                    <p><code class="code">chmod</code> Numeric Permission Breakdown:</p>
+                    <pre class="bg-color">
+  7     5      5
+  ↓     ↓      ↓
+Owner Group Others
+</pre>
+                    <div class="list">
+                        <p>What <code class="code">755</code> means:</p>
+                        <ul>
+                            <li>Owner (7): <code class="code">rwx</code> - Read, Write, Execute</li>
+                            <li>Group (5): <code class="code">r-x</code> - Read, Execute</li>
+                            <li>Others (5): <code class="code">r-x</code> - Read, Execute</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 5  -->
+            <div class="card linux-card" id="web-server">
+                <div class="card-header">
+                    <h2>Section 5: Install and Configure Web Server</h2>
+                </div>
+                <div class="content">
+                    <h3>Option A: Apache Web Server</h3>
+                    <p class="definition">Apache Web Server, also called Apache HTTP Server, is an open-source web
+                        server software used to host websites, deliver web pages, and handle HTTP requests on the
+                        internet.</p>
+                    <p>It is one of the oldest and most widely used web servers in the world.</p>
+                    <p><strong>Why Apache</strong>: Stable, well-documented, extensive module support.</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Install Apache
+sudo apt update
+sudo apt install apache2 -y
+
+# Enable and start service
+sudo systemctl enable apache2
+sudo systemctl start apache2
+
+# Check status
+sudo systemctl status apache2
+
+# Allow through firewall
+sudo ufw allow 'Apache Full'
+
+# Test installation
+curl localhost
+# Or visit http://your-server-ip in browser</code></pre>
+                    </div>
+                    <h4>Basic Apache Configuration:</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Main config file
+# Edit the default virtual host configuration for Apache
+# This file controls how Apache serves websites on port 80
+sudo nano /etc/apache2/sites-available/000-default.conf
+
+# Enable required modules
+# Enable URL rewriting module - allows clean URLs and redirects
+# Essential for WordPress, Laravel, and modern web frameworks
+sudo a2enmod rewrite
+
+# Enable SSL/TLS module - adds HTTPS support for secure connections
+# Required for serving websites over encrypted HTTPS protocol
+sudo a2enmod ssl
+
+# Restart Apache
+# Apply configuration changes by completely restarting the web server
+# This loads the new modules and updated virtual host configuration
+sudo systemctl restart apache2</code></pre>
+                    </div>
+                    <hr>
+                    <h3>Option B: Nginx Web Server</h3>
+                    <p class="definition">Nginx (pronounced “engine-x”) is a high-performance, open-source web server
+                        and reverse proxy.
+                        It is designed to handle a large number of simultaneous connections efficiently, making it ideal
+                        for modern, high-traffic websites.</p>
+                    <p><strong>Why Nginx</strong>: Lightweight, high performance, low resource usage.</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Install Nginx
+sudo apt update
+sudo apt install nginx -y
+
+# Enable and start
+sudo systemctl enable nginx
+sudo systemctl start nginx
+sudo systemctl status nginx
+
+# Configure firewall
+sudo ufw allow 'Nginx Full'
+
+# Test installation
+curl localhost</code></pre>
+                    </div>
+                    <h4>Basic Nginx Configuration:</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Main config
+sudo nano /etc/nginx/sites-available/default
+
+# Test configuration
+sudo nginx -t
+
+# Restart Nginx
+sudo systemctl restart nginx</code></pre>
+                    </div>
+                    <h4>Create Test Page:</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Create simple HTML page
+sudo nano /var/www/html/index.html
+
+# Add content:
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My Ubuntu Server&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to Ubuntu Server!&lt;/h1&gt;
+    &lt;p&gt;Server setup completed successfully.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 6  -->
+            <div class="card linux-card" id="database-setup">
+                <div class="card-header">
+                    <h2>Section 6: Set Up and Secure MySQL/MariaDB</h2>
+                </div>
+                <div class="content">
+                    <p class="definition">MariaDB is a fast, open-source, relational database management system (RDBMS)
+                        that is used to store, manage, and retrieve data.
+                        It is a drop-in replacement for MySQL, meaning it works the same way but offers better
+                        performance, security, and updated features.</p>
+                    <p><strong>Why MariaDB</strong>: MariaDB is a MySQL fork offering better performance, security
+                        features, and active development.</p>
+                    <h4>Step 1: Install MariaDB</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Update system
+sudo apt update
+
+# Install MariaDB
+sudo apt install mariadb-server mariadb-client -y
+
+# Start and enable service
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+sudo systemctl status mariadb</code></pre>
+                    </div>
+
+                    <h4>Step 2: Secure Installation</h4>
+                    <p>Critical security step:</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Run security script
+sudo mysql_secure_installation
+
+# Follow prompts:
+# Set root password? Y
+# Remove anonymous users? Y
+# Disallow root login remotely? Y
+# Remove test database? Y
+# Reload privilege tables? Y</code></pre>
+                    </div>
+
+                    <h4>Step 3: Create Database and User</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Login to MariaDB
+sudo mariadb -u root -p
+
+# Create database
+CREATE DATABASE webapp_db;
+
+# Create user with limited privileges
+CREATE USER 'webapp_user'@'localhost' IDENTIFIED BY 'secure_password_123';
+
+# Grant specific permissions
+GRANT SELECT, INSERT, UPDATE, DELETE ON webapp_db.* TO 'webapp_user'@'localhost';
+
+# Apply changes
+FLUSH PRIVILEGES;
+
+# Exit
+EXIT;</code></pre>
+                    </div>
+
+                    <h4>Step 4: Test Database Connection</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Test new user login
+mariadb -u webapp_user -p webapp_db
+
+# Show databases (should only see webapp_db)
+SHOW DATABASES;
+EXIT;</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 7  -->
+            <div class="card linux-card" id="install-php-or-python">
+                <div class="card-header">
+                    <h2>Section 7: Install PHP or Python</h2>
+                </div>
+                <div class="content">
+                    <h3>Option A: PHP (for LAMP Stack)</h3>
+                    <p class="definition">PHP is a server-side scripting language used in the LAMP stack (Linux, Apache,
+                        MySQL/MariaDB, PHP) to build dynamic websites and web applications.</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Install PHP and common modules
+sudo apt install php libapache2-mod-php php-mysql php-curl php-gd php-mbstring php-xml php-zip -y
+
+# Check PHP version
+php --version
+
+# Restart Apache
+sudo systemctl restart apache2
+
+# Create PHP info page (remove after testing)
+sudo nano /var/www/html/info.php
+
+# Add content:
+<?php phpinfo(); ?>
+
+# Test: visit http://your-server-ip/info.php
+# Remove test file for security:
+sudo rm /var/www/html/info.php</code></pre>
+                    </div>
+                    <hr>
+
+                    <h3>Option B: Python (for Web Applications)</h3>
+                    <p class="definition">Python is a powerful, easy-to-learn programming language widely used for
+                        building modern, scalable web applications.
+                        In web development, Python acts as the backend language — it processes logic, handles requests,
+                        connects to databases, and returns responses to the user.</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Install Python and pip
+sudo apt install python3 python3-pip python3-venv -y
+
+# Install Flask (lightweight web framework)
+pip3 install flask
+
+# Create simple Python app
+mkdir ~/webapp
+cd ~/webapp
+
+# Create app.py
+nano app.py
+
+# Add content:
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return '&lt;h1&gt;Hello from Python!&lt;/h1&gt;'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
+# Run application
+python3 app.py
+
+# Allow port in firewall
+sudo ufw allow 5000/tcp</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 8  -->
+            <div class="card linux-card" id="ssl-certificates">
+                <div class="card-header">
+                    <h2>Section 8: Enable HTTPS Using Self-Signed SSL Certificates</h2>
+                </div>
+                <div class="content">
+                    <h3>Self-Signed SSL Certificates</h3>
+                    <p class="definition">A self-signed SSL certificate is an SSL/TLS certificate that is created and
+                        signed by the same person/server that will use it, instead of being signed by a trusted
+                        Certificate Authority (CA) like Let’s Encrypt or DigiCert.</p>
+                    <p>It enables HTTPS encryption, but browsers do not trust it because it is not verified by a trusted
+                        CA.</p>
+                    <h4>Step 1: Generate Self-Signed Certificate</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Install OpenSSL (usually pre-installed)
+sudo apt install openssl -y
+
+# Generate certificate valid for 1 year
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+  -keyout /etc/ssl/private/server.key \
+  -out /etc/ssl/certs/server.crt
+
+# When prompted, enter:
+# Country: US
+# State: YourState
+# City: YourCity
+# Organization: (optional)
+# Common Name: localhost or your VM IP
+# Email: (optional)</code></pre>
+                    </div>
+                    <div class="table-container">
+                        <p class="sub"><strong class="subtitle">Flag Breakdown:</strong></p>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Part</th>
+                                    <th scope="col">What It Does</th>
+                                    <th scope="col">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">openssl req</code></td>
+                                    <td>The main OpenSSL command to create and process Certificate Signing Requests
+                                        (CSRs) or certificates</td>
+                                    <td>The main command</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-x509</code></td>
+                                    <td>Creates a self-signed certificate directly instead of a Certificate Signing
+                                        Request (CSR)</td>
+                                    <td>Instructs OpenSSL to generate a certificate directly</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-nodes</code></td>
+                                    <td>"No DES" - instructs OpenSSL to not encrypt the private key with a password</td>
+                                    <td>Prevents a password prompt when the server starts up</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-days 365</code></td>
+                                    <td>Sets the validity period for the certificate to 365 days (1 year)</td>
+                                    <td>The certificate will expire after one year</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-newkey rsa:2048</code></td>
+                                    <td>Generates a new private key simultaneously with the certificate using the RSA
+                                        algorithm and a 2048-bit key size</td>
+                                    <td>Creates a strong, new RSA private key</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-keyout /etc/ssl/private/server.key</code></td>
+                                    <td>Specifies the output file path for the generated private key</td>
+                                    <td>The private key is saved here; **keep this file secret!**</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-out /etc/ssl/certs/server.crt</code></td>
+                                    <td>Specifies the output file path for the generated X.509 certificate</td>
+                                    <td>The public certificate is saved here</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>Step 2: Configure Apache for HTTPS</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Enable SSL module
+sudo a2enmod ssl
+sudo systemctl restart apache2
+
+# Edit default SSL config
+sudo nano /etc/apache2/sites-available/default-ssl.conf
+
+# Update SSL certificate paths:
+SSLEngine on
+SSLCertificateFile /etc/ssl/certs/server.crt
+SSLCertificateKeyFile /etc/ssl/private/server.key
+
+# Enable SSL site
+sudo a2ensite default-ssl.conf
+sudo systemctl reload apache2</code></pre>
+                    </div>
+                    <h4>Step 3: Configure Nginx for HTTPS (Alternative)</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Edit Nginx config
+sudo nano /etc/nginx/sites-available/default</code></pre>
+                    </div>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">server {
+    listen 443 ssl;
+    server_name localhost;
+
+    ssl_certificate /etc/ssl/certs/server.crt;
+    ssl_certificate_key /etc/ssl/private/server.key;
+
+    root /var/www/html;
+    index index.html index.php;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}</code></pre>
+                    </div>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Test and restart
+sudo nginx -t
+sudo systemctl restart nginx</code></pre>
+                    </div>
+
+                    <h4>Step 4: Allow HTTPS Through Firewall</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">sudo ufw allow 443/tcp
+sudo ufw reload</code></pre>
+                    </div>
+
+                    <h4>Step 5: Test HTTPS Access</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># From server
+curl -k https://localhost
+
+# From browser
+# Visit: https://192.168.x.x
+# Accept certificate warning (expected for self-signed certs)</code></pre>
+                    </div>
+                </div>
+            </div>
+            <!-- Ad Banner  -->
+            <div class="ad-banner-in-content">
+                <p>Ad</p>
+                <!-- <img src="https://placehold.co/768x150/555/white?text=Advertisement%0A768x10%0A(Large+Rectangle)"
+                        alt="Advertisement 336x280 (Large Rectangle)"> -->
+            </div>
+            <!-- Chapter 9  -->
+            <div class="card linux-card" id="automatic-updates">
+                <div class="card-header">
+                    <h2>Section 9: Schedule Automatic Updates</h2>
+                </div>
+                <div class="content">
+                    <h3>Understanding Automatic Updates (<code class="code">unattended-upgrades</code>)</h3>
+                    <p>It's a package that <strong>automatically installs security updates</strong> for your Ubuntu
+                        system without you needing to do it manually.</p>
+                    <h4>Step 1: Configure Unattended Upgrades</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Install package (usually pre-installed)
+sudo apt install unattended-upgrades -y
+
+# Enable the service
+sudo systemctl enable unattended-upgrades
+sudo systemctl start unattended-upgrades
+
+# Configure automatic updates
+sudo dpkg-reconfigure unattended-upgrades
+# Select "Yes" when prompted
+
+# Edit configuration
+sudo nano /etc/apt/apt.conf.d/50unattended-upgrades</code></pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Key configuration options:</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Uncomment for security updates
+"${distro_id}:${distro_codename}-security";
+
+# Enable automatic reboots (optional)
+Unattended-Upgrade::Automatic-Reboot "false";
+
+# Reboot time if enabled
+Unattended-Upgrade::Automatic-Reboot-Time "02:00";</code></pre>
+                    </div>
+                    <h4>Step 2: Enable Auto Updates</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Edit auto-update settings
+sudo nano /etc/apt/apt.conf.d/20auto-upgrades
+
+# Ensure these settings:
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Unattended-Upgrade "1";
+APT::Periodic::AutocleanInterval "7";</code></pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">File Breakdown</strong></p>
+                    <div class="list">
+                        <p>File: <code class="code">/etc/apt/apt.conf.d/20auto-upgrades</code></p>
+                        <ul>
+                            <li><strong>Location</strong>: System configuration directory for APT (package manager).
+                            </li>
+                            <li><strong>Purpose</strong>: Controls automatic update behavior.</li>
+                            <li><strong>Syntax: </strong><code class="code">SettingName "value";</code></li>
+                        </ul>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Each Setting Explained</strong></p>
+                    <p><strong>1. Update Package Lists</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">APT::Periodic::Update-Package-Lists "1";</code></pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Setting</th>
+                                    <th scope="col">Value</th>
+                                    <th scope="col">What It Does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Update-Package-Lists</td>
+                                    <td><code class="code">"1"</code></td>
+                                    <td>Download fresh package information every day.</td>
+                                </tr>
+                                <tr>
+                                    <td>Equivalent Command</td>
+                                    <td><code class="code">sudo apt update</code></td>
+                                    <td>Gets list of available updates.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Purpose</strong>: Checks Ubuntu servers daily to see what updates are available.</p>
+
+                    <p><strong>Automatic Upgrades</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">APT::Periodic::Unattended-Upgrade "1";</code></pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Setting</th>
+                                    <th scope="col">Value</th>
+                                    <th scope="col">What It Does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Unattended-Upgrade</td>
+                                    <td><code class="code">"1"</code></td>
+                                    <td>Automatically install security updates.</td>
+                                </tr>
+                                <tr>
+                                    <td>Equivalent Command</td>
+                                    <td><code class="code">sudo apt upgrade</code></td>
+                                    <td>Installs the updates.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Purpose</strong>: Actually installs the security updates that were found.</p>
+
+                    <p><strong>3. Auto-Clean</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">APT::Periodic::AutocleanInterval "7";</code></pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Setting</th>
+                                    <th scope="col">Value</th>
+                                    <th scope="col">What It Does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>AutocleanInterval</td>
+                                    <td><code class="code">"7"</code></td>
+                                    <td>Clean up old package files every 7 days.</td>
+                                </tr>
+                                <tr>
+                                    <td>Equivalent Command</td>
+                                    <td><code class="code">sudo apt autoremove</code></td>
+                                    <td>Removes unnecessary packages.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p><strong>Purpose</strong>: Keeps your system clean by removing old downloaded package files.</p>
+                    <p class="sub"><strong class="subtitle">How It Works Together</strong></p>
+                    <pre class="bg-color">
+Daily: Check for updates → If security updates found → Install them
+Weekly: Clean up disk space by removing old package files   
+</pre>
+                    <p class="sub"><strong class="subtitle">Manual Equivalent Commands</strong></p>
+                    <p>If you did this manually instead of automatically:</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Daily: Check for updates
+sudo apt update
+
+# Install security updates
+sudo apt upgrade
+
+# Weekly: Clean up
+sudo apt autoremove
+sudo apt autoclean</code></pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Complete Configuration Example</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">sudo nano /etc/apt/apt.conf.d/20auto-upgrades</code></pre>
+                    </div>
+                    <p>Add these lines:</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Daily update checks (Every day)
+APT::Periodic::Update-Package-Lists "1";
+
+# Auto-install security updates
+APT::Periodic::Unattended-Upgrade "1";
+
+# Weekly cleanup (Every 7 day)
+APT::Periodic::AutocleanInterval "7";
+
+# Download upgradeable packages (optional)
+APT::Periodic::Download-Upgradeable-Packages "1";</code></pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Verification Commands</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Check if auto-updates are enabled
+sudo cat /etc/apt/apt.conf.d/20auto-upgrades
+
+# View update logs
+sudo tail -f /var/log/unattended-upgrades/unattended-upgrades.log
+
+# Check when updates last ran
+sudo cat /var/lib/apt/periodic/update-stamp</code></pre>
+                    </div>
+
+                    <h4>Step 3: Test and Monitor</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Test dry run
+sudo unattended-upgrades --dry-run --debug</code></pre>
+                    </div>
+
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Part</th>
+                                    <th>What It Does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">unattended-upgrades</code></td>
+                                    <td><code class="code">The automatic update program.</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">--dry-run</code></td>
+                                    <td><code class="code">Test mode - don't actually install anything.</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">--debug</code></td>
+                                    <td><code class="code">Show detailed information - extra logging</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Check logs
+sudo tail -f /var/log/unattended-upgrades/unattended-upgrades.log
+
+# Check service status
+sudo systemctl status unattended-upgrades</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 10  -->
+            <div class="card linux-card" id="system-monitoring">
+                <div class="card-header">
+                    <h2>Section 10: System Monitoring Setup</h2>
+                </div>
+                <div class="content">
+                    <h4>Step 1: Install htop (Process Monitor)</h4>
+                    <p><code class="code">htop</code> is a colorful, interactive task manager for Linux that shows you
+                        what's happening inside your computer in real-time.</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Install htop
+sudo apt install htop -y
+
+# Run htop
+htop
+
+# Key shortcuts in htop:
+# F5: Tree view
+# F6: Sort options
+# F9: Kill process
+# F10: Exit</code></pre>
+                    </div>
+
+                    <h4>Step 2: Install and Configure Fail2ban</h4>
+                    <p><code class="code">fail2ban</code> is a security guard for your server that automatically blocks
+                        hackers who try to guess passwords or attack your services.</p>
+                    <p class="sub"><strong class="subtitle">
+                            How It Works
+                        </strong></p>
+                    <pre class="bg-color">
+Hacker tries wrong password → fail2ban detects it → IP gets blocked temporarily
+</pre>
+                    <div class="list">
+                        <p class="sub"><strong class="subtitle">Simple Flow:</strong></p>
+                        <ol>
+                            <li>Monitors log files for failed login attempts.</li>
+                            <li>Detects patterns (like multiple wrong passwords).</li>
+                            <li>Blocks IP addresses using firewall rules.</li>
+                            <li>Unblocks after a set time period</li>
+                        </ol>
+                    </div>
+                    <p><strong>Why Fail2ban</strong>: Protects against brute-force attacks by banning suspicious IPs.
+                    </p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Install Fail2ban
+sudo apt install fail2ban -y
+
+# Copy default configuration
+sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
+
+# Edit local configuration
+sudo nano /etc/fail2ban/jail.local</code></pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Basic Fail2ban configuration:</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">[DEFAULT]
+bantime = 3600        # Ban for 1 hour
+findtime = 600        # Look for failures in 10 minutes
+maxretry = 3          # Ban after 3 failures
+
+[sshd]
+enabled = true
+port = 2222           # Your custom SSH port
+logpath = /var/log/auth.log
+maxretry = 3</code></pre>
+                    </div>
+                    <p class="sub"><strong class="subtitle">Start and enable Fail2ban:</strong></p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+sudo systemctl status fail2ban
+
+# Check banned IPs
+sudo fail2ban-client status sshd</code></pre>
+                    </div>
+
+                    <h4>Step 3: Basic Performance Monitoring</h4>
+                    <p>These are system monitoring tools that help you see exactly what's happening with your network
+                        connections and disk activity.</p>
+                    <p class="sub"><strong class="subtitle">Package Breakdown</strong></p>
+                    <div class="list">
+                        <ol>
+                            <li><code class="code">iotop</code> - Disk I/O Monitor</li>
+                            <p><strong>What it does</strong>: Shows which programs are reading/writing to your disk in
+                                real-time.</p>
+                            <li><code class="code">netstat-nat</code> - NAT Connection Viewer</li>
+                            <p><strong>What it does</strong>: Shows network address translation connections (important
+                                for routers/firewalls).</p>
+                            <li><code class="code">iftop</code> - Network Bandwidth Monitor</li>
+                            <p><strong>What it does</strong>: Shows real-time network traffic - who's talking to whom
+                                and how much data is moving.</p>
+                        </ol>
+                    </div>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Install system monitoring tools
+sudo iotop
+
+# Monitor disk I/O
+sudo iotop
+
+# Monitor network connections
+sudo netstat -tulnp
+
+# Monitor network traffic
+sudo iftop</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 11  -->
+            <div class="card linux-card" id="backup-restore">
+                <div class="card-header">
+                    <h2>Section 11: Backup and Restore Basics</h2>
+                </div>
+                <div class="content">
+                    <h3>Understanding Backup Strategy</h3>
+                    <p>Follow the 3-2-1 rule: 3 copies of data, 2 different storage types, 1 offsite backup.</p>
+                    <h4>Step 1: Simple File Backup with tar</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Create backup directory
+sudo mkdir -p /backups
+
+# Create compressed backup
+sudo tar -czf /backups/website-backup-$(date +%Y%m%d).tar.gz /var/www/html/</code></pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Part</th>
+                                    <th scope="col">What It Does</th>
+                                    <th scope="col">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">sudo</code></td>
+                                    <td>Run the command with administrator/root privileges</td>
+                                    <td>Needed for reading/writing system files and directories</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">tar</code></td>
+                                    <td>The Tape Archive tool, used for archiving and compressing files and directories
+                                    </td>
+                                    <td>The primary backup program</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-c</code></td>
+                                    <td>Create a new archive</td>
+                                    <td>"Make a new backup"</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-z</code></td>
+                                    <td>Compress the archive using `gzip`</td>
+                                    <td>"Make it smaller"</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-f</code></td>
+                                    <td>File name follows</td>
+                                    <td>"Save it as..."</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">/backups/website-backup-$(date +%Y%m%d).tar.gz</code></td>
+                                    <td>Backup filename with date</td>
+                                    <td><code class="code">website-backup-20241021.tar.gz</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">/var/www/html/</code></td>
+                                    <td>What to backup</td>
+                                    <td>Your website files</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Create database backup
+sudo mysqldump -u root -p webapp_db | sudo tee /backups/database-backup-$(date +%Y%m%d).sql > /dev/ls
+
+# List backups
+ls -lah /backups/</code></pre>
+                    </div>
+                    <p><strong>From </strong><code class="code">ls -lah</code>:</p>
+                    <pre class="bg-color">
+-rw-r--r-- 1 root root 2.5M Oct 21 10:30 database-backup-20241021.sql
+│         │ │  │   │    │     │               │
+│         │ │  │   │    │     │               └─ Filename
+│         │ │  │   │    │     └─ Modification time
+│         │ │  │   │    └─ Size (2.5 MB)
+│         │ │  │   └─ Group owner (root)
+│         │ │  └─ User owner (root)
+│         │ └─ Number of links
+│         └─ Permissions (read/write for owner, read for others)
+└─ File type (- = regular file, d = directory)
+                    </pre>
+                    <div class="table-container">
+                        <p><strong>MySQLDUMP Command Breakdown:</strong></p>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col">Part</th>
+                                    <th scope="col">Flag/Component</th>
+                                    <th scope="col">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">sudo</code></td>
+                                    <td>(none)</td>
+                                    <td>Run as administrator – needed for database access or writing to protected
+                                        directories.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">mysqldump</code></td>
+                                    <td>(none)</td>
+                                    <td>The MySQL backup tool – exports database structure and data to an SQL file.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-u root</code></td>
+                                    <td><code class="code">-u</code></td>
+                                    <td>Username – Username - specify database user (<code class="code">root</code>).
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-p</code></td>
+                                    <td><code class="code">-p</code></td>
+                                    <td>Password prompt - will ask for database password.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">webapp_db</code></td>
+                                    <td>(none)</td>
+                                    <td>The database name – specifies which database to backup.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">|</code></td>
+                                    <td><code class="code">|</code></td>
+                                    <td>Pipe – redirects the standard output of 'mysqldump' as standard input to the
+                                        next command.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">sudo tee</code></td>
+                                    <td><code class="code">tee</code></td>
+                                    <td>Write to file - save output to file with sudo privileges.</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">/backups/database-backup-$(date +%Y%m%d).sql</code></td>
+                                    <td>(filename)</td>
+                                    <td>Backup file with date: <code class="code">database-backup-20241021.sql</code>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">2> /dev/null</code></td>
+                                    <td><code class="code">2> /dev/null</code></td>
+                                    <td>Suppress output - hide tee confirmation messages.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Create backup script
+sudo nano /usr/local/bin/backup.sh
+
+# Add content:
+#!/bin/bash
+DATE=$(date +%Y%m%d)
+BACKUP_DIR="/backups"
+
+# Create directories
+mkdir -p $BACKUP_DIR/daily
+
+# Backup website files
+tar -czf $BACKUP_DIR/daily/website-$DATE.tar.gz /var/www/html/
+
+# Backup database
+mysqldump -u root -p'your_password' --all-databases > $BACKUP_DIR/daily/database-$DATE.sql
+
+# Remove old backups (keep 7 days)
+find $BACKUP_DIR/daily/ -name "*.tar.gz" -mtime +7 -delete
+find $BACKUP_DIR/daily/ -name "*.sql" -mtime +7 -delete
+
+echo "Backup completed: $DATE" >> $BACKUP_DIR/backup.log
+
+# Make executable
+sudo chmod +x /usr/local/bin/backup.sh</code></pre>
+                    </div>
+
+                    <h4>Step 3: Schedule with Cron</h4>
+                    <p class="definition">
+                        Cron is a built-in Linux utility that automatically runs commands or scripts at scheduled times.
+                        It is mainly used for automation, such as backing up files, running scripts, updating systems,
+                        or sending reports.
+                    </p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Edit crontab
+sudo crontab -e
+
+# Add backup job (runs daily at 2 AM)
+0 2 * * * /usr/local/bin/backup.sh
+
+# Check cron logs
+sudo tail -f /var/log/cron.log</code></pre>
+                    </div>
+
+                    <h4>Step 4: Restore from Backup</h4>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Restore website files
+sudo tar -xzf /backups/daily/website-20241016.tar.gz -C /
+
+# Restore database
+mysql -u root -p < /backups/daily/database-20241016.sql
+
+# Set proper permissions after restore
+sudo chown -R www-data:www-data /var/www/html/</code></pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Part</th>
+                                    <th>What It Does</th>
+                                    <th>Example</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">sudo</code></td>
+                                    <td>Run as administrator</td>
+                                    <td>Needed to write system files</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">tar</code></td>
+                                    <td>Tape Archive tool</td>
+                                    <td>The restore program</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-x</code></td>
+                                    <td>Extract files</td>
+                                    <td>"Restore from backup"</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-z</code></td>
+                                    <td>Uncompress gzip</td>
+                                    <td>"Decompress the backup"</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-f</code></td>
+                                    <td>File to extract</td>
+                                    <td>"From this backup file..."</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">/backups/daily/website-20241016.tar.gz</code></td>
+                                    <td>Backup file to restore</td>
+                                    <td>October 16, 2024 backup</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-C /</code></td>
+                                    <td>Change to root directory</td>
+                                    <td>"Restore to original location"</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chapter 12  -->
+            <div class="card linux-card" id="optional-tools">
+                <div class="card-header">
+                    <h2>Section 12: Install Optional Management Tools</h2>
+                </div>
+                <div class="content">
+                    <h3>Webmin (Web-based GUI)</h3>
+                    <p class="definition">Webmin is a web-based control panel that lets you manage your Linux server
+                        through a graphical interface in your browser instead of using the command line.</p>
+                    <h4>Common Tasks Made Easy</h4>
+                    <div class="list">
+                        <ol>
+                            <li><strong>User Management:</strong></li>
+                            <pre class="bg-color">
+Webmin → System → Users and Groups
+→ Create user, set password, add to groups
+</pre>
+                            <li><strong>Service Control:</strong></li>
+                            <pre class="bg-color">
+Webmin → System → Bootup and Shutdown
+→ Start/stop/restart services like Apache, MySQL
+</pre>
+                            <li><strong>File Management:</strong></li>
+                            <pre class="bg-color">
+Webmin → Others → File Manager
+→ Upload, download, edit, delete files
+</pre>
+                            <li><strong>Package Management:</strong></li>
+                            <pre class="bg-color">
+Webmin → System → Software Packages
+→ Search, install, remove software
+</pre>
+                            <li><strong>Firewall Configuration:</strong></li>
+                            <pre class="bg-color">
+Webmin → Networking → Linux Firewall
+→ Add rules, open/close ports
+</pre>
+                        </ol>
+                    </div>
+                    <p><strong>Why Webmin</strong>: Provides graphical interface for server management tasks.</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Download and run setup script
+curl -o webmin-setup.sh https://raw.githubusercontent.com/webmin/webmin/master/setup-repos.sh</code></pre>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Part</th>
+                                    <th>What It Does</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><code class="code">curl</code></td>
+                                    <td>Download tool - fetches files from the internet</td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">-o webmin-setup.sh</code></td>
+                                    <td>Save as <code class="code">webmin-setup.sh</code></td>
+                                </tr>
+                                <tr>
+                                    <td><code class="code">https://raw.githubusercontent.com/...</code></td>
+                                    <td>Official Webmin script from GitHub</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash">sudo bash webmin-setup.sh
+
+# Install Webmin
+sudo apt install --install-recommends webmin -y
+
+# Allow through firewall
+sudo ufw allow 10000/tcp
+sudo ufw reload
+
+# Access Webmin
+# Visit: https://your-server-ip:10000
+# Login with your sudo user credentials
+# Use -k flag to ignore certificate warnings
+curl -Ik https://localhost:10000</code></pre>
+                    </div>
+
+                    <p class="sub"><strong class="subtitle">Access Webmin Now:</strong></p>
+                    <div class="list">
+                        <ol>
+                            <li>Open your web browser and go to:</li>
+                            <div id="language-bash" class="code-block">
+                                <pre class="line-numbers">
+<code class="language-bash">https://YOUR_SERVER_IP:10000</code></pre>
+                            </div>
+                            <p>Example: <code class="code">https://192.168.1.100:10000</code></p>
+                            <li>When you see the SSL warning (normal for self-signed certificates):</li>
+                            <ul class="nested-list">
+                                <li>Click "Advanced"</li>
+                                <li>Click "Proceed to [IP] (unsafe)"</li>
+                            </ul>
+                            <li>Login with:</li>
+                            <ul class="nested-list">
+                                <li>Username: <code class="code">root</code> or your username</li>
+                                <li>Password: Your user's system password</li>
+                            </ul>
+                        </ol>
+                    </div>
+                    <p><strong>Port 10000</strong> is the <strong>default port</strong> where Webmin runs its web
+                        interface. It's like a "door number" that Webmin uses to communicate.</p>
+                    <p class="sub"><strong class="subtitle">Port Analogy</strong></p>
+                    <div class="list">
+                        <ul>
+                            <li><strong>Port 22</strong> = SSH door (command line access)</li>
+                            <li><strong>Port 80</strong> = HTTP door (regular website)</li>
+                            <li><strong>Port 443</strong> = HTTPS door (secure website)</li>
+                            <li><strong>Port 10000</strong> = Webmin door (control panel)</li>
+                        </ul>
+                    </div>
+                    <h4>Docker (Optional)</h4>
+                    <p><strong>Why Docker</strong>: Containerization for running isolated applications.</p>
+                    <div id="language-bash" class="code-block">
+                        <pre class="line-numbers">
+<code class="language-bash"># Add Docker GPG key
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+# Add Docker repository
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+# Install Docker
+sudo apt update
+sudo apt install docker-ce docker-ce-cli containerd.io -y
+
+# Add user to docker group
+sudo usermod -aG docker $USER
+
+# Test installation
+sudo docker run hello-world</code></pre>
+                    </div>
+                </div>
+            </div>
+            <!-- Module Summary  -->
+            <div class="module-summary linux-card">
+                <h3>Free Resources and Documentation</h3>
+                <div class="list">
+                    <h4>Official Documentation</h4>
+                    <ul>
+                        <li><strong>Ubuntu Server Guide: </strong><a href="https://ubuntu.com/server/docs" class="link"
+                                title="Ubuntu Server Guide">https://ubuntu.com/server/docs</a></li>
+                        <li><strong>Apache Documentation: </strong><a href="https://httpd.apache.org/docs/" class="link"
+                                title="Apache Documentation">https://httpd.apache.org/docs/</a></li>
+                        <li><strong>Nginx Documentation: </strong><a href="https://nginx.org/en/docs/" class="link"
+                                title="Nginx Documentation">https://nginx.org/en/docs/</a></li>
+                        <li><strong>MariaDB Documentation: </strong><a href="https://mariadb.org/documentation/"
+                                class="link" title="MariaDB Documentation">https://mariadb.org/documentation/</a></li>
+                        <li><strong>Let's Encrypt Guide: </strong><a href="https://letsencrypt.org/getting-started/"
+                                class="link" title="letsencrypt Guide">https://letsencrypt.org/getting-started/</a></li>
+                    </ul>
+                </div>
+
+                <div class=" list">
+                    <h4>Learning Resources</h4>
+                    <ul>
+                        <li><strong>DigitalOcean Community Tutorials: </strong><a
+                                href="https://www.digitalocean.com/community/tutorials"
+                                class="link">https://www.digitalocean.com/community/tutorials</a></li>
+                        <li><strong>Linux Journey: </strong><a href="https://linuxjourney.com/"
+                                class="link">https://linuxjourney.com/</a></li>
+                        <li><strong>Ubuntu Community Help: </strong><a href="https://help.ubuntu.com/community/"
+                                class="link">https://help.ubuntu.com/community/</a></li>
+                        <li><strong>The Linux Documentation Project: </strong><a href="https://tldp.org/"
+                                class="link">https://tldp.org/</a></li>
+                    </ul>
+                </div>
+
+                <div class="list">
+                    <h4>Free Tools and Alternatives</h4>
+                    <ul>
+                        <li><strong>Text Editors</strong>: vim, nano, joe</li>
+                        <li><strong>Monitoring</strong>: htop, iotop, netdata, zabbix</li>
+                        <li><strong>Security</strong>: fail2ban, rkhunter, lynis</li>
+                        <li><strong>Backup</strong>: rsync, borgbackup, duplicati</li>
+                        <li><strong>SSL Testing</strong>: SSL Labs (<a href="ssllabs.com/ssltest)"
+                                class="link">ssllabs.com/ssltest</a>)</li>
+                    </ul>
+                </div>
+                <hr>
+                <h3>Troubleshooting Common Issues</h3>
+                <h4>SSH Connection Problems</h4>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Check SSH service status
+sudo systemctl status ssh
+
+# Check if port is listening
+sudo netstat -tlnp | grep :2222
+
+# Check firewall rules
+sudo ufw status
+
+# Debug SSH connection
+ssh -v -p 2222 username@server-ip</code></pre>
+                </div>
+
+                <h4>Web Server Not Loading</h4>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Check Apache/Nginx status
+sudo systemctl status apache2
+sudo systemctl status nginx
+
+# Check error logs
+sudo tail -f /var/log/apache2/error.log
+sudo tail -f /var/log/nginx/error.log
+
+# Test configuration
+sudo apache2ctl configtest
+sudo nginx -t</code></pre>
+                </div>
+
+                <h4>Database Connection Issues</h4>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Check MariaDB status
+sudo systemctl status mariadb
+
+# Check logs
+sudo tail -f /var/log/mysql/error.log
+
+# Test connection
+mysql -u username -p -h localhost</code></pre>
+                </div>
+
+                <h4>SSL Certificate Problems</h4>
+                <div id="language-bash" class="code-block">
+                    <pre class="line-numbers">
+<code class="language-bash"># Check certificate status
+sudo certbot certificates
+
+# Test renewal
+sudo certbot renew --dry-run
+
+# Check web server SSL config
+sudo apache2ctl configtest
+sudo nginx -t</code></pre>
+                </div>
+
+                <div class="list">
+                    <h4>Next Steps:</h4>
+                    <ul>
+                        <li>Deploy your first web application.</li>
+                        <li>Set up additional monitoring with Netdata or Grafana.</li>
+                        <li>Configure email notifications for system alerts.</li>
+                        <li>Implement more advanced backup strategies.</li>
+                        <li>Explore containerization with Docker.</li>
+                    </ul>
+                </div>
+
+                <div class="congrats">
+                    <h2>Conclusion</h2>
+                    <p>Congratulations! You now have a fully configured, secure Ubuntu server with:</p>
+                    <p>✅ Secure SSH access with key-based authentication.</p>
+                    <p>✅ Firewall protection with UFW.</p>
+                    <p>✅ Web server (Apache or Nginx) serving HTTPS content.</p>
+                    <p>✅ Database server (MariaDB) with proper security.</p>
+                    <p>✅ Automatic updates for security patches.</p>
+                    <p>✅ Monitoring and alerting with Fail2ban.</p>
+                    <p>✅ Backup system for data protection.</p>
+                    <p>✅ SSL certificates with automatic renewal</p>
+                    <p>This foundation provides a secure, maintainable server suitable for hosting websites, web
+                        applications, or serving as a learning platform. Regular maintenance, monitoring, and keeping up
+                        with security updates will ensure your server remains secure and performant.</p>
+                </div>
+                <p class="rainbow-text"><strong>Happy server administration!</strong></p>
+            </div>
+            <div class="next-section">
+                <div class="next">
+                    <div class="header">
+                        <h3>Linux Module 1: Advanced Command-Line Navigation & File System Operations</h3>
+                        <p class="tag">Tutorial</p>
+
+                    </div>
+                    <div class="content">
+                        <p>Learn Linux command-line mastery with this comprehensive, beginner-friendly tutorial covering
+                            filesystem navigation, file operations, and system fundamentals—ideal for aspiring system
+                            administrators and ethical hackers. This hands-on course features step-by-step labs,
+                            practical
+                            tips, and clear exercises to transform you into a confident Linux user.
+                        </p>
+                        <a href="../linux-master-file-navigation-tutorial/index.html" class="next-button">Go To
+                            Tutorial</a>
+                    </div>
+                </div>
+
+                <div class="next">
+
+                    <div class="header">
+                        <h3>Networking Fundamentals I</h3>
+                        <p class="tag">Tutorial</p>
+
+                    </div>
+                    <div class="content">
+                        <p>Learn Networking Fundamentals I — a practical, beginner-friendly guide designed to
+                            give you a strong foundation in
+                            essential networking concepts.
+                        </p>
+                        <a href="../../../Networking/Tutorials/network-fundamentals-1/index.html" class="next-button">Go
+                            To Tutorial</a>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <!-- Right Side -->
+        <main class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+
+            <!-- Color palette -->
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                    alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home
+                        Page</a>
+                </div>
+            </div>
+
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a></li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block medium">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                    alt="Advertisement 300x250 (Medium Rectangle)" /> -->
+            </div>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home Page</a>
+                </div>
+            </div>
+            <div class="ad-block small">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                    alt="Advertisement 320x100 (Large Mobile Banner)" /> -->
+            </div>
+        </main>
+        <button id="scrollUpBtn" aria-label="Scroll to top" style="display:none;">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg1" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../color-palettes/index.html">Color Spaces</a></li>
+            <li class="menu-item"><a class="menu-link"
+                    href="../../../Resources/digital-resources/digital-resources-hub.html">Resources</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpireHub | All Rights Reserved</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="../prism/prism.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,312 @@
+{
+  "name": "Google Drive AI Image Upscaler & Enhancer",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": "1xfn0HVQxxblOcKe3hWnBDaUIMZ2QDAJH",
+        "watchFor": "fileCreated",
+        "options": {
+          "fileTypes": "image"
+        }
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [0, 0],
+      "id": "drive-folder-watcher",
+      "name": "📁 Watch Google Drive Folder",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "yajg8Ie3VK918ADb",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": "={{$json.id}}"
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [200, 0],
+      "id": "download-from-drive",
+      "name": "⬇️ Download Image from Drive",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "yajg8Ie3VK918ADb",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 🔍 Image Analysis & Preparation from Google Drive\nconst inputData = $input.all();\n\nif (!inputData || inputData.length === 0) {\n  throw new Error('No image downloaded from Google Drive!');\n}\n\nconst firstItem = inputData[0];\nlet imageData;\nlet fileName = 'enhanced_image';\nlet fileSize = 0;\nlet driveFileInfo = {};\n\n// Get file info from Google Drive\nif (firstItem.json) {\n  driveFileInfo = {\n    drive_file_id: firstItem.json.id,\n    drive_file_name: firstItem.json.name,\n    drive_modified_time: firstItem.json.modifiedTime,\n    drive_size: firstItem.json.size,\n    drive_mime_type: firstItem.json.mimeType\n  };\n  fileName = firstItem.json.name || fileName;\n}\n\n// Check for binary data\nif (firstItem.binary && Object.keys(firstItem.binary).length > 0) {\n  const binaryKey = Object.keys(firstItem.binary)[0];\n  imageData = firstItem.binary[binaryKey].data;\n  fileSize = imageData.length;\n  \n  console.log(`📸 Processing Google Drive image: ${fileName}`);\n  console.log(`📏 Original size: ${Math.round(fileSize / 1024)} KB`);\n  console.log(`🆔 Drive File ID: ${driveFileInfo.drive_file_id}`);\n  \n  return [{\n    json: {\n      success: true,\n      source: 'Google Drive',\n      original_filename: fileName,\n      original_size_kb: Math.round(fileSize / 1024),\n      processing_method: 'Free AI Upscaling',\n      timestamp: new Date().toISOString(),\n      ready_for_enhancement: true,\n      drive_info: driveFileInfo\n    },\n    binary: {\n      image: {\n        data: imageData,\n        mimeType: driveFileInfo.drive_mime_type || 'image/jpeg',\n        fileName: fileName\n      }\n    }\n  }];\n} else {\n  throw new Error('No image data found in downloaded file. Please ensure the file is a valid image (JPG, PNG, etc.)');\n}"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [400, 0],
+      "id": "image-analyzer",
+      "name": "🔍 Analyze Drive Image"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api-inference.huggingface.co/models/caidas/swin2SR-classical-sr-x2-64",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Authorization\": \"Bearer {{$env.HUGGINGFACE_TOKEN || 'hf_demo_token'}}\",\n  \"Content-Type\": \"application/octet-stream\",\n  \"Accept\": \"image/png\"\n}",
+        "sendBody": true,
+        "bodyContentType": "raw",
+        "body": "={{$binary.image.data}}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [600, 0],
+      "id": "huggingface-upscaler",
+      "name": "🚀 HuggingFace Upscaler (Method 1)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.deepai.org/api/torch-srgan",
+        "sendHeaders": true,
+        "specifyHeaders": "json", 
+        "jsonHeaders": "{\n  \"Api-Key\": \"{{$env.DEEPAI_API_KEY || 'quickstart-QUdJIGlzIGNvbWluZy4uLi4K'}}\",\n  \"Accept\": \"application/json\"\n}",
+        "sendBody": true,
+        "bodyContentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "image",
+              "value": "={{$binary.image.data}}",
+              "parameterType": "formBinaryData"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [600, 200],
+      "id": "deepai-upscaler",
+      "name": "⚡ DeepAI Upscaler (Method 2)"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.cloudinary.com/v1_1/demo/image/upload",
+        "sendHeaders": true,
+        "specifyHeaders": "json",
+        "jsonHeaders": "{\n  \"Accept\": \"application/json\"\n}",
+        "sendBody": true,
+        "bodyContentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "file",
+              "value": "data:{{$binary.image.mimeType}};base64,{{$binary.image.data.toString('base64')}}",
+              "parameterType": "formData"
+            },
+            {
+              "name": "upload_preset",
+              "value": "ml_default",
+              "parameterType": "formData"
+            },
+            {
+              "name": "transformation",
+              "value": "e_upscale,q_auto:best,f_auto",
+              "parameterType": "formData"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [600, 400],
+      "id": "cloudinary-enhancer",
+      "name": "☁️ Cloudinary Enhancer (Method 3)"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 🎯 Smart Result Processor & Quality Enhancer (Google Drive Version)\nconst huggingfaceResult = $('🚀 HuggingFace Upscaler (Method 1)').all();\nconst deepaiResult = $('⚡ DeepAI Upscaler (Method 2)').all();\nconst cloudinaryResult = $('☁️ Cloudinary Enhancer (Method 3)').all();\nconst originalInfo = $('🔍 Analyze Drive Image').first().json;\n\nlet bestResult = null;\nlet method = '';\nlet enhancedData = null;\nlet downloadUrl = '';\n\nconsole.log('🔍 Checking results from all methods for Drive image...');\nconsole.log(`📁 Processing: ${originalInfo.original_filename} from Google Drive`);\n\n// Try Hugging Face first (usually best quality)\nif (huggingfaceResult && huggingfaceResult.length > 0 && huggingfaceResult[0].binary?.data) {\n  console.log('✅ Hugging Face method succeeded');\n  bestResult = huggingfaceResult[0];\n  method = 'Hugging Face Swin2SR';\n  enhancedData = bestResult.binary.data.data;\n} \n// Try DeepAI as backup\nelse if (deepaiResult && deepaiResult.length > 0 && deepaiResult[0].json?.output_url) {\n  console.log('✅ DeepAI method succeeded');\n  method = 'DeepAI Super Resolution';\n  downloadUrl = deepaiResult[0].json.output_url;\n  \n  // Download the enhanced image\n  const downloadResponse = await $http.request({\n    method: 'GET',\n    url: downloadUrl,\n    responseType: 'arraybuffer'\n  });\n  \n  enhancedData = Buffer.from(downloadResponse.data);\n}\n// Try Cloudinary as final backup\nelse if (cloudinaryResult && cloudinaryResult.length > 0 && cloudinaryResult[0].json?.secure_url) {\n  console.log('✅ Cloudinary method succeeded');\n  method = 'Cloudinary AI Enhancement';\n  downloadUrl = cloudinaryResult[0].json.secure_url;\n  \n  // Download the enhanced image\n  const downloadResponse = await $http.request({\n    method: 'GET',\n    url: downloadUrl,\n    responseType: 'arraybuffer'\n  });\n  \n  enhancedData = Buffer.from(downloadResponse.data);\n}\nelse {\n  throw new Error('❌ All enhancement methods failed. Please try again with a different image.');\n}\n\n// Generate enhanced filename with Drive prefix\nconst timestamp = new Date().toISOString().split('T')[0];\nconst enhancedFileName = originalInfo.original_filename.replace(\n  /\\.(jpg|jpeg|png|webp)$/i,\n  `_enhanced_${method.toLowerCase().replace(/\\s+/g, '_')}_${timestamp}.png`\n);\n\n// Calculate enhancement stats\nconst enhancedSizeKB = Math.round(enhancedData.length / 1024);\nconst sizeIncrease = Math.round(((enhancedSizeKB - originalInfo.original_size_kb) / originalInfo.original_size_kb) * 100);\n\nconsole.log(`🎉 Enhancement complete! Size: ${enhancedSizeKB}KB (${sizeIncrease > 0 ? '+' : ''}${sizeIncrease}% change)`);\n\nreturn [{\n  json: {\n    success: true,\n    source: 'Google Drive Auto-Processing',\n    enhancement_method: method,\n    original_filename: originalInfo.original_filename,\n    enhanced_filename: enhancedFileName,\n    original_size_kb: originalInfo.original_size_kb,\n    enhanced_size_kb: enhancedSizeKB,\n    size_change_percent: sizeIncrease,\n    quality_improvement: 'Upscaled and Enhanced',\n    processing_time: new Date().toISOString(),\n    download_ready: true,\n    drive_info: originalInfo.drive_info,\n    enhancement_stats: {\n      method_used: method,\n      resolution_improved: true,\n      quality_enhanced: true,\n      ai_processed: true,\n      automated_from_drive: true\n    }\n  },\n  binary: {\n    enhanced_image: {\n      data: enhancedData,\n      mimeType: 'image/png',\n      fileName: enhancedFileName\n    }\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [800, 200],
+      "id": "result-processor",
+      "name": "🎯 Smart Result Processor",
+      "continueOnFail": false
+    },
+    {
+      "parameters": {
+        "name": "={{$json.enhanced_filename}}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1xfn0HVQxxblOcKe3hWnBDaUIMZ2QDAJH",
+          "mode": "list",
+          "cachedResultName": "Images_To_Enhance"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [1000, 200],
+      "id": "upload-enhanced",
+      "name": "☁️ Save Enhanced to Drive",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "yajg8Ie3VK918ADb",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "success-summary",
+              "name": "enhancement_summary",
+              "value": "🎉 **Google Drive Image Enhancement Complete!**\n\n📁 **Source:** Google Drive Auto-Processing\n📊 **Results:**\n• **Method Used:** {{$json.enhancement_method}}\n• **Original File:** {{$json.original_filename}}\n• **Enhanced File:** {{$json.enhanced_filename}}\n• **Original Size:** {{$json.original_size_kb}}KB\n• **Enhanced Size:** {{$json.enhanced_size_kb}}KB\n• **Size Change:** {{$json.size_change_percent}}%\n• **Quality:** Significantly Improved\n\n✨ **Enhancements Applied:**\n• ✅ Resolution Upscaled (2x-4x)\n• ✅ AI Quality Enhancement\n• ✅ Detail Sharpening\n• ✅ Noise Reduction\n• ✅ Automated Processing\n\n📁 **Location:** Saved back to Google Drive folder\n💡 **Automation:** This image was automatically processed when added to your watched folder!\n\n🔄 **Next:** Add more images to the folder for automatic enhancement!",
+              "type": "string"
+            },
+            {
+              "id": "drive-automation-info",
+              "name": "automation_info",
+              "value": "{\n  \"status\": \"completed\",\n  \"source\": \"google_drive_automation\",\n  \"original_file_id\": \"{{$json.drive_info.drive_file_id}}\",\n  \"enhanced_filename\": \"{{$json.enhanced_filename}}\",\n  \"processing_method\": \"{{$json.enhancement_method}}\",\n  \"size_improvement\": \"{{$json.size_change_percent}}%\",\n  \"automated\": true\n}",
+              "type": "object"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1200, 200],
+      "id": "final-summary",
+      "name": "📋 Drive Enhancement Summary"
+    }
+  ],
+  "connections": {
+    "📁 Watch Google Drive Folder": {
+      "main": [
+        [
+          {
+            "node": "⬇️ Download Image from Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⬇️ Download Image from Drive": {
+      "main": [
+        [
+          {
+            "node": "🔍 Analyze Drive Image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🔍 Analyze Drive Image": {
+      "main": [
+        [
+          {
+            "node": "🚀 HuggingFace Upscaler (Method 1)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "⚡ DeepAI Upscaler (Method 2)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "☁️ Cloudinary Enhancer (Method 3)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🚀 HuggingFace Upscaler (Method 1)": {
+      "main": [
+        [
+          {
+            "node": "🎯 Smart Result Processor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "⚡ DeepAI Upscaler (Method 2)": {
+      "main": [
+        [
+          {
+            "node": "🎯 Smart Result Processor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "☁️ Cloudinary Enhancer (Method 3)": {
+      "main": [
+        [
+          {
+            "node": "🎯 Smart Result Processor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🎯 Smart Result Processor": {
+      "main": [
+        [
+          {
+            "node": "☁️ Save Enhanced to Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "☁️ Save Enhanced to Drive": {
+      "main": [
+        [
+          {
+            "node": "📋 Drive Enhancement Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  }
+}

@@ -1,0 +1,2709 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../../../images/icon.webp" sizes="32x46" type="image/png">
+    <!-- Primary Title Tag: 55 characters, keyword-rich -->
+    <title>Cricket Team Card App: HTML, CSS & JS Tutorial</title>
+
+    <!-- Meta Description: 155 characters, compelling CTR-focused copy -->
+    <meta name="description"
+        content="Build an interactive cricket team card app with HTML, CSS & JavaScript. Filter players by role, switch themes, and view team stats. Step-by-step guide.">
+
+    <!-- Canonical URL (Update with your actual domain) -->
+    <link rel="canonical" href="https://devspirehub.com/Programming/Projects/Web/team-card-app">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Cricket Team Card App: HTML, CSS & JavaScript Tutorial">
+    <meta property="og:description"
+        content="Learn to build an interactive cricket team statistics viewer with player filtering, theme toggle, and dynamic team selection using HTML, CSS & JavaScript.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devspirehub.com/Programming/Projects/Web/team-card-app">
+    <meta property="og:image"
+        content="https://devspirehub.com/Programming/Projects/Web/images/cricket-team-card-app.webp">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cricket Team Card App: HTML, CSS & JS Tutorial">
+    <meta name="twitter:description"
+        content="Build an interactive cricket team card app with HTML, CSS & JavaScript. Complete tutorial with source code.">
+    <meta name="twitter:image"
+        content="https://devspirehub.com/Programming/Projects/Web/images/cricket-team-card-app.webp">
+
+    <!-- Robots Meta (Control indexing) -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <!-- Author and Publisher -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Theme Color (Matches your app design) -->
+    <meta name="theme-color" content="#1a1a1a">
+
+    <!-- Preconnect for Performance (Font Awesome CDN) -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "How to Build a Cricket Team Card App with HTML, CSS & JavaScript",
+          "description": "Complete tutorial on creating an interactive cricket team statistics viewer with player filtering, theme toggle, and dynamic team selection.",
+          "author": {
+            "@type": "Person",
+            "name": "Your Name"
+          },
+          "datePublished": "2026-01-20",
+          "dateModified": "2026-01-20",
+          "image": "https://devspirehub.com/Programming/Projects/Web/images/cricket-team-card-app.webp",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Your Website Name",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://devspirehub.com/images/icon.webp"
+            }
+          },
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://devspirehub.com/Programming/Projects/Web/team-card-app"
+          },
+          "keywords": ["cricket app", "HTML CSS JavaScript", "team card app", "cricket statistics", "web development tutorial"],
+          "proficiencyLevel": "Beginner",
+          "articleSection": "Web Development Tutorials",
+          "about": {
+            "@type": "Thing",
+            "name": "Web Development"
+          }
+        }
+    </script>
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "url": "https://devspirehub.com/",
+            "logo": "https://devspirehub.com/images/icon.webp",
+            "description": "DevSpireHub - Programming, Projects, Ethical Hacking, Networking, Cloud & AI",
+            "founder": [
+            {
+                "@type": "Person",
+                "name": "Kumaradoss",
+                "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+            ],
+            "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16"
+            ]
+        }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Prism.js CSS theme -->
+    <link rel="stylesheet" href="../../Prism/prism.css" />
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../../index.html">Home</a></li>
+                    <li><a href="#implementation-details">Implementations</a></li>
+                    <li><a href="#conclusion-section">Demo</a></li>
+                    <li><a href="#other-work-section">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <!-- Left Side  -->
+        <main class="left-column">
+            <section class="project-details-section">
+                <h1>Build a Cricket Team Card App with HTML, CSS and JavaScript</h1>
+                <p>Learn how to create a Team Card App (Cricket) with feature comparison using
+                    HTML, CSS, and JavaScript. Step-by-step guide for beginners.</p>
+                <div class="image-placeholder">
+                    <img src="images/cricket-team-card-app.webp" alt="Cricket Team Card App: HTML, CSS & JS Tutorial" />
+                </div>
+                <p>This <strong>Cricket Team Card App</strong> is an interactive web application
+                    built with <strong>HTML, CSS, and JavaScript</strong> that showcases detailed
+                    information about top international cricket teams. Users can explore team
+                    statistics, filter players by position (batsman, bowler, wicketkeeper,
+                    all-rounder), and switch between light and dark themes for optimal viewing.
+                    This beginner-friendly tutorial demonstrates how to organize cricket data,
+                    style player cards with CSS, and implement dynamic filtering using JavaScript.
+                    Perfect for learning modern web development techniques while building a
+                    practical sports statistics viewer.</p>
+            </section>
+
+            <section class="table-of-contents-section">
+                <h2><i class="fas fa-list"></i>Table of Contents</h2>
+                <ol>
+                    <li><a href="#prerequisites">Introduction</a></li>
+                    <li><a href="#language-html">HTML Code</a></li>
+                    <li><a href="#language-css">CSS Code</a></li>
+                    <li><a href="#language-js">JavaScript Code</a></li>
+                    <li><a href="#conclusion-section">Conclusion</a></li>
+                    <li><a href="../Team Card App/Team Card/index-min.html">Preview</a></li>
+                </ol>
+            </section>
+
+            <section id="prerequisites" class="prerequisites-section">
+                <h2><i class="fas fa-clipboard-check"></i>Prerequisites</h2>
+                <ul>
+                    <li><i class="fab fa-html5"></i>HTML</li>
+                    <li><i class="fab fa-css3"></i>CSS</li>
+                    <li><i class="fab fa-js"></i>JavaScript</li>
+                </ul>
+            </section>
+
+            <section id="implementation-details" class="implementation-section">
+                <h2>Implementation Details</h2>
+                <p>The Team Card App HTML file lays out the structure for a cricket team showcase web page. It organizes
+                    sections for the
+                    app title, theme toggle, team selector, team details (sport, year, coach), player cards, and links
+                    to styling and
+                    JavaScript. This foundation lets users browse teams, filter players, and enjoy light/dark themes.
+                </p>
+
+                <div class="implementation-code-section">
+                    <div class="code-terminal-container" style="border-color: #e34f26">
+                        <div class="code-header">
+                            <h3 class="code-title">HTML Code (<span class="language-label">index.html</span>)</h3>
+                            <button class="copy-button" id="copyCodeBtnHtml">
+                                <i class="fas fa-copy"></i>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div id="language-html" class="code-block">
+                            <pre class="line-numbers">
+                            <code id="codeSnippetHtml" class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Cricket Team Cards&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="head"&gt;
+        &lt;img src="image.png" alt=""&gt;
+        &lt;h1 class="title"&gt;&lt;span&gt;T&lt;/span&gt;&lt;span&gt;E&lt;/span&gt;&lt;span&gt;A&lt;/span&gt;&lt;span&gt;M&lt;/span&gt;
+            &lt;span&gt;S&lt;/span&gt;&lt;span&gt;T&lt;/span&gt;&lt;span&gt;A&lt;/span&gt;&lt;span&gt;T&lt;/span&gt;&lt;span&gt;S&lt;/span&gt;
+        &lt;/h1&gt;
+        &lt;button class="theme-toggle"&gt;
+            &lt;i class="fa-solid fa-moon"&gt;&lt;/i&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;hr&gt;
+    &lt;main&gt;
+        &lt;div class="team-stats"&gt;
+            &lt;div class="teams"&gt;
+                &lt;label for="team-select" class="option-label"&gt;SELECT TEAM:&lt;/label&gt;
+                &lt;select name="team-select" id="team-select"&gt;
+                    &lt;option value="India"&gt;India&lt;/option&gt;
+                    &lt;option value="Sri Lanka"&gt;Sri Lanka&lt;/option&gt;
+                    &lt;option value="Australia"&gt;Australia&lt;/option&gt;
+                    &lt;option value="England"&gt;England&lt;/option&gt;
+                    &lt;option value="South Africa"&gt;South Africa&lt;/option&gt;
+                    &lt;option value="New Zealand"&gt;New Zealand&lt;/option&gt;
+                    &lt;option value="Afghanistan"&gt;Afghanistan&lt;/option&gt;
+                    &lt;option value="Bangladesh"&gt;Bangladesh&lt;/option&gt;
+                    &lt;option value="Netherlands"&gt;Netherlands&lt;/option&gt;
+                    &lt;option value="Pakistan"&gt;Pakistan&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;!-- &lt;p&gt;Team: &lt;span id="team"&gt;&lt;/span&gt;&lt;/p&gt; --&gt;
+            &lt;p&gt;SPORT: &lt;span id="sport"&gt;&lt;/span&gt;&lt;/p&gt;
+            &lt;p&gt;YEAR: &lt;span id="year"&gt;&lt;/span&gt;&lt;/p&gt;
+            &lt;p&gt;HEAD COACH: &lt;span id="coach"&gt;&lt;/span&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;!-- Dropdown menu --&gt;
+        &lt;label for="players" class="options-label"&gt;Filter Teammates: &lt;/label&gt;
+        &lt;select name="players" id="players" style="height: 30px;"&gt;
+            &lt;option value="all"&gt;All&lt;/option&gt;
+            &lt;option value="nickname"&gt;Nicknames&lt;/option&gt;
+            &lt;option value="batsman"&gt;Batsman&lt;/option&gt;
+            &lt;option value="bowler"&gt;Bowlers&lt;/option&gt;
+            &lt;option value="wicketkeeper"&gt;Wicketkeepers&lt;/option&gt;
+            &lt;option value="all-rounder"&gt;All Rounders&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;div class="cards" id="player-cards"&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Rohit Sharma (Captain)&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-batsman"&gt;batsman&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 45&lt;/p&gt;
+                &lt;p&gt;Nickname: Hitman&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Hardik Pandya&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-all-rounder"&gt;all-rounder&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 33&lt;/p&gt;
+                &lt;p&gt;Nickname: N/A&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Virat Kohli&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-batsman"&gt;batsman&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 18&lt;/p&gt;
+                &lt;p&gt;Nickname: Cheeku&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Suryakumar Yadav&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-batsman"&gt;batsman&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 63&lt;/p&gt;
+                &lt;p&gt;Nickname: SKY&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Yashasvi Jaiswal&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-batsman"&gt;batsman&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: N/A&lt;/p&gt;
+                &lt;p&gt;Nickname: N/A&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Rishabh Pant&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-wicketkeeper"&gt;wicketkeeper&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 17&lt;/p&gt;
+                &lt;p&gt;Nickname: N/A&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Sanju Samson&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-wicketkeeper"&gt;wicketkeeper&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: N/A&lt;/p&gt;
+                &lt;p&gt;Nickname: N/A&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Shivam Dube&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-all-rounder"&gt;all-rounder&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 25&lt;/p&gt;
+                &lt;p&gt;Nickname: N/A&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Axar Patel&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-all-rounder"&gt;all-rounder&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 20&lt;/p&gt;
+                &lt;p&gt;Nickname: N/A&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Ravindra Jadeja&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-all-rounder"&gt;all-rounder&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 8&lt;/p&gt;
+                &lt;p&gt;Nickname: Jaddu&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Kuldeep Yadav&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-bowler"&gt;bowler&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 23&lt;/p&gt;
+                &lt;p&gt;Nickname: Chinaman&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Yuzvendra Chahal&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-bowler"&gt;bowler&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 3&lt;/p&gt;
+                &lt;p&gt;Nickname: N/A&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Arshdeep Singh&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-bowler"&gt;bowler&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 2&lt;/p&gt;
+                &lt;p&gt;Nickname: N/A&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Mohammed Siraj&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-bowler"&gt;bowler&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 13&lt;/p&gt;
+                &lt;p&gt;Nickname: Miyaan&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class="player-card"&gt;
+                &lt;h2&gt;Jasprit Bumrah&lt;/h2&gt;
+                &lt;p&gt;Position: &lt;span class="position-bowler"&gt;bowler&lt;/span&gt;&lt;/p&gt;
+                &lt;p&gt;Number: 93&lt;/p&gt;
+                &lt;p&gt;Nickname: Jassi&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+                            </code>
+                        </pre>
+                        </div>
+                    </div>
+                    <div class="copy-feedback" id="copyFeedbackHtml"></div>
+                    <div class="explanation html">
+                        <div class="section">
+                            <h3>HTML File Tutorial (index.html)</h3>
+                            <p>The HTML file creates the basic structure and layout of your cricket team
+                                webpage.</p>
+
+                            <h4>Step 1: Set Up the Page Foundation</h4>
+                            <pre class="line-numbers"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Cricket Team Cards&lt;/title&gt;</code></pre>
+                            <ul>
+                                <li>Declares this as an HTML5 document</li>
+                                <li>Sets the page to use English language</li>
+                                <li>Makes sure it displays properly on all devices</li>
+                                <li>Sets the browser tab title</li>
+                            </ul>
+
+                            <h4>Step 2: Link External Files</h4>
+                            <pre
+                                class="line-numbers"><code class="language-html">&lt;link rel="stylesheet" href="style.css"&gt;
+&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"&gt;</code></pre>
+                            <ul>
+                                <li>Connects your CSS file for styling</li>
+                                <li>Adds Font Awesome icons (like the moon icon for theme toggle)</li>
+                            </ul>
+
+                            <h4>Step 3: Create the Header Section</h4>
+                            <pre class="line-numbers"><code class="language-html">&lt;div class="head"&gt;
+  &lt;img src="image.png" alt=""&gt;
+  &lt;h1 class="title"&gt;
+    &lt;span&gt;T&lt;/span&gt;&lt;span&gt;E&lt;/span&gt;&lt;span&gt;A&lt;/span&gt;&lt;span&gt;M&lt;/span&gt;
+    &lt;span&gt;S&lt;/span&gt;&lt;span&gt;T&lt;/span&gt;&lt;span&gt;A&lt;/span&gt;&lt;span&gt;T&lt;/span&gt;&lt;span&gt;S&lt;/span&gt;
+  &lt;/h1&gt;
+  &lt;button class="theme-toggle"&gt;
+    &lt;i class="fa-solid fa-moon"&gt;&lt;/i&gt;
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                            <ul>
+                                <li>Shows your app logo</li>
+                                <li>Displays "TEAM STATS" as separate letters for animation effects</li>
+                                <li>Adds a moon button for switching themes</li>
+                            </ul>
+
+                            <h4>Step 4: Add Team Selection and Information</h4>
+                            <pre class="line-numbers"><code class="language-html">&lt;div class="teams"&gt;
+  &lt;label for="team-select" class="option-label"&gt;SELECT TEAM:&lt;/label&gt;
+  &lt;select name="team-select" id="team-select"&gt;
+    &lt;option value="India"&gt;India&lt;/option&gt;
+    &lt;option value="Australia"&gt;Australia&lt;/option&gt;
+    &lt;!-- more teams --&gt;
+  &lt;/select&gt;
+&lt;/div&gt;
+&lt;p&gt;SPORT: &lt;span id="sport"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;YEAR: &lt;span id="year"&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;HEAD COACH: &lt;span id="coach"&gt;&lt;/span&gt;&lt;/p&gt;</code></pre>
+                            <ul>
+                                <li>Creates a dropdown to choose cricket teams</li>
+                                <li>Sets up empty spaces that JavaScript will fill with team details</li>
+                            </ul>
+
+                            <h4>Step 5: Add Player Filter</h4>
+                            <pre class="line-numbers"><code class="language-html">&lt;label for="players" class="options-label"&gt;Filter Teammates: &lt;/label&gt;
+&lt;select name="players" id="players"&gt;
+  &lt;option value="all"&gt;All&lt;/option&gt;
+  &lt;option value="batsman"&gt;Batsman&lt;/option&gt;
+  &lt;option value="bowler"&gt;Bowlers&lt;/option&gt;
+  &lt;!-- more filters --&gt;
+&lt;/select&gt;</code></pre>
+                            <ul>
+                                <li>Lets users filter players by their position</li>
+                            </ul>
+
+                            <h4>Step 6: Create Player Cards Container</h4>
+                            <pre class="line-numbers"><code class="language-html">&lt;div class="cards" id="player-cards"&gt;
+  &lt;!-- JavaScript will add player cards here --&gt;
+&lt;/div&gt;</code></pre>
+                            <ul>
+                                <li>Empty container where JavaScript will insert all player cards</li>
+                            </ul>
+
+                            <h4>Step 7: Link JavaScript</h4>
+                            <pre
+                                class="line-numbers"><code class="language-html">&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+                            <ul>
+                                <li>Connects the JavaScript file to make everything interactive</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="code-terminal-container" style="border-color: #0056b3;">
+                    <div class="code-header">
+                        <h3 class="code-title">CSS Code (<span class="language-label">style.css</span>)</h3>
+                        <button class="copy-button" id="copyCodeBtnCss">
+                            <i class="fas fa-copy"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <div id="language-css" class="code-block">
+                        <pre class="line-numbers">
+                                <code id="codeSnippetCss" class="language-css">
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+    --dark-bg: #1a1a1a;
+    --dark-black: #030303;
+    --dark-gray: #333;
+    --light-text: #f0f0f0;
+    --secondary-bg: #2a2a2a;
+    --accent-programming: #ffa500;
+    --program: #f57c00;
+    --size: 1.8rem;
+    --mobile-size-h2: 1.6rem;
+    --mobile-size-h3: 1.3rem;
+    --p-size: 1rem;
+    --h3: 1.15rem;
+    --p: 0.85rem;
+    --p-weight: 200;
+    --level-tag: 0.7rem;
+    --tag-weight: 400;
+    --accent-hacking: #CB0404;
+    --hacking-bg: #381717;
+    --guide: #7b1fa2;
+    --guide-bg: #311e38;
+    --accent-blue: #007bff;
+    --accent-blue-hover: #0056b3;
+    --button-primary-hover: #0056b3;
+    --button-secondary-bg: transparent;
+    --button-secondary-border: #007bff;
+    --button-secondary-hover-border: #0056b3;
+    --python: #2482cf;
+    --js: #f7df1e;
+    --terminal: #1f4788;
+    --html: #e34f26;
+    --css: #296d9e;
+
+    --problem-section-bg: #1f1f1f;
+    --problem-header-color: #00bcd4;
+    --problem-card-bg: #282828;
+    --problem-card-border: #00bcd4;
+    --problem-tag-bg: #005f6b;
+    --problem-tag-text: #e0f7fa;
+    --solve-btn-bg: #00bcd4;
+    --solve-btn-hover: #0097a7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Ubuntu", sans-serif;
+    background-color: var(--dark-bg);
+    font-weight: 700;
+    color: var(--light-text);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar {
+    background-color: var(--dark-gray);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--light-text);
+}
+
+.navbar .logo i {
+    margin-right: 8px;
+    color: #007bff;
+}
+
+.navbar .logo span {
+    font-family: "Winky Rough", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: bolder;
+}
+
+.navbar nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+.navbar nav ul li {
+    margin-left: 20px;
+}
+
+.navbar nav ul li a {
+    color: var(--light-text);
+    padding: 18px 8px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.navbar nav ul li a:hover {
+    color: #007bff;
+    background-color: var(--secondary-bg);
+}
+
+.navbar .search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--dark-bg);
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-left: 25px;
+    border: 1px solid #444;
+}
+
+.navbar .search-bar:focus-within {
+    border-color: var(--button-primary-hover);
+}
+
+.navbar .search-bar i {
+    color: #aaa;
+    margin-right: 10px;
+}
+
+.navbar .search-bar input {
+    background-color: var(--dark-bg);
+    border: none;
+    outline: none;
+    color: var(--light-text);
+    font-size: 1rem;
+    width: 200px;
+}
+
+.navbar .search-bar input::placeholder {
+    color: #aaa;
+}
+
+.hero-section {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero-section h1 {
+    font-size: 3.2rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero-section .highlight-programming {
+    color: var(--accent-programming);
+}
+
+.hero-section .highlight-hacking {
+    color: var(--accent-hacking);
+}
+
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    color: #ccc;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    background: var(--dark-gray);
+    border: 2px solid var(--dark-bg);
+    padding-top: 2px;
+    padding-left: 6px;
+}
+
+.welcome-section {
+    background-color: var(--dark-black);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.welcome-section .section-header {
+    margin-bottom: 50px;
+}
+
+.welcome-section .section-header h2 {
+    font-size: 1.8rem;
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.welcome-section .section-header h2::after {
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-blue);
+    left: 50%;
+    transform: translateX(-50px);
+    bottom: 145px;
+    border-radius: 2px;
+    animation: typewriter 2s steps(20) infinite;
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 10%;
+    }
+}
+
+.welcome-section .section-header h2 i {
+    margin-right: 15px;
+    font-size: 1.8rem;
+}
+
+.welcome-section .section-header p {
+    font-size: var(--p-size);
+    max-width: 700px;
+    margin: 0 auto;
+    color: #bbb;
+    font-weight: 200;
+}
+
+.welcome-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.card {
+    background-color: #1e1e1e;
+    border: 2px solid var(--button-primary-hover);
+    border-radius: 5px;
+    padding: 30px;
+    text-align: left;
+    max-width: 300px;
+    max-height: 400px;
+    box-shadow: 0 4px 10px rgba(9, 13, 252, 0.6);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    background-color: #1d3a62;
+    transform: translateY(-5px);
+}
+
+.card .icon {
+    font-size: 1.4rem;
+    color: var(--accent-blue);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.card h3 {
+    font-size: 1.15rem;
+    color: var(--light-text);
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: #ccc;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    min-height: 75px;
+}
+
+.card a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 300;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+
+.card a i {
+    margin-left: 8px;
+    transition: margin-left 0.3s ease;
+    font-size: 0.8rem;
+}
+
+.featured-content-section {
+    background-color: var(--dark-bg);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.featured-content-section .section-header {
+    margin-bottom: 50px;
+}
+
+.featured-content-section .section-header h2 {
+    font-size: var(--size);
+    color: #28a745;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.featured-content-section .section-header h2 i {
+    margin-right: 15px;
+    font-size: var(--size);
+}
+
+.featured-content-section .section-header h2::after {
+    content: " ";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: #28a745;
+    left: 50%;
+    transform: translateX(-50px);
+    bottom: 22px;
+    border-radius: 2px;
+    animation: typewriter 2s steps(20) infinite;
+}
+
+.featured-content-section .section-header p,
+.programming-tutorials-section .section-header p {
+    font-size: var(--p-size);
+    max-width: 700px;
+    margin: 0 auto;
+    color: #bbb;
+    font-weight: var(--p-weight);
+}
+
+.content-cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.content-card {
+    background-color: var(--dark-black);
+    border: 1px solid #28a745;
+    border-radius: 5px;
+    width: 300px;
+    max-height: 500px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(48, 178, 44, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+}
+
+.content-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(48, 178, 44, 0.4);
+}
+
+.content-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.content-card-body {
+    padding: 20px;
+}
+
+.content-card .tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.content-card .tag {
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: var(--level-tag);
+    font-weight: var(--tag-weight);
+    text-transform: uppercase;
+    color: #28a745;
+}
+
+.content-card .tag.new {
+    background-color: #192a1a;
+}
+
+.content-card .tag.program {
+    color: var(--program);
+    background-color: #493118;
+}
+
+.content-card .tag.hacking {
+    color: var(--accent-hacking);
+    background-color: var(--hacking-bg);
+}
+
+.content-card .tag.guide {
+    color: var(--guide);
+    background-color: var(--guide-bg);
+}
+
+.content-card .tag.level {
+    color: #aaa;
+}
+
+.content-card h3 {
+    font-size: var(--h3);
+    color: var(--light-text);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.content-card p {
+    font-size: var(--p);
+    color: #cccc;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    min-height: 50px;
+    font-weight: 200;
+}
+
+.content-card .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 15px;
+    font-weight: 200;
+}
+
+.content-card .read-more {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    transition: color-left 0.3s ease;
+}
+
+.content-card .read-more i {
+    margin-left: 8px;
+    transition: margin-left 0.3s ease;
+}
+
+.content-card .read-more:hover {
+    color: var(--button-primary-hover);
+}
+
+.content-card .read-more:hover i {
+    margin-left: 12px;
+}
+
+.view-all-btn {
+    background-color: #28a745;
+    color: #f0f0f0;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.content-card.one.hidden-release,
+.tutorial-project-card.hidden-project {
+    max-height: 0;
+    opacity: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: none;
+    visibility: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease, margin 0.5s ease, visibility 0.5s ease;
+}
+
+.content-card.one.show-release,
+.tutorial-project-card.show-project {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 30px;
+    margin-bottom: 0;
+    visibility: visible;
+    transition: max-height 0.5s ease, opacity 0.5s ease, margin 0.5s ease, visibility 0.5s ease;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    border: 2px solid var(--program);
+}
+
+.view-all-btn:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.programming-tutorials-section {
+    background-color: var(--dark-black);
+    padding: 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: visible;
+}
+
+.programming-tutorials-section .section-header {
+    margin-bottom: 50px;
+}
+
+.programming-tutorials-section .section-header h2 {
+    font-size: var(--size);
+    color: var(--program);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.programming-tutorials-section .section-header h2 i {
+    margin-right: 15px;
+    font-size: var(--size);
+}
+
+.programming-tutorials-section .section-header h2::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--program);
+    left: 50%;
+    transform: translateX(-50px);
+    bottom: 18px;
+    border-radius: 2px;
+    animation: typewriter 2s steps(20) infinite;
+}
+
+.programming-tutorials-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.programming-tutorials-header h3,
+.tutorial-projects-header h3 {
+    font-size: 1.6rem;
+    color: var(--program);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.carousel-nav {
+    position: relative;
+}
+
+.carousel-nav button {
+    width: 30px;
+    height: 30px;
+    font-size: larger;
+    background-color: var(--program);
+    border: none;
+    cursor: pointer;
+    color: #f0f0f0;
+    border-radius: 3px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-nav button:hover {
+    background-color: #c3670c;
+}
+
+.carousel-nav button.disabled {
+    background-color: var(--dark-gray);
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.carousel-nav button.disabled:hover {
+    background-color: var(--dark-gray);
+}
+
+.language-cards {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 30px;
+    padding: 15px 0 50px 20px;
+    scroll-padding: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-snap-type: x proximity;
+    max-width: 1150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.language-cards::-webkit-scrollbar {
+    display: none;
+}
+
+.language-card {
+    position: relative;
+    background-color: var(--dark-bg);
+    border: 2px solid var(--program);
+    border-radius: 5px;
+    padding: 25px;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(211, 114, 18, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-shrink: 0;
+    max-width: 450px;
+    max-height: 500px;
+    scroll-snap-align: start;
+    flex: 0 0 350px;
+    margin-bottom: 15px;
+    scroll-snap-align: start;
+}
+
+.language-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(211, 114, 18, 0.4);
+}
+
+.language-card .icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.language-card .tag.level,
+.tutorial-project-card .tag.level {
+    color: #aaa;
+    font-size: var(--level-tag);
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+.language-card .icon.python {
+    color: #3776ab;
+}
+
+.language-card .icon.javascript {
+    color: #f7df1e;
+}
+
+.language-card .icon.windows {
+    color: #1f4788;
+}
+
+.language-card h3,
+.tutorial-project-card h3 {
+    font-size: var(--h3);
+    color: var(--light-text);
+    margin-bottom: 10px;
+}
+
+.language-card p,
+.tutorial-project-card p {
+    font-size: var(--p-size);
+    color: #ccc;
+    flex-grow: 1;
+    font-weight: var(--p-weight);
+}
+
+.language-card .meta-link,
+.tutorial-project-card .meta-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.language-card .meta-link span,
+.tutorial-project-card .meta-link span,
+.tutorial-project-card .meta-link span i {
+    font-size: 0.85rem;
+    color: #aaa;
+    font-weight: var(--p-weight);
+}
+
+.language-card .btn-start,
+.tutorial-project-card .btn-start {
+    background-color: var(--program);
+    color: #f0f0f0;
+    border: 2px solid var(--program);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.language-card .btn-start::after {
+    content: "▶";
+    font-size: 0.8rem;
+    margin-left: 8px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.language-card .btn-start:hover::after {
+    opacity: 2;
+    transform: translateX(7px);
+    color: #f0f0f0;
+}
+
+.tutorial-projects-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.tutorial-projects-header .view-all-btn {
+    background-color: var(--program);
+    color: #f0f0f0;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+}
+
+.tutorial-project-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    max-width: 1150px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tutorial-project-card {
+    background-color: var(--dark-bg);
+    border: 2px solid var(--program);
+    border-radius: 5px;
+    padding: 30px;
+    text-align: left;
+    width: calc(50% - 15px);
+    box-shadow: 0 4px 10px rgba(211, 114, 18, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tutorial-project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(211, 114, 18, 0.4);
+}
+
+.tutorial-project-card .tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tutorial-project-card .tag {
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: var(--level-tag);
+    font-weight: var(--tag-weight);
+    text-transform: uppercase;
+}
+
+.tutorial-project-card .tag.python {
+    color: var(--python);
+    background-color: #1d3042;
+}
+
+.tutorial-project-card .tag.html {
+    color: var(--html);
+    background-color: #493118;
+}
+
+.tutorial-project-card .tag.css {
+    color: var(--css);
+    background-color: #1d3042;
+}
+
+.tutorial-project-card .tag.js {
+    color: var(--js);
+    background-color: #755f18;
+}
+
+.tutorial-project-card .learn-list {
+    list-style: none;
+    margin-bottom: 10px;
+    margin-top: 14px;
+}
+
+.tutorial-project-card .topics {
+    background-color: #121212;
+    padding: 2px 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
+.tutorial-project-card .topics h4 {
+    color: var(--program);
+    font-size: var(--p);
+    margin-top: 10px;
+}
+
+.tutorial-project-card .learn-list li {
+    font-size: var(--p);
+    font-weight: var(--tag-weight);
+    color: #bbb;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+}
+
+.tutorial-project-card .learn-list li i {
+    color: var(--program);
+    margin-right: 10px;
+    font-size: var(--p);
+    line-height: 1.5;
+}
+
+.tutorial-project-card .meta-link span i {
+    margin-right: 5px;
+}
+
+.tutorial-project-card .start-link {
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+.tutorial-project-card .btn-start:hover {
+    background-color: #bb6f1ef3;
+}
+
+/* Mobile Specific Styles */
+@media (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--dark-gray);
+        overflow: hidden;
+        max-height: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .nav-links.active {
+        max-height: 450px;
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar .logo {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .navbar .logo .logo-text {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .nav-links ul li a:hover {
+        width: 96%;
+        background-color: var(--secondary-bg);
+        border-radius: 5px;
+    }
+
+    nav a:last-child {
+        margin-bottom: 15px;
+    }
+
+    nav a {
+        margin-left: 10px;
+        padding: 10px 45px;
+        width: 100%;
+        display: block;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-toggle i {
+        font-size: 1.5rem;
+        color: var(--dark-bg);
+    }
+
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .navbar nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 15px;
+    }
+
+    .navbar nav ul li {
+        margin: -10px 32px;
+    }
+
+    .navbar .search-bar {
+        width: 400px;
+        margin: 15px auto 0 auto;
+        text-align: center;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-section p {
+        font-size: 1rem;
+    }
+
+    .welcome-section {
+        padding: 60px 0;
+    }
+
+    .welcome-section .section-header h2,
+    .welcome-section .section-header h2 i {
+        font-size: 1.4rem;
+    }
+
+    .welcome-section .section-header h2::after {
+        bottom: 86px;
+        animation: typewriter 2s steps(20) infinite;
+    }
+
+    @keyframes typewriter {
+        from {
+            width: 0;
+        }
+
+        to {
+            width: 30%;
+        }
+    }
+
+    .welcome-section .section-header p {
+        font-size: 0.8rem;
+    }
+
+    .welcome-cards {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .card {
+        width: calc(100% - 40px);
+        margin: 0 auto;
+    }
+
+    .featured-content-section {
+        padding: 60px 0;
+    }
+
+    .content-card {
+        width: calc(100% - 40px);
+        margin: 0 auto;
+    }
+
+    .content-card img {
+        height: 180px;
+    }
+
+    .programming-tutorials-section .section-header h2 {
+        font-size: var(--mobile-size-h2);
+    }
+
+    .programming-tutorials-header h3 {
+        margin-left: 60px;
+        font-size: var(--mobile-size-h3);
+    }
+
+    .language-cards {
+        position: relative;
+        left: 68px;
+        width: 370px;
+    }
+
+    .language-card {
+        position: relative;
+        max-width: 500px;
+        flex: 0 0 350px;
+    }
+
+    .carousel-nav {
+        position: relative;
+        left: -10px;
+    }
+
+}
+
+.problem-section {
+    background-color: var(--problem-section-bg);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.problem-section .problem-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+
+.problem-section .problem-header h3 {
+    font-size: var(--size);
+    color: var(--problem-header-color);
+    margin: 0;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.problem-section .problem-header h3::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--problem-header-color);
+    left: 0;
+    bottom: 0;
+    border-radius: 2px;
+    animation: typewriter 2s steps(20) infinite;
+}
+
+.problem-section .view-all-btn {
+    background-color: var(--solve-btn-bg);
+    color: var(--light-text);
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.problem-section .view-all-btn:hover {
+    background-color: var(--solve-btn-hover);
+    transform: translateY(-2px);
+}
+
+.problem-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.problem-card {
+    background-color: var(--problem-card-bg);
+    border: 2px solid var(--problem-card-border);
+    border-radius: 5px;
+    padding: 30px;
+    text-align: left;
+    width: calc(50% - 15px);
+    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--light-text);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.problem-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 188, 212, 0.6);
+}
+
+.problem-card h3 {
+    font-size: var(--h3);
+    color: var(--light-text);
+    margin-bottom: 10px;
+}
+
+.problem-card p {
+    font-size: var(--p-size);
+    color: #ccc;
+    font-weight: var(--p-weight);
+    margin-bottom: 15px;
+}
+
+.problem-card .tags {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.problem-card .tag {
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-size: var(--level-tag);
+    font-weight: var(--tag-weight);
+    text-transform: uppercase;
+    background-color: var(--problem-tag-bg);
+    color: var(--problem-tag-text);
+}
+
+.problem-meta-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    width: 100%;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.problem-card .total-problem {
+    font-size: var(--p-size);
+    color: #aaa;
+    margin-bottom: 0;
+}
+
+.problem-card .solve-btn {
+    background-color: var(--solve-btn-bg);
+    color: var(--light-text);
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 0.95rem;
+    transition: background-color 0.3s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 0;
+}
+
+.problem-card .solve-btn:hover {
+    background-color: var(--solve-btn-hover);
+}
+
+@media (max-width: 768px) {
+    .problem-section {
+        padding: 60px 0;
+    }
+
+    .problem-section .problem-header h3 {
+        font-size: var(--mobile-size-h3);
+    }
+
+    .problem-cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .problem-card {
+        width: calc(100% - 40px);
+    }
+}
+
+                                </code>
+                            </pre>
+                    </div>
+                </div>
+                <div class="copy-feedback" id="copyFeedbackCss"></div>
+                <div class="explanation css">
+                    <div class="section">
+                        <h3>CSS File Tutorial (style.css)</h3>
+                        <p>The CSS file makes your app look professional with colors, layouts,
+                            animations, and both light/dark themes.</p>
+                        <h4>Step 1: Set Up Theme Variables</h4>
+                        <pre class="line-numbers"><code class="language-css">:root {
+  --color-bg-body: #f0f2f5;
+  --color-text-body: #333333;
+  --color-card-bg: #B6B09F;
+  /* more color variables */
+}</code></pre>
+                        <ul>
+                            <li>Creates color variables that can be easily changed</li>
+                            <li>Sets up default colors for light theme</li>
+                        </ul>
+
+                        <h4>Step 2: Create Dark Theme Override</h4>
+                        <pre class="line-numbers"><code class="language-css">body.dark-theme {
+  --color-bg-body: #1a202c;
+  --color-text-body: #e2e8f0;
+  /* darker colors for dark theme */
+}</code></pre>
+                        <ul>
+                            <li>When dark theme is active, these colors replace the light theme colors</li>
+                        </ul>
+
+                        <h4>Step 3: Style the Basic Page</h4>
+                        <pre class="line-numbers"><code class="language-css">body {
+  background-color: var(--color-bg-body);
+  color: var(--color-text-body);
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}</code></pre>
+                        <ul>
+                            <li>Sets the page background and text colors using variables</li>
+                            <li>Centers all content</li>
+                            <li>Adds smooth transitions when switching themes</li>
+                        </ul>
+
+                        <h4>Step 4: Style the Header</h4>
+                        <pre class="line-numbers"><code class="language-css">.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title span {
+  font-size: 50px;
+  transition: transform 0.2s ease;
+}
+
+.title span:hover {
+  transform: scale(1.5);
+}</code></pre>
+                        <ul>
+                            <li>Arranges logo, title, and theme button in a row</li>
+                            <li>Makes each letter in "TEAM STATS" grow when you hover over it</li>
+                        </ul>
+
+                        <h4>Step 5: Style the Theme Toggle Button</h4>
+                        <pre class="line-numbers"><code class="language-css">.theme-toggle {
+  position: absolute;
+  top: 55px;
+  right: 130px;
+  border-radius: 50%;
+  background: var(--color-toggle-bg);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-4px);
+}</code></pre>
+                        <ul>
+                            <li>Positions the theme button in top-right corner</li>
+                            <li>Makes it round and adds hover effects</li>
+                        </ul>
+
+                        <h4>Step 6: Style Player Cards</h4>
+                        <pre class="line-numbers"><code class="language-css">.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.player-card {
+  background-color: var(--color-card-bg);
+  padding: 1.3rem;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+}
+
+.player-card:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}</code></pre>
+                        <ul>
+                            <li>Arranges cards in rows that wrap to new lines</li>
+                            <li>Makes cards grow and add shadows when you hover over them</li>
+                        </ul>
+
+                        <h4>Step 7: Add Position Colors</h4>
+                        <pre class="line-numbers"><code class="language-css">.position-batsman { color: var(--color-position-batsman); }
+.position-bowler { color: var(--color-position-bowler); }
+.position-wicketkeeper { color: var(--color-position-wicketkeeper); }
+.position-all-rounder { color: var(--color-position-all-rounder); }</code></pre>
+                        <ul>
+                            <li>Colors each player position differently (red for batsman, blue for bowler, etc.)
+                            </li>
+                        </ul>
+
+                        <h4>Step 8: Make It Mobile-Friendly</h4>
+                        <pre class="line-numbers"><code class="language-css">media (max-width: 768px) {
+  .title span { font-size: 25px; }
+  .theme-toggle { top: 40px; right: 50px; }
+  img { width: 60px; height: 60px; }
+}</code></pre>
+                        <ul>
+                            <li>Makes text smaller and repositions elements on phone screens</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="code-terminal-container" style="border-color: #ffd43b;">
+                    <div class="code-header">
+                        <h3 class="code-title">JavaScript Code (<span class="language-label">script.js</span>)</h3>
+                        <button class="copy-button" id="copyCodeBtnJs">
+                            <i class="fas fa-copy"></i>
+                            <span>Copy</span>
+                        </button>
+                    </div>
+                    <div id="language-js" class="code-block">
+                        <pre class="line-numbers">
+                                    <code id="codeSnippetJs" class="language-javascript">
+const themeToggle = document.querySelector(".theme-toggle");
+const teamNameElement = document.getElementById("team");
+const typeOfSportElement = document.getElementById("sport");
+const worldCupYearElement = document.getElementById("year");
+const headCoachElement = document.getElementById("coach");
+const playerCardsContainer = document.getElementById("player-cards");
+const playersDropdownList = document.getElementById("players");
+const teamSelectDropdown = document.getElementById("team-select");
+
+const allCricketTeams = [
+    {
+        team: "India",
+        sport: "Cricket",
+        year: 2024,
+        isWorldCupWinner: false,
+        headCoach: {
+            coachName: "Gautam Gambhir",
+        },
+        players: [
+            { name: "Rohit Sharma", position: "batsman", number: 45, isCaptain: true, nickname: "Hitman" },
+            { name: "Hardik Pandya", position: "all-rounder", number: 33, isCaptain: false, nickname: "N/A" },
+            { name: "Virat Kohli", position: "batsman", number: 18, isCaptain: false, nickname: "Cheeku" },
+            { name: "Suryakumar Yadav", position: "batsman", number: 63, isCaptain: false, nickname: "SKY" },
+            { name: "Yashasvi Jaiswal", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Rishabh Pant", position: "wicketkeeper", number: 17, isCaptain: false, nickname: "N/A" },
+            { name: "Sanju Samson", position: "wicketkeeper", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Shivam Dube", position: "all-rounder", number: 25, isCaptain: false, nickname: "N/A" },
+            { name: "Axar Patel", position: "all-rounder", number: 20, isCaptain: false, nickname: "N/A" },
+            { name: "Ravindra Jadeja", position: "all-rounder", number: 8, isCaptain: false, nickname: "Jaddu" },
+            { name: "Kuldeep Yadav", position: "bowler", number: 23, isCaptain: false, nickname: "Chinaman" },
+            { name: "Yuzvendra Chahal", position: "bowler", number: 3, isCaptain: false, nickname: "N/A" },
+            { name: "Arshdeep Singh", position: "bowler", number: 2, isCaptain: false, nickname: "N/A" },
+            { name: "Mohammed Siraj", position: "bowler", number: 13, isCaptain: false, nickname: "Miyaan" },
+            { name: "Jasprit Bumrah", position: "bowler", number: 93, isCaptain: false, nickname: "Jassi" }
+        ]
+    },
+    {
+        team: "Sri Lanka",
+        sport: "Cricket",
+        year: 2024,
+        isWorldCupWinner: false,
+        headCoach: {
+            coachName: "Sanath Jayasuriya",
+        },
+        players: [
+            { name: "Charith Asalanka", position: "batsman", number: 16, isCaptain: true, nickname: "N/A" },
+            { name: "Kusal Mendis", position: "wicketkeeper", number: 99, isCaptain: false, nickname: "N/A" },
+            { name: "Pathum Nissanka", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Dhananjaya de Silva", position: "all-rounder", number: 75, isCaptain: false, nickname: "N/A" },
+            { name: "Kamindu Mendis", position: "all-rounder", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Dunith Wellalage", position: "all-rounder", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Dasun Shanaka", position: "all-rounder", number: 27, isCaptain: false, nickname: "N/A" },
+            { name: "Angelo Mathews", position: "all-rounder", number: 69, isCaptain: false, nickname: "N/A" },
+            { name: "Nuwan Thushara", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Dilshan Madushanka", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Maheesh Theekshana", position: "bowler", number: 1, isCaptain: false, nickname: "N/A" },
+            { name: "Dushmantha Chameera", position: "bowler", number: 90, isCaptain: false, nickname: "N/A" },
+            { name: "Kasun Rajitha", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Sadeera Samarawickrama", position: "wicketkeeper", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Wanindu Hasaranga", position: "all-rounder", number: "N/A", isCaptain: false, nickname: "N/A" }
+        ]
+    },
+    {
+        team: "Australia",
+        sport: "Cricket",
+        year: 2024,
+        isWorldCupWinner: false,
+        headCoach: {
+            coachName: "Andrew McDonald",
+        },
+        players: [
+            { name: "Pat Cummins", position: "bowler", number: 30, isCaptain: true, nickname: "N/A" },
+            { name: "Steve Smith", position: "batsman", number: 49, isCaptain: false, nickname: "Smudge" },
+            { name: "Travis Head", position: "batsman", number: 62, isCaptain: false, nickname: "N/A" },
+            { name: "Marnus Labuschagne", position: "batsman", number: 33, isCaptain: false, nickname: "Marnus" },
+            { name: "Alex Carey", position: "wicketkeeper", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Josh Inglis", position: "wicketkeeper", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Glenn Maxwell", position: "all-rounder", number: 32, isCaptain: false, nickname: "The Big Show" },
+            { name: "Marcus Stoinis", position: "all-rounder", number: 17, isCaptain: false, nickname: "Stoin" },
+            { name: "Mitchell Starc", position: "bowler", number: 56, isCaptain: false, nickname: "N/A" },
+            { name: "Josh Hazlewood", position: "bowler", number: 38, isCaptain: false, nickname: "N/A" },
+            { name: "Adam Zampa", position: "bowler", number: 46, isCaptain: false, nickname: "Zamps" },
+            { name: "Cameron Green", position: "all-rounder", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "David Warner", position: "batsman", number: 31, isCaptain: false, nickname: "Davey" },
+            { name: "Nathan Ellis", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Sean Abbott", position: "bowler", number: "N/A", isCaptain: false, nickname: "Abbott" }
+        ]
+    },
+    {
+        team: "England",
+        sport: "Cricket",
+        year: 2024,
+        isWorldCupWinner: false,
+        headCoach: {
+            coachName: "Brendon McCullum",
+        },
+        players: [
+            { name: "Ben Stokes", position: "all-rounder", number: 55, isCaptain: true, nickname: "N/A" },
+            { name: "Joe Root", position: "batsman", number: 66, isCaptain: false, nickname: "N/A" },
+            { name: "Zak Crawley", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Ollie Pope", position: "batsman", number: 80, isCaptain: false, nickname: "N/A" },
+            { name: "Jonny Bairstow", position: "wicketkeeper", number: 51, isCaptain: false, nickname: "Jonny B" },
+            { name: "Jos Buttler", position: "wicketkeeper", number: 63, isCaptain: false, nickname: "N/A" },
+            { name: "Moeen Ali", position: "all-rounder", number: 18, isCaptain: false, nickname: "Moeen" },
+            { name: "Chris Woakes", position: "bowler", number: 19, isCaptain: false, nickname: "Woakesy" },
+            { name: "Mark Wood", position: "bowler", number: 36, isCaptain: false, nickname: "Woody" },
+            { name: "James Anderson", position: "bowler", number: "N/A", isCaptain: false, nickname: "Jimmy" },
+            { name: "Stuart Broad", position: "bowler", number: 8, isCaptain: false, nickname: "Broad" },
+            { name: "Jofra Archer", position: "bowler", number: 22, isCaptain: false, nickname: "N/A" },
+            { name: "Harry Brook", position: "batsman", number: 88, isCaptain: false, nickname: "N/A" },
+            { name: "Sam Curran", position: "all-rounder", number: 58, isCaptain: false, nickname: "N/A" },
+            { name: "Adil Rashid", position: "bowler", number: 95, isCaptain: false, nickname: "Rash" }
+        ]
+    },
+    {
+        team: "South Africa",
+        sport: "Cricket",
+        year: 2024,
+        isWorldCupWinner: false,
+        headCoach: {
+            coachName: "Shukri Conrad",
+        },
+        players: [
+            { name: "Temba Bavuma", position: "batsman", number: 46, isCaptain: true, nickname: "N/A" },
+            { name: "Quinton de Kock", position: "wicketkeeper", number: 12, isCaptain: false, nickname: "Quinny" },
+            { name: "Aiden Markram", position: "batsman", number: 4, isCaptain: false, nickname: "N/A" },
+            { name: "David Miller", position: "batsman", number: 10, isCaptain: false, nickname: "Killer Miller" },
+            { name: "Heinrich Klaasen", position: "wicketkeeper", number: 45, isCaptain: false, nickname: "N/A" },
+            { name: "Rassie van der Dussen", position: "batsman", number: 17, isCaptain: false, nickname: "Rassie" },
+            { name: "Marco Jansen", position: "all-rounder", number: 27, isCaptain: false, nickname: "N/A" },
+            { name: "Kagiso Rabada", position: "bowler", number: 25, isCaptain: false, nickname: "KG" },
+            { name: "Anrich Nortje", position: "bowler", number: 24, isCaptain: false, nickname: "N/A" },
+            { name: "Keshav Maharaj", position: "bowler", number: 6, isCaptain: false, nickname: "Kesh" },
+            { name: "Tabraiz Shamsi", position: "bowler", number: 99, isCaptain: false, nickname: "Shamo" },
+            { name: "Gerald Coetzee", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Reeza Hendricks", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Lungi Ngidi", position: "bowler", number: 22, isCaptain: false, nickname: "N/A" },
+            { name: "Tristan Stubbs", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" }
+        ]
+    },
+    {
+        team: "New Zealand",
+        sport: "Cricket",
+        year: 2024,
+        isWorldCupWinner: false,
+        headCoach: {
+            coachName: "Rob Walter",
+        },
+        players: [
+            { name: "Kane Williamson", position: "batsman", number: 22, isCaptain: true, nickname: "N/A" },
+            { name: "Devon Conway", position: "wicketkeeper", number: 88, isCaptain: false, nickname: "N/A" },
+            { name: "Tom Latham", position: "wicketkeeper", number: 48, isCaptain: false, nickname: "N/A" },
+            { name: "Daryl Mitchell", position: "all-rounder", number: 77, isCaptain: false, nickname: "N/A" },
+            { name: "Glenn Phillips", position: "all-rounder", number: 40, isCaptain: false, nickname: "N/A" },
+            { name: "Rachin Ravindra", position: "all-rounder", number: 4, isCaptain: false, nickname: "N/A" },
+            { name: "Mitchell Santner", position: "all-rounder", number: 74, isCaptain: false, nickname: "N/A" },
+            { name: "Trent Boult", position: "bowler", number: 18, isCaptain: false, nickname: "N/A" },
+            { name: "Tim Southee", position: "bowler", number: 23, isCaptain: false, nickname: "N/A" },
+            { name: "Lockie Ferguson", position: "bowler", number: 69, isCaptain: false, nickname: "N/A" },
+            { name: "Matt Henry", position: "bowler", number: 15, isCaptain: false, nickname: "N/A" },
+            { name: "Ish Sodhi", position: "bowler", number: 13, isCaptain: false, nickname: "N/A" },
+            { name: "Michael Bracewell", position: "all-rounder", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Mark Chapman", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Will Young", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" }
+        ]
+    },
+    {
+        team: "Afghanistan",
+        sport: "Cricket",
+        year: 2024,
+        isWorldCupWinner: false,
+        headCoach: {
+            coachName: "Jonathan Trott",
+        },
+        players: [
+            { name: "Rashid Khan", position: "bowler", number: 19, isCaptain: true, nickname: "N/A" },
+            { name: "Rahmanullah Gurbaz", position: "wicketkeeper", number: 21, isCaptain: false, nickname: "N/A" },
+            { name: "Ibrahim Zadran", position: "batsman", number: 8, isCaptain: false, nickname: "N/A" },
+            { name: "Najibullah Zadran", position: "batsman", number: 50, isCaptain: false, nickname: "N/A" },
+            { name: "Mohammad Nabi", position: "all-rounder", number: 7, isCaptain: false, nickname: "N/A" },
+            { name: "Gulbadin Naib", position: "all-rounder", number: 9, isCaptain: false, nickname: "N/A" },
+            { name: "Azmatullah Omarzai", position: "all-rounder", number: 28, isCaptain: false, nickname: "N/A" },
+            { name: "Karim Janat", position: "all-rounder", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Mujeeb Ur Rahman", position: "bowler", number: 11, isCaptain: false, nickname: "N/A" },
+            { name: "Noor Ahmad", position: "bowler", number: 15, isCaptain: false, nickname: "N/A" },
+            { name: "Naveen-ul-Haq", position: "bowler", number: 98, isCaptain: false, nickname: "N/A" },
+            { name: "Fazalhaq Farooqi", position: "bowler", number: 44, isCaptain: false, nickname: "N/A" },
+            { name: "Fareed Ahmad Malik", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Nangyal Kharoti", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Mohammad Ishaq", position: "wicketkeeper", number: "N/A", isCaptain: false, nickname: "N/A" }
+        ]
+    },
+    {
+        team: "Bangladesh",
+        sport: "Cricket",
+        year: 2024,
+        isWorldCupWinner: false,
+        headCoach: {
+            coachName: "Phil Simmons",
+        },
+        players: [
+            { name: "Najmul Hossain Shanto", position: "batsman", number: 15, isCaptain: true, nickname: "N/A" },
+            { name: "Taskin Ahmed", position: "bowler", number: 3, isCaptain: false, nickname: "N/A" },
+            { name: "Litton Das", position: "wicketkeeper", number: 28, isCaptain: false, nickname: "N/A" },
+            { name: "Shakib Al Hasan", position: "all-rounder", number: 75, isCaptain: false, nickname: "N/A" },
+            { name: "Towhid Hridoy", position: "batsman", number: 2, isCaptain: false, nickname: "N/A" },
+            { name: "Mahmudullah Riyad", position: "all-rounder", number: 30, isCaptain: false, nickname: "N/A" },
+            { name: "Mustafizur Rahman", position: "bowler", number: 90, isCaptain: false, nickname: "Fizz" },
+            { name: "Shoriful Islam", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Tanzid Hasan Tamim", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Soumya Sarkar", position: "all-rounder", number: 59, isCaptain: false, nickname: "N/A" },
+            { name: "Jaker Ali Anik", position: "wicketkeeper", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Tanvir Islam", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Shak Mahedi Hasan", position: "all-rounder", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Rishad Hossain", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Tanzim Hasan Sakib", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" }
+        ]
+    },
+    {
+        team: "Netherlands",
+        sport: "Cricket",
+        year: 2024,
+        isWorldCupWinner: false,
+        headCoach: {
+            coachName: "Ryan Cook",
+        },
+        players: [
+            { name: "Scott Edwards", position: "wicketkeeper", number: 4, isCaptain: true, nickname: "N/A" },
+            { name: "Max O'Dowd", position: "batsman", number: 10, isCaptain: false, nickname: "N/A" },
+            { name: "Michael Levitt", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Teja Nidamanuru", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Bas de Leede", position: "all-rounder", number: 1, isCaptain: false, nickname: "N/A" },
+            { name: "Logan van Beek", position: "all-rounder", number: 9, isCaptain: false, nickname: "N/A" },
+            { name: "Sybrand Engelbrecht", position: "all-rounder", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Wesley Barresi", position: "wicketkeeper", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Aryan Dutt", position: "bowler", number: 18, isCaptain: false, nickname: "N/A" },
+            { name: "Paul van Meekeren", position: "bowler", number: 22, isCaptain: false, nickname: "N/A" },
+            { name: "Vivian Kingma", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Saqib Zulfiqar", position: "all-rounder", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Tim Pringle", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Vikramjit Singh", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Kyle Klein", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" }
+        ]
+    },
+    {
+        team: "Pakistan",
+        sport: "Cricket",
+        year: 2024,
+        isWorldCupWinner: false,
+        headCoach: {
+            coachName: "Mike Hesson",
+        },
+        players: [
+            { name: "Babar Azam", position: "batsman", number: 56, isCaptain: true, nickname: "Bobby" },
+            { name: "Mohammad Rizwan", position: "wicketkeeper", number: 16, isCaptain: false, nickname: "N/A" },
+            { name: "Shaheen Afridi", position: "bowler", number: 10, isCaptain: false, nickname: "N/A" },
+            { name: "Fakhar Zaman", position: "batsman", number: 39, isCaptain: false, nickname: "N/A" },
+            { name: "Shadab Khan", position: "all-rounder", number: 7, isCaptain: false, nickname: "N/A" },
+            { name: "Haris Rauf", position: "bowler", number: 150, isCaptain: false, nickname: "N/A" },
+            { name: "Naseem Shah", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Iftikhar Ahmed", position: "all-rounder", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Imad Wasim", position: "all-rounder", number: 5, isCaptain: false, nickname: "N/A" },
+            { name: "Saim Ayub", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Azam Khan", position: "wicketkeeper", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Usman Khan", position: "batsman", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Abbas Afridi", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Abrar Ahmed", position: "bowler", number: "N/A", isCaptain: false, nickname: "N/A" },
+            { name: "Mohammad Amir", position: "bowler", number: 5, isCaptain: false, nickname: "N/A" }
+        ]
+    }
+];
+
+let currentTeam = allCricketTeams[0];
+let currentFilter = "all";
+
+allCricketTeams.forEach(team => Object.freeze(team));
+allCricketTeams.forEach(team => team.players.forEach(player => Object.freeze(player)));
+
+const renderTeamData = (teamObject) => {
+    const { sport, team, year, headCoach, players } = teamObject;
+    const { coachName } = headCoach;
+
+    typeOfSportElement.textContent = sport;
+    worldCupYearElement.textContent = year;
+    headCoachElement.textContent = coachName;
+
+    playerCardsContainer.innerHTML = "";
+
+    applyFilterAndRenderPlayers(currentFilter);
+};
+
+const setPlayerCards = (arr = currentTeam.players) => {
+    playerCardsContainer.innerHTML += arr.map(({ name, position, number, isCaptain, nickname }) => {
+        return `
+        <div class="player-card">
+            <h2>${name}${isCaptain ? " (Captain) " : ""}</h2>
+            <p>Position: <span class="position-${position}">${position}</span></p>
+            <p>Number: ${number}</p>
+            <p>Nickname: ${nickname !== "N/A" ? nickname : "N/A"}</p>
+        </div>
+    `;
+    }).join("");
+};
+
+const applyFilterAndRenderPlayers = (filterValue) => {
+    let filteredPlayers = currentTeam.players;
+    switch (filterValue) {
+        case "nickname":
+            filteredPlayers = currentTeam.players.filter((player) => player.nickname !== "N/A");
+            break;
+        case "batsman":
+            filteredPlayers = currentTeam.players.filter((player) => player.position === "batsman");
+            break;
+        case "bowler":
+            filteredPlayers = currentTeam.players.filter((player) => player.position === "bowler");
+            break;
+        case "wicketkeeper":
+            filteredPlayers = currentTeam.players.filter((player) => player.position === "wicketkeeper");
+            break;
+        case "all-rounder":
+            filteredPlayers = currentTeam.players.filter((player) => player.position === "all-rounder");
+            break;
+        case "all":
+        default:
+            break;
+    }
+
+    playerCardsContainer.innerHTML = "";
+    setPlayerCards(filteredPlayers);
+};
+
+playersDropdownList.addEventListener("change", (e) => {
+    currentFilter = e.target.value;
+    applyFilterAndRenderPlayers(currentFilter);
+});
+
+teamSelectDropdown.addEventListener("change", (e) => {
+    const selectedTeamName = e.target.value;
+    currentTeam = allCricketTeams.find(team => team.team === selectedTeamName);
+    if (currentTeam) {
+        renderTeamData(currentTeam);
+    }
+});
+
+const toggleTheme = () => {
+    const isDarkTheme = document.body.classList.toggle("dark-theme");
+    localStorage.setItem("theme", isDarkTheme ? "dark" : "light");
+    themeToggle.querySelector("i").className = isDarkTheme ? "fa-solid fa-sun" : "fa-solid fa-moon";
+};
+
+themeToggle.addEventListener("click", toggleTheme);
+
+(() => {
+    const savedTheme = localStorage.getItem("theme");
+    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDarkTheme = savedTheme === "dark" || (!savedTheme && systemPrefersDark);
+    document.body.classList.toggle("dark-theme", isDarkTheme);
+    themeToggle.querySelector("i").className = isDarkTheme ? "fa-solid fa-sun" : "fa-solid fa-moon";
+
+    renderTeamData(currentTeam);
+})();
+                                    </code>
+                                </pre>
+                    </div>
+                </div>
+                <div class="copy-feedback" id="copyFeedbackJs"></div>
+                <div class="explanation js">
+                    <div class="section">
+                        <h3>JavaScript File Tutorial (script.js)</h3>
+                        <p>The JavaScript file stores all team data and makes the webpage interactive -
+                            switching teams, filtering players, and changing themes.</p>
+                        <h4>Step 1: Get HTML Elements</h4>
+                        <pre class="line-numbers"><code class="language-js">const themeToggle = document.querySelector(".theme-toggle");
+const typeOfSportElement = document.getElementById("sport");
+const worldCupYearElement = document.getElementById("year");
+const headCoachElement = document.getElementById("coach");
+const playerCardsContainer = document.getElementById("player-cards");</code></pre>
+                        <ul>
+                            <li>Connects to HTML elements so JavaScript can control them</li>
+                        </ul>
+
+                        <h4>Step 2: Store All Team Data</h4>
+                        <pre class="line-numbers"><code class="language-js">const allCricketTeams = [
+  {
+    team: "India",
+    sport: "Cricket",
+    year: 2024,
+    headCoach: { coachName: "Gautam Gambhir" },
+    players: [
+      {
+        name: "Rohit Sharma",
+        position: "batsman",
+        number: 45,
+        isCaptain: true,
+        nickname: "Hitman"
+      },
+      // more players...
+    ]
+  },
+  // more teams...
+];</code></pre>
+                        <ul>
+                            <li>Creates an array containing all cricket teams</li>
+                            <li>Each team has basic info and a list of players</li>
+                            <li>Each player has name, position, number, captain status, and nickname</li>
+                        </ul>
+
+                        <h4>Step 3: Set Starting Values</h4>
+                        <pre class="line-numbers"><code class="language-js">let currentTeam = allCricketTeams[0]; // Start with India
+let currentFilter = "all"; // Show all players initially</code></pre>
+                        <ul>
+                            <li>Sets India as the default team when page loads</li>
+                            <li>Sets filter to show all players</li>
+                        </ul>
+
+                        <h4>Step 4: Display Team Information</h4>
+                        <pre class="line-numbers"><code class="language-js">const renderTeamData = (teamObject) => {
+  const { sport, year, headCoach, players } = teamObject;
+  
+  typeOfSportElement.textContent = sport;
+  worldCupYearElement.textContent = year;
+  headCoachElement.textContent = headCoach.coachName;
+  
+  playerCardsContainer.innerHTML = "";
+  applyFilterAndRenderPlayers(currentFilter);
+}</code></pre>
+                        <ul>
+                            <li>Takes team data and displays it on the webpage</li>
+                            <li>Fills in sport, year, and coach information</li>
+                            <li>Clears old player cards and shows new ones</li>
+                        </ul>
+
+                        <h4>Step 5: Create Player Cards</h4>
+                        <pre class="line-numbers"><code class="language-js">const setPlayerCards = (arr = currentTeam.players) => {
+  playerCardsContainer.innerHTML += arr.map(({ name, position, number, isCaptain, nickname }) => {
+    return `
+      &lt;div class="player-card"&gt;
+        &lt;h2&gt;${name}${isCaptain ? " (Captain)" : ""}&lt;/h2&gt;
+        &lt;p&gt;Position: &lt;span class="position-${position}"&gt;${position}&lt;/span&gt;&lt;/p&gt;
+        &lt;p&gt;Number: ${number}&lt;/p&gt;
+        &lt;p&gt;Nickname: ${nickname !== "N/A" ? nickname : "N/A"}&lt;/p&gt;
+      &lt;/div&gt;
+    `;
+  }).join("");
+}</code></pre>
+                        <ul>
+                            <li>Takes a list of players and creates HTML cards for each one</li>
+                            <li>Adds "(Captain)" to the captain's name</li>
+                            <li>Colors positions using CSS classes</li>
+                        </ul>
+
+                        <h4>Step 6: Handle Team Selection</h4>
+                        <pre class="line-numbers"><code class="language-js">teamSelectDropdown.addEventListener("change", (event) => {
+  const selectedTeamName = event.target.value;
+  const selectedTeam = allCricketTeams.find(team => team.team === selectedTeamName);
+  
+  if (selectedTeam) {
+    currentTeam = selectedTeam;
+    renderTeamData(currentTeam);
+  }
+});</code></pre>
+                        <ul>
+                            <li>Listens for when user selects a different team</li>
+                            <li>Finds the selected team in the data</li>
+                            <li>Updates the display with new team information</li>
+                        </ul>
+
+                        <h4>Step 7: Handle Player Filtering</h4>
+                        <pre class="line-numbers"><code class="language-js">playersDropdownList.addEventListener("change", (event) => {
+  currentFilter = event.target.value;
+  applyFilterAndRenderPlayers(currentFilter);
+});
+
+const applyFilterAndRenderPlayers = (filter) => {
+  let playersToShow = currentTeam.players;
+  
+  if (filter !== "all") {
+    if (filter === "nickname") {
+      playersToShow = playersToShow.filter(player => player.nickname !== "N/A");
+    } else {
+      playersToShow = playersToShow.filter(player => player.position === filter);
+    }
+  }
+  
+  setPlayerCards(playersToShow);
+}</code></pre>
+                        <ul>
+                            <li>Listens for filter changes</li>
+                            <li>Shows only players matching the selected filter</li>
+                            <li>Special case: "nickname" filter shows only players with nicknames</li>
+                        </ul>
+
+                        <h4>Step 8: Handle Theme Switching</h4>
+                        <pre class="line-numbers"><code class="language-js">themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-theme");
+  
+  const isDarkTheme = document.body.classList.contains("dark-theme");
+  themeToggle.innerHTML = isDarkTheme 
+    ? '&lt;i class="fa-solid fa-sun"&gt;&lt;/i&gt;' 
+    : '&lt;i class="fa-solid fa-moon"&gt;&lt;/i&gt;';
+});</code></pre>
+                        <ul>
+                            <li>Listens for theme button clicks</li>
+                            <li>Adds or removes "dark-theme" class from body</li>
+                            <li>Changes button icon between moon and sun</li>
+                        </ul>
+
+                        <h4>Step 9: Initialize the App</h4>
+                        <pre class="line-numbers"><code class="language-js">// Start the app with India team
+renderTeamData(currentTeam);</code></pre>
+                        <ul>
+                            <li>Displays India team data when the page first loads</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ad Banner  -->
+            <div class="ad-banner-in-content">
+                <p>Ad</p>
+                <!-- <img src="https://placehold.co/768x150/555/white?text=Advertisement%0A768x10%0A(Large+Rectangle)"
+                    alt="Advertisement 336x280 (Large Rectangle)"> -->
+            </div>
+
+            <!-- Project Conclusion  -->
+            <section id="conclusion-section" class="conclusion-section">
+                <h2>Project Conclusion</h2>
+                <p>The Team Card App is a comprehensive beginner-friendly web development project that demonstrates the
+                    power of combining <a href="#language-html">HTML</a>, <a href="#language-css">CSS</a>, and <a
+                        href="#language-js">JavaScript</a> to create an interactive
+                    sports application. This
+                    project successfully transforms static cricket team data into a dynamic, user-friendly interface
+                    that allows users to explore different teams, filter players by positions, and customize their
+                    viewing experience with theme switching.</p>
+                <div class="key">
+                    <h3>Key achievements include:</h3>
+
+                    <ul>
+                        <li><b>Interactive team switching</b> that allows users to seamlessly browse different cricket
+                            teams from a dropdown
+                            menu.</li>
+                        <li><b>Dynamic player filtering system</b> that enables filtering by position (batsman, bowler,
+                            wicketkeeper) or
+                            nickname status.</li>
+                        <li><b>Responsive theme toggle</b> that provides smooth switching between light and dark modes
+                            for enhanced user
+                            experience.</li>
+                        <li>A <b>modular architecture</b> (HTML for structure, CSS for styling, JavaScript for
+                            functionality) that ensures clean
+                            code organization and easy scalability.</li>
+                    </ul>
+                </div>
+                <div class="action-buttons">
+                    <a href="Team Card/index-min.html" target="_blank" class="action-button live-preview"><i
+                            class="fas fa-eye"></i>Live
+                        Preview</a>
+                    <a href="https://github.com/kumaradoss16/Projects-Programming/tree/main/JavaScript/Team%20Card"
+                        class="action-button source-code"><i class="fab fa-github"></i>Source Code</a>
+                </div>
+                <p class="last">The project serves as an excellent learning foundation, teaching essential web
+                    development concepts while working with
+                    real-world data. It bridges the gap between basic coding knowledge and practical application
+                    development, making it
+                    ideal for beginners who want to see immediate, tangible results from their coding efforts.</p>
+            </section>
+
+            <!-- Preview  -->
+            <!-- <section id="experience-section" class="experience-section">
+                <h2>Preview</h2>
+                <div class="action-buttons">
+                    <a href="" class="action-button live-preview"><i class="fas fa-eye"></i>Live Preview</a>
+                    <a href="" class="action-button source-code"><i class="fab fa-github"></i>Source Code</a>
+                </div>
+            </section> -->
+
+            <!-- My Other Projects  -->
+            <section id="other-work-section" class="other-work-section">
+                <h2 style="margin-top: 20px;">Other Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="../../Python/shooter-game/images/space-shooter-game-python-pygame-tutorial.webp"
+                            alt="Shooter Game Python Pygame Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Shooter Game</h4>
+                            <p>This is a beginner-friendly guide for building a Space Shooter game with Python and
+                                Pygame, covering coding concepts and
+                                project structure.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Pygame</span>
+                            </div>
+                            <a href="../../Python/shooter-game/space-shooter-game-python-pygame-tutorial.html"
+                                title="Shooter Game Python Pygame Project Tutorial" class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Python/to-do-cli-app/images/todo-cli-app-python.webp"
+                            alt="To-Do CLI App Python Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>To-Do CLI App</h4>
+                            <p>Interactive command-line to-do list manager with Python, featuring list operations,
+                                persistent tasks, and practical
+                                coding exercises.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                            </div>
+                            <a href="../../Python/to-do-cli-app/todo-cli-app-python-tutorial.html"
+                                title="To-Do CLI App Python Project Tutorial" class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Web/weather-app/images/weather-app-html-css-javascript-tutorial.webp"
+                            alt="Weather App HTML CSS JavaScript Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Weather App</h4>
+                            <p>Responsive weather app with real-time API data, feature comparison, and intuitive design
+                                for global city forecasts.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag">CSS</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                            <a href="../../Web/weather-app/weather-app-html-css-javascript-tutorial.html"
+                                title="Weather App HTML CSS JavaScript Project Tutorial"
+                                class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../C/simple-calculator-c/images/simple-calculator-c-tutorial-cli-guide.webp"
+                            alt="Simple Calculator in C Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Simple Calculator in C</h4>
+                            <p>This comprehensive simple calculator in C tutorial teaches you how to build a fully
+                                functional menu-driven calculator
+                                with a command-line interface from scratch..</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C</span>
+                            </div>
+                            <a href="../../C/simple-calculator-c/simple-calculator-c-tutorial-cli-guide.html"
+                                title="Simple Calculator in C Project Tutorial" class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Python/atm-management-system/images/atm-management-system-python-cli-interface.webp"
+                            alt="ATM Management System Python Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>ATM Management System in Python</h4>
+                            <p>This Python application implements a multi-user ATM system with SQLite-backed
+                                persistence,
+                                featuring account management, financial transactions, and administrative controls.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">SQLite</span>
+                            </div>
+                            <a href="../../Python/atm-management-system/atm-management-system-python-sqlite-tutorial.html"
+                                title="ATM Management System Python Project Tutorial" class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../C/vpn-connectivity-verification-cpp/images/vpn-tool-before-connection-terminal-output.webp"
+                            alt="VPN Connectivity verification in C Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>VPN Connectivity verification in C</h4>
+                            <p>Efficient C program to verify VPN status, routing, and DNS configurations through
+                                comprehensive public IP and network
+                                adapter analysis.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C</span>
+                            </div>
+                            <a href="../../C/vpn-connectivity-verification-cpp/build-vpn-verification-tool-c-tutorial.html"
+                                title="VPN Connectivity verification in C Project Tutorial"
+                                class="view-project-button">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Side  -->
+        <aside class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>TechTutorials is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                    alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home Page</a>
+                </div>
+            </div>
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a></li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block medium">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                    alt="Advertisement 300x250 (Medium Rectangle)" /> -->
+            </div>
+            <div class="ad-block small">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                    alt="Advertisement 320x100 (Large Mobile Banner)" /> -->
+            </div>
+        </aside>
+        <button id="scrollUpBtn" aria-label="Scroll to top">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer  -->
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../color-palettes/index.html">Color Space</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpireHub | All Rights Reserved</p>
+    </footer>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+    <!-- Prism.js line-numbers plugin -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+    <script src="../../Prism/prism.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

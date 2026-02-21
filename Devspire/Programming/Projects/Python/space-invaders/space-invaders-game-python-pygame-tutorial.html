@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="../../../../images/icon.webp" sizes="32x46" type="image/webp">
+
+    <!-- Primary Title Tag: 58 characters, keyword-optimized -->
+    <title>Space Invaders Tutorial: Python Pygame Complete Guide</title>
+
+    <!-- Meta Description: 157 characters, action-oriented with CTR focus -->
+    <meta name="description"
+        content="Build a classic Space Invaders game with Python and Pygame. Learn sprite animation, collision detection, shooting mechanics, and scoring. Step-by-step tutorial.">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devspirehub.com/Programming/Projects/Python/space-invaders">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Space Invaders Game Tutorial - Python Pygame for Beginners">
+    <meta property="og:description"
+        content="Learn to create a classic arcade Space Invaders game using Python and Pygame. Complete tutorial with sprite animation, collision detection, sound effects, and scoring system.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devspirehub.com/Programming/Projects/Python/space-invaders">
+    <meta property="og:image"
+        content="https://devspirehub.com/Programming/Projects/Python/images/space-invaders-pygame-tutorial-preview.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Space Invaders Tutorial - Python Pygame">
+    <meta name="twitter:description"
+        content="Build a classic arcade shooter with Python. Learn game loops, collision detection, enemy AI, and scoring. Complete beginner-friendly guide.">
+    <meta name="twitter:image" content="https://devspirehub.com/images/space-invaders-game-python-pygame-tutorial.webp">
+
+    <!-- Robots & Indexing Directives -->
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+    <!-- Author Information -->
+    <meta name="author" content="Kumaradoss / DevSpireHub">
+    <link rel="author" href="https://devspirehub.com/about">
+
+    <!-- Theme Color for Mobile Browsers -->
+    <meta name="theme-color" content="#000000">
+
+    <!-- Performance: DNS Prefetch for External Resources -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <!-- Prism.js CSS theme -->
+    <link rel="stylesheet" href="../../Prism/prism.css" />
+
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "DevSpireHub",
+        "url": "https://devspirehub.com/",
+        "logo": "https://devspirehub.com/image/icon.webp",
+        "description": "DevSpire - Programming, Projects, Ethical hacking, Networking & AI",
+        "founder": [
+            {
+            "@type": "Person",
+            "name": "Kumaradoss",
+            "url": "https://www.linkedin.com/in/kumaradoss-s/"
+            }
+        ],
+        "sameAs": [
+            "https://www.linkedin.com/in/kumaradoss-s/",
+            "https://github.com/kumaradoss16",
+        ]
+        }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "TechArticle",
+        "headline": "Space Invaders Game Python Pygame – Step-by-Step Tutorial",
+        "description": "Build a Space Invaders game with Python Pygame from scratch. Learn sprite animation, collision detection, shooting mechanics, and game loops in this beginner tutorial.",
+        "image": "https://devspirehub.com/Programming/Projects/Python/images/space-invaders-game-python-pygame-tutorial.webp",
+        "author": {
+            "@type": "Person",
+            "name": "Kumaradoss",
+            "url": "https://www.linkedin.com/in/kumaradoss-s/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "DevSpireHub",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://devspirehub.com/images/icon.webp"
+            }
+        },
+        "url": "https://devspirehub.com/tutorials/python/space-invaders-game-python-pygame/",
+        "mainEntityOfPage": "https://devspirehub.com/tutorials/python/space-invaders-game-python-pygame/",
+        "articleSection": "Python Game Development",
+        "keywords": "Space Invaders Python, Pygame tutorial, Python game development, collision detection, sprite animation",
+        "educationalLevel": "Beginner to Intermediate"
+    }
+    </script>
+
+    <!-- ✅ SEO: BreadcrumbList Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://devspirehub.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Python Projects",
+                "item": "https://devspirehub.com/Programming/Python/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Space Invaders Game Python Pygame Tutorial",
+                "item": "https://devspirehub.com/Programming/Python/space-invaders-game-python-pygame/"
+            }
+        ]
+    }
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+</head>
+
+<body>
+    <header class="navbar">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-text">
+                    <img src="../../../../images/icon.webp" alt="Gear Icon" width="23" height="23">
+                    <span id="brand" class="typewriter" data-text="DevSpireHub"></span>
+                </div>
+                <button class="menu-toggle" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="../../../../index.html">Home</a></li>
+                    <li><a href="#implementation-details">Implementations</a></li>
+                    <li><a href="#other-work-section">Projects</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper container">
+        <!-- Left Side  -->
+        <main class="left-column">
+            <section class="project-details-section">
+                <h1 class="text-shadow">Space Invaders Game Tutorial: Build Classic Arcade with Python Pygame</h1>
+                <p>Learn How to Create a Simple Space Invaders with Feature Comparison Using Python (PyGame):
+                    Step-by-Step
+                    Guide for
+                    Beginners</p>
+                <div class="image-placeholder">
+                    <img src="image/space-invaders-game-python-pygame-tutorial.webp"
+                        alt="Space Invaders Game Python Pygram Tutorial" loading="lazy" decoding="async"
+                        fetchpriority="auto" />
+                </div>
+                <p>This comprehensive <strong>Space Invaders Game tutorial</strong> teaches you how to
+                    recreate the iconic arcade shooter using <strong>Python and Pygame library</strong>. Learn
+                    professional game development techniques including <strong>sprite animation</strong> for
+                    smooth enemy movements, <strong>collision detection</strong> using distance-based algorithms,
+                    real-time game loops with event handling, keyboard-controlled player movement with boundary
+                    checking, single-bullet firing mechanics with cooldown states, dynamic enemy wave generation
+                    with random positioning, sound effects integration for laser shooting and explosions,
+                    progressive difficulty with enemy respawning, and scoring system with game-over conditions.
+                    Perfect for beginners learning classic arcade game mechanics and intermediate Python
+                    programmers exploring interactive 2D game development with authentic retro gameplay patterns.
+                </p>
+            </section>
+
+            <section class="table-of-contents-section">
+                <h2><i class="fas fa-list"></i>Table of Contents</h2>
+                <ol>
+                    <li><a href="#prerequisites">Introduction</a></li>
+                    <li><a href="#language-python">Python Code</a></li>
+                    <li><a href="">Conclusion</a></li>
+                    <li><a href="">Preview</a></li>
+                </ol>
+            </section>
+
+            <section id="prerequisites" class="prerequisites-section">
+                <h2><i class="fas fa-clipboard-check"></i>Prerequisites</h2>
+                <ul>
+                    <li><i class="fab fa-python"></i>Python</li>
+                    <li><i class="fas fa-code"></i>Pygame library (pip install pygame)</li>
+                    <li><i class="fas fa-image"></i>Game assets (Images [Alien, background, UFO, Player)], Font and
+                        Sound)</li>
+                </ul>
+            </section>
+
+            <section id="implementation-details" class="implementation-section">
+                <h2>Implementation Details</h2>
+                <p>This Space Invader game, built with Python and Pygame, features a player-controlled spaceship, enemy
+                    waves, real-time movement, shooting, collision detection, and simple scoring. The game loop runs
+                    smoothly, making gameplay increasingly challenging as enemies respawn.
+                </p>
+
+                <div class="implementation-code-section">
+                    <div class="code-terminal-container" style="border-color: #0056b3">
+                        <div class="code-header">
+                            <h3 class="code-title">Python Code (<span class="language-label">main.py</span>)</h3>
+                            <button class="copy-button" id="copyCodeBtnPython">
+                                <i class="fas fa-copy"></i>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+                        <div id="language-python" class="code-block">
+                            <pre class="line-numbers">
+                                <code id="codeSnippetPython" class="language-python">
+import math
+import random
+import pygame
+from pygame import mixer
+
+# Initialize the pygame
+pygame.init()
+screen = pygame.display.set_mode((800, 600))
+# Background Image
+background = pygame.image.load('Images/Background.jpg')
+
+# Background Sound
+mixer.music.load('Sound/background.wav')
+mixer.music.play(-1)
+
+# Caption and Icon
+pygame.display.set_caption('Space Invaders')
+icon = pygame.image.load('Images/UFO.png')
+pygame.display.set_icon(icon)
+
+# Player
+playerImg = pygame.image.load('Images/Player.png')
+playerX = 370
+playerY = 480
+playerX_change = 0
+
+# Enemy
+enemyImg = []
+enemyX = []
+enemyY = []
+enemyX_change = []
+enemyY_change = []
+no_of_enemies = 6
+for i in range(no_of_enemies):
+    enemyImg.append(pygame.image.load('Images/Alien.png'))
+    enemyX.append(random.randint(0, 736))
+    enemyY.append(random.randint(50, 150))
+    enemyX_change.append(0.3)
+    enemyY_change.append(40)
+
+# Bullet
+bulletImg = pygame.image.load('Images/Bullet.png')
+bulletX = 0
+bulletY = 480
+bulletX_change = 0
+bulletY_change = 2
+bullet_state = 'ready'
+
+# Score Font
+score_value = 0
+font = pygame.font.Font('Font/bladesinger.ttf', 30)
+textX = 10
+textY = 10
+
+# Game Over Text
+over_font = pygame.font.Font('Font/bladesinger.ttf', 64)
+
+def show_score(x, y):
+    score = font.render('score:' + str(score_value), True, (255, 255, 255))
+    screen.blit(score, (x, y))
+
+def game_over_text():
+    over_text = over_font.render('GAME OVER', True, (255, 255, 255))
+    screen.blit(over_text, (200, 250))
+
+def player(x, y):
+    screen.blit(playerImg, (x, y))
+
+def enemy(x, y, i):
+    screen.blit(enemyImg[i], (x, y))
+
+def fire_bullet(x, y):
+    global bullet_state
+    bullet_state = 'fire'
+    screen.blit(bulletImg, (x+16, y+10))
+
+# Collision
+def isCollision(enemyX, enemyY, bulletX, bulletY):
+    distance = math.sqrt(math.pow(enemyX - bulletX, 2) + math.pow(enemyY - bulletY, 2))
+    if distance < 27:
+        return True
+    else:
+        return False
+
+# Game Loop
+running = True
+while running:
+    screen.fill((0, 0, 0))
+    # Background Image
+    screen.blit(background, (0, 0))
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                playerX_change = -0.4
+            if event.key == pygame.K_RIGHT:
+                playerX_change = 0.4
+            if event.key == pygame.K_SPACE:
+                if bullet_state == 'ready':
+                    bullet_Sound = mixer.Sound('Sound/laser.wav')
+                    bullet_Sound.play()
+                    # Get the current x coordinate of the Spaceship
+                    bulletX = playerX
+                    fire_bullet(bulletX, bulletY)
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                playerX_change = 0
+    playerX += playerX_change
+    if playerX <= 0:
+        playerX = 0
+    elif playerX >= 736:
+        playerX = 736
+    # Checking the boundaries of the Spaceship
+    for i in range(no_of_enemies):
+        # Game Over
+        if enemyY[i] > 450:
+            for j in range(no_of_enemies):
+                enemyY[j] = 2000
+            game_over_text()
+            break
+        enemyX[i] += enemyX_change[i]
+        if enemyX[i] <= 0:
+            enemyX_change[i] = 0.3
+            enemyY[i] += enemyY_change[i]
+        elif enemyX[i] >= 736:
+            enemyX_change[i] = -0.3
+            enemyY[i] += enemyY_change[i]
+        # Collision
+        collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
+        if collision:
+            explosion_Sound = mixer.Sound('Sound/explosion.wav')
+            explosion_Sound.play()
+            bulletY = 480
+            bullet_state = 'ready'
+            score_value += 1
+            enemyX[i] = random.randint(0, 736)
+            enemyY[i] = random.randint(50, 150)
+        enemy(enemyX[i], enemyY[i], i)
+
+    # Bullet Movement
+    if bulletY <= 0:
+        bulletY = 480
+        bullet_state = 'ready'
+    if bullet_state == 'fire':
+        fire_bullet(bulletX, bulletY)
+        bulletY -= bulletY_change
+
+    # Movement of the Enemy
+    player(playerX, playerY)
+    show_score(textX, textY)
+    pygame.display.update()
+                        </code>
+                        </pre>
+                        </div>
+                    </div>
+                    <div class="copy-feedback" id="copyFeedbackPython"></div>
+                    <div class="explanation python">
+                        <div class="section">
+                            <h3>Setting Up the Project</h3>
+                            <p>Here's the recommended folder structure for your project. All file and folder names
+                                are case-sensitive!</p>
+                            <div class="pre-header"><strong>Folder structure:</strong> </div>
+                            <div class="file-tree">
+                                <p class="tree-connector">SpaceInvader/</p>
+                                <p class="tree-connector indent-1">├── <span class="file-name">main.py</span></p>
+                                <p class="tree-connector indent-1">├── <span class="folder-name">Images/</span></p>
+                                <p class="tree-connector indent-1">│&nbsp;&nbsp;&nbsp;├── <span
+                                        class="file-name">Background.jpg</span></p>
+                                <p class="tree-connector indent-1">│&nbsp;&nbsp;&nbsp;├── <span
+                                        class="file-name">UFO.png</span></p>
+                                <p class="tree-connector indent-1">│&nbsp;&nbsp;&nbsp;├── <span
+                                        class="file-name">Player.png</span></p>
+                                <p class="tree-connector indent-1">│&nbsp;&nbsp;&nbsp;├── <span
+                                        class="file-name">Alien.png</span></p>
+                                <p class="tree-connector indent-1">│&nbsp;&nbsp;&nbsp;└── <span
+                                        class="file-name">Bullet.png</span></p>
+                                <p class="tree-connector indent-1">├── <span class="folder-name">Sound/</span></p>
+                                <p class="tree-connector indent-1">│&nbsp;&nbsp;&nbsp;├── <span
+                                        class="file-name">background.wav</span></p>
+                                <p class="tree-connector indent-1">│&nbsp;&nbsp;&nbsp;├── <span
+                                        class="file-name">laser.wav</span></p>
+                                <p class="tree-connector indent-1">│&nbsp;&nbsp;&nbsp;└── <span
+                                        class="file-name">explosion.wav</span></p>
+                                <p class="tree-connector indent-1">└── <span class="folder-name">Font/</span></p>
+                                <p class="tree-connector indent-2">└── <span class="file-name">bladesinger.ttf</span>
+                                </p>
+                                <button class="download-all-btn" onclick="downloadAllImages()">
+                                    <i class="fas fa-download"></i>Download All Assets
+                                </button>
+                            </div>
+                            <h3>1. Set Up and Import Libraries</h3>
+
+                            <pre class="line-numbers"><code class="language-python">import math
+import random
+import pygame
+from pygame import mixer
+pygame.init()
+</code></pre>
+                            <ul>
+                                <li>'math' is used for collision detection using distances.</li>
+                                <li>'random' is for placing enemies in random positions.</li>
+                                <li>'pygame' is the core library for making 2D games.</li>
+                                <li>'mixer' (from pygame) lets us play sounds/music.</li>
+                                <li>'pygame.init()' starts up everything you need for a graphical game.</li>
+                            </ul>
+
+                            <h3>2. Create the Game Window</h3>
+
+                            <pre class="line-numbers"><code class="language-python">screen = pygame.display.set_mode((800, 600))
+</code></pre>
+                            <ul>
+                                <li>This creates the main game window, 800 pixels wide and 600 pixels tall.</li>
+                                <li>The top-left of the window is at coordinates (0,0).</li>
+                            </ul>
+
+                            <h3>3. Load Images, Sound, and Set the Window Caption/Icon</h3>
+
+                            <pre class="line-numbers"><code class="language-python">background = pygame.image.load('Images/Background.jpg')
+mixer.music.load('Sound/background.wav')
+mixer.music.play(-1)  # background music loops forever
+pygame.display.set_caption('Space Invaders') # window title
+icon = pygame.image.load('Images/UFO.png')
+pygame.display.set_icon(icon) # sets the window icon
+</code></pre>
+                            <ul>
+                                <li>Loads and sets up your background, game icon, and background music.</li>
+                                <li>'mixer.music.play(-1)' makes the music repeat continuously.</li>
+                            </ul>
+
+                            <h3>4. Set Up the Player</h3>
+
+                            <pre class="line-numbers"><code class="language-python">playerImg = pygame.image.load('Images/Player.png')
+playerX = 370
+playerY = 480
+playerX_change = 0
+</code></pre>
+                            <ul>
+                                <li>Loads the player ship image.</li>
+                                <li>Sets its starting position near the bottom center of the window.</li>
+                                <li>'playerX_change' is used to move left/right when the player presses keys.</li>
+                            </ul>
+
+                            <h3>5. Create a Group of Enemies</h3>
+
+                            <pre class="line-numbers"><code class="language-python">enemyImg = []
+enemyX = []
+enemyY = []
+enemyX_change = []
+enemyY_change = []
+no_of_enemies = 6
+for i in range(no_of_enemies):
+    enemyImg.append(pygame.image.load('Images/Alien.png'))
+    enemyX.append(random.randint(0, 736))
+    enemyY.append(random.randint(50, 150))
+    enemyX_change.append(0.3)
+    enemyY_change.append(40)
+</code></pre>
+                            <ul>
+                                <li>Sets up 6 enemies.</li>
+                                <li>Each enemy gets a random starting position near the top of the screen.</li>
+                                <li>Each enemy moves sideways ('enemyX_change'), and drops down a little
+                                    ('enemyY_change') when it hits the screen edge.</li>
+                            </ul>
+
+                            <h3>6. Add a Bullet Mechanic</h3>
+
+                            <pre class="line-numbers"><code class="language-python">bulletImg = pygame.image.load('Images/Bullet.png')
+bulletX = 0
+bulletY = 480
+bulletX_change = 0
+bulletY_change = 2
+bullet_state = 'ready'
+</code></pre>
+                            <ul>
+                                <li>Bullet can be fired by the player.</li>
+                                <li>'bullet_state' can be 'ready' (player can shoot) or 'fire' (bullet is moving).
+                                </li>
+                            </ul>
+
+                            <h3>7. Fonts & Score</h3>
+
+                            <pre class="line-numbers"><code class="language-python">score_value = 0
+font = pygame.font.Font('Font/bladesinger.ttf', 30)
+textX = 10
+textY = 10
+over_font = pygame.font.Font('Font/bladesinger.ttf', 64)
+</code></pre>
+                            <ul>
+                                <li>Sets up the font and display position for the current score.</li>
+                                <li>Creates a larger font for the Game Over message.</li>
+                            </ul>
+
+                            <h3>8. Helper Functions for Drawing and Display</h3>
+
+                            <pre class="line-numbers"><code class="language-python">def show_score(x, y):
+    score = font.render('score:' + str(score_value), True, (255, 255, 255))
+    screen.blit(score, (x, y))
+def game_over_text():
+    over_text = over_font.render('GAME OVER', True, (255, 255, 255))
+    screen.blit(over_text, (200, 250))
+def player(x, y):
+    screen.blit(playerImg, (x, y))
+def enemy(x, y, i):
+    screen.blit(enemyImg[i], (x, y))
+def fire_bullet(x, y):
+    global bullet_state
+    bullet_state = 'fire'
+    screen.blit(bulletImg, (x+16, y+10))
+</code></pre>
+                            <ul>
+                                <li>'screen.blit(image, (x, y))' draws images at specified positions.</li>
+                                <li>These functions handle placing text, the player, bullet, and enemies on the
+                                    screen.</li>
+                            </ul>
+
+                            <h3>9. Detecting Collisions</h3>
+
+                            <pre class="line-numbers"><code class="language-python">def isCollision(enemyX, enemyY, bulletX, bulletY):
+    distance = math.sqrt(math.pow(enemyX - bulletX, 2) + math.pow(enemyY - bulletY, 2))
+    if distance < 27:
+        return True
+    else:
+        return False
+</code></pre>
+                            <ul>
+                                <li>Uses the **distance formula** to determine if a bullet is close enough to an
+                                    enemy for a collision to occur.</li>
+                            </ul>
+
+                            <h3>10. Main Game Loop</h3>
+                            <p>This part keeps your game running, checks for player input, moves all elements,
+                                checks for collisions, draws everything, and updates the display.</p>
+
+                            <pre class="line-numbers"><code class="language-python">running = True
+while running:
+    screen.fill((0, 0, 0)) # Fills the screen with black
+    screen.blit(background, (0, 0)) # Draws the background
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                playerX_change = -0.4
+            if event.key == pygame.K_RIGHT:
+                playerX_change = 0.4
+            if event.key == pygame.K_SPACE:
+                if bullet_state == 'ready':
+                    bullet_Sound = mixer.Sound('Sound/laser.wav')
+                    bullet_Sound.play()
+                    bulletX = playerX
+                    fire_bullet(bulletX, bulletY)
+        if event.type == pygame.KEYUP:
+            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+                playerX_change = 0
+    playerX += playerX_change
+    if playerX <= 0:
+        playerX = 0
+    elif playerX >= 736:
+        playerX = 736
+</code></pre>
+                            <ul>
+                                <li>Handles quitting the game and keyboard input.</li>
+                                <li>Sets the bullet into motion if the spacebar is pressed.</li>
+                                <li>Makes sure the player doesn't move off screen.</li>
+                            </ul>
+
+                            <h3>Moving Enemies and Handling Game Over</h3>
+
+                            <pre class="line-numbers"><code class="language-python">for i in range(no_of_enemies):
+    if enemyY[i] > 450:
+        for j in range(no_of_enemies):
+            enemyY[j] = 2000
+        game_over_text()
+        break
+    enemyX[i] += enemyX_change[i]
+    if enemyX[i] <= 0:
+        enemyX_change[i] = 0.3
+        enemyY[i] += enemyY_change[i]
+    elif enemyX[i] >= 736:
+        enemyX_change[i] = -0.3
+        enemyY[i] += enemyY_change[i]
+    collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
+    if collision:
+        explosion_Sound = mixer.Sound('Sound/explosion.wav')
+        explosion_Sound.play()
+        bulletY = 480
+        bullet_state = 'ready'
+        score_value += 1
+        enemyX[i] = random.randint(0, 736)
+        enemyY[i] = random.randint(50, 150)
+    enemy(enemyX[i], enemyY[i], i)
+</code></pre>
+                            <ul>
+                                <li>Moves enemies left and right, bounces them off the edges.</li>
+                                <li>When enemies reach the player, moves them off screen and displays GAME OVER.
+                                </li>
+                                <li>When a collision happens, plays a sound, increases the score, resets the bullet,
+                                    and sends the enemy back to the top.</li>
+                            </ul>
+
+                            <h3>Bullet Movement</h3>
+
+                            <pre class="line-numbers"><code class="language-python">if bulletY <= 0:
+    bulletY = 480
+    bullet_state = 'ready'
+if bullet_state == 'fire':
+    fire_bullet(bulletX, bulletY)
+    bulletY -= bulletY_change
+</code></pre>
+                            <ul>
+                                <li>The bullet only moves if its state is 'fire'.</li>
+                                <li>If it moves off the top of the screen, its state is reset to 'ready', so the
+                                    player can shoot again.</li>
+                            </ul>
+
+                            <h3>Drawing Everything & Updating the Screen</h3>
+
+                            <pre class="line-numbers"><code class="language-python">player(playerX, playerY)
+show_score(textX, textY)
+pygame.display.update()
+</code></pre>
+                            <ul>
+                                <li>Draws the player and score on each iteration of the loop.</li>
+                                <li><span class="bold">'pygame.display.update()'</span> actually renders all your
+                                    updated graphics to the game window.</li>
+                            </ul>
+                            <div class="congratulations">
+                                <h3>🎉 You're Done!</h3>
+                                <p>Congratulations on understanding the basic structure of a Space Invaders game
+                                    using Python and Pygame!</p>
+                                <p>Try adding new features—multiple bullets, shooting enemies, or a high score
+                                    system—to practice and learn more.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- Ad Banner  -->
+            <div class="ad-banner-in-content">
+                <p>Ad</p>
+                <!-- <img src="https://placehold.co/768x150/555/white?text=Advertisement%0A768x10%0A(Large+Rectangle)"
+                    alt="Advertisement 336x280 (Large Rectangle)"> -->
+            </div>
+
+            <!-- Project Conclusion  -->
+            <section id="conclusion-section" class="conclusion-section">
+                <h2>Project Conclusion</h2>
+                <p>The Space Invaders Game is a beginner-friendly Python project built using the
+                    <a href="#language-python">Python</a> programming language and the
+                    <a href="https://www.pygame.org/wiki/tutorials" target="_blank">Pygame</a> library.
+                    This project teaches step-by-step concepts such as player movement, enemy generation, bullet firing,
+                    collision detection, scoring system, and game-over handling.
+                    It is a perfect hands-on tutorial for beginners to understand game loops, real-time graphics
+                    rendering,
+                    and event handling in Python while building a fun and interactive arcade-style shooting game.
+                </p>
+                <div class="key">
+                    <h3>Key achievements include:</h3>
+                    <ul>
+                        <li><b>Player controls and shooting mechanics</b> with smooth left/right movement and bullet
+                            firing.</li>
+                        <li><b>Enemy spawning and collision detection</b> to track hits, remove enemies, and increase
+                            the score.</li>
+                        <li><b>Score system and Game Over condition</b> providing real-time feedback and a complete
+                            arcade experience.</li>
+                    </ul>
+                </div>
+                <!-- <div class="video" id="video">
+                    <h3>Output (demo video):</h3>
+                    <video width="100%" height="100%" src="output.mp4" type="video/mp4" controls>
+                        Your browser not support the video.
+                    </video>
+                </div> -->
+                <div class="action-buttons">
+                    <!-- Download Project Button -->
+                    <button class="action-button download-btn" onclick="downloadProject()">
+                        <i class="fas fa-download"></i>Download
+                    </button>
+                    <a href="https://github.com/kumaradoss16/Projects-Programming/tree/main/Python/SpaceInvaders"
+                        download="space_shooter_game.py" class="action-button source-code">
+                        <i class="fab fa-github"></i>Source Code</a>
+                </div>
+                <p class="last">
+                    This tutorial provides a complete, functional Space Invaders game that demonstrates fundamental game
+                    development concepts
+                    including object-oriented programming, game loops, collision detection, and user input handling. The
+                    modular structure
+                    makes it easy to extend and customize for your own projects!
+                </p>
+            </section>
+
+
+            <!-- Preview  -->
+            <!-- <section id="experience-section" class="experience-section">
+                <h2>Preview</h2>
+                <div class="action-buttons">
+                    <a href="" class="action-button live-preview"><i class="fas fa-eye"></i>Live Preview</a>
+                    <a href="" class="action-button source-code"><i class="fab fa-github"></i>Source Code</a>
+                </div>
+            </section> -->
+
+            <!-- My Other Projects  -->
+            <section id="other-work-section" class="other-work-section">
+                <h2 style="margin-top: 20px;">Other Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <img src="../shooter-game/images/space-shooter-game-python-pygame-tutorial.webp"
+                            alt="Shooter Game Python Pygame Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Shooter Game</h4>
+                            <p>This is a beginner-friendly guide for building a Space Shooter game with Python and
+                                Pygame, covering coding concepts and
+                                project structure.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Pygame</span>
+                            </div>
+                            <a href="../shooter-game/space-shooter-game-python-pygame-tutorial.html"
+                                class="view-project-button" title="Shooter Game Python Pygame Tutorial">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../to-do-cli-app/images/todo-cli-app-python.webp"
+                            alt="To-Do CLI App Python Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>To-Do CLI App</h4>
+                            <p>Interactive command-line to-do list manager with Python, featuring list operations,
+                                persistent tasks, and practical
+                                coding exercises.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                            </div>
+                            <a href="../to-do-cli-app/todo-cli-app-python-tutorial.html"
+                                title="To-Do CLI App Python Project Tutorial" class="view-project-button">View Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Web/weather-app/images/weather-app-html-css-javascript-tutorial.webp"
+                            alt="Weather App HTML CSS JavaScript Project Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Weather App</h4>
+                            <p>Responsive weather app with real-time API data, feature comparison, and intuitive design
+                                for global city forecasts.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag">CSS</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                            <a href="../../Web/weather-app/weather-app-html-css-javascript-tutorial.html"
+                                class="view-project-button"
+                                title="Weather App HTML CSS JavaScript Project Tutorial">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../Web/team-card-app/images/cricket-team-card-app.webp"
+                            alt="Team Card App HTML CSS JavaScript Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Team Card App</h4>
+                            <p>Interactive team card application for cricket, featuring dynamic team selection, player
+                                filters, and customizable
+                                light/dark themes.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">HTML</span>
+                                <span class="project-tag">CSS</span>
+                                <span class="project-tag">JavaScript</span>
+                            </div>
+                            <a href="../../Web/team-card-app/cricket-team-card-app-html-css-javascript-tutorial.html"
+                                class="view-project-button" title="Team Card App HTML CSS JavaScript Tutorial">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../C++/password-strength-checker/images/password-strength-checker.webp"
+                            alt="Password Strength Checker in C++ Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>Password Strength Checker</h4>
+                            <p>Multi-Password Batch Strength Checker (C++), designed to check multiple passwords at
+                                once, show
+                                individual strength, and
+                                provide a summary report.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C++</span>
+                            </div>
+                            <a href="../../C++/password-strength-checker/password-strength-checker-cpp-tutorial-guide.html"
+                                class="view-project-button" title="Password Strength Checker in C++ Tutorial">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <img src="../../C/vpn-connectivity-verification-cpp/images/vpn-tool-before-connection-terminal-output.webp"
+                            alt="VPN Connectivity verification in C Tutorial" loading="lazy" decoding="async"
+                            fetchpriority="auto">
+                        <div class="project-card-content">
+                            <h4>VPN Connectivity verification in C</h4>
+                            <p>Efficient C program to verify VPN status, routing, and DNS configurations through
+                                comprehensive public IP and network
+                                adapter analysis.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">C</span>
+                            </div>
+                            <a href="../../C/vpn-connectivity-verification-cpp/build-vpn-verification-tool-c-tutorial.html"
+                                class="view-project-button" title="VPN Connectivity verification in C Tutorial">View
+                                Project
+                                <span>&rarr;</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Right Side  -->
+        <aside class="right-column">
+            <div class="about-website moving-border">
+                <h3>About Website</h3>
+                <p>DevSpireHub is a beginner-friendly learning platform offering step-by-step tutorials in
+                    programming, ethical hacking,
+                    networking, automation, and Windows setup. Learn through hands-on projects, clear explanations, and
+                    real-world examples
+                    using practical tools and open-source resources—no signups, no tracking, just actionable knowledge
+                    to accelerate your
+                    technical skills.
+                </p>
+            </div>
+            <div class="color-palette">
+                <div>
+                    <h3>Color Space</h3>
+                    <p>Discover Perfect Palettes</p>
+                </div>
+                <div class="palette-grid">
+                    <div class="palette-card">
+                        <!-- Color bars (set your palette colors here) -->
+                        <div class="color-wave colors-5">
+                            <div class="wave-bar" style="background:#F2C447" data-color="#F2C447"></div>
+                            <div class="wave-bar" style="background:#F76218" data-color="#F76218"></div>
+                            <div class="wave-bar" style="background:#FF1D68" data-color="#FF1D68"></div>
+                            <div class="wave-bar" style="background:#B10065" data-color="#B10065"></div>
+                            <div class="wave-bar" style="background:#740580" data-color="#740580"></div>
+                        </div>
+
+                        <div class="card-info">
+                            <div class="card-title">Sample Palette</div>
+                        </div>
+                    </div>
+                    <div class="button">
+                        <a href="../../../../color-palettes/index.html" class="color-button">Go To Color Space Home
+                            Page</a>
+                    </div>
+                </div>
+            </div>
+            <div class=" ad-block large">
+                <!-- <h3>Advertisement</h3> -->
+                <p>AD</p>
+                <!-- <img src="https://placehold.co/300x600/555/white?text=Advertisement%0A300x600%0A(Half+Page)"
+                    alt="Advertisement 300x600 (Half Page)" /> -->
+            </div>
+            <div class="wallpaper">
+                <div>
+                    <h3>Featured Wallpapers (For desktop)</h3>
+                    <p>Download for FREE!</p>
+                </div>
+                <div class="image-grid">
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (1).png" alt="Wallpaper 1">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (23).png" alt="Wallpaper 23">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (46).png" alt="Wallpaper 46">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (81).png" alt="Wallpaper 81">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (111).png" alt="Wallpaper 111">
+                    </div>
+                    <div class="image-card">
+                        <img src="../../../../Wallpaper/images_upscale/wallpaper (116).png" alt="Wallpaper 116">
+                    </div>
+                </div>
+                <div class="button">
+                    <a href="../../../../Wallpaper/index.html" class="wallpaper-button">Go To Wallpaper Home
+                        Page</a>
+                </div>
+            </div>
+
+            <div class="related-topics">
+                <div class="header">
+                    <h3>Open-Source Tools Directory</h3>
+                    <p><strong>Complete spectrum of open-source software in Github</strong>
+                    </p>
+                </div>
+                <div class="content">
+                    <ul>
+                        <li><i class="fas fa-code"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-2"
+                                class="link">Programming</a></li>
+                        <li><i class="fas fa-globe"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-3" class="link">Web
+                                Development</a></li>
+                        <li><i class="fas fa-network-wired"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-4"
+                                class="link">Networking</a></li>
+                        <li><i class="fas fa-shield-alt"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-5" class="link">Ethical
+                                Hacking</a></li>
+                        <li><i class="fas fa-microchip"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-6"
+                                class="link">Hardware</a>
+                        </li>
+                        <li><i class="fas fa-tasks"></i><a
+                                href="../../../../Resources/tools-directory/index.html#category-7"
+                                class="link">Productivity</a></li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <div class="btn-cyber">
+                        <span class="btn-bg"></span>
+                        <span class="btn-border"></span>
+                        <span class="btn-text">
+                            <a href="../../../../Resources/tools-directory/index.html" class="related-button">
+                                Open-Source
+                                Tools</a> <span class="blink">_</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-block medium">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/300x250/555/white?text=Advertisement%0A300x250%0A(Medium+Rectangle)"
+                    alt="Advertisement 300x250 (Medium Rectangle)" /> -->
+            </div>
+            <div class="ad-block small">
+                <p>AD</p>
+                <!-- <h3>Advertisement</h3>
+                <img src="https://placehold.co/320x100/555/white?text=Advertisement%0A320x100%0A(Large+Mobile+Banner)"
+                    alt="Advertisement 320x100 (Large Mobile Banner)" /> -->
+            </div>
+        </aside>
+        <button id="scrollUpBtn" aria-label="Scroll to top">
+            <svg class="progress-circle" viewBox="0 0 36 36">
+                <path class="bg" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <path class="progress" d="M18 2.0845
+                  a 15.9155 15.9155 0 0 1 0 31.831
+                  a 15.9155 15.9155 0 0 1 0 -31.831" />
+                <span class="arrow-overlay">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 19V5M5 12L12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </span>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer  -->
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../../index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Wallpaper/index.html">Wallpapers</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../color-palettes/index.html">Color Palettes</a>
+            </li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/contact/index.html">Contact</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/privacy/index.html">Privacy policy</a>
+            </li>
+        </ul>
+        <p>&copy;2026 DevSpireHub | All Rights Reserved</p>
+    </footer>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script> -->
+
+    <script src="../../Prism/prism.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

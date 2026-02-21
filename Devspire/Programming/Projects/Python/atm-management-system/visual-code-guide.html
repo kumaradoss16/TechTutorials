@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../../../../images/icon.webp" sizes="32x46" type="image/png">
+    <title>DevSpire | ATM System - Visual Diagrams & Flow Charts</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6VWY63Q80N"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-6VWY63Q80N');
+    </script>
+
+    <style>
+        /* Base Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+
+        :root {
+            --primary-color: #4f46e5;
+            --text-main: #1a202c;
+            --text-muted: #334155;
+            --bg-body: #ffffff;
+            --bg-code: #f3f4f6;
+            --bg-pre: #0f172a;
+            --dark-bg: #020617;
+            --border-color: #e5e7eb;
+            --yellow: #ffd43b;
+            --accent-blue: #007bff;
+        }
+
+        @page {
+            size: A4;
+            margin: 2cm;
+        }
+
+        body {
+            font-family: "Saira",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background: var(--dark-bg);
+            margin: 0;
+            transition: padding 0.3s ease;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+
+        h1 {
+            font-size: 1.8em;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.35em;
+            color: #DC143C;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.3em;
+            color: whitesmoke;
+        }
+
+        p {
+            margin-bottom: 1.1em;
+            color: #ccc;
+        }
+
+        span.yellow {
+            color: var(--yellow);
+        }
+
+        span.green {
+            color: #28a745;
+        }
+
+        span.blue {
+            color: #17a2b8;
+        }
+
+        .button {
+            text-decoration: none;
+            border: 2px solid var(--text-main);
+            padding: 5px 20px;
+            border-radius: 5px;
+            color: var(--bg-body);
+            font-weight: 500;
+        }
+
+        .button:hover {
+            border: 1px solid var(--primary-color);
+        }
+
+        .nav {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background: var(--bg-pre);
+            width: 100%;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+
+        pre {
+            margin: 1.6em 0;
+            padding: 1rem;
+            background: var(--bg-pre);
+            color: #e2e8f0;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 1px solid #1f2937;
+            font-size: 0.85em;
+            white-space: pre;
+        }
+
+        code {
+            padding: 0.2em 0.4em;
+            background: var(--bg-code);
+            border-radius: 4px;
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+        }
+
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+            border: none;
+        }
+
+        hr {
+            margin: 2.5em 0;
+            border: none;
+            height: 2px;
+            background: var(--border-color);
+        }
+
+        /* Footer  */
+        .footer {
+            position: relative;
+            max-width: 100%;
+            background: var(--dark-bg);
+            min-height: 100px;
+            padding: 10px 50px;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue) 50%, transparent 50%);
+            background-size: 20px 2px;
+            animation: slidingBorder 1s linear infinite;
+        }
+
+        @keyframes slidingBorder {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 20px 0;
+            }
+        }
+
+        .menu {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .menu-item {
+            list-style: none;
+        }
+
+        .menu-link {
+            color: #fff;
+            margin: 0 10px;
+            display: inline-block;
+            transition: 0.5s;
+            text-decoration: none;
+            opacity: 0.75;
+        }
+
+        .menu-link:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        .footer p {
+            color: #ffffff;
+            margin: 15px 0 10px 0;
+            /* font-weight: 300; */
+        }
+
+        /* Responsive Breakpoints */
+
+        /* 639px - Small Mobile/Large Handset */
+        @media (min-width: 639px) {
+            body {
+                margin: 0 20px;
+            }
+
+            h1 {
+                font-size: 2.1em;
+            }
+
+            h2 {
+                font-size: 1.75em;
+            }
+
+            pre {
+                padding: 1.25rem;
+                font-size: 0.9em;
+            }
+        }
+
+        /* 768px - Tablets */
+        @media (min-width: 768px) {
+            .container {
+                width: 720px;
+            }
+
+            body {
+                margin: 0 25px;
+            }
+
+            h1 {
+                font-size: 2.3em;
+            }
+
+            pre {
+                padding: 1.5rem;
+            }
+        }
+
+        /* 992px - Laptops/Small Desktops */
+        @media (min-width: 992px) {
+            .container {
+                width: 940px;
+            }
+
+            body {
+                margin: 0 30px;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+        }
+
+        /* 1024px - Standard Desktops */
+        @media (min-width: 1024px) {
+            .container {
+                width: 1024px;
+            }
+
+            pre {
+                font-size: 0.95em;
+            }
+
+            .menu {
+                flex-direction: row;
+            }
+        }
+
+        /* 1280px - Large Desktops */
+        @media (min-width: 1280px) {
+            .container {
+                width: 1100px;
+            }
+
+            body {
+                margin: 0 35px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        /* 1440px - Ultra Wide */
+        @media (min-width: 1440px) {
+            .container {
+                width: 1200px;
+            }
+        }
+
+        @media print {
+            body {
+                margin: 0;
+            }
+
+            .container {
+                width: 100%;
+            }
+
+            pre,
+            code {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="nav">
+            <a class="button" href="index.html">Back</a>
+            <a class="button" href="../../../../Website/index.html">Home</a>
+        </div>
+
+        <h1>🏦 ATM System - Visual Diagrams &amp; Flow Charts</h1>
+
+        <h2>1️⃣ Program Initialization Flow</h2>
+        <pre><code><span class="yellow">PROGRAM START</span>
+    │
+    ├─ <span class="green">Python imports all modules</span>
+    │  ├─ sqlite3
+    │  ├─ os
+    │  ├─ re
+    │  ├─ hashlib
+    │  ├─ datetime
+    │  ├─ getpass
+    │  └─ typing, contextlib
+    │
+    ├─ <span class="green">Load all constants</span>
+    │  ├─ DB_FILE = &quot;users.db&quot;
+    │  ├─ MIN_BALANCE = 500
+    │  ├─ DEFAULT_DAILY_WITHDRAW_LIMIT = 20000
+    │  └─ ... (11 more)
+    │
+    ├─ Define all functions (no execution yet)
+    │
+    └─ Reach: if __name__ == &quot;__main__&quot;
+       │
+       ├─ Print initialization message
+       │
+       ├─ <span class="green">Call init_db()</span>
+       │  ├─ Open SQLite connection
+       │  ├─ CREATE TABLE users
+       │  ├─ CREATE TABLE transactions
+       │  ├─ CREATE TABLE settings
+       │  ├─ INSERT default settings
+       │  └─ CREATE receipts folder
+       │
+       ├─ <span class="green">Print success messages</span>
+       │  ├─ &quot;Database initialized successfully&quot;
+       │  ├─ &quot;Receipts folder created&quot;
+       │  ├─ &quot;Default Admin Password: SecureAdmin@2025&quot;
+       │  └─ &quot;Change it immediately via Admin Panel&quot;
+       │
+       └─ <span class="green">Call main_menu()</span>
+          │
+          └─ Infinite loop
+             ├─ Display menu (1-4)
+             ├─ Get user choice
+             └─ Execute corresponding function
+                ├─ &quot;1&quot; → login()
+                ├─ &quot;2&quot; → create_account()
+                ├─ &quot;3&quot; → admin_menu()
+                └─ &quot;4&quot; → Exit (break)
+</code></pre>
+
+        <hr>
+
+        <h2>2️⃣ Login Process (Complete Flow)</h2>
+        <pre><code><span class="yellow">LOGIN() FUNCTION</span>
+    │
+    ├─ INPUT: account_number
+    │
+    ├─ FETCH: user = get_user(account_number)
+    │
+    ├─ IF NOT FOUND:
+    │  └─ PRINT: &quot;Account not found&quot;
+    │  └─ RETURN: (None, None)
+    │
+    ├─ IF FOUND BUT LOCKED:
+    │  └─ PRINT: &quot;Account locked due to multiple failed attempts&quot;
+    │  └─ RETURN: (None, None)
+    │
+    ├─ PIN VERIFICATION LOOP (max 3 times):
+    │  │
+    │  ├─ ITERATION 1:
+    │  │  ├─ INPUT: pin = getpass(&quot;Enter 4-digit PIN: &quot;)
+    │  │  ├─ VALIDATE: isdigit() AND len == 4
+    │  │  │  └─ If invalid: increment_failed_attempts(), continue
+    │  │  ├─ HASH: pin_hash = hash_pin(pin)
+    │  │  ├─ COMPARE: pin_hash == user[&#39;pin_hash&#39;]
+    │  │  │  ├─ If MATCH ✅:
+    │  │  │  │  ├─ PRINT: &quot;Login successful&quot;
+    │  │  │  │  ├─ CALL: reset_failed_attempts(user)
+    │  │  │  │  ├─ FETCH: fresh user data
+    │  │  │  │  └─ RETURN: (account_number, user_dict)
+    │  │  │  └─ If NO MATCH ❌:
+    │  │  │     ├─ PRINT: &quot;Incorrect PIN&quot;
+    │  │  │     ├─ CALL: increment_failed_attempts(user)
+    │  │  │     ├─ RELOAD: user = get_user(account_number)
+    │  │  │     ├─ remaining = 3 - user[&#39;failed_attempts&#39;]
+    │  │  │     └─ PRINT: f&quot;Attempts remaining: {remaining}&quot;
+    │  │
+    │  ├─ ITERATION 2: (same as above)
+    │  │  ├─ If correct: RETURN (account, user) ✅
+    │  │  └─ If wrong: failed_attempts = 2, remaining = 1
+    │  │
+    │  └─ ITERATION 3: (same as above)
+    │     ├─ If correct: RETURN (account, user) ✅
+    │     └─ If wrong: 
+    │        ├─ failed_attempts = 3
+    │        ├─ locked = 1 (AUTO-LOCK)
+    │        └─ PRINT: &quot;Account locked due to multiple failed attempts&quot;
+    │
+    └─ AFTER LOOP (all 3 failed):
+       └─ RETURN: (None, None)
+</code></pre>
+
+        <hr>
+
+        <h2>3️⃣ Account Creation (Step-by-Step)</h2>
+        <pre><code><span class="yellow">CREATE_ACCOUNT() FUNCTION</span>
+    │
+    ├─ <span class="green">STEP 1: INPUT NAME</span>
+    │  │
+    │  ├─ INPUT: name = input(&quot;Enter your name: &quot;)
+    │  ├─ CLEAN: name = &quot; &quot;.join(name.strip().split())
+    │  │          &quot;  john   doe  &quot; → &quot;john doe&quot;
+    │  ├─ VALIDATE: is_valid, sanitized, error = sanitize_name(name)
+    │  │  ├─ Check length: 2-50 characters
+    │  │  ├─ Check format: ^[A-Za-z\s]+$ (letters and spaces only)
+    │  │  └─ If invalid: PRINT error, LOOP
+    │  │  └─ If valid: PROCEED
+    │  │
+    │  └─ SUCCESS: name = &quot;John Doe&quot;
+    │
+    ├─ <span class="green">STEP 2: INPUT &amp; VALIDATE PIN</span>
+    │  │
+    │  ├─ Loop until valid:
+    │  │  ├─ INPUT: pin = getpass(&quot;Set a 4-digit numeric PIN: &quot;)
+    │  │  ├─ INPUT: confirm = getpass(&quot;Confirm PIN: &quot;)
+    │  │  │
+    │  │  ├─ Check 1: pin == confirm
+    │  │  │  └─ If not: PRINT &quot;do not match&quot;, continue
+    │  │  │
+    │  │  ├─ Check 2: validate_pin_strength(pin)
+    │  │  │  ├─ Must be exactly 4 digits: len(pin) == 4
+    │  │  │  ├─ Must be numeric: pin.isdigit()
+    │  │  │  ├─ Not repeating: len(set(pin)) != 1
+    │  │  │  ├─ Not ascending: not (1→2→3→4)
+    │  │  │  ├─ Not descending: not (4→3→2→1)
+    │  │  │  └─ If invalid: PRINT policy, continue
+    │  │  │
+    │  │  └─ If all valid: BREAK
+    │  │
+    │  └─ SUCCESS: pin = &quot;1357&quot; (hashed later)
+    │
+    ├─ <span class="green">STEP 3: INPUT INITIAL DEPOSIT</span>
+    │  │
+    │  ├─ Loop until valid:
+    │  │  ├─ INPUT: amount = float(input(...))
+    │  │  ├─ CHECK: amount &gt;= MIN_BALANCE (500)
+    │  │  │  └─ If less: PRINT minimum required, continue
+    │  │  └─ If valid: BREAK
+    │  │
+    │  └─ SUCCESS: amount = 5000
+    │
+    ├─ <span class="green">STEP 4: CREATE DATABASE RECORD</span>
+    │  │
+    │  ├─ GENERATE: account_number = &quot;1000000000&quot;
+    │  ├─ HASH: pin_hash = hash_pin(&quot;1357&quot;)
+    │  ├─ INSERT into users table:
+    │  │  ├─ account_number: &quot;1000000000&quot;
+    │  │  ├─ name: &quot;John Doe&quot;
+    │  │  ├─ pin_hash: &quot;a1b2c3d4e5...&quot;
+    │  │  ├─ balance: 5000.00
+    │  │  ├─ locked: 0
+    │  │  ├─ failed_attempts: 0
+    │  │  ├─ created_at: &quot;2025-12-31T14:30:45&quot;
+    │  │  └─ last_withdraw_date: NULL
+    │  │
+    │  └─ SUCCESS: Account created with ID 1000000000
+    │
+    ├─ <span class="green">STEP 5: RECORD INITIAL DEPOSIT</span>
+    │  │
+    │  └─ INSERT INTO transactions:
+    │     ├─ account_number: &quot;1000000000&quot;
+    │     ├─ type: &quot;DEPOSIT&quot;
+    │     ├─ amount: 5000.00
+    │     ├─ datetime: &quot;2025-12-31T14:30:45&quot;
+    │     └─ balance_after: 5000.00
+    │
+    ├─ <span class="green">STEP 6: GENERATE RECEIPT</span>
+    │  │
+    │  └─ CREATE FILE: &quot;receipt_1000000000_31122025_143045_1.txt&quot;
+    │     ├─ Contains: account (masked), date, amount, balance
+    │     └─ SAVE TO: receipts/ folder
+    │
+    └─ <span class="green">STEP 7: DISPLAY SUCCESS MESSAGE</span>
+       │
+       └─ Print:
+          ├─ &quot;ACCOUNT CREATED SUCCESSFULLY&quot;
+          ├─ &quot;Your account number is: 1000000000&quot;
+          ├─ &quot;Name: John Doe&quot;
+          ├─ &quot;Initial Balance: ₹5000.00&quot;
+          ├─ &quot;Receipt saved: receipt_1000000000_31122025_143045_1.txt&quot;
+          └─ &quot;IMPORTANT: Remember your account number and PIN!&quot;
+</code></pre>
+
+        <hr>
+
+        <h2>4️⃣ Withdrawal with ALL Validations</h2>
+        <pre><code><span class="yellow">WITHDRAW(account_number) FUNCTION</span>
+    │
+    ├─ FETCH: user, settings, atm_cash, daily_limit
+    │
+    ├─ INPUT VALIDATION:
+    │  └─ amount = float(input(...))
+    │  └─ If <= 0: PRINT "Must be positive", RETURN
+    │
+    ├─ <span class="green">VALIDATION 1: MINIMUM BALANCE CHECK</span>
+    │  │
+    │  └─ Calculate: remaining = balance - amount
+    │     │
+    │     ├─ IF remaining >= MIN_BALANCE ✅:
+    │     │  └─ PASS → continue to next validation
+    │     │
+    │     └─ IF remaining < MIN_BALANCE ❌:
+    │        ├─ max_withdrawable = balance - MIN_BALANCE
+    │        ├─ PRINT: "Cannot withdraw. Must maintain ₹500"
+    │        ├─ PRINT: f"You can withdraw up to: ₹{max_withdrawable}"
+    │        └─ RETURN
+    │
+    ├─ <span class="green">VALIDATION 2: DAILY LIMIT CHECK</span>
+    │  │
+    │  ├─ FETCH: today_withdrawn = get_today_withdrawn_amount(account)
+    │  └─ Calculate: total = today_withdrawn + amount
+    │     │
+    │     ├─ IF total <= daily_limit ✅:
+    │     │  └─ PASS → continue to next validation
+    │     │
+    │     └─ IF total > daily_limit ❌:
+    │        ├─ remaining = daily_limit - today_withdrawn
+    │        ├─ PRINT: "Daily limit exceeded"
+    │        ├─ PRINT: f"Daily limit: ₹{daily_limit}"
+    │        ├─ PRINT: f"Already withdrawn: ₹{today_withdrawn}"
+    │        ├─ PRINT: f"Remaining today: ₹{remaining}"
+    │        └─ RETURN
+    │
+    ├─ <span class="green">VALIDATION 3: ATM CASH CHECK</span>
+    │  │
+    │  ├─ FETCH: atm_cash from settings
+    │  └─ Compare: amount vs atm_cash
+    │     │
+    │     ├─ IF amount <= atm_cash ✅:
+    │     │  └─ PASS → execute withdrawal
+    │     │
+    │     └─ IF amount > atm_cash ❌:
+    │        ├─ PRINT: "ATM does not have enough cash"
+    │        ├─ PRINT: f"ATM available: ₹{atm_cash}"
+    │        └─ RETURN
+    │
+    └─ <span class="blue">EXECUTE WITHDRAWAL (All validations passed ✅):</span>
+       │
+       ├─ BEGIN DATABASE TRANSACTION:
+       │  │
+       │  ├─ UPDATE 1: user balance
+       │  │  ├─ new_balance = balance - amount
+       │  │  ├─ UPDATE users SET balance = new_balance
+       │  │  ├─ UPDATE users SET last_withdraw_date = TODAY
+       │  │  └─ WHERE account_number = ?
+       │  │
+       │  ├─ UPDATE 2: ATM cash pool
+       │  │  ├─ new_atm_cash = atm_cash - amount
+       │  │  ├─ UPDATE settings SET atm_cash_pool = new_atm_cash
+       │  │  └─ WHERE id = 1
+       │  │
+       │  ├─ INSERT: transaction record
+       │  │  ├─ account_number: ?
+       │  │  ├─ type: "WITHDRAW"
+       │  │  ├─ amount: amount
+       │  │  ├─ datetime: NOW
+       │  │  └─ balance_after: new_balance
+       │  │
+       │  ├─ GENERATE: receipt file
+       │  │
+       │  └─ AUTO-COMMIT (if all succeed) ✅
+       │     OR AUTO-ROLLBACK (if any fails) ❌
+       │
+       ├─ SUCCESS OUTPUT:
+       │  ├─ PRINT: "✅ ₹{amount} Withdrawn successfully"
+       │  ├─ PRINT: f"New balance: ₹{new_balance}"
+       │  ├─ PRINT: f"ATM Cash Remaining: ₹{new_atm_cash}"
+       │  └─ PRINT: f"Receipt saved: {filename}"
+       │
+       └─ ERROR OUTPUT (if exception):
+          ├─ PRINT: "❌ Transaction failed and rolled back: {error}"
+          └─ PRINT: "Your balance and ATM cash remain unchanged"
+          
+          (Database state: NO CHANGES made)
+</code></pre>
+
+        <hr>
+
+        <h2>5️⃣ Transaction Rollback Protection</h2>
+        <pre><code><span class="yellow">DATABASE TRANSACTION WITH ROLLBACK</span>
+
+SCENARIO A: ALL STEPS SUCCEED ✅
+───────────────────────────────
+
+BEGIN TRANSACTION
+    │
+    ├─ STEP 1: UPDATE users (balance)
+    │  └─ Execution: ✅ SUCCESS
+    │
+    ├─ STEP 2: UPDATE settings (atm_cash)
+    │  └─ Execution: ✅ SUCCESS
+    │
+    ├─ STEP 3: INSERT transactions
+    │  └─ Execution: ✅ SUCCESS
+    │
+    └─ AUTO-COMMIT
+       └─ All 3 changes saved permanently
+          ├─ balance: 5000 → 4000 ✅
+          ├─ atm_cash: 1000000 → 999000 ✅
+          └─ transaction: inserted ✅
+
+
+SCENARIO B: STEP 2 FAILS ❌
+──────────────────────────
+
+BEGIN TRANSACTION
+    │
+    ├─ STEP 1: UPDATE users (balance)
+    │  └─ Execution: ✅ SUCCESS
+    │
+    ├─ STEP 2: UPDATE settings (atm_cash)
+    │  └─ Execution: ❌ SQL SYNTAX ERROR
+    │
+    ├─ STEP 3: (NOT EXECUTED - chain stops)
+    │
+    └─ AUTO-ROLLBACK (because exception occurred)
+       └─ All changes UNDONE
+          ├─ balance: 5000 → 5000 (unchanged) ✅
+          ├─ atm_cash: 1000000 → 1000000 (unchanged) ✅
+          └─ transaction: not recorded ✅
+          
+       Result: DATABASE CONSISTENT (as if withdrawal never happened)
+
+
+SCENARIO C: STEP 3 FAILS ❌
+──────────────────────────
+
+BEGIN TRANSACTION
+    │
+    ├─ STEP 1: UPDATE users (balance)
+    │  └─ Execution: ✅ SUCCESS
+    │
+    ├─ STEP 2: UPDATE settings (atm_cash)
+    │  └─ Execution: ✅ SUCCESS
+    │
+    ├─ STEP 3: INSERT transactions
+    │  └─ Execution: ❌ FOREIGN KEY CONSTRAINT ERROR
+    │
+    └─ AUTO-ROLLBACK (because exception occurred)
+       └─ All changes UNDONE (including steps 1 & 2)
+          ├─ balance: 5000 → 5000 (UNDONE) ✅
+          ├─ atm_cash: 1000000 → 1000000 (UNDONE) ✅
+          └─ transaction: not recorded ✅
+</code></pre>
+
+        <hr>
+
+        <h2>6️⃣ Daily Withdrawal Limit Reset</h2>
+        <pre><code><span class="yellow">DAILY LIMIT LOGIC</span>
+
+<span class="green">SETUP:</span>
+├─ Daily Limit: ₹20,000 per user per calendar day
+├─ Balance: ₹50,000
+└─ Tracking: last_withdraw_date field in users table
+
+<span class="green">DAY 1 (2025-12-31):</span>
+├─ 09:00 AM - Withdrawal 1: ₹5,000
+│  ├─ last_withdraw_date: NULL (first withdrawal)
+│  ├─ Query: SUM WHERE date = TODAY = ₹5,000
+│  └─ Can withdraw? 5,000 <= 20,000 ✅
+│     └─ Update: last_withdraw_date = "2025-12-31"
+│
+├─ 11:30 AM - Withdrawal 2: ₹8,000
+│  ├─ last_withdraw_date: "2025-12-31" (today)
+│  ├─ Query: SUM WHERE date = TODAY = ₹5,000 + ₹8,000 = ₹13,000
+│  └─ Can withdraw? 13,000 <= 20,000 ✅
+│
+├─ 02:00 PM - Withdrawal 3: ₹4,000
+│  ├─ last_withdraw_date: "2025-12-31" (today)
+│  ├─ Query: SUM WHERE date = TODAY = ₹13,000 + ₹4,000 = ₹17,000
+│  └─ Can withdraw? 17,000 <= 20,000 ✅
+│
+├─ 04:00 PM - Withdrawal 4: ₹5,000
+│  ├─ last_withdraw_date: "2025-12-31" (today)
+│  ├─ Query: SUM WHERE date = TODAY = ₹17,000 + ₹5,000 = ₹22,000
+│  └─ Can withdraw? 22,000 <= 20,000 ❌
+│     ├─ Message: "Daily limit exceeded"
+│     ├─ Already withdrawn: ₹17,000
+│     └─ Remaining: ₹3,000
+
+<span class="green"> DAY 2 (2026-01-01):</span>
+├─ 08:00 AM - Check daily amount
+│  ├─ last_withdraw_date: "2025-12-31" (yesterday)
+│  ├─ today: "2026-01-01" (now)
+│  ├─ last_withdraw_date != today → RESET
+│  └─ Withdrawn today: ₹0 (RESET FOR NEW DAY)
+│
+└─ Withdrawal 1: ₹5,000
+   ├─ Query: SUM WHERE date = TODAY = ₹5,000
+   └─ Can withdraw? 5,000 <= 20,000 ✅
+      └─ Update: last_withdraw_date = "2026-01-01"
+</code></pre>
+        <hr>
+
+
+        <h2>7️⃣ PIN Validation Rules</h2>
+        <pre><code><span class="yellow">PIN VALIDATION FLOWCHART</span>
+
+<span class="green">INPUT: "1234"</span>
+    │
+    ├─ CHECK 1: Length
+    │  └─ len("1234") == 4? ✅ PASS
+    │
+    ├─ CHECK 2: Numeric only
+    │  └─ "1234".isdigit()? ✅ PASS
+    │
+    ├─ CHECK 3: Not repeating
+    │  └─ set("1234") = {'1','2','3','4'}, len = 4
+    │  └─ len(set) == 1? No, len = 4 ✅ PASS
+    │
+    ├─ CHECK 4: Not ascending
+    │  └─ Is 1→2→3→4? Yes!
+    │  └─ All consecutive increases? ✅ YES
+    │  └─ ❌ FAIL (sequential)
+    │
+    └─ RESULT: INVALID ❌
+       └─ Reason: "PIN cannot be sequential (e.g., 1234, 4321)"
+
+
+<span class="green">INPUT: "1357"</span>
+    │
+    ├─ CHECK 1: Length
+    │  └─ len("1357") == 4? ✅ PASS
+    │
+    ├─ CHECK 2: Numeric only
+    │  └─ "1357".isdigit()? ✅ PASS
+    │
+    ├─ CHECK 3: Not repeating
+    │  └─ set("1357") = {'1','3','5','7'}, len = 4
+    │  └─ len(set) == 1? No, len = 4 ✅ PASS
+    │
+    ├─ CHECK 4: Not ascending
+    │  └─ Is 1→3→5→7? No! (1→3 is +2, not +1)
+    │  └─ ✅ PASS
+    │
+    ├─ CHECK 5: Not descending
+    │  └─ Is 7→5→3→1? (reversed) No!
+    │  └─ ✅ PASS
+    │
+    └─ RESULT: VALID ✅
+
+
+<span class="green">INPUT: "1111"</span>
+    │
+    ├─ CHECK 1: Length
+    │  └─ len("1111") == 4? ✅ PASS
+    │
+    ├─ CHECK 2: Numeric only
+    │  └─ "1111".isdigit()? ✅ PASS
+    │
+    ├─ CHECK 3: Not repeating
+    │  └─ set("1111") = {'1'}, len = 1
+    │  └─ len(set) == 1? YES
+    │  └─ ❌ FAIL (all repeating)
+    │
+    └─ RESULT: INVALID ❌
+       └─ Reason: "PIN cannot have all repeating digits (e.g., 1111)"
+
+
+<span class="green">INPUT: "4321"</span>
+    │
+    ├─ CHECK 1: Length
+    │  └─ len("4321") == 4? ✅ PASS
+    │
+    ├─ CHECK 2: Numeric only
+    │  └─ "4321".isdigit()? ✅ PASS
+    │
+    ├─ CHECK 3: Not repeating
+    │  └─ set("4321") = {'4','3','2','1'}, len = 4
+    │  └─ ✅ PASS
+    │
+    ├─ CHECK 4: Not ascending
+    │  └─ Is 4→3→2→1? No! (decreasing)
+    │  └─ ✅ PASS
+    │
+    ├─ CHECK 5: Not descending
+    │  └─ Is 4→3→2→1? Yes! (4-1=3, 3-1=2, 2-1=1)
+    │  └─ All consecutive decreases? ✅ YES
+    │  └─ ❌ FAIL (sequential descending)
+    │
+    └─ RESULT: INVALID ❌
+       └─ Reason: "PIN cannot be sequential (e.g., 1234, 4321)"
+</code></pre>
+        <hr>
+
+        <h2>8️⃣ Account Locking Mechanism</h2>
+        <pre><code><span class="yellow">FAILED LOGIN ATTEMPTS PROGRESSION</span>
+
+<span class="green">Attempt 1:</span>
+├─ User enters wrong PIN
+├─ CALL: increment_failed_attempts(user)
+│  ├─ user["failed_attempts"]: 0 → 1
+│  ├─ Check: 1 >= 3? No
+│  └─ user["locked"]: 0 (unchanged)
+├─ CALL: update_user(user)
+│  └─ Database UPDATE completed
+├─ RELOAD: user = get_user(acc)
+├─ Calculate: remaining = 3 - 1 = 2
+└─ MESSAGE: "Attempts remaining: 2"
+
+<span class="green">Attempt 2:</span>
+├─ User enters wrong PIN again
+├─ CALL: increment_failed_attempts(user)
+│  ├─ user["failed_attempts"]: 1 → 2
+│  ├─ Check: 2 >= 3? No
+│  └─ user["locked"]: 0 (unchanged)
+├─ CALL: update_user(user)
+├─ RELOAD: user = get_user(acc)
+├─ Calculate: remaining = 3 - 2 = 1
+└─ MESSAGE: "Attempts remaining: 1"
+
+<span class="green">Attempt 3 (WRONG PIN):</span>
+├─ User enters wrong PIN (3rd time)
+├─ CALL: increment_failed_attempts(user)
+│  ├─ user["failed_attempts"]: 2 → 3
+│  ├─ Check: 3 >= 3? YES ✅
+│  ├─ AUTO-LOCK: user["locked"] = True
+│  └─ Database updated with locked = 1
+├─ RELOAD: user = get_user(acc)
+├─ Calculate: remaining = 3 - 3 = 0
+└─ MESSAGE: "Account locked due to multiple failed attempts"
+   └─ RETURN: (None, None)
+
+<span class="green">Attempt 4+ (after locked):</span>
+├─ User tries to login
+├─ FETCH: user = get_user(acc)
+├─ CHECK: is_account_locked(user)?
+│  └─ user["locked"] == 1? YES
+├─ MESSAGE: "Account is locked due to multiple failed login attempts"
+└─ RETURN: (None, None) immediately (no PIN attempt allowed)
+
+
+<span class="blue">ADMIN UNLOCK:</span>
+├─ Admin accesses Admin Panel
+├─ Admin Panel → 1 (Unlock Account)
+├─ Verify admin password
+├─ Display all locked accounts
+├─ Admin enters account number to unlock
+├─ CALL: admin_unlock_account()
+│  ├─ UPDATE users SET locked = 0, failed_attempts = 0
+│  │  WHERE account_number = ?
+│  └─ CALL: record_transaction(..., "ADMIN_UNLOCK", ...)
+├─ Account status changes:
+│  ├─ locked: 1 → 0
+│  ├─ failed_attempts: 3 → 0
+│  └─ Database updated
+└─ USER CAN LOGIN AGAIN ✅
+</code></pre>
+        <hr>
+
+        <h2>9️⃣ Admin Panel Menu Structure</h2>
+        <pre><code><span class="yellow">ADMIN PANEL</span>
+    │
+    ├─ <span class="green">1. UNLOCK ACCOUNT</span>
+    │  ├─ Verify admin password
+    │  ├─ List all locked accounts
+    │  ├─ Unlock specific or all
+    │  ├─ Record admin action
+    │  └─ Return to admin menu
+    │
+    ├─ <span class="green">2. VIEW ALL ACCOUNTS</span>
+    │  ├─ Verify admin password
+    │  ├─ Query: SELECT account_number, name, balance, locked, failed_attempts
+    │  ├─ Display in table format
+    │  ├─ Show total count
+    │  └─ Return to admin menu
+    │
+    ├─ <span class="green">3. VIEW ATM CASH POOL</span>
+    │  ├─ Verify admin password
+    │  ├─ Query: SELECT atm_cash_pool, daily_withdraw_limit
+    │  ├─ Display amounts
+    │  └─ Return to admin menu
+    │
+    ├─ <span class="green">4. REFILL ATM CASH</span>
+    │  ├─ Verify admin password
+    │  ├─ Show current ATM cash
+    │  ├─ Input amount to add
+    │  ├─ UPDATE settings: atm_cash_pool += amount
+    │  ├─ Display new total
+    │  └─ Return to admin menu
+    │
+    ├─ <span class="green">5. VIEW RECENT TRANSACTIONS</span>
+    │  ├─ Verify admin password
+    │  ├─ Input: how many to show (default 10)
+    │  ├─ Query: SELECT * FROM transactions
+    │  │          JOIN users
+    │  │          ORDER BY id DESC LIMIT ?
+    │  ├─ Display in table format
+    │  └─ Return to admin menu
+    │
+    ├─ <span class="green">6. CHANGE ADMIN PASSWORD</span>
+    │  ├─ Verify current admin password
+    │  ├─ Input new password (min 8 chars)
+    │  ├─ Confirm new password
+    │  ├─ HASH: new_hash = hash_password(new_password)
+    │  ├─ UPDATE settings: admin_password_hash = new_hash
+    │  ├─ MESSAGE: "Password changed successfully"
+    │  └─ Return to admin menu
+    │
+    └─ <span class="green">7. BACK TO MAIN MENU</span>
+       └─ Exit admin menu
+</code></pre>
+        <hr>
+
+        <h2>🔟 Complete User Journey</h2>
+        <pre><code><span class="yellow">USER JOURNEY FLOWCHART</span>
+
+<span class="green">STEP 1: CREATE ACCOUNT</span>
+├─ Start ATM
+├─ Main Menu → 2 (Create Account)
+├─ Input: name = "John Doe"
+├─ Input: PIN = "1357"
+├─ Input: deposit = "5000"
+├─ Database created:
+│  └─ users: 1 row (1000000000, John Doe, ...)
+│  └─ transactions: 1 row (DEPOSIT, 5000)
+│  └─ Receipt file: receipt_1000000000_31122025_143045_1.txt
+└─ Account ready: 1000000000
+
+<span class="green">STEP 2: LOGIN</span>
+├─ Main Menu → 1 (Login)
+├─ Input: account = "1000000000"
+├─ Input: PIN = "1357"
+├─ Validation: hash("1357") matches stored hash ✅
+├─ Reset failed_attempts to 0
+└─ Enter ATM Menu
+
+<span class="green">STEP 3: CHECK BALANCE</span>
+├─ ATM Menu → 1 (Balance Inquiry)
+├─ Fetch: balance = 5000.00
+├─ Display: "Current balance: ₹5000.00"
+├─ Record: transaction (BALANCE, 0, 5000)
+└─ Return to ATM Menu
+
+<span class="green">STEP 4: DEPOSIT MONEY</span>
+├─ ATM Menu → 2 (Deposit)
+├─ Input: amount = "2000"
+├─ Database transaction:
+│  ├─ UPDATE users: balance 5000 → 7000
+│  ├─ INSERT transactions: (DEPOSIT, 2000, 7000)
+│  └─ AUTO-COMMIT
+├─ Generate receipt
+├─ Display: "New Balance: ₹7000.00"
+└─ Return to ATM Menu
+
+<span class="green">STEP 5: WITHDRAW MONEY</span>
+├─ ATM Menu → 3 (Withdraw)
+├─ Input: amount = "1000"
+├─ Validations:
+│  ├─ Min balance: 7000 - 1000 = 6000 >= 500 ✅
+│  ├─ Daily limit: 0 + 1000 <= 20000 ✅
+│  └─ ATM cash: 1000000 >= 1000 ✅
+├─ Database transaction:
+│  ├─ UPDATE users: balance 7000 → 6000, last_withdraw_date = TODAY
+│  ├─ UPDATE settings: atm_cash 1000000 → 999000
+│  ├─ INSERT transactions: (WITHDRAW, 1000, 6000)
+│  └─ AUTO-COMMIT
+├─ Generate receipt
+├─ Display: "New Balance: ₹6000.00"
+└─ Return to ATM Menu
+
+<span class="green">STEP 6: VIEW MINI STATEMENT</span>
+├─ ATM Menu → 4 (Mini Statement)
+├─ Query: SELECT last 5 transactions
+│  ├─ Transaction 5: DEPOSIT, 2000, balance 7000 (10:30 AM)
+│  ├─ Transaction 4: WITHDRAW, 1000, balance 6000 (11:45 AM)
+│  ├─ Transaction 3: BALANCE, 0, balance 6000 (11:42 AM)
+│  ├─ Transaction 2: DEPOSIT, 5000, balance 5000 (09:15 AM)
+│  └─ (first deposit when account created)
+└─ Return to ATM Menu
+
+<span class="green">STEP 7: LOGOUT</span>
+├─ ATM Menu → 6 (Logout)
+├─ MESSAGE: "Logging out..."
+├─ Return to Main Menu
+└─ Can login again with same account
+</code></pre>
+        <hr>
+
+        <h2>Data Types Usedy</h2>
+        <pre><code><span class="yellow">STRING (TEXT):</span>
+├─ account_number: "1000000000"
+├─ name: "John Doe"
+├─ pin_hash: "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f0dd..."
+├─ tx_type: "WITHDRAW"
+└─ datetime: "2025-12-31T14:32:10"
+
+<span class="yellow">FLOAT (REAL):</span>
+├─ balance: 5000.50
+├─ amount: 1000.00
+├─ atm_cash_pool: 999000.00
+└─ daily_withdraw_limit: 20000.00
+
+<span class="yellow">INTEGER:</span>
+├─ account_number (as int internally): 1000000000
+├─ locked: 0 or 1
+├─ failed_attempts: 0-3
+├─ transaction_id: 1, 2, 3, ...
+└─ settings_id: 1
+
+<span class="yellow">BOOLEAN (stored as INT):</span>
+├─ locked: 0 (False), 1 (True)
+└─ is_account_locked: True, False
+
+<span class="yellow">DICT (Python):</span>
+├─ user: {"account_number": "...", "name": "...", "balance": ...}
+├─ settings: {"atm_cash_pool": ..., "daily_withdraw_limit": ...}
+└─ Used for in-memory operations
+
+<span class="yellow">TUPLE (Python):</span>
+├─ login(): return (account_number, user_dict)
+├─ validate_pin_strength(): return (bool_valid, str_error)
+└─ sanitize_name(): return (bool_valid, str_name, str_error)
+
+<span class="yellow"></span>OPTIONAL:</span>
+├─ get_user(): Optional[Dict[str, Any]] (dict or None)
+├─ login(): Tuple[Optional[str], Optional[Dict]] (both or None)
+└─ Used for nullable values
+</code></pre>
+        <p>This visual guide complements the code explanation with diagrams and flowcharts! 📊✨</p>
+    </div>
+    <!-- Footer  -->
+    <footer class="footer">
+        <ul class="menu">
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/index.html">Home</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/about/about.html">About</a></li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/contact/index.html">Contact</a>
+            </li>
+            <li class="menu-item"><a class="menu-link" href="../../../../Website/privacy/index.html">Privacy
+                    policy</a>
+            </li>
+        </ul>
+        <p>&copy;2025 TechTutorials | All Rights Reserved</p>
+    </footer>
+</body>
+
+</html>
